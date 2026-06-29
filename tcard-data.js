@@ -204,20 +204,13 @@
 
   const DEFAULT_PC = (function () {
     const mons = [
-      { sprite: '', nickname: '', species: 'Bulbizarre', level: 12, types: ['Plante', 'Poison'], ball: 'Poké Ball', gender: '♂' },
-      { sprite: '', nickname: '', species: 'Salamèche', level: 14, types: ['Feu'], ball: 'Poké Ball', gender: '♂' },
-      { sprite: '', nickname: '', species: 'Carapuce', level: 13, types: ['Eau'], ball: 'Poké Ball', gender: '♂' },
-      { sprite: '', nickname: 'Sparky', species: 'Pikachu', level: 16, types: ['Électrik'], ball: 'Faiblo Ball', gender: '♀' },
-      { sprite: '', nickname: '', species: 'Rondoudou', level: 11, types: ['Normal', 'Fée'], ball: 'Soin Ball', gender: '♀' },
-      { sprite: '', nickname: '', species: 'Évoli', level: 15, types: ['Normal'], ball: 'Super Ball', gender: '♂' },
-      { sprite: '', nickname: '', species: 'Magicarpe', level: 8, types: ['Eau'], ball: 'Filet Ball', gender: '♂' },
-      { sprite: '', nickname: '', species: 'Chenipan', level: 6, types: ['Insecte'], ball: 'Poké Ball', gender: '♂' },
-      { sprite: '', nickname: '', species: 'Roucool', level: 13, types: ['Normal', 'Vol'], ball: 'Super Ball', gender: '♀' },
-      { sprite: '', nickname: '', species: 'Nidoran', level: 12, types: ['Poison'], ball: 'Hyper Ball', gender: '♀' }
+        { sprite: 'https://i.imgur.com/6dKxzuE.gif', nickname: '', species: 'Nigirigon', level: 12, types: ['Eau', 'Poison'], ball: 'Poké Ball', gender: '♂' },
+        { sprite: 'https://i.imgur.com/Y3mHM9W.gif', nickname: '', species: 'Nigirigon', level: 14, types: ['Eau'], ball: 'Poké Ball', gender: '♂' },
+        { sprite: 'https://i.imgur.com/idycgn8.gif', nickname: '', species: 'Nigirigon', level: 13, types: ['Eau'], ball: 'Poké Ball', gender: '♂' }
     ];
     const slots = [];
     for (let i = 0; i < 30; i++) slots.push(mons[i] || null);
-    return { owner: 'Sacha', boxName: 'Boîte 1 — Captures', theme: '#C25C3A', motisma: '', mons: slots };
+    return { owner: 'Kalei', boxName: 'Boîte 1 — Captures', theme: '#C25C3A', motisma: '', mons: slots };
   })();
 
   function encodePC(d) {
@@ -282,7 +275,7 @@
                 '<div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:7px;">' + types + '</div></div>' +
               '</div>' +
               '<div style="margin-top:10px;padding-top:9px;border-top:1px dashed ' + THEME.border + ';display:flex;align-items:center;gap:7px;font-size:11.5px;color:' + THEME.muted + ';">' + ballEl(p, 15) + ' Capturé en <b style="color:' + THEME.body + ';">' + esc(p.ball) + '</b></div>' +
-            '</div>' +
+      '</div>' + Sacha
           '</details>' +
         '</div>';
     }
@@ -312,14 +305,14 @@
 
   const DEFAULT_TRAINER = {
     avatar: '',
-    firstName: 'Élise',
-    lastName: 'Veren',
-    group: 'Team Aurore',
-    occupation: 'Dresseuse · Chercheuse de terrain',
-    rank: 'B',
+    firstName: 'Kalei',
+    lastName: 'Wu',
+    group: 'Un groupe cool',
+    occupation: 'Sugar Baby',
+    rank: 'S',
     accent: '#C25C3A',
     motisma: '',
-    inventory: ['Pokédex régional', 'Vélo de course', 'Carte de la région', 'Set de Potions', '5 000 ₽'],
+    inventory: ['Pokédex régional', 'Vélo de course', 'Carte de la région', 'Master Ball', '999999 ₽'],
     moves: [
       { name: 'Coupe', kind: 'CS' },
       { name: 'Surf', kind: 'CS' },
@@ -335,7 +328,7 @@
       { name: 'Cuisine', tier: 1 },
       { name: 'Négociation', tier: 2 }
     ],
-    bio: "Partie de Bourg-Palette pour cartographier la flore Pokémon, Élise note tout dans son carnet. Curieuse et tenace, elle préfère observer avant d'attraper."
+    bio: "Kalei c'est un gars cool."
   };
 
   function encodeTrainer(d) { return 'DRESS1:' + btoa(unescape(encodeURIComponent(JSON.stringify(d)))); }

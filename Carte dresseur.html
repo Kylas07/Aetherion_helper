@@ -257,16 +257,16 @@
         }));
         const inventory = (Array.isArray(d.inventory) ? d.inventory : []).map(x => x == null ? '' : String(x));
         return {
-          avatar: d.avatar || 'https://2img.net/i.imgur.com/r9W0oZf.png',
-          firstName: d.firstName != null ? d.firstName : 'Kalei',
-          lastName: d.lastName != null ? d.lastName : 'Wu',
-          group: d.group != null ? d.group : 'Un groupe giga Cool',
-          occupation: d.occupation != null ? d.occupation : 'Maître Pokémon',
+          avatar: d.avatar || '',
+          firstName: d.firstName != null ? d.firstName : '',
+          lastName: d.lastName != null ? d.lastName : '',
+          group: d.group != null ? d.group : '',
+          occupation: d.occupation != null ? d.occupation : '',
           rank: ['D', 'C', 'B', 'A', 'S'].indexOf(d.rank) >= 0 ? d.rank : 'D',
           accent: d.accent || '#C25C3A',
           motisma: d.motisma || 'https://i.imgur.com/4GXlWf5.png',
           inventory, moves, talents,
-          bio: d.bio != null ? d.bio : 'Kalei est un gars cool. Super cool.'
+          bio: d.bio != null ? d.bio : ''
         };
       }
 
