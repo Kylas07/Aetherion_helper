@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail" data-bg-color="#1A1613">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#1A1613"/>
+    <circle cx="930" cy="150" r="150" fill="none" stroke="#C25C3A" stroke-width="4" stroke-dasharray="14 12" opacity="0.5"/>
+    <circle cx="175" cy="155" r="46" fill="none" stroke="#C25C3A" stroke-width="5" stroke-dasharray="10 9"/>
+    <text x="250" y="135" font-family="Oswald,Arial Narrow,sans-serif" font-size="58" font-weight="700" fill="#D9764C" letter-spacing="2">AETHERION</text>
+    <rect x="250" y="170" width="430" height="18" rx="9" fill="#857C70"/>
+    <g>
+      <rect x="175" y="300" width="270" height="290" rx="20" fill="#241F1B" stroke="#3A332B" stroke-width="2"/>
+      <rect x="465" y="300" width="270" height="290" rx="20" fill="#241F1B" stroke="#3A332B" stroke-width="2"/>
+      <rect x="755" y="300" width="270" height="290" rx="20" fill="#241F1B" stroke="#3A332B" stroke-width="2"/>
+      <rect x="205" y="330" width="60" height="60" rx="14" fill="rgba(224,122,78,0.14)"/>
+      <rect x="495" y="330" width="60" height="60" rx="14" fill="rgba(194,138,106,0.14)"/>
+      <rect x="785" y="330" width="60" height="60" rx="14" fill="rgba(168,160,150,0.12)"/>
+      <rect x="205" y="420" width="180" height="22" rx="6" fill="#ECE5DC"/>
+      <rect x="495" y="420" width="180" height="22" rx="6" fill="#ECE5DC"/>
+      <rect x="785" y="420" width="180" height="22" rx="6" fill="#ECE5DC"/>
+      <rect x="205" y="458" width="210" height="13" rx="6" fill="#857C70"/>
+      <rect x="495" y="458" width="210" height="13" rx="6" fill="#857C70"/>
+      <rect x="785" y="458" width="210" height="13" rx="6" fill="#857C70"/>
+      <rect x="205" y="520" width="110" height="34" rx="8" fill="#C25C3A"/>
+      <rect x="495" y="520" width="110" height="34" rx="8" fill="#C28A6A"/>
+      <rect x="785" y="520" width="110" height="34" rx="8" fill="#A8A096"/>
+    </g>
+  </svg>
+</template>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #1A1613; }
+    a { text-decoration: none; color: inherit; }
+    .tool-card { transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+    .tool-card:hover { transform: translateY(-4px); box-shadow: 0 30px 56px -24px rgba(0,0,0,.7) !important; border-color: rgba(194,92,58,.5) !important; }
+    .tool-card:hover .go { background: #C25C3A !important; color: #15110E !important; }
+    .tool-card:hover .go .arr { transform: translateX(3px); }
+    .arr { display:inline-block; transition: transform .18s ease; }
+  </style>
+</helmet>
+
+<div style="font-family:'Barlow',system-ui,sans-serif; color:#ECE5DC; min-height:100vh; padding:0 0 80px; position:relative; overflow:hidden;">
+
+  <!-- ambient glow + dashed motif -->
+  <div style="position:absolute; top:-180px; right:-120px; width:560px; height:560px; border-radius:50%; background:radial-gradient(circle, rgba(194,92,58,.22), transparent 65%); pointer-events:none;"></div>
+  <div style="position:absolute; top:60px; right:90px; width:230px; height:230px; border-radius:50%; border:1.5px dashed rgba(194,92,58,.35); pointer-events:none;"></div>
+
+  <!-- masthead -->
+  <div style="max-width:1000px; margin:0 auto; padding:54px 26px 0; position:relative;">
+    <div style="display:flex; align-items:center; gap:18px;">
+      <div style="position:relative; width:60px; height:60px; flex:none; display:flex; align-items:center; justify-content:center;">
+        <span style="position:absolute; inset:0; border-radius:50%; border:2px dashed rgba(194,92,58,.8);"></span>
+        <span style="position:absolute; inset:6px; border-radius:50%; background:rgba(0,0,0,.35); display:flex; align-items:center; justify-content:center;">
+        </span>
+      </div>
+      <div style="line-height:1;">
+        <div style="font-family:'Oswald',sans-serif; font-size:13px; letter-spacing:5px; text-transform:uppercase; color:#857C70; font-weight:500;">{{ kicker }}</div>
+        <div style="font-family:'Oswald',sans-serif; font-size:48px; font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-top:4px; background:linear-gradient(92deg,#E58A5E,#C25C3A 55%,#9C9488); -webkit-background-clip:text; background-clip:text; color:transparent;">{{ siteTitle }}</div>
+      </div>
+    </div>
+    <div style="font-size:15px; color:#B4ABA0; margin-top:14px; max-width:620px; line-height:1.55;">{{ subtitle }}</div>
+    <div style="height:1px; background:linear-gradient(90deg,#C25C3A,transparent); margin:28px 0 32px;"></div>
+  </div>
+
+  <!-- tools grid -->
+  <div style="max-width:1000px; margin:0 auto; padding:0 26px; position:relative;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px;">
+      <sc-for list="{{ tools }}" as="t" hint-placeholder-count="3">
+        <a href="{{ t.href }}" target="{{ t.target }}" style="display:block;">
+          <div class="tool-card" style="background:#241F1B; border:1px solid rgba(232,210,190,.12); border-radius:16px; padding:24px; box-shadow:0 14px 34px -22px rgba(0,0,0,.7); height:100%; display:flex; flex-direction:column; opacity:{{ t.opacity }}; position:relative; overflow:hidden;">
+
+            <div style="position:absolute; top:0; right:0; width:120px; height:120px; background:radial-gradient(circle at top right, {{ t.tint }}, transparent 68%); pointer-events:none;"></div>
+
+            <div style="display:flex; align-items:center; gap:13px; margin-bottom:18px;">
+              <div style="width:54px; height:54px; border-radius:13px; background:{{ t.iconBg }}; border:1px solid {{ t.iconBorder }}; display:flex; align-items:center; justify-content:center; flex:none;">
+                {{ t.icon }}
+              </div>
+              <span style="font-family:'Oswald',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; color:{{ t.color }};">{{ t.tag }}</span>
+              <sc-if value="{{ t.soon }}" hint-placeholder-val="{{ false }}">
+                <span style="margin-left:auto; align-self:flex-start; background:rgba(255,255,255,.05); color:#857C70; font-size:10px; font-weight:700; letter-spacing:.8px; text-transform:uppercase; padding:4px 10px; border-radius:6px; border:1px solid rgba(232,210,190,.12);">À venir</span>
+              </sc-if>
+            </div>
+
+            <div style="font-family:'Oswald',sans-serif; font-size:22px; font-weight:600; letter-spacing:.5px; text-transform:uppercase; color:#ECE5DC;">{{ t.name }}</div>
+            <div style="font-size:13.5px; color:#B4ABA0; line-height:1.55; margin-top:7px; flex:1;">{{ t.desc }}</div>
+
+            <div class="go" style="margin-top:20px; align-self:flex-start; display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.05); color:#ECE5DC; font-family:'Oswald',sans-serif; font-weight:600; font-size:13px; letter-spacing:1px; text-transform:uppercase; padding:9px 16px; border-radius:8px; border:1px solid rgba(232,210,190,.12); transition:background .18s ease, color .18s ease;">
+              <span>{{ t.cta }}</span><span class="arr">→</span>
+            </div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+
+    <div style="margin-top:34px; font-size:12px; color:#857C70; line-height:1.6;">
+      Design par <b style="color:#B4ABA0;">kylas</b> codé avec assistance de <b style="color:#B4ABA0;">Claude Design</b>. Merci de ne pas copier le code source de ces outils pour les réutiliser ailleurs que sur <b><a href="https://aetherion-pokemon.forumactif.com" target="_blank" style="color:#B4ABA0; text-decoration:underline;">AETHERION POKEMON</a></b>.
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1040, &quot;height&quot;: 720 },
+  &quot;kicker&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Aetherion · Pokémon RPG&quot;, &quot;tsType&quot;: &quot;string&quot; },
+  &quot;siteTitle&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Mes outils&quot;, &quot;tsType&quot;: &quot;string&quot; }
+}">
+class Component extends DCLogic {
+  icon(kind, color) {
+    const common = { width: 28, height: 28, viewBox: '0 0 24 24', fill: 'none', stroke: color, strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' };
+    const e = React.createElement;
+    if (kind === 'tcard') {
+      return e('svg', common,
+        e('rect', { x: 3, y: 4, width: 18, height: 16, rx: 2 }),
+        e('circle', { cx: 8.5, cy: 9, r: 2 }),
+        e('line', { x1: 13, y1: 8, x2: 18, y2: 8 }),
+        e('line', { x1: 13, y1: 11, x2: 17, y2: 11 }),
+        e('line', { x1: 6, y1: 15, x2: 18, y2: 15 })
+      );
+    }
+    if (kind === 'pc') {
+      return e('svg', common,
+        e('rect', { x: 3, y: 4, width: 18, height: 13, rx: 2 }),
+        e('line', { x1: 8, y1: 20, x2: 16, y2: 20 }),
+        e('line', { x1: 12, y1: 17, x2: 12, y2: 20 }),
+        e('circle', { cx: 12, cy: 10.5, r: 3 }),
+        e('line', { x1: 3, y1: 10.5, x2: 9, y2: 10.5 }),
+        e('line', { x1: 15, y1: 10.5, x2: 21, y2: 10.5 })
+      );
+    }
+    return e('svg', common,
+      e('circle', { cx: 12, cy: 8, r: 4 }),
+      e('path', { d: 'M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7' })
+    );
+  }
+
+  renderVals() {
+    const tools = [
+      {
+        key: 'tcard', tag: 'I', name: 'T-card · Équipe',
+        desc: 'Crée et édite ta carte d\'équipe (6 Pokémon max) avec fiches détaillées qui se déroulent au clic.',
+        href: 'T-card.html', target: '_self', cta: 'Ouvrir',
+        color: '#E07A4E', iconBg: 'rgba(224,122,78,.12)', iconBorder: 'rgba(224,122,78,.3)', tint: 'rgba(224,122,78,.16)', soon: false, opacity: 1
+      },
+      {
+        key: 'pc', tag: 'II', name: 'PC · Stockage',
+        desc: 'Range tes Pokémon dans une boîte de 30 emplacements, thème personnalisable et grille cliquable.',
+        href: 'PC.html', target: '_self', cta: 'Ouvrir',
+        color: '#C28A6A', iconBg: 'rgba(194,138,106,.12)', iconBorder: 'rgba(194,138,106,.3)', tint: 'rgba(194,138,106,.16)', soon: false, opacity: 1
+      },
+      {
+        key: 'trainer', tag: 'III', name: 'Carte de dresseur',
+        desc: 'Ta fiche de dresseur : identité, rang, talents (T1–T3), CT/CS et inventaire.',
+        href: 'Carte dresseur.html', target: '_self', cta: 'Ouvrir',
+        color: '#A8A096', iconBg: 'rgba(168,160,150,.1)', iconBorder: 'rgba(168,160,150,.28)', tint: 'rgba(168,160,150,.12)', soon: false, opacity: 1
+      }
+    ].map(t => Object.assign(t, { icon: this.icon(t.key, t.color) }));
+
+    return {
+      kicker: this.props.kicker ?? 'Aetherion · Pokémon RPG',
+      siteTitle: this.props.siteTitle ?? 'Mes outils',
+      tools
+    };
+  }
+}
+</script>
+</body>
+</html>
