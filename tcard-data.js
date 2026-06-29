@@ -259,25 +259,25 @@
       const gcol = genderColor(p.gender);
       const gsym = (p.gender && p.gender !== '⚲') ? '<span style="position:absolute;top:3px;right:4px;font-size:11px;font-weight:700;color:' + gcol + ';">' + esc(p.gender) + '</span>' : '';
       const types = (p.types || []).map(typeChip).join('');
-      cells +=
-        '<div class="cell" style="position:relative;">' +
-          '<details>' +
+        cells +=
+            '<div class="cell" style="position:relative;">' +
+            '<details>' +
             '<summary style="display:block;position:relative;aspect-ratio:1;border-radius:10px;border:1px solid ' + THEME.border + ';background:#1A1613;overflow:hidden;cursor:pointer;">' +
-              '<span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:' + (p.sprite ? '#15110E' : stripe) + ';">' + spriteFill(p, false) + '</span>' +
-              '<span style="position:absolute;bottom:3px;left:3px;">' + ballEl(p, 15) + '</span>' + gsym +
-              '<span class="cap" style="position:absolute;left:0;right:0;bottom:0;padding:9px 4px 4px;background:linear-gradient(to top,rgba(10,8,6,.94),rgba(10,8,6,0));color:' + THEME.head + ';font-size:9px;font-weight:700;line-height:1.2;text-align:center;">' + name + '<br>Niv ' + esc(p.level) + '</span>' +
+            '<span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:' + (p.sprite ? '#15110E' : stripe) + ';">' + spriteFill(p, false) + '</span>' +
+            '<span style="position:absolute;bottom:3px;left:3px;">' + ballEl(p, 15) + '</span>' + gsym +
+            '<span class="cap" style="position:absolute;left:0;right:0;bottom:0;padding:9px 4px 4px;background:linear-gradient(to top,rgba(10,8,6,.94),rgba(10,8,6,0));color:' + THEME.head + ';font-size:9px;font-weight:700;line-height:1.2;text-align:center;">' + name + '<br>Niv ' + esc(p.level) + '</span>' +
             '</summary>' +
             '<div style="position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);width:210px;max-width:64vw;background:' + THEME.card + ';border:1px solid ' + THEME.border + ';border-radius:13px;box-shadow:' + THEME.shadow + ';padding:12px;z-index:30;">' +
-              '<div style="display:flex;gap:11px;align-items:center;">' +
-                '<div style="width:64px;height:64px;border-radius:11px;flex:none;display:flex;align-items:center;justify-content:center;overflow:hidden;background:' + (p.sprite ? '#15110E' : stripe) + ';border:1px solid ' + THEME.border + ';">' + spriteFill(p, true) + '</div>' +
-                '<div style="min-width:0;"><div style="display:flex;align-items:center;gap:6px;"><b style="font-family:' + THEME.disp + ';font-size:16px;font-weight:600;letter-spacing:.3px;color:' + THEME.head + ';">' + name + '</b><span style="font-weight:700;font-size:13px;color:' + gcol + ';">' + esc(p.gender || '') + '</span></div>' +
-                '<div style="font-size:11.5px;color:' + THEME.muted + ';margin-top:1px;">' + esc(p.species) + ' · Niv ' + esc(p.level) + '</div>' +
-                '<div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:7px;">' + types + '</div></div>' +
-              '</div>' +
-              '<div style="margin-top:10px;padding-top:9px;border-top:1px dashed ' + THEME.border + ';display:flex;align-items:center;gap:7px;font-size:11.5px;color:' + THEME.muted + ';">' + ballEl(p, 15) + ' Capturé en <b style="color:' + THEME.body + ';">' + esc(p.ball) + '</b></div>' +
-      '</div>' + Sacha
-          '</details>' +
-        '</div>';
+            '<div style="display:flex;gap:11px;align-items:center;">' +
+            '<div style="width:64px;height:64px;border-radius:11px;flex:none;display:flex;align-items:center;justify-content:center;overflow:hidden;background:' + (p.sprite ? '#15110E' : stripe) + ';border:1px solid ' + THEME.border + ';">' + spriteFill(p, true) + '</div>' +
+            '<div style="min-width:0;"><div style="display:flex;align-items:center;gap:6px;"><b style="font-family:' + THEME.disp + ';font-size:16px;font-weight:600;letter-spacing:.3px;color:' + THEME.head + ';">' + name + '</b><span style="font-weight:700;font-size:13px;color:' + gcol + ';">' + esc(p.gender || '') + '</span></div>' +
+            '<div style="font-size:11.5px;color:' + THEME.muted + ';margin-top:1px;">' + esc(p.species) + ' · Niv ' + esc(p.level) + '</div>' +
+            '<div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:7px;">' + types + '</div></div>' +
+            '</div>' +
+            '<div style="margin-top:10px;padding-top:9px;border-top:1px dashed ' + THEME.border + ';display:flex;align-items:center;gap:7px;font-size:11.5px;color:' + THEME.muted + ';">' + ballEl(p, 15) + ' Capturé en <b style="color:' + THEME.body + ';">' + esc(p.ball) + '</b></div>' +
+            '</div>' +
+            '</details>' +
+            '</div>';
     }
 
     return '<div class="pcbox" style="width:650px;max-width:100%;margin:0 auto;font-family:' + THEME.bodyFont + ';background:' + THEME.card + ';border-radius:16px;overflow:visible;border:1px solid ' + THEME.border + ';box-shadow:' + THEME.shadow + ';">' +
