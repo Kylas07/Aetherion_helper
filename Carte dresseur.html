@@ -222,194 +222,194 @@
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  constructor(props) {
-    super(props);
-    const T = window.TCARD;
-    this.state = {
-      data: this.normalize(T ? T.clone(T.DEFAULT_TRAINER) : {}),
-      loadInput: '',
-      toast: null,
-      ready: !!T
-    };
-  }
-
-  componentDidMount() {
-    if (window.TCARD) {
-      if (!this.state.ready) this.loadDefaults();
-    } else {
-      this._t = setInterval(() => {
-        if (window.TCARD) { clearInterval(this._t); this.loadDefaults(); }
-      }, 50);
-    }
-  }
-  componentWillUnmount() { clearInterval(this._t); clearTimeout(this._toastT); }
-
-  loadDefaults() { this.setState({ data: this.normalize(window.TCARD.clone(window.TCARD.DEFAULT_TRAINER)), ready: true }); }
-
-  normalize(d) {
-    d = d || {};
-    const talents = (Array.isArray(d.talents) ? d.talents : []).slice(0, 18).map(t => ({
-      name: (t && t.name) || '', tier: (t && [1, 2, 3].indexOf(+t.tier) >= 0) ? +t.tier : 1
-    }));
-    const moves = (Array.isArray(d.moves) ? d.moves : []).map(m => ({
-      name: (m && m.name) || '', kind: (m && m.kind === 'CS') ? 'CS' : 'CT'
-    }));
-    const inventory = (Array.isArray(d.inventory) ? d.inventory : []).map(x => x == null ? '' : String(x));
-    return {
-      avatar: d.avatar || '',
-      firstName: d.firstName != null ? d.firstName : '',
-      lastName: d.lastName != null ? d.lastName : '',
-      group: d.group != null ? d.group : '',
-      occupation: d.occupation != null ? d.occupation : '',
-      rank: ['D', 'C', 'B', 'A', 'S'].indexOf(d.rank) >= 0 ? d.rank : 'D',
-      accent: d.accent || '#C25C3A',
-      motisma: d.motisma || 'https://i.imgur.com/4GXlWf5.png',
-      inventory, moves, talents,
-      bio: d.bio != null ? d.bio : ''
-    };
-  }
-
-  showToast(msg, ok) {
-    clearTimeout(this._toastT);
-    this.setState({ toast: { show: true, msg, bg: ok ? '#16A34A' : '#DC2626' } });
-    this._toastT = setTimeout(() => this.setState({ toast: null }), 2400);
-  }
-
-  setTop(field, val) { this.setState(s => ({ data: Object.assign({}, s.data, { [field]: val }) })); }
-
-  setTalent(i, field, val) {
-    this.setState(s => ({ data: Object.assign({}, s.data, { talents: s.data.talents.map((t, idx) => idx !== i ? t : Object.assign({}, t, { [field]: val })) }) }));
-  }
-  addTalent = () => {
-    this.setState(s => {
-      if (s.data.talents.length >= 18) return {};
-      return { data: Object.assign({}, s.data, { talents: s.data.talents.concat([{ name: '', tier: 1 }]) }) };
-    });
-  };
-  makeRemoveTalent(i) { return () => this.setState(s => ({ data: Object.assign({}, s.data, { talents: s.data.talents.filter((_, idx) => idx !== i) }) })); }
-
-  setMove(i, field, val) {
-    this.setState(s => ({ data: Object.assign({}, s.data, { moves: s.data.moves.map((m, idx) => idx !== i ? m : Object.assign({}, m, { [field]: val })) }) }));
-  }
-  addMove = () => this.setState(s => ({ data: Object.assign({}, s.data, { moves: s.data.moves.concat([{ name: '', kind: 'CT' }]) }) }));
-  makeRemoveMove(i) { return () => this.setState(s => ({ data: Object.assign({}, s.data, { moves: s.data.moves.filter((_, idx) => idx !== i) }) })); }
-
-  setItem(i, val) {
-    this.setState(s => ({ data: Object.assign({}, s.data, { inventory: s.data.inventory.map((x, idx) => idx === i ? val : x) }) }));
-  }
-  addItem = () => this.setState(s => ({ data: Object.assign({}, s.data, { inventory: s.data.inventory.concat(['']) }) }));
-  makeRemoveItem(i) { return () => this.setState(s => ({ data: Object.assign({}, s.data, { inventory: s.data.inventory.filter((_, idx) => idx !== i) }) })); }
-
-  onFirst = (e) => this.setTop('firstName', e.target.value);
-  onLast = (e) => this.setTop('lastName', e.target.value);
-  onGroup = (e) => this.setTop('group', e.target.value);
-  onOcc = (e) => this.setTop('occupation', e.target.value);
-  onRank = (e) => this.setTop('rank', e.target.value);
-  onAvatar = (e) => this.setTop('avatar', e.target.value);
-  onAccent = (e) => this.setTop('accent', e.target.value);
-  onMotisma = (e) => this.setTop('motisma', e.target.value);
-  onBio = (e) => this.setTop('bio', e.target.value);
-  onLoadInput = (e) => this.setState({ loadInput: e.target.value });
-
-  loadCard = () => {
-    const T = window.TCARD; if (!T) return;
-    try {
-      const data = this.normalize(T.decodeTrainer(this.state.loadInput));
-      this.setState({ data });
-      this.showToast('Carte chargée ✓', true);
-    } catch (err) { this.showToast('Code invalide', false); }
-  };
-  resetCard = () => {
-    const T = window.TCARD; if (!T) return;
-    this.setState({ data: this.normalize(T.clone(T.DEFAULT_TRAINER)), loadInput: '' });
-    this.showToast('Carte d\'exemple chargée', true);
-  };
-
-  copy(text, label) {
-    const done = () => this.showToast(label + ' copié ✓', true);
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(done, () => this.fallbackCopy(text, done));
-    } else { this.fallbackCopy(text, done); }
-  }
-  fallbackCopy(text, done) {
-    const ta = document.createElement('textarea');
-    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-    document.body.appendChild(ta); ta.select();
-    try { document.execCommand('copy'); done(); } catch (e) {}
-    document.body.removeChild(ta);
-  }
-
-  renderVals() {
-    const T = window.TCARD || {};
-    const tierColor = T.tierColor || (() => '#8C97A6');
-    const d = this.state.data;
-    const accent = d.accent || '#C25C3A';
-
-    const rankOptions = (T.RANKS || ['D', 'C', 'B', 'A', 'S']).map(r => ({ v: r, label: 'Rang ' + r }));
-    const accentSwatches = (T.ACCENTS || []).map(hex => ({
-      hex,
-      border: hex.toLowerCase() === accent.toLowerCase() ? '3px solid #ECE5DC' : '2px solid rgba(232,210,190,.25)',
-      set: () => this.setTop('accent', hex)
-    }));
-
-    const talents = d.talents.map((t, i) => ({
-      index: i, num: i + 1, name: t.name || '',
-      remove: this.makeRemoveTalent(i),
-      on: { name: (e) => this.setTalent(i, 'name', e.target.value) },
-      tierBtns: [1, 2, 3].map(n => {
-        const active = t.tier === n;
-        return {
-          label: 'T' + n,
-          set: () => this.setTalent(i, 'tier', n),
-          bg: active ? tierColor(n) : '#241F1B',
-          color: active ? '#241F1B' : '#857C70',
-          border: active ? ('1px solid ' + tierColor(n)) : '1px solid #D7DCE3'
+    class Component extends DCLogic {
+      constructor(props) {
+        super(props);
+        const T = window.TCARD;
+        this.state = {
+          data: this.normalize(T ? T.clone(T.DEFAULT_TRAINER) : {}),
+          loadInput: '',
+          toast: null,
+          ready: !!T
         };
-      })
-    }));
-
-    const moves = d.moves.map((m, i) => ({
-      index: i, name: m.name || '', kind: m.kind || 'CT',
-      remove: this.makeRemoveMove(i),
-      on: {
-        name: (e) => this.setMove(i, 'name', e.target.value),
-        kind: (e) => this.setMove(i, 'kind', e.target.value)
       }
-    }));
 
-    const inventory = d.inventory.map((x, i) => ({
-      index: i, num: i + 1, value: x,
-      on: (e) => this.setItem(i, e.target.value),
-      remove: this.makeRemoveItem(i)
-    }));
+      componentDidMount() {
+        if (window.TCARD) {
+          if (!this.state.ready) this.loadDefaults();
+        } else {
+          this._t = setInterval(() => {
+            if (window.TCARD) { clearInterval(this._t); this.loadDefaults(); }
+          }, 50);
+        }
+      }
+      componentWillUnmount() { clearInterval(this._t); clearTimeout(this._toastT); }
 
-    let saveCode = '', forumCode = '', previewNode = null;
-    try { if (T.encodeTrainer) saveCode = T.encodeTrainer(d); } catch (e) {}
-    try { if (T.buildTrainerForumHTML) forumCode = T.buildTrainerForumHTML(d); } catch (e) {}
-    try { if (T.buildTrainerForumHTML) previewNode = React.createElement('div', { dangerouslySetInnerHTML: { __html: T.buildTrainerForumHTML(d) } }); } catch (e) {}
+      loadDefaults() { this.setState({ data: this.normalize(window.TCARD.clone(window.TCARD.DEFAULT_TRAINER)), ready: true }); }
 
-    return {
-      avatar: d.avatar,
-      motisma: d.motisma || 'https://i.imgur.com/4GXlWf5.png',
-      firstName: d.firstName, lastName: d.lastName,
-      group: d.group, occupation: d.occupation, rank: d.rank,
-      accent, bio: d.bio,
-      rankOptions, accentSwatches,
-      talents, talentCount: d.talents.length, canAddTalent: d.talents.length < 18,
-      moves, inventory,
-      loadInput: this.state.loadInput,
-      saveCode, forumCode, previewNode,
-      toast: this.state.toast || { show: false, msg: '', bg: '#16A34A' },
-      onFirst: this.onFirst, onLast: this.onLast, onGroup: this.onGroup, onOcc: this.onOcc,
-      onRank: this.onRank, onAvatar: this.onAvatar, onAccent: this.onAccent, onMotisma: this.onMotisma, onBio: this.onBio,
-      onLoadInput: this.onLoadInput, loadCard: this.loadCard, resetCard: this.resetCard,
-      addTalent: this.addTalent, addMove: this.addMove, addItem: this.addItem,
-      copySave: () => this.copy(saveCode, 'Code de sauvegarde'),
-      copyForum: () => this.copy(forumCode, 'Code forum')
-    };
-  }
-}
+      normalize(d) {
+        d = d || {};
+        const talents = (Array.isArray(d.talents) ? d.talents : []).slice(0, 18).map(t => ({
+          name: (t && t.name) || '', tier: (t && [1, 2, 3].indexOf(+t.tier) >= 0) ? +t.tier : 1
+        }));
+        const moves = (Array.isArray(d.moves) ? d.moves : []).map(m => ({
+          name: (m && m.name) || '', kind: (m && m.kind === 'CS') ? 'CS' : 'CT'
+        }));
+        const inventory = (Array.isArray(d.inventory) ? d.inventory : []).map(x => x == null ? '' : String(x));
+        return {
+          avatar: d.avatar || 'https://2img.net/i.imgur.com/r9W0oZf.png',
+          firstName: d.firstName != null ? d.firstName : 'Kalei',
+          lastName: d.lastName != null ? d.lastName : 'Wu',
+          group: d.group != null ? d.group : 'Un groupe giga Cool',
+          occupation: d.occupation != null ? d.occupation : 'Maître Pokémon',
+          rank: ['D', 'C', 'B', 'A', 'S'].indexOf(d.rank) >= 0 ? d.rank : 'D',
+          accent: d.accent || '#C25C3A',
+          motisma: d.motisma || 'https://i.imgur.com/4GXlWf5.png',
+          inventory, moves, talents,
+          bio: d.bio != null ? d.bio : 'Kalei est un gars cool. Super cool.'
+        };
+      }
+
+      showToast(msg, ok) {
+        clearTimeout(this._toastT);
+        this.setState({ toast: { show: true, msg, bg: ok ? '#16A34A' : '#DC2626' } });
+        this._toastT = setTimeout(() => this.setState({ toast: null }), 2400);
+      }
+
+      setTop(field, val) { this.setState(s => ({ data: Object.assign({}, s.data, { [field]: val }) })); }
+
+      setTalent(i, field, val) {
+        this.setState(s => ({ data: Object.assign({}, s.data, { talents: s.data.talents.map((t, idx) => idx !== i ? t : Object.assign({}, t, { [field]: val })) }) }));
+      }
+      addTalent = () => {
+        this.setState(s => {
+          if (s.data.talents.length >= 18) return {};
+          return { data: Object.assign({}, s.data, { talents: s.data.talents.concat([{ name: '', tier: 1 }]) }) };
+        });
+      };
+      makeRemoveTalent(i) { return () => this.setState(s => ({ data: Object.assign({}, s.data, { talents: s.data.talents.filter((_, idx) => idx !== i) }) })); }
+
+      setMove(i, field, val) {
+        this.setState(s => ({ data: Object.assign({}, s.data, { moves: s.data.moves.map((m, idx) => idx !== i ? m : Object.assign({}, m, { [field]: val })) }) }));
+      }
+      addMove = () => this.setState(s => ({ data: Object.assign({}, s.data, { moves: s.data.moves.concat([{ name: '', kind: 'CT' }]) }) }));
+      makeRemoveMove(i) { return () => this.setState(s => ({ data: Object.assign({}, s.data, { moves: s.data.moves.filter((_, idx) => idx !== i) }) })); }
+
+      setItem(i, val) {
+        this.setState(s => ({ data: Object.assign({}, s.data, { inventory: s.data.inventory.map((x, idx) => idx === i ? val : x) }) }));
+      }
+      addItem = () => this.setState(s => ({ data: Object.assign({}, s.data, { inventory: s.data.inventory.concat(['']) }) }));
+      makeRemoveItem(i) { return () => this.setState(s => ({ data: Object.assign({}, s.data, { inventory: s.data.inventory.filter((_, idx) => idx !== i) }) })); }
+
+      onFirst = (e) => this.setTop('firstName', e.target.value);
+      onLast = (e) => this.setTop('lastName', e.target.value);
+      onGroup = (e) => this.setTop('group', e.target.value);
+      onOcc = (e) => this.setTop('occupation', e.target.value);
+      onRank = (e) => this.setTop('rank', e.target.value);
+      onAvatar = (e) => this.setTop('avatar', e.target.value);
+      onAccent = (e) => this.setTop('accent', e.target.value);
+      onMotisma = (e) => this.setTop('motisma', e.target.value);
+      onBio = (e) => this.setTop('bio', e.target.value);
+      onLoadInput = (e) => this.setState({ loadInput: e.target.value });
+
+      loadCard = () => {
+        const T = window.TCARD; if (!T) return;
+        try {
+          const data = this.normalize(T.decodeTrainer(this.state.loadInput));
+          this.setState({ data });
+          this.showToast('Carte chargée ✓', true);
+        } catch (err) { this.showToast('Code invalide', false); }
+      };
+      resetCard = () => {
+        const T = window.TCARD; if (!T) return;
+        this.setState({ data: this.normalize(T.clone(T.DEFAULT_TRAINER)), loadInput: '' });
+        this.showToast('Carte d\'exemple chargée', true);
+      };
+
+      copy(text, label) {
+        const done = () => this.showToast(label + ' copié ✓', true);
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, () => this.fallbackCopy(text, done));
+        } else { this.fallbackCopy(text, done); }
+      }
+      fallbackCopy(text, done) {
+        const ta = document.createElement('textarea');
+        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        document.body.removeChild(ta);
+      }
+
+      renderVals() {
+        const T = window.TCARD || {};
+        const tierColor = T.tierColor || (() => '#8C97A6');
+        const d = this.state.data;
+        const accent = d.accent || '#C25C3A';
+
+        const rankOptions = (T.RANKS || ['D', 'C', 'B', 'A', 'S']).map(r => ({ v: r, label: 'Rang ' + r }));
+        const accentSwatches = (T.ACCENTS || []).map(hex => ({
+          hex,
+          border: hex.toLowerCase() === accent.toLowerCase() ? '3px solid #ECE5DC' : '2px solid rgba(232,210,190,.25)',
+          set: () => this.setTop('accent', hex)
+        }));
+
+        const talents = d.talents.map((t, i) => ({
+          index: i, num: i + 1, name: t.name || '',
+          remove: this.makeRemoveTalent(i),
+          on: { name: (e) => this.setTalent(i, 'name', e.target.value) },
+          tierBtns: [1, 2, 3].map(n => {
+            const active = t.tier === n;
+            return {
+              label: 'T' + n,
+              set: () => this.setTalent(i, 'tier', n),
+              bg: active ? tierColor(n) : '#241F1B',
+              color: active ? '#241F1B' : '#857C70',
+              border: active ? ('1px solid ' + tierColor(n)) : '1px solid #D7DCE3'
+            };
+          })
+        }));
+
+        const moves = d.moves.map((m, i) => ({
+          index: i, name: m.name || '', kind: m.kind || 'CT',
+          remove: this.makeRemoveMove(i),
+          on: {
+            name: (e) => this.setMove(i, 'name', e.target.value),
+            kind: (e) => this.setMove(i, 'kind', e.target.value)
+          }
+        }));
+
+        const inventory = d.inventory.map((x, i) => ({
+          index: i, num: i + 1, value: x,
+          on: (e) => this.setItem(i, e.target.value),
+          remove: this.makeRemoveItem(i)
+        }));
+
+        let saveCode = '', forumCode = '', previewNode = null;
+        try { if (T.encodeTrainer) saveCode = T.encodeTrainer(d); } catch (e) {}
+        try { if (T.buildTrainerForumHTML) forumCode = T.buildTrainerForumHTML(d); } catch (e) {}
+        try { if (T.buildTrainerForumHTML) previewNode = React.createElement('div', { dangerouslySetInnerHTML: { __html: T.buildTrainerForumHTML(d) } }); } catch (e) {}
+
+        return {
+          avatar: d.avatar,
+          motisma: d.motisma || 'https://i.imgur.com/4GXlWf5.png',
+          firstName: d.firstName, lastName: d.lastName,
+          group: d.group, occupation: d.occupation, rank: d.rank,
+          accent, bio: d.bio,
+          rankOptions, accentSwatches,
+          talents, talentCount: d.talents.length, canAddTalent: d.talents.length < 18,
+          moves, inventory,
+          loadInput: this.state.loadInput,
+          saveCode, forumCode, previewNode,
+          toast: this.state.toast || { show: false, msg: '', bg: '#16A34A' },
+          onFirst: this.onFirst, onLast: this.onLast, onGroup: this.onGroup, onOcc: this.onOcc,
+          onRank: this.onRank, onAvatar: this.onAvatar, onAccent: this.onAccent, onMotisma: this.onMotisma, onBio: this.onBio,
+          onLoadInput: this.onLoadInput, loadCard: this.loadCard, resetCard: this.resetCard,
+          addTalent: this.addTalent, addMove: this.addMove, addItem: this.addItem,
+          copySave: () => this.copy(saveCode, 'Code de sauvegarde'),
+          copyForum: () => this.copy(forumCode, 'Code forum')
+        };
+      }
+    }
 </script>
 </body>
 </html>

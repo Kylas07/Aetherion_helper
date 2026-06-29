@@ -53,29 +53,23 @@
   }
 
   const DEFAULT_DATA = {
-    trainerName: 'Sacha',
+    trainerName: 'Kalei',
     accent: '#C25C3A',
     motisma: '',
     showNicknames: true,
     team: [
-      { sprite: '', nickname: 'Ignis', species: 'Dracaufeu', types: ['Feu', 'Vol'], level: 56, gender: '♂', ballName: 'Luxe Ball', talent: 'Brasier', nature: 'Assuré',
-        moves: [{ name: 'Lance-Flammes', type: 'Feu', pp: 15 }, { name: 'Aéropique', type: 'Vol', pp: 15 }, { name: 'Surpuissance', type: 'Combat', pp: 5 }, { name: 'Danfreinte', type: 'Vol', pp: 15 }],
-        desc: "Capturé lors d'une éruption au Mont Braise, Ignis est aussi fier qu'impulsif. Il ne supporte pas la défaite et crache des flammes au moindre défi." },
-      { sprite: '', nickname: 'Aria', species: 'Gardevoir', types: ['Psy', 'Fée'], level: 54, gender: '♀', ballName: 'Soin Ball', talent: 'Télépathe', nature: 'Modeste',
-        moves: [{ name: 'Psyko', type: 'Psy', pp: 10 }, { name: 'Pouvoir Lunaire', type: 'Fée', pp: 15 }, { name: "Ball'Ombre", type: 'Spectre', pp: 15 }, { name: 'Télékinésie', type: 'Psy', pp: 15 }],
-        desc: "Aria veille sur son dresseur depuis l'enfance. Calme et protectrice, elle ressent les émotions de toute l'équipe et apaise les tensions d'un regard." },
-      { sprite: '', nickname: 'Kaiser', species: 'Lucario', types: ['Combat', 'Acier'], level: 53, gender: '♂', ballName: 'Hyper Ball', talent: 'Acharné', nature: 'Pressé',
-        moves: [{ name: 'Aura-Sphère', type: 'Combat', pp: 20 }, { name: "Lame d'Acier", type: 'Acier', pp: 15 }, { name: 'Vitesse Extrême', type: 'Normal', pp: 5 }, { name: 'Dynamopoing', type: 'Combat', pp: 5 }],
-        desc: "Élevé dans les montagnes, Kaiser maîtrise l'aura mieux que personne. Discipliné et loyal, il s'entraîne sans relâche et veille sur les plus jeunes." },
-      { sprite: '', nickname: 'Patapouf', species: 'Ronflex', types: ['Normal'], level: 52, gender: '♂', ballName: 'Poké Ball', talent: 'Isograisse', nature: 'Relax',
-        moves: [{ name: 'Plaquage', type: 'Normal', pp: 15 }, { name: 'Mâchouille', type: 'Ténèbres', pp: 15 }, { name: 'Damoclès', type: 'Normal', pp: 10 }, { name: 'Repos', type: 'Psy', pp: 5 }],
-        desc: "Patapouf dort plus qu'il ne combat, mais gare à qui dérange sa sieste. Sa masse imposante encaisse les coups les plus violents sans broncher." },
-      { sprite: '', nickname: 'Naïad', species: 'Aquali', types: ['Eau'], level: 49, gender: '♀', ballName: 'Filet Ball', talent: 'Absorbe-Eau', nature: 'Calme',
-        moves: [{ name: 'Hydrocanon', type: 'Eau', pp: 5 }, { name: 'Laser Glace', type: 'Glace', pp: 10 }, { name: 'Vibraqua', type: 'Eau', pp: 20 }, { name: 'Buée Noire', type: 'Glace', pp: 30 }],
-        desc: "Naïad a été trouvée blessée près d'un lac gelé. Douce et patiente, elle adore nager et rafraîchir ses compagnons après l'entraînement." },
-      { sprite: '', nickname: 'Pantin', species: 'Mimiqui', types: ['Spectre', 'Fée'], level: 50, gender: '♀', ballName: 'Super Ball', talent: 'Fantômasque', nature: 'Timide',
-        moves: [{ name: "Ball'Ombre", type: 'Spectre', pp: 15 }, { name: 'Pouvoir Lunaire', type: 'Fée', pp: 15 }, { name: 'Griffe Ombre', type: 'Spectre', pp: 15 }, { name: 'Câlinerie', type: 'Fée', pp: 10 }],
-        desc: "Personne ne sait ce que cache Pantin sous son déguisement. Timide mais profondément attaché, il imite le Pikachu qu'il admire en secret." }
+        {
+            sprite: 'https://i.imgur.com/6dKxzuE.gif', nickname: 'Suchi', species: 'Nigirigon', types: ['Dragon', 'Eau'], level: 5, gender: '♂', ballName: 'Luxe Ball', talent: 'Commandant', nature: 'Assuré',
+        moves: [{ name: 'Trempette', type: 'normal',}, { name: 'Pistolet à O', type: 'Eau',}, { name: 'Armure', type: 'Normal', pp: 5 }],
+        desc: "Suchi est un Sushi" },
+        {
+            sprite: 'https://i.imgur.com/Y3mHM9W.gif', nickname: 'Niguiri', species: 'Nigirigon', types: ['Dragon', 'Eau'], level: 5, gender: '♂', ballName: 'Soin Ball', talent: 'Lavabo', nature: 'Modeste',
+        moves: [{ name: 'Trempette', type: 'normal', }, { name: 'Pistolet à O', type: 'Eau', }, { name: 'Armure', type: 'Normal', pp: 5 }],
+        desc: "Niguiri est un Nigiri" },
+        {
+            sprite: 'https://i.imgur.com/idycgn8.gif', nickname: 'Jimbap', species: 'Nigirigon', types: ['Dragon', 'Eau'], level: 5, gender: '♂', ballName: 'Hyper Ball', talent: 'Lavabo', nature: 'Pressé',
+        moves: [{ name: 'Trempette', type: 'normal', }, { name: 'Pistolet à O', type: 'Eau', }, { name: 'Armure', type: 'Normal', pp: 5 }],
+        desc: "Jimbap est un Kimbap" }
     ]
   };
 
