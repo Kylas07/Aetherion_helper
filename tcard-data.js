@@ -181,7 +181,7 @@
               '<div style="font-size:9.5px;letter-spacing:1.4px;text-transform:uppercase;color:' + THEME.muted + ';font-weight:700;display:flex;align-items:center;gap:8px;margin-bottom:9px;"><span>Capacités</span><span style="flex:1;height:1px;background:' + accent + ';opacity:.6;"></span></div>' +
               '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">' + moves + '</div>' +
               (p.desc ? '<div style="margin-top:14px;padding-top:12px;border-top:1px dashed ' + THEME.border + ';"><div style="font-size:9.5px;letter-spacing:1.4px;text-transform:uppercase;color:' + THEME.muted + ';font-weight:700;margin-bottom:5px;">Résumé</div><p style="margin:0;font-size:13px;line-height:1.55;color:' + THEME.body + ';font-style:italic;">' + esc(p.desc) + '</p></div>' : '') +
-            '</div></div></div>'
+            '</div></div></div>' +
         '</details>';
     }).join('');
 
