@@ -1,511 +1,554 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-<script src="./tcard-data.js"></script>
-<template id="__bundler_thumbnail" data-bg-color="#EDF0F5">
-  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-    <rect width="1200" height="800" fill="#EDF0F5"/>
-    <rect x="180" y="170" width="380" height="460" rx="28" fill="#ffffff" stroke="#E2E6EC" stroke-width="3"/>
-    <rect x="640" y="170" width="380" height="300" rx="28" fill="#ffffff" stroke="#E2E6EC" stroke-width="3"/>
-    <rect x="640" y="170" width="380" height="74" rx="28" fill="#C25C3A"/>
-    <rect x="640" y="210" width="380" height="34" fill="#C25C3A"/>
-    <circle cx="690" cy="207" r="20" fill="#fff"/><circle cx="690" cy="207" r="12" fill="#2A75BB"/>
-    <rect x="210" y="205" width="150" height="22" rx="11" fill="#C25C3A"/>
-    <rect x="210" y="250" width="320" height="40" rx="10" fill="#F1F3F7"/>
-    <rect x="210" y="320" width="320" height="40" rx="10" fill="#F1F3F7"/>
-    <rect x="210" y="390" width="320" height="40" rx="10" fill="#F1F3F7"/>
-    <circle cx="700" cy="330" r="34" fill="#fff" stroke="#1A1A1A" stroke-width="9"/>
-    <path d="M666 330 a34 34 0 0 1 68 0 Z" fill="#EE1515"/>
-    <rect x="666" y="322" width="68" height="9" fill="#1A1A1A"/>
-  </svg>
-</template>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./support.js"></script>
+    <script src="./tcard-data.js"></script>
+    <template id="__bundler_thumbnail" data-bg-color="#EDF0F5">
+        <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+            <rect width="1200" height="800" fill="#EDF0F5" />
+            <rect x="180" y="170" width="380" height="460" rx="28" fill="#ffffff" stroke="#E2E6EC" stroke-width="3" />
+            <rect x="640" y="170" width="380" height="300" rx="28" fill="#ffffff" stroke="#E2E6EC" stroke-width="3" />
+            <rect x="640" y="170" width="380" height="74" rx="28" fill="#C25C3A" />
+            <rect x="640" y="210" width="380" height="34" fill="#C25C3A" />
+            <circle cx="690" cy="207" r="20" fill="#fff" />
+            <circle cx="690" cy="207" r="12" fill="#2A75BB" />
+            <rect x="210" y="205" width="150" height="22" rx="11" fill="#C25C3A" />
+            <rect x="210" y="250" width="320" height="40" rx="10" fill="#F1F3F7" />
+            <rect x="210" y="320" width="320" height="40" rx="10" fill="#F1F3F7" />
+            <rect x="210" y="390" width="320" height="40" rx="10" fill="#F1F3F7" />
+            <circle cx="700" cy="330" r="34" fill="#fff" stroke="#1A1A1A" stroke-width="9" />
+            <path d="M666 330 a34 34 0 0 1 68 0 Z" fill="#EE1515" />
+            <rect x="666" y="322" width="68" height="9" fill="#1A1A1A" />
+        </svg>
+    </template>
 </head>
 <body>
-<x-dc>
-<helmet>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; background: #1A1613; }
-    textarea, input, select { outline: none; color: #ECE5DC; }
-    select option { color: #ECE5DC; background: #241F1B; }
-    ::placeholder { color: #6E665C; opacity: 1; }
-    input:focus, select:focus, textarea:focus { border-color: #C25C3A !important; box-shadow: 0 0 0 3px rgba(194,92,58,.22); }
-  </style>
-</helmet>
+    <x-dc>
+        <helmet>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+            <style>
+                * {
+                    box-sizing: border-box;
+                }
 
-<div style="font-family:'Manrope',system-ui,sans-serif; color:#ECE5DC; min-height:100vh; padding:26px 26px 80px;">
+                body {
+                    margin: 0;
+                    background: #EDEAE3;
+                }
 
-  <div style="max-width:1180px; margin:0 auto 22px; display:flex; align-items:center; gap:14px;">
-    <div style="width:38px; height:38px; border-radius:50%; background:radial-gradient(circle at 32% 28%, #E07A4E, #C25C3A 72%); border:3px solid #fff; box-shadow:0 0 0 2px rgba(0,0,0,.12);"></div>
-    <div>
-      <div style="font-family:'Outfit',sans-serif; font-size:24px; font-weight:800; line-height:1;">Éditeur de T-card</div>
-      <div style="font-size:13px; color:#9C9488; margin-top:4px;">Modifie ton équipe, récupère une ancienne carte, puis exporte le code forum.</div>
-    </div>
-  </div>
+                textarea, input, select {
+                    outline: none;
+                    color: #26221D;
+                }
 
-  <div style="max-width:1180px; margin:0 auto; display:grid; grid-template-columns:minmax(0,440px) minmax(0,1fr); gap:26px; align-items:start;">
+                    select option {
+                        color: #26221D;
+                        background: #FFFFFF;
+                    }
 
-    <!-- ============ LEFT : FORM ============ -->
-    <div style="display:flex; flex-direction:column; gap:16px; min-width:0;">
+                ::placeholder {
+                    color: #A89F93;
+                    opacity: 1;
+                }
 
-      <!-- RECOVER -->
-      <div style="background:#241F1B; border:1px solid rgba(232,210,190,.12); border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(20,24,40,.3);">
-        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; margin-bottom:4px;">Récupérer une carte</div>
-        <p style="margin:0 0 10px; font-size:12px; color:#857C70; line-height:1.5;">Colle ici un <b>code de sauvegarde</b> (commençant par <code>TCARD1:</code>) pour retrouver une équipe déjà créée.</p>
-        <textarea onInput="{{ onLoadInput }}" value="{{ loadInput }}" placeholder="TCARD1:eyJ0cmFpbmVyTmFtZSI6..." style="width:100%; height:64px; resize:vertical; padding:9px 10px; border:1px solid rgba(232,210,190,.18); border-radius:9px; font-family:ui-monospace,monospace; font-size:11.5px; color:#CFC7BC; background:#19120E; line-height:1.4;"></textarea>
-        <div style="display:flex; gap:8px; margin-top:9px;">
-          <button onClick="{{ loadCard }}" style="flex:1; padding:9px 12px; border:none; border-radius:9px; background:#C25C3A; color:#fff; font:inherit; font-weight:700; font-size:13px; cursor:pointer;">Charger la carte</button>
-          <button onClick="{{ resetCard }}" style="padding:9px 12px; border:1px solid rgba(232,210,190,.18); border-radius:9px; background:#19120E; color:#B4ABA0; font:inherit; font-weight:600; font-size:13px; cursor:pointer;">Équipe d'exemple</button>
-        </div>
-      </div>
+                input:focus, select:focus, textarea:focus {
+                    border-color: #C25C3A !important;
+                    box-shadow: 0 0 0 3px rgba(194,92,58,.22);
+                }
+            </style>
+        </helmet>
 
-      <!-- GENERAL -->
-      <div style="background:#241F1B; border:1px solid rgba(232,210,190,.12); border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(20,24,40,.3);">
-        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; margin-bottom:13px;">Réglages généraux</div>
-        <div style="margin-bottom:13px;">
-          <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:5px;">Nom du dresseur</label>
-          <input value="{{ trainerName }}" onChange="{{ onTrainer }}" style="width:100%; padding:8px 10px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; color:#ECE5DC; background:#19120E;">
-        </div>
-        <div style="margin-bottom:13px;">
-          <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Sprite Motisma — URL de l'image</label>
-          <input value="{{ motisma }}" onChange="{{ onMotisma }}" placeholder="https://...  (apparaît dans l'en-tête)" style="width:100%; padding:8px 10px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:12px; background:#19120E; color:#CFC7BC;">
-        </div>
-        <label style="display:flex; align-items:center; gap:9px; cursor:pointer; font-size:13px; color:#CFC7BC; font-weight:600;">
-          <input type="checkbox" checked="{{ showNicknames }}" onChange="{{ onShowNick }}" style="width:17px; height:17px; accent-color:#C25C3A; cursor:pointer;">
-          Afficher les surnoms (sinon l'espèce en titre)
-        </label>
-      </div>
+        <div style="font-family:'Manrope',system-ui,sans-serif; color:#26221D; min-height:100vh; padding:26px 26px 80px;">
 
-      <!-- POKEMON LIST -->
-      <div style="background:#241F1B; border:1px solid rgba(232,210,190,.12); border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(20,24,40,.3);">
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:13px;">
-          <span style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px;">Pokémon</span>
-          <span style="font-size:12px; color:#857C70; font-weight:600;">{{ count }} / 6</span>
-        </div>
-
-        <div style="display:flex; flex-direction:column; gap:9px;">
-          <sc-for list="{{ team }}" as="m" hint-placeholder-count="6">
-            <div style="border:1px solid rgba(232,210,190,.12); border-radius:11px; overflow:hidden; background:{{ m.cardBg }};">
-
-              <div onClick="{{ m.toggle }}" style="display:flex; align-items:center; gap:10px; padding:10px 12px; cursor:pointer; user-select:none;">
-                <span style="width:24px; height:24px; border-radius:50%; background:{{ m.headBall }}; border:1.5px solid #1A1A1A; flex:none; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; color:#fff;">{{ m.slot }}</span>
-                <div style="flex:1; min-width:0;">
-                  <div style="font-weight:700; font-size:13.5px; color:#ECE5DC; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ m.headTitle }}</div>
-                  <div style="font-size:11px; color:#857C70;">{{ m.headSub }}</div>
+            <div style="max-width:1180px; margin:0 auto 22px; display:flex; align-items:center; gap:14px;">
+                <div style="width:38px; height:38px; border-radius:50%; background:radial-gradient(circle at 32% 28%, #E07A4E, #C25C3A 72%); border:3px solid #fff; box-shadow:0 0 0 2px rgba(0,0,0,.12);"></div>
+                <div>
+                    <div style="font-family:'Outfit',sans-serif; font-size:24px; font-weight:800; line-height:1;">Éditeur de T-card</div>
+                    <div style="font-size:13px; color:#6F675C; margin-top:4px;">Modifie ton équipe, récupère une ancienne carte, puis exporte le code forum.</div>
                 </div>
-                <button onClick="{{ m.remove }}" title="Supprimer" style="width:26px; height:26px; border-radius:7px; border:1px solid rgba(214,54,90,.4); background:rgba(214,54,90,.14); color:#D6365A; font-size:15px; line-height:1; cursor:pointer; flex:none;">×</button>
-                <span style="font-family:'Outfit',sans-serif; font-size:17px; color:#6E665C; transform:{{ m.chevron }}; transition:transform .25s; flex:none;">›</span>
-              </div>
-
-              <sc-if value="{{ m.open }}" hint-placeholder-val="{{ false }}">
-                <div style="padding:4px 12px 14px; border-top:1px solid #EEF0F4; display:flex; flex-direction:column; gap:11px;">
-
-                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px;">
-                    <div>
-                      <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Surnom</label>
-                      <input value="{{ m.nickname }}" onChange="{{ m.on.nickname }}" placeholder="Surnom" style="width:100%; padding:7px 9px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-                    </div>
-                    <div>
-                      <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Espèce</label>
-                      <input value="{{ m.species }}" onChange="{{ m.on.species }}" placeholder="Espèce" style="width:100%; padding:7px 9px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-                    </div>
-                  </div>
-
-                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px;">
-                    <div>
-                      <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Type 1</label>
-                      <select value="{{ m.type0 }}" onChange="{{ m.on.type0 }}" style="width:100%; padding:7px 9px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-                        <sc-for list="{{ typeOptions }}" as="o" hint-placeholder-count="18"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
-                      </select>
-                    </div>
-                    <div>
-                      <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Type 2</label>
-                      <select value="{{ m.type1 }}" onChange="{{ m.on.type1 }}" style="width:100%; padding:7px 9px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-                        <sc-for list="{{ type2Options }}" as="o" hint-placeholder-count="19"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div style="display:grid; grid-template-columns:80px 1fr 1.2fr; gap:9px;">
-                    <div>
-                      <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Niveau</label>
-                      <input type="number" min="1" max="100" value="{{ m.level }}" onChange="{{ m.on.level }}" style="width:100%; padding:7px 9px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-                    </div>
-                    <div>
-                      <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Genre</label>
-                      <select value="{{ m.gender }}" onChange="{{ m.on.gender }}" style="width:100%; padding:7px 9px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-                        <sc-for list="{{ genderOptions }}" as="o" hint-placeholder-count="3"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
-                      </select>
-                    </div>
-                    <div>
-                      <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Poké Ball</label>
-                      <select value="{{ m.ballName }}" onChange="{{ m.on.ballName }}" style="width:100%; padding:7px 9px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-                        <sc-for list="{{ ballOptions }}" as="o" hint-placeholder-count="12"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px;">
-                    <div>
-                      <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Talent</label>
-                      <input value="{{ m.talent }}" onChange="{{ m.on.talent }}" placeholder="Talent" style="width:100%; padding:7px 9px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-                    </div>
-                    <div>
-                      <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Nature</label>
-                      <select value="{{ m.nature }}" onChange="{{ m.on.nature }}" style="width:100%; padding:7px 9px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-                        <sc-for list="{{ natureOptions }}" as="o" hint-placeholder-count="23"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">URL de l'image (sprite)</label>
-                    <input value="{{ m.sprite }}" onChange="{{ m.on.sprite }}" placeholder="https://...  (laisse vide pour un cadre)" style="width:100%; padding:7px 9px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:12px; background:#19120E; color:#CFC7BC;">
-                  </div>
-
-                  <div>
-                    <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:6px;">Capacités</label>
-                    <div style="display:flex; flex-direction:column; gap:7px;">
-                      <sc-for list="{{ m.moveRows }}" as="mv" hint-placeholder-count="4">
-                        <div style="display:grid; grid-template-columns:1fr 130px; gap:7px;">
-                          <input value="{{ mv.name }}" onChange="{{ mv.on.name }}" placeholder="Capacité {{ mv.num }}" style="width:100%; padding:7px 9px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:12.5px; background:#19120E;">
-                          <select value="{{ mv.type }}" onChange="{{ mv.on.type }}" style="width:100%; padding:7px 6px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:12px; background:#19120E;">
-                            <sc-for list="{{ typeOptions }}" as="o" hint-placeholder-count="18"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
-                          </select>
-                        </div>
-                      </sc-for>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Résumé RP</label>
-                    <textarea value="{{ m.desc }}" onChange="{{ m.on.desc }}" placeholder="Histoire, caractère du Pokémon..." style="width:100%; height:70px; resize:vertical; padding:8px 10px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:12.5px; line-height:1.45; background:#19120E; color:#CFC7BC;"></textarea>
-                  </div>
-
-                </div>
-              </sc-if>
             </div>
-          </sc-for>
+
+            <div style="max-width:1180px; margin:0 auto; display:grid; grid-template-columns:minmax(0,440px) minmax(0,1fr); gap:26px; align-items:start;">
+
+                <!-- ============ LEFT : FORM ============ -->
+                <div style="display:flex; flex-direction:column; gap:16px; min-width:0;">
+
+                    <!-- RECOVER -->
+                    <div style="background:#FFFFFF; border:1px solid #E7E2DA; border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(45,38,30,.13);">
+                        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; margin-bottom:4px;">Récupérer une carte</div>
+                        <p style="margin:0 0 10px; font-size:12px; color:#8A8276; line-height:1.5;">Colle ici le <b>HTML</b> d'une carte déjà postée : les données y sont intégrées, l'équipe est retrouvée automatiquement.</p>
+                        <textarea onInput="{{ onLoadInput }}" value="{{ loadInput }}" placeholder="Colle ici le HTML de ta T-card…" style="width:100%; height:64px; resize:vertical; padding:9px 10px; border:1px solid #DED8CE; border-radius:9px; font-family:ui-monospace,monospace; font-size:11.5px; color:#4E483F; background:#F7F4EF; line-height:1.4;"></textarea>
+                        <div style="display:flex; gap:8px; margin-top:9px;">
+                            <button onClick="{{ loadCard }}" style="flex:1; padding:9px 12px; border:none; border-radius:9px; background:#C25C3A; color:#fff; font:inherit; font-weight:700; font-size:13px; cursor:pointer;">Charger la carte</button>
+                            <button onClick="{{ resetCard }}" style="padding:9px 12px; border:1px solid #DED8CE; border-radius:9px; background:#F7F4EF; color:#5A5349; font:inherit; font-weight:600; font-size:13px; cursor:pointer;">Équipe d'exemple</button>
+                        </div>
+                    </div>
+
+                    <!-- GENERAL -->
+                    <div style="background:#FFFFFF; border:1px solid #E7E2DA; border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(45,38,30,.13);">
+                        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; margin-bottom:13px;">Réglages généraux</div>
+                        <div style="margin-bottom:13px;">
+                            <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:5px;">Nom du dresseur</label>
+                            <input value="{{ trainerName }}" onChange="{{ onTrainer }}" style="width:100%; padding:8px 10px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; color:#26221D; background:#F7F4EF;">
+                        </div>
+                        <div style="margin-bottom:13px;">
+                            <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Sprite Motisma — URL de l'image</label>
+                            <input value="{{ motisma }}" onChange="{{ onMotisma }}" placeholder="https://...  (apparaît dans l'en-tête)" style="width:100%; padding:8px 10px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:12px; background:#F7F4EF; color:#4E483F;">
+                        </div>
+                        <label style="display:flex; align-items:center; gap:9px; cursor:pointer; font-size:13px; color:#4E483F; font-weight:600;">
+                            <input type="checkbox" checked="{{ showNicknames }}" onChange="{{ onShowNick }}" style="width:17px; height:17px; accent-color:#C25C3A; cursor:pointer;">
+                            Afficher les surnoms (sinon l'espèce en titre)
+                        </label>
+                    </div>
+
+                    <!-- POKEMON LIST -->
+                    <div style="background:#FFFFFF; border:1px solid #E7E2DA; border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(45,38,30,.13);">
+                        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:13px;">
+                            <span style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px;">Pokémon</span>
+                            <span style="font-size:12px; color:#8A8276; font-weight:600;">{{ count }}</span>
+                        </div>
+
+                        <div style="display:flex; flex-direction:column; gap:9px;">
+                            <sc-for list="{{ team }}" as="m" hint-placeholder-count="6">
+                                <div style="border:1px solid #E7E2DA; border-radius:11px; overflow:hidden; background:{{ m.cardBg }};">
+
+                                    <div onClick="{{ m.toggle }}" style="display:flex; align-items:center; gap:10px; padding:10px 12px; cursor:pointer; user-select:none;">
+                                        <span style="width:24px; height:24px; border-radius:50%; background:{{ m.headBall }}; border:1.5px solid #1A1A1A; flex:none; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; color:#fff;">{{ m.slot }}</span>
+                                        <div style="flex:1; min-width:0;">
+                                            <div style="font-weight:700; font-size:13.5px; color:#26221D; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ m.headTitle }}</div>
+                                            <div style="font-size:11px; color:#8A8276;">{{ m.headSub }}</div>
+                                        </div>
+                                        <button onClick="{{ m.remove }}" title="Supprimer" style="width:26px; height:26px; border-radius:7px; border:1px solid rgba(214,54,90,.4); background:rgba(214,54,90,.14); color:#D6365A; font-size:15px; line-height:1; cursor:pointer; flex:none;">×</button>
+                                        <span style="font-family:'Outfit',sans-serif; font-size:17px; color:#A89F93; transform:{{ m.chevron }}; transition:transform .25s; flex:none;">›</span>
+                                    </div>
+
+                                    <sc-if value="{{ m.open }}" hint-placeholder-val="{{ false }}">
+                                        <div style="padding:4px 12px 14px; border-top:1px solid #EEF0F4; display:flex; flex-direction:column; gap:11px;">
+
+                                            <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px;">
+                                                <div>
+                                                    <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Surnom</label>
+                                                    <input value="{{ m.nickname }}" onChange="{{ m.on.nickname }}" placeholder="Surnom" style="width:100%; padding:7px 9px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                                                </div>
+                                                <div>
+                                                    <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Espèce</label>
+                                                    <input value="{{ m.species }}" onChange="{{ m.on.species }}" placeholder="Espèce" style="width:100%; padding:7px 9px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                                                </div>
+                                            </div>
+
+                                            <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px;">
+                                                <div>
+                                                    <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Type 1</label>
+                                                    <select value="{{ m.type0 }}" onChange="{{ m.on.type0 }}" style="width:100%; padding:7px 9px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                                                        <sc-for list="{{ typeOptions }}" as="o" hint-placeholder-count="18"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Type 2</label>
+                                                    <select value="{{ m.type1 }}" onChange="{{ m.on.type1 }}" style="width:100%; padding:7px 9px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                                                        <sc-for list="{{ type2Options }}" as="o" hint-placeholder-count="19"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div style="display:grid; grid-template-columns:80px 1fr 1.2fr; gap:9px;">
+                                                <div>
+                                                    <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Niveau</label>
+                                                    <input type="number" min="1" max="100" value="{{ m.level }}" onChange="{{ m.on.level }}" style="width:100%; padding:7px 9px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                                                </div>
+                                                <div>
+                                                    <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Genre</label>
+                                                    <select value="{{ m.gender }}" onChange="{{ m.on.gender }}" style="width:100%; padding:7px 9px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                                                        <sc-for list="{{ genderOptions }}" as="o" hint-placeholder-count="3"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Poké Ball</label>
+                                                    <select value="{{ m.ballName }}" onChange="{{ m.on.ballName }}" style="width:100%; padding:7px 9px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                                                        <sc-for list="{{ ballOptions }}" as="o" hint-placeholder-count="12"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px;">
+                                                <div>
+                                                    <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Talent</label>
+                                                    <input value="{{ m.talent }}" onChange="{{ m.on.talent }}" placeholder="Talent" style="width:100%; padding:7px 9px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                                                </div>
+                                                <div>
+                                                    <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Nature</label>
+                                                    <select value="{{ m.nature }}" onChange="{{ m.on.nature }}" style="width:100%; padding:7px 9px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                                                        <sc-for list="{{ natureOptions }}" as="o" hint-placeholder-count="23"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">URL de l'image (sprite)</label>
+                                                <input value="{{ m.sprite }}" onChange="{{ m.on.sprite }}" placeholder="https://...  (laisse vide pour un cadre)" style="width:100%; padding:7px 9px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:12px; background:#F7F4EF; color:#4E483F;">
+                                            </div>
+
+                                            <div>
+                                                <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:6px;">Capacités</label>
+                                                <div style="display:flex; flex-direction:column; gap:7px; max-height:214px; overflow-y:auto;">
+                                                    <sc-for list="{{ m.moveRows }}" as="mv" hint-placeholder-count="1">
+                                                        <div style="display:grid; grid-template-columns:1fr 116px 30px; gap:7px;">
+                                                            <input value="{{ mv.name }}" onChange="{{ mv.on.name }}" placeholder="Capacité {{ mv.num }}" style="width:100%; padding:7px 9px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:12.5px; background:#F7F4EF;">
+                                                            <select value="{{ mv.type }}" onChange="{{ mv.on.type }}" style="width:100%; padding:7px 6px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:12px; background:#F7F4EF;">
+                                                                <sc-for list="{{ typeOptions }}" as="o" hint-placeholder-count="18"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                                                            </select>
+                                                            <button onClick="{{ mv.remove }}" title="Supprimer" style="width:30px; height:32px; border-radius:7px; border:1px solid rgba(214,54,90,.4); background:rgba(214,54,90,.14); color:#D6365A; font-size:15px; line-height:1; cursor:pointer;">×</button>
+                                                        </div>
+                                                    </sc-for>
+                                                </div>
+                                                <button onClick="{{ m.addMove }}" style="width:100%; margin-top:8px; padding:8px; border:1.5px dashed #D8D1C6; border-radius:9px; background:#F7F4EF; color:#5A5349; font:inherit; font-weight:700; font-size:12.5px; cursor:pointer;">+ Ajouter une capacité</button>
+                                            </div>
+
+                                            <div>
+                                                <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Résumé RP</label>
+                                                <textarea value="{{ m.desc }}" onChange="{{ m.on.desc }}" placeholder="Histoire, caractère du Pokémon..." style="width:100%; height:70px; resize:vertical; padding:8px 10px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:12.5px; line-height:1.45; background:#F7F4EF; color:#4E483F;"></textarea>
+                                            </div>
+
+                                        </div>
+                                    </sc-if>
+                                </div>
+                            </sc-for>
+                        </div>
+
+                        <sc-if value="{{ canAdd }}" hint-placeholder-val="{{ true }}">
+                            <button onClick="{{ addMember }}" style="width:100%; margin-top:11px; padding:10px; border:1.5px dashed #D8D1C6; border-radius:10px; background:#F7F4EF; color:#5A5349; font:inherit; font-weight:700; font-size:13px; cursor:pointer;">+ Ajouter un Pokémon</button>
+                        </sc-if>
+                    </div>
+
+                    <!-- EXPORT -->
+                    <div style="background:#FFFFFF; border:1px solid #E7E2DA; border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(45,38,30,.16);">
+                        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; color:#26221D; margin-bottom:4px;">Exporter</div>
+
+                        <div style="margin-top:12px;">
+                            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
+                                <span style="font-size:11px; letter-spacing:.5px; text-transform:uppercase; color:#8A8276; font-weight:700;">Code forum (HTML)</span>
+                                <button onClick="{{ copyForum }}" style="padding:5px 11px; border:none; border-radius:7px; background:#C25C3A; color:#fff; font:inherit; font-weight:600; font-size:12px; cursor:pointer;">Copier</button>
+                            </div>
+                            <textarea readOnly value="{{ forumCode }}" style="width:100%; height:74px; resize:vertical; padding:9px 10px; border:1px solid #E7E2DA; border-radius:9px; font-family:ui-monospace,monospace; font-size:10.5px; color:#4E483F; background:#F5F1EA; line-height:1.4;"></textarea>
+                            <p style="margin:6px 0 0; font-size:11px; color:#8A8276; line-height:1.5;">À coller dans un message de forum acceptant le HTML. Léger : le style vient de la feuille CSS ci-dessous, à héberger une seule fois. Les fiches s'ouvrent au clic, sans script.</p>
+                        </div>
+
+                        <div style="margin-top:16px;">
+                            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
+                                <span style="font-size:11px; letter-spacing:.5px; text-transform:uppercase; color:#8A8276; font-weight:700;">Feuille CSS — à héberger une seule fois</span>
+                                <button onClick="{{ copyCss }}" style="padding:5px 11px; border:none; border-radius:7px; background:#3A332B; color:#fff; font:inherit; font-weight:600; font-size:12px; cursor:pointer;">Copier</button>
+                            </div>
+                            <textarea readOnly value="{{ cssCode }}" style="width:100%; height:70px; resize:vertical; padding:9px 10px; border:1px solid #E7E2DA; border-radius:9px; font-family:ui-monospace,monospace; font-size:10px; color:#4E483F; background:#F5F1EA; line-height:1.4;"></textarea>
+                            <p style="margin:6px 0 0; font-size:11px; color:#8A8276; line-height:1.5;">Colle ce CSS <b>une seule fois</b> dans la feuille de style de ton forum (CSS global / template). Il est identique pour toutes tes T-cards — inutile de le remettre à chaque message.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ============ RIGHT : PREVIEW ============ -->
+                <div style="position:sticky; top:20px; min-width:0;">
+                    <div style="font-size:11px; letter-spacing:1px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:10px;">Aperçu en direct</div>
+                    <div style="width:100%;">{{ previewNode }}</div>
+                </div>
+
+            </div>
+
+            <sc-if value="{{ toast.show }}" hint-placeholder-val="{{ false }}">
+                <div style="position:fixed; left:50%; bottom:26px; transform:translateX(-50%); background:{{ toast.bg }}; color:#fff; padding:11px 20px; border-radius:11px; font-size:13.5px; font-weight:700; box-shadow:0 12px 30px -8px rgba(0,0,0,.4); z-index:50;">{{ toast.msg }}</div>
+            </sc-if>
+
         </div>
-
-        <sc-if value="{{ canAdd }}" hint-placeholder-val="{{ true }}">
-          <button onClick="{{ addMember }}" style="width:100%; margin-top:11px; padding:10px; border:1.5px dashed rgba(232,210,190,.22); border-radius:10px; background:#19120E; color:#B4ABA0; font:inherit; font-weight:700; font-size:13px; cursor:pointer;">+ Ajouter un Pokémon</button>
-        </sc-if>
-      </div>
-
-      <!-- EXPORT -->
-      <div style="background:#15110E; border:1px solid rgba(232,210,190,.12); border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(20,24,40,.4);">
-        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; color:#fff; margin-bottom:4px;">Exporter</div>
-
-        <div style="margin-top:12px;">
-          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
-            <span style="font-size:11px; letter-spacing:.5px; text-transform:uppercase; color:#8E867A; font-weight:700;">Code de sauvegarde</span>
-            <button onClick="{{ copySave }}" style="padding:5px 11px; border:none; border-radius:7px; background:#3A332B; color:#fff; font:inherit; font-weight:600; font-size:12px; cursor:pointer;">Copier</button>
-          </div>
-          <textarea readOnly value="{{ saveCode }}" style="width:100%; height:60px; resize:vertical; padding:9px 10px; border:1px solid rgba(232,210,190,.14); border-radius:9px; font-family:ui-monospace,monospace; font-size:11px; color:#C4BBAF; background:#100B08; line-height:1.4;"></textarea>
-          <p style="margin:6px 0 0; font-size:11px; color:#8E867A; line-height:1.5;">Garde ce code précieusement : recolle-le dans « Récupérer une carte » pour ré-éditer ton équipe plus tard.</p>
-        </div>
-
-        <div style="margin-top:16px;">
-          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
-            <span style="font-size:11px; letter-spacing:.5px; text-transform:uppercase; color:#8E867A; font-weight:700;">Code forum (HTML)</span>
-            <button onClick="{{ copyForum }}" style="padding:5px 11px; border:none; border-radius:7px; background:#C25C3A; color:#fff; font:inherit; font-weight:600; font-size:12px; cursor:pointer;">Copier</button>
-          </div>
-          <textarea readOnly value="{{ forumCode }}" style="width:100%; height:74px; resize:vertical; padding:9px 10px; border:1px solid rgba(232,210,190,.14); border-radius:9px; font-family:ui-monospace,monospace; font-size:10.5px; color:#C4BBAF; background:#100B08; line-height:1.4;"></textarea>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- ============ RIGHT : PREVIEW ============ -->
-    <div style="position:sticky; top:20px; min-width:0;">
-      <div style="font-size:11px; letter-spacing:1px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:10px;">Aperçu en direct</div>
-      <div style="width:100%;">{{ previewNode }}</div>
-    </div>
-
-  </div>
-
-  <sc-if value="{{ toast.show }}" hint-placeholder-val="{{ false }}">
-    <div style="position:fixed; left:50%; bottom:26px; transform:translateX(-50%); background:{{ toast.bg }}; color:#fff; padding:11px 20px; border-radius:11px; font-size:13.5px; font-weight:700; box-shadow:0 12px 30px -8px rgba(0,0,0,.4); z-index:50;">{{ toast.msg }}</div>
-  </sc-if>
-
-</div>
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  constructor(props) {
-    super(props);
-    const T = window.TCARD;
-    this.state = {
-      data: this.normalize(T ? T.clone(T.DEFAULT_DATA) : { team: [] }),
-      openEditor: 0,
-      loadInput: '',
-      toast: null
-    };
-  }
-
-  componentDidMount() {
-    if (window.TCARD) {
-      if (!this.state.data.team.length) this.loadDefaults();
-    } else {
-      this._t = setInterval(() => {
-        if (window.TCARD) {
-          clearInterval(this._t);
-          if (!this.state.data.team.length) this.loadDefaults();
-          else this.forceUpdate();
-        }
-      }, 50);
-    }
-  }
-  componentWillUnmount() { clearInterval(this._t); clearTimeout(this._toastT); }
-
-  loadDefaults() {
-    this.setState({ data: this.normalize(window.TCARD.clone(window.TCARD.DEFAULT_DATA)) });
-  }
-
-  normalize(d) {
-    const T = window.TCARD;
-    const blank = T ? T.blankMember : () => ({ types: ['Normal'], moves: [] });
-    d = d || {};
-    const team = (Array.isArray(d.team) ? d.team : []).slice(0, 6).map(m => {
-      const base = blank();
-      const out = Object.assign(base, m || {});
-      out.types = (Array.isArray(out.types) ? out.types : ['Normal']).filter(Boolean).slice(0, 2);
-      if (!out.types.length) out.types = ['Normal'];
-      const moves = Array.isArray(out.moves) ? out.moves.slice(0, 4) : [];
-      while (moves.length < 4) moves.push({ name: '', type: 'Normal', pp: 0 });
-      out.moves = moves.map(mv => ({ name: (mv && mv.name) || '', type: (mv && mv.type) || 'Normal', pp: (mv && mv.pp != null) ? mv.pp : 0 }));
-      out.level = out.level != null ? out.level : 1;
-      out.gender = out.gender || '♂';
-      out.ballName = out.ballName || 'Poké Ball';
-      out.sprite = out.sprite || '';
-      return out;
-    });
-    return {
-      trainerName: d.trainerName != null ? d.trainerName : 'Dresseur',
-      accent: d.accent || '#C25C3A',
-      motisma: d.motisma || 'https://i.imgur.com/4GXlWf5.png',
-      showNicknames: d.showNicknames !== false,
-      team
-    };
-  }
-
-  showToast(msg, ok) {
-    clearTimeout(this._toastT);
-    this.setState({ toast: { show: true, msg, bg: ok ? '#16A34A' : '#DC2626' } });
-    this._toastT = setTimeout(() => this.setState({ toast: null }), 2400);
-  }
-
-  /* ---- updates ---- */
-  setTop(field, val) {
-    this.setState(s => ({ data: Object.assign({}, s.data, { [field]: val }) }));
-  }
-  setMember(i, field, val) {
-    this.setState(s => ({
-      data: Object.assign({}, s.data, {
-        team: s.data.team.map((m, idx) => idx !== i ? m : Object.assign({}, m, { [field]: val }))
-      })
-    }));
-  }
-  setType(i, ti, val) {
-    this.setState(s => ({
-      data: Object.assign({}, s.data, {
-        team: s.data.team.map((m, idx) => {
-          if (idx !== i) return m;
-          const t0 = ti === 0 ? val : (m.types[0] || 'Normal');
-          const t1 = ti === 1 ? val : (m.types[1] || '');
-          const arr = [t0 || 'Normal'];
-          if (t1) arr.push(t1);
-          return Object.assign({}, m, { types: arr });
-        })
-      })
-    }));
-  }
-  setMove(i, j, field, val) {
-    this.setState(s => ({
-      data: Object.assign({}, s.data, {
-        team: s.data.team.map((m, idx) => idx !== i ? m : Object.assign({}, m, {
-          moves: m.moves.map((mv, k) => k !== j ? mv : Object.assign({}, mv, { [field]: val }))
-        }))
-      })
-    }));
-  }
-  toInt(v) { const n = parseInt(v, 10); return isNaN(n) ? 0 : n; }
-
-  /* ---- top-level handlers ---- */
-  onTrainer = (e) => this.setTop('trainerName', e.target.value);
-  onAccent = (e) => this.setTop('accent', e.target.value);
-  onMotisma = (e) => this.setTop('motisma', e.target.value);
-  onShowNick = (e) => this.setTop('showNicknames', e.target.checked);
-  onLoadInput = (e) => this.setState({ loadInput: e.target.value });
-
-  loadCard = () => {
-    const T = window.TCARD;
-    if (!T) return;
-    try {
-      const data = this.normalize(T.decodeCard(this.state.loadInput));
-      if (!data.team.length) throw new Error('vide');
-      this.setState({ data, openEditor: 0 });
-      this.showToast('Carte chargée ✓', true);
-    } catch (err) {
-      this.showToast('Code invalide', false);
-    }
-  };
-
-  resetCard = () => {
-    const T = window.TCARD;
-    if (!T) return;
-    this.setState({ data: this.normalize(T.clone(T.DEFAULT_DATA)), openEditor: 0, loadInput: '' });
-    this.showToast('Équipe d\'exemple chargée', true);
-  };
-
-  addMember = () => {
-    const T = window.TCARD;
-    if (!T) return;
-    this.setState(s => {
-      if (s.data.team.length >= 6) return {};
-      const team = s.data.team.concat([T.blankMember()]);
-      return { data: Object.assign({}, s.data, { team }), openEditor: team.length - 1 };
-    });
-  };
-
-  makeRemove(i) {
-    return (e) => {
-      if (e) e.stopPropagation();
-      this.setState(s => {
-        const team = s.data.team.filter((_, idx) => idx !== i);
-        let openEditor = s.openEditor;
-        if (openEditor === i) openEditor = -1;
-        else if (openEditor > i) openEditor -= 1;
-        return { data: Object.assign({}, s.data, { team }), openEditor };
-      });
-    };
-  }
-  makeToggle(i) {
-    return () => this.setState(s => ({ openEditor: s.openEditor === i ? -1 : i }));
-  }
-
-  copy(text, label) {
-    const done = () => this.showToast(label + ' copié ✓', true);
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(done, () => this.fallbackCopy(text, done));
-    } else { this.fallbackCopy(text, done); }
-  }
-  fallbackCopy(text, done) {
-    const ta = document.createElement('textarea');
-    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-    document.body.appendChild(ta); ta.select();
-    try { document.execCommand('copy'); done(); } catch (e) {}
-    document.body.removeChild(ta);
-  }
-
-  renderVals() {
-    const T = window.TCARD || {};
-    const ballColors = T.ballColors || (() => ({ top: '#EE1515' }));
-    const d = this.state.data;
-    const accent = d.accent || '#C25C3A';
-    const showNick = d.showNicknames !== false;
-
-    const typeOptions = (T.TYPE_LIST || []).map(t => ({ v: t, label: t }));
-    const type2Options = [{ v: '', label: '— Aucun —' }].concat(typeOptions);
-    const ballOptions = (T.BALL_LIST || []).map(b => ({ v: b, label: b }));
-    const genderOptions = [
-      { v: '♂', label: '♂ Mâle' }, { v: '♀', label: '♀ Femelle' }, { v: '⚲', label: '⚲ Inconnu' }
-    ];
-    const natureOptions = (T.NATURES || []).map(n => ({ v: n, label: n }));
-    const accentSwatches = (T.ACCENTS || []).map(hex => ({
-      hex,
-      border: hex.toLowerCase() === accent.toLowerCase() ? '3px solid #ECE5DC' : '2px solid #fff',
-      set: () => this.setTop('accent', hex)
-    }));
-
-    const team = d.team.map((m, i) => {
-      const bc = ballColors(m.ballName);
-      const open = this.state.openEditor === i;
-      return {
-        index: i,
-        slot: i + 1,
-        nickname: m.nickname || '',
-        species: m.species || '',
-        type0: m.types[0] || 'Normal',
-        type1: m.types[1] || '',
-        level: m.level,
-        gender: m.gender || '♂',
-        ballName: m.ballName || 'Poké Ball',
-        talent: m.talent || '',
-        nature: m.nature || 'Sérieux',
-        sprite: m.sprite || '',
-        desc: m.desc || '',
-        moveRows: m.moves.map((mv, j) => ({
-          idx: j, num: j + 1, name: mv.name || '', type: mv.type || 'Normal', pp: mv.pp != null ? mv.pp : 0,
-          on: {
-            name: (e) => this.setMove(i, j, 'name', e.target.value),
-            type: (e) => this.setMove(i, j, 'type', e.target.value),
-            pp: (e) => this.setMove(i, j, 'pp', this.toInt(e.target.value))
+    </x-dc>
+    <script type="text/x-dc" data-dc-script>
+        class Component extends DCLogic {
+          constructor(props) {
+            super(props);
+            const T = window.TCARD;
+            this.state = {
+              data: this.normalize(T ? T.clone(T.DEFAULT_DATA) : { team: [] }),
+              openEditor: 0,
+              loadInput: '',
+              toast: null
+            };
           }
-        })),
-        open,
-        headTitle: (showNick ? (m.nickname || m.species) : m.species) || 'Nouveau Pokémon',
-        headSub: (m.species ? m.species + ' · ' : '') + 'Niv. ' + (m.level != null ? m.level : '?'),
-        headBall: bc.top,
-        cardBg: open ? '#2A241F' : '#241F1B',
-        chevron: open ? 'rotate(90deg)' : 'rotate(0deg)',
-        toggle: this.makeToggle(i),
-        remove: this.makeRemove(i),
-        on: {
-          nickname: (e) => this.setMember(i, 'nickname', e.target.value),
-          species: (e) => this.setMember(i, 'species', e.target.value),
-          level: (e) => this.setMember(i, 'level', this.toInt(e.target.value)),
-          gender: (e) => this.setMember(i, 'gender', e.target.value),
-          ballName: (e) => this.setMember(i, 'ballName', e.target.value),
-          talent: (e) => this.setMember(i, 'talent', e.target.value),
-          nature: (e) => this.setMember(i, 'nature', e.target.value),
-          sprite: (e) => this.setMember(i, 'sprite', e.target.value),
-          desc: (e) => this.setMember(i, 'desc', e.target.value),
-          type0: (e) => this.setType(i, 0, e.target.value),
-          type1: (e) => this.setType(i, 1, e.target.value)
+
+          componentDidMount() {
+            if (window.TCARD) {
+              if (!this.state.data.team.length) this.loadDefaults();
+            } else {
+              this._t = setInterval(() => {
+                if (window.TCARD) {
+                  clearInterval(this._t);
+                  if (!this.state.data.team.length) this.loadDefaults();
+                  else this.forceUpdate();
+                }
+              }, 50);
+            }
+          }
+          componentWillUnmount() { clearInterval(this._t); clearTimeout(this._toastT); }
+
+          loadDefaults() {
+            this.setState({ data: this.normalize(window.TCARD.clone(window.TCARD.DEFAULT_DATA)) });
+          }
+
+          normalize(d) {
+            const T = window.TCARD;
+            const blank = T ? T.blankMember : () => ({ types: ['Normal'], moves: [] });
+            d = d || {};
+            const team = (Array.isArray(d.team) ? d.team : []).map(m => {
+              const base = blank();
+              const out = Object.assign(base, m || {});
+              out.types = (Array.isArray(out.types) ? out.types : ['Normal']).filter(Boolean).slice(0, 2);
+              if (!out.types.length) out.types = ['Normal'];
+              const moves = Array.isArray(out.moves) ? out.moves : [];
+              out.moves = moves.map(mv => ({ name: (mv && mv.name) || '', type: (mv && mv.type) || 'Normal', pp: (mv && mv.pp != null) ? mv.pp : 0 }));
+              out.level = out.level != null ? out.level : 1;
+              out.gender = out.gender || '♂';
+              out.ballName = out.ballName || 'Poké Ball';
+              out.sprite = out.sprite || '';
+              return out;
+            });
+            return {
+              trainerName: d.trainerName != null ? d.trainerName : 'Dresseur',
+              accent: d.accent || '#C25C3A',
+              bg: d.bg || '',
+              motisma: d.motisma || 'https://i.imgur.com/4GXlWf5.png',
+              showNicknames: d.showNicknames !== false,
+              team
+            };
+          }
+
+          showToast(msg, ok) {
+            clearTimeout(this._toastT);
+            this.setState({ toast: { show: true, msg, bg: ok ? '#16A34A' : '#DC2626' } });
+            this._toastT = setTimeout(() => this.setState({ toast: null }), 2400);
+          }
+
+          /* ---- updates ---- */
+          setTop(field, val) {
+            this.setState(s => ({ data: Object.assign({}, s.data, { [field]: val }) }));
+          }
+          setMember(i, field, val) {
+            this.setState(s => ({
+              data: Object.assign({}, s.data, {
+                team: s.data.team.map((m, idx) => idx !== i ? m : Object.assign({}, m, { [field]: val }))
+              })
+            }));
+          }
+          setType(i, ti, val) {
+            this.setState(s => ({
+              data: Object.assign({}, s.data, {
+                team: s.data.team.map((m, idx) => {
+                  if (idx !== i) return m;
+                  const t0 = ti === 0 ? val : (m.types[0] || 'Normal');
+                  const t1 = ti === 1 ? val : (m.types[1] || '');
+                  const arr = [t0 || 'Normal'];
+                  if (t1) arr.push(t1);
+                  return Object.assign({}, m, { types: arr });
+                })
+              })
+            }));
+          }
+          setMove(i, j, field, val) {
+            this.setState(s => ({
+              data: Object.assign({}, s.data, {
+                team: s.data.team.map((m, idx) => idx !== i ? m : Object.assign({}, m, {
+                  moves: m.moves.map((mv, k) => k !== j ? mv : Object.assign({}, mv, { [field]: val }))
+                }))
+              })
+            }));
+          }
+          toInt(v) { const n = parseInt(v, 10); return isNaN(n) ? 0 : n; }
+          addMoveTo(i) {
+            this.setState(s => ({ data: Object.assign({}, s.data, {
+              team: s.data.team.map((m, idx) => idx !== i ? m : Object.assign({}, m, { moves: m.moves.concat([{ name: '', type: 'Normal', pp: 0 }]) }))
+            }) }));
+          }
+          removeMoveFrom(i, j) {
+            this.setState(s => ({ data: Object.assign({}, s.data, {
+              team: s.data.team.map((m, idx) => idx !== i ? m : Object.assign({}, m, { moves: m.moves.filter((_, k) => k !== j) }))
+            }) }));
+          }
+
+          /* ---- top-level handlers ---- */
+          onTrainer = (e) => this.setTop('trainerName', e.target.value);
+          onAccent = (e) => this.setTop('accent', e.target.value);
+          onBg = (e) => this.setTop('bg', e.target.value);
+          clearBg = () => this.setTop('bg', '');
+          onMotisma = (e) => this.setTop('motisma', e.target.value);
+          onShowNick = (e) => this.setTop('showNicknames', e.target.checked);
+          onLoadInput = (e) => this.setState({ loadInput: e.target.value });
+
+          loadCard = () => {
+            const T = window.TCARD;
+            if (!T) return;
+            try {
+              const data = this.normalize(T.decodeCard(this.state.loadInput));
+              if (!data.team.length) throw new Error('vide');
+              this.setState({ data, openEditor: 0 });
+              this.showToast('Carte chargée ✓', true);
+            } catch (err) {
+              this.showToast('Code invalide', false);
+            }
+          };
+
+          resetCard = () => {
+            const T = window.TCARD;
+            if (!T) return;
+            this.setState({ data: this.normalize(T.clone(T.DEFAULT_DATA)), openEditor: 0, loadInput: '' });
+            this.showToast('Équipe d\'exemple chargée', true);
+          };
+
+          addMember = () => {
+            const T = window.TCARD;
+            if (!T) return;
+            this.setState(s => {
+              const team = s.data.team.concat([T.blankMember()]);
+              return { data: Object.assign({}, s.data, { team }), openEditor: team.length - 1 };
+            });
+          };
+
+          makeRemove(i) {
+            return (e) => {
+              if (e) e.stopPropagation();
+              this.setState(s => {
+                const team = s.data.team.filter((_, idx) => idx !== i);
+                let openEditor = s.openEditor;
+                if (openEditor === i) openEditor = -1;
+                else if (openEditor > i) openEditor -= 1;
+                return { data: Object.assign({}, s.data, { team }), openEditor };
+              });
+            };
+          }
+          makeToggle(i) {
+            return () => this.setState(s => ({ openEditor: s.openEditor === i ? -1 : i }));
+          }
+
+          copy(text, label) {
+            const done = () => this.showToast(label + ' copié ✓', true);
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, () => this.fallbackCopy(text, done));
+            } else { this.fallbackCopy(text, done); }
+          }
+          fallbackCopy(text, done) {
+            const ta = document.createElement('textarea');
+            ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+            document.body.appendChild(ta); ta.select();
+            try { document.execCommand('copy'); done(); } catch (e) {}
+            document.body.removeChild(ta);
+          }
+
+          renderVals() {
+            const T = window.TCARD || {};
+            const ballColors = T.ballColors || (() => ({ top: '#EE1515' }));
+            const d = this.state.data;
+            const accent = d.accent || '#C25C3A';
+            const showNick = d.showNicknames !== false;
+
+            const typeOptions = (T.TYPE_LIST || []).map(t => ({ v: t, label: t }));
+            const type2Options = [{ v: '', label: '— Aucun —' }].concat(typeOptions);
+            const ballOptions = (T.BALL_LIST || []).map(b => ({ v: b, label: b }));
+            const genderOptions = [
+              { v: '♂', label: '♂ Mâle' }, { v: '♀', label: '♀ Femelle' }, { v: '⚲', label: '⚲ Inconnu' }
+            ];
+            const natureOptions = (T.NATURES || []).map(n => ({ v: n, label: n }));
+            const accentSwatches = (T.ACCENTS || []).map(hex => ({
+              hex,
+              border: hex.toLowerCase() === accent.toLowerCase() ? '3px solid #26221D' : '2px solid #fff',
+              set: () => this.setTop('accent', hex)
+            }));
+
+            const team = d.team.map((m, i) => {
+              const bc = ballColors(m.ballName);
+              const open = this.state.openEditor === i;
+              return {
+                index: i,
+                slot: i + 1,
+                nickname: m.nickname || '',
+                species: m.species || '',
+                type0: m.types[0] || 'Normal',
+                type1: m.types[1] || '',
+                level: m.level,
+                gender: m.gender || '♂',
+                ballName: m.ballName || 'Poké Ball',
+                talent: m.talent || '',
+                nature: m.nature || 'Sérieux',
+                sprite: m.sprite || '',
+                desc: m.desc || '',
+                moveRows: m.moves.map((mv, j) => ({
+                  idx: j, num: j + 1, name: mv.name || '', type: mv.type || 'Normal', pp: mv.pp != null ? mv.pp : 0,
+                  remove: () => this.removeMoveFrom(i, j),
+                  on: {
+                    name: (e) => this.setMove(i, j, 'name', e.target.value),
+                    type: (e) => this.setMove(i, j, 'type', e.target.value),
+                    pp: (e) => this.setMove(i, j, 'pp', this.toInt(e.target.value))
+                  }
+                })),
+                addMove: () => this.addMoveTo(i),
+                open,
+                headTitle: (showNick ? (m.nickname || m.species) : m.species) || 'Nouveau Pokémon',
+                headSub: (m.species ? m.species + ' · ' : '') + 'Niv. ' + (m.level != null ? m.level : '?'),
+                headBall: bc.top,
+                cardBg: open ? '#F6F2EC' : '#FFFFFF',
+                chevron: open ? 'rotate(90deg)' : 'rotate(0deg)',
+                toggle: this.makeToggle(i),
+                remove: this.makeRemove(i),
+                on: {
+                  nickname: (e) => this.setMember(i, 'nickname', e.target.value),
+                  species: (e) => this.setMember(i, 'species', e.target.value),
+                  level: (e) => this.setMember(i, 'level', this.toInt(e.target.value)),
+                  gender: (e) => this.setMember(i, 'gender', e.target.value),
+                  ballName: (e) => this.setMember(i, 'ballName', e.target.value),
+                  talent: (e) => this.setMember(i, 'talent', e.target.value),
+                  nature: (e) => this.setMember(i, 'nature', e.target.value),
+                  sprite: (e) => this.setMember(i, 'sprite', e.target.value),
+                  desc: (e) => this.setMember(i, 'desc', e.target.value),
+                  type0: (e) => this.setType(i, 0, e.target.value),
+                  type1: (e) => this.setType(i, 1, e.target.value)
+                }
+              };
+            });
+
+            let saveCode = '', forumCode = '', cssCode = '', previewNode = null;
+            try { if (T.encodeCard) saveCode = T.encodeCard(d); } catch (e) {}
+            try { if (T.buildForumHTML) forumCode = T.buildForumHTML(d, false, false); } catch (e) {}
+            cssCode = T.TCARD_CSS || '';
+            try {
+              if (T.buildForumHTML) previewNode = React.createElement('div', { dangerouslySetInnerHTML: { __html: T.buildForumHTML(d, true, true) } });
+            } catch (e) {}
+
+            return {
+              trainerName: d.trainerName != null ? d.trainerName : '',
+              accent,
+              bgPick: d.bg || '#EADFD3',
+              motisma: d.motisma || 'https://i.imgur.com/4GXlWf5.png',
+              showNicknames: showNick,
+              count: d.team.length,
+              canAdd: true,
+              team,
+              typeOptions, type2Options, ballOptions, genderOptions, natureOptions, accentSwatches,
+              loadInput: this.state.loadInput,
+              saveCode, forumCode, cssCode, previewNode,
+              toast: this.state.toast || { show: false, msg: '', bg: '#16A34A' },
+              onTrainer: this.onTrainer,
+              onAccent: this.onAccent,
+              onBg: this.onBg,
+              clearBg: this.clearBg,
+              onMotisma: this.onMotisma,
+              onShowNick: this.onShowNick,
+              onLoadInput: this.onLoadInput,
+              loadCard: this.loadCard,
+              resetCard: this.resetCard,
+              addMember: this.addMember,
+              copyForum: () => this.copy(forumCode, 'Code forum'),
+              copyCss: () => this.copy(cssCode, 'Feuille CSS')
+            };
+          }
         }
-      };
-    });
-
-    let saveCode = '', forumCode = '', previewNode = null;
-    try { if (T.encodeCard) saveCode = T.encodeCard(d); } catch (e) {}
-    try { if (T.buildForumHTML) forumCode = T.buildForumHTML(d, false); } catch (e) {}
-    try {
-      if (T.buildForumHTML) previewNode = React.createElement('div', { dangerouslySetInnerHTML: { __html: T.buildForumHTML(d, true) } });
-    } catch (e) {}
-
-    return {
-      trainerName: d.trainerName != null ? d.trainerName : '',
-      accent,
-      motisma: d.motisma || 'https://i.imgur.com/4GXlWf5.png',
-      showNicknames: showNick,
-      count: d.team.length,
-      canAdd: d.team.length < 6,
-      team,
-      typeOptions, type2Options, ballOptions, genderOptions, natureOptions, accentSwatches,
-      loadInput: this.state.loadInput,
-      saveCode, forumCode, previewNode,
-      toast: this.state.toast || { show: false, msg: '', bg: '#16A34A' },
-      onTrainer: this.onTrainer,
-      onAccent: this.onAccent,
-      onMotisma: this.onMotisma,
-      onShowNick: this.onShowNick,
-      onLoadInput: this.onLoadInput,
-      loadCard: this.loadCard,
-      resetCard: this.resetCard,
-      addMember: this.addMember,
-      copySave: () => this.copy(saveCode, 'Code de sauvegarde'),
-      copyForum: () => this.copy(forumCode, 'Code forum')
-    };
-  }
-}
-</script>
+    </script>
 </body>
 </html>

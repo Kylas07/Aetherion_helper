@@ -1,450 +1,471 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-<script src="./tcard-data.js"></script>
-<template id="__bundler_thumbnail" data-bg-color="#EDF0F5">
-  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-    <rect width="1200" height="800" fill="#EDF0F5"/>
-    <rect x="250" y="150" width="700" height="500" rx="30" fill="#ffffff" stroke="#E2E6EC" stroke-width="3"/>
-    <rect x="250" y="150" width="700" height="92" rx="30" fill="#C25C3A"/>
-    <rect x="250" y="200" width="700" height="42" fill="#C25C3A"/>
-    <circle cx="305" cy="196" r="22" fill="#fff"/><circle cx="305" cy="196" r="13" fill="#2A75BB"/>
-    <g fill="#F1F3F7" stroke="#E2E6EC" stroke-width="2">
-      <rect x="290" y="285" width="92" height="92" rx="14"/><rect x="404" y="285" width="92" height="92" rx="14"/>
-      <rect x="518" y="285" width="92" height="92" rx="14"/><rect x="632" y="285" width="92" height="92" rx="14"/>
-      <rect x="746" y="285" width="92" height="92" rx="14"/>
-      <rect x="290" y="399" width="92" height="92" rx="14"/><rect x="404" y="399" width="92" height="92" rx="14"/>
-      <rect x="518" y="399" width="92" height="92" rx="14"/><rect x="632" y="399" width="92" height="92" rx="14"/>
-      <rect x="746" y="399" width="92" height="92" rx="14"/>
-    </g>
-    <circle cx="336" cy="331" r="22" fill="#fff" stroke="#1A1A1A" stroke-width="6"/>
-    <path d="M314 331 a22 22 0 0 1 44 0 Z" fill="#EE1515"/><rect x="314" y="326" width="44" height="6" fill="#1A1A1A"/>
-  </svg>
-</template>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./support.js"></script>
+    <script src="./tcard-data.js"></script>
+    <template id="__bundler_thumbnail" data-bg-color="#EDF0F5">
+        <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+            <rect width="1200" height="800" fill="#EDF0F5" />
+            <rect x="250" y="150" width="700" height="500" rx="30" fill="#ffffff" stroke="#E2E6EC" stroke-width="3" />
+            <rect x="250" y="150" width="700" height="92" rx="30" fill="#C25C3A" />
+            <rect x="250" y="200" width="700" height="42" fill="#C25C3A" />
+            <circle cx="305" cy="196" r="22" fill="#fff" />
+            <circle cx="305" cy="196" r="13" fill="#2A75BB" />
+            <g fill="#F1F3F7" stroke="#E2E6EC" stroke-width="2">
+                <rect x="290" y="285" width="92" height="92" rx="14" />
+                <rect x="404" y="285" width="92" height="92" rx="14" />
+                <rect x="518" y="285" width="92" height="92" rx="14" />
+                <rect x="632" y="285" width="92" height="92" rx="14" />
+                <rect x="746" y="285" width="92" height="92" rx="14" />
+                <rect x="290" y="399" width="92" height="92" rx="14" />
+                <rect x="404" y="399" width="92" height="92" rx="14" />
+                <rect x="518" y="399" width="92" height="92" rx="14" />
+                <rect x="632" y="399" width="92" height="92" rx="14" />
+                <rect x="746" y="399" width="92" height="92" rx="14" />
+            </g>
+            <circle cx="336" cy="331" r="22" fill="#fff" stroke="#1A1A1A" stroke-width="6" />
+            <path d="M314 331 a22 22 0 0 1 44 0 Z" fill="#EE1515" />
+            <rect x="314" y="326" width="44" height="6" fill="#1A1A1A" />
+        </svg>
+    </template>
 </head>
 <body>
-<x-dc>
-<helmet>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; background: #1A1613; }
-    textarea, input, select { outline: none; color: #ECE5DC; }
-    select option { color: #ECE5DC; background: #241F1B; }
-    ::placeholder { color: #6E665C; opacity: 1; }
-    input:focus, select:focus, textarea:focus { border-color: #C25C3A !important; box-shadow: 0 0 0 3px rgba(194,92,58,.22); }
-  </style>
-</helmet>
+    <x-dc>
+        <helmet>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+            <style>
+                * {
+                    box-sizing: border-box;
+                }
 
-<div style="font-family:'Manrope',system-ui,sans-serif; color:#ECE5DC; min-height:100vh; padding:26px 26px 80px;">
+                body {
+                    margin: 0;
+                    background: #EDEAE3;
+                }
 
-  <div style="max-width:1180px; margin:0 auto 22px; display:flex; align-items:center; gap:14px;">
-    <div style="width:38px; height:38px; border-radius:8px; background:{{ theme }}; border:3px solid #fff; box-shadow:0 0 0 2px rgba(0,0,0,.12); display:flex; align-items:center; justify-content:center;">
-      <div style="width:14px; height:14px; border-radius:50%; background:radial-gradient(circle at 32% 28%, #F0C4A8, #B0492B 72%); border:2px solid #fff;"></div>
-    </div>
-    <div>
-      <div style="font-family:'Outfit',sans-serif; font-size:24px; font-weight:800; line-height:1;">Éditeur de PC</div>
-    </div>
-  </div>
+                textarea, input, select {
+                    outline: none;
+                    color: #26221D;
+                }
 
-  <div style="max-width:1180px; margin:0 auto; display:grid; grid-template-columns:minmax(0,440px) minmax(0,1fr); gap:26px; align-items:start;">
+                    select option {
+                        color: #26221D;
+                        background: #FFFFFF;
+                    }
 
-    <!-- ============ LEFT : FORM ============ -->
-    <div style="display:flex; flex-direction:column; gap:16px; min-width:0;">
+                ::placeholder {
+                    color: #A89F93;
+                    opacity: 1;
+                }
 
-      <!-- RECOVER -->
-      <div style="background:#241F1B; border:1px solid rgba(232,210,190,.12); border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(20,24,40,.3);">
-        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; margin-bottom:4px;">Récupérer un PC</div>
-        <p style="margin:0 0 10px; font-size:12px; color:#857C70; line-height:1.5;">Colle un <b>code de sauvegarde</b> (commençant par <code>PCBOX1:</code>) pour retrouver une boîte déjà créée.</p>
-        <textarea onInput="{{ onLoadInput }}" value="{{ loadInput }}" placeholder="PCBOX1:eyJvd25lciI6..." style="width:100%; height:60px; resize:vertical; padding:9px 10px; border:1px solid rgba(232,210,190,.18); border-radius:9px; font-family:ui-monospace,monospace; font-size:11.5px; color:#CFC7BC; background:#19120E; line-height:1.4;"></textarea>
-        <div style="display:flex; gap:8px; margin-top:9px;">
-          <button onClick="{{ loadCard }}" style="flex:1; padding:9px 12px; border:none; border-radius:9px; background:#C25C3A; color:#fff; font:inherit; font-weight:700; font-size:13px; cursor:pointer;">Charger le PC</button>
-          <button onClick="{{ resetCard }}" style="padding:9px 12px; border:1px solid rgba(232,210,190,.18); border-radius:9px; background:#19120E; color:#B4ABA0; font:inherit; font-weight:600; font-size:13px; cursor:pointer;">Boîte d'exemple</button>
-        </div>
-      </div>
+                input:focus, select:focus, textarea:focus {
+                    border-color: #C25C3A !important;
+                    box-shadow: 0 0 0 3px rgba(194,92,58,.22);
+                }
+            </style>
+        </helmet>
 
-      <!-- BOX SETTINGS -->
-      <div style="background:#241F1B; border:1px solid rgba(232,210,190,.12); border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(20,24,40,.3);">
-        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; margin-bottom:13px;">Réglages de la boîte</div>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:11px; margin-bottom:13px;">
-          <div>
-            <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:5px;">Dresseur</label>
-            <input value="{{ owner }}" onChange="{{ onOwner }}" style="width:100%; padding:8px 10px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-          </div>
-          <div>
-            <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:5px;">Nom de la boîte</label>
-            <input value="{{ boxName }}" onChange="{{ onBoxName }}" style="width:100%; padding:8px 10px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-          </div>
-        </div>
-        <div style="margin-bottom:13px;">
-          <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Sprite libre — URL de l'image</label>
-          <input value="{{ motisma }}" onChange="{{ onMotisma }}" placeholder="https://...  (apparaît dans l'en-tête)" style="width:100%; padding:8px 10px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:12px; background:#19120E; color:#CFC7BC;">
-        </div>
-      </div>
+        <div style="font-family:'Manrope',system-ui,sans-serif; color:#26221D; min-height:100vh; padding:26px 26px 80px;">
 
-      <!-- BOX GRID + SLOT EDITOR -->
-      <div style="background:#241F1B; border:1px solid rgba(232,210,190,.12); border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(20,24,40,.3);">
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
-          <span style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px;">La boîte</span>
-          <span style="font-size:12px; color:#857C70; font-weight:600;">{{ total }} / 30</span>
-        </div>
-
-        <div style="display:grid; grid-template-columns:repeat(6,1fr); gap:7px;">
-          <sc-for list="{{ slots }}" as="s" hint-placeholder-count="30">
-            <button onClick="{{ s.select }}" style="aspect-ratio:1; padding:0; border-radius:9px; border:{{ s.border }}; background:{{ s.tileBg }}; box-shadow:{{ s.ring }}; cursor:pointer; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;">
-              <sc-if value="{{ s.hasSprite }}" hint-placeholder-val="{{ false }}">
-                <img src="{{ s.sprite }}" alt="" style="max-width:100%; max-height:100%; object-fit:contain; image-rendering:pixelated;">
-              </sc-if>
-              <sc-if value="{{ s.showInitial }}" hint-placeholder-val="{{ false }}">
-                <span style="font-family:'Outfit',sans-serif; font-weight:800; font-size:15px; color:#B7C0CC;">{{ s.initial }}</span>
-              </sc-if>
-              <sc-if value="{{ s.empty }}" hint-placeholder-val="{{ true }}">
-                <span style="font-size:17px; color:#6E665C; font-weight:300;">+</span>
-              </sc-if>
-              <sc-if value="{{ s.filled }}" hint-placeholder-val="{{ false }}">
-                <span style="position:absolute; bottom:2px; left:2px; width:13px; height:13px; border-radius:50%; background:{{ s.ballTop }}; border:1.5px solid #1A1A1A;"></span>
-              </sc-if>
-            </button>
-          </sc-for>
-        </div>
-
-        <!-- slot editor -->
-        <div style="margin-top:14px;">
-          <sc-if value="{{ selNone }}" hint-placeholder-val="{{ true }}">
-            <div style="padding:16px; border:1.5px dashed #D7DCE3; border-radius:11px; text-align:center; font-size:12.5px; color:#857C70;">Clique un emplacement de la boîte pour l'éditer.</div>
-          </sc-if>
-
-          <sc-if value="{{ selEmpty }}" hint-placeholder-val="{{ false }}">
-            <div style="padding:16px; border:1.5px dashed rgba(232,210,190,.22); border-radius:11px; background:#19120E; text-align:center;">
-              <div style="font-size:12.5px; color:#9C9488; margin-bottom:10px;">Emplacement {{ selNum }} — vide</div>
-              <button onClick="{{ addHere }}" style="padding:9px 16px; border:none; border-radius:9px; background:{{ theme }}; color:#fff; font:inherit; font-weight:700; font-size:13px; cursor:pointer;">+ Placer un Pokémon ici</button>
-            </div>
-          </sc-if>
-
-          <sc-if value="{{ selFilled }}" hint-placeholder-val="{{ false }}">
-            <div style="border:1px solid rgba(232,210,190,.12); border-radius:11px; padding:13px; background:#201C18;">
-              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:11px;">
-                <span style="font-family:'Outfit',sans-serif; font-weight:700; font-size:13.5px; color:{{ theme }};">Emplacement {{ selNum }}</span>
-                <button onClick="{{ clearHere }}" style="padding:5px 11px; border:1px solid rgba(214,54,90,.4); border-radius:8px; background:rgba(214,54,90,.14); color:#D6365A; font:inherit; font-weight:600; font-size:12px; cursor:pointer;">Vider</button>
-              </div>
-
-              <div style="display:flex; flex-direction:column; gap:11px;">
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px;">
-                  <div>
-                    <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Surnom</label>
-                    <input value="{{ mon.nickname }}" onChange="{{ mon.on.nickname }}" placeholder="Surnom" style="width:100%; padding:7px 9px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-                  </div>
-                  <div>
-                    <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Espèce</label>
-                    <input value="{{ mon.species }}" onChange="{{ mon.on.species }}" placeholder="Espèce" style="width:100%; padding:7px 9px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-                  </div>
+            <div style="max-width:1180px; margin:0 auto 22px; display:flex; align-items:center; gap:14px;">
+                <div style="width:38px; height:38px; border-radius:8px; background:{{ theme }}; border:3px solid #fff; box-shadow:0 0 0 2px rgba(0,0,0,.12); display:flex; align-items:center; justify-content:center;">
+                    <div style="width:14px; height:14px; border-radius:50%; background:radial-gradient(circle at 32% 28%, #F0C4A8, #B0492B 72%); border:2px solid #fff;"></div>
                 </div>
-
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px;">
-                  <div>
-                    <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Type 1</label>
-                    <select value="{{ mon.type0 }}" onChange="{{ mon.on.type0 }}" style="width:100%; padding:7px 9px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-                      <sc-for list="{{ typeOptions }}" as="o" hint-placeholder-count="18"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
-                    </select>
-                  </div>
-                  <div>
-                    <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Type 2</label>
-                    <select value="{{ mon.type1 }}" onChange="{{ mon.on.type1 }}" style="width:100%; padding:7px 9px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-                      <sc-for list="{{ type2Options }}" as="o" hint-placeholder-count="19"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
-                    </select>
-                  </div>
-                </div>
-
-                <div style="display:grid; grid-template-columns:80px 1fr 1.2fr; gap:9px;">
-                  <div>
-                    <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Niveau</label>
-                    <input type="number" min="1" max="100" value="{{ mon.level }}" onChange="{{ mon.on.level }}" style="width:100%; padding:7px 9px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-                  </div>
-                  <div>
-                    <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Genre</label>
-                    <select value="{{ mon.gender }}" onChange="{{ mon.on.gender }}" style="width:100%; padding:7px 9px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-                      <sc-for list="{{ genderOptions }}" as="o" hint-placeholder-count="3"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
-                    </select>
-                  </div>
-                  <div>
-                    <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Poké Ball</label>
-                    <select value="{{ mon.ball }}" onChange="{{ mon.on.ball }}" style="width:100%; padding:7px 9px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-                      <sc-for list="{{ ballOptions }}" as="o" hint-placeholder-count="12"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
-                    </select>
-                  </div>
-                </div>
-
                 <div>
-                  <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">URL de l'image (sprite)</label>
-                  <input value="{{ mon.sprite }}" onChange="{{ mon.on.sprite }}" placeholder="https://...  (laisse vide pour un cadre)" style="width:100%; padding:7px 9px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:12px; background:#19120E; color:#CFC7BC;">
+                    <div style="font-family:'Outfit',sans-serif; font-size:24px; font-weight:800; line-height:1;">Éditeur de PC</div>
+                    <div style="font-size:13px; color:#6F675C; margin-top:4px;">Range ton équipe dans la boîte, récupère un ancien PC, puis exporte le code forum.</div>
                 </div>
-              </div>
             </div>
-          </sc-if>
+
+            <div style="max-width:1180px; margin:0 auto; display:grid; grid-template-columns:minmax(0,440px) minmax(0,1fr); gap:26px; align-items:start;">
+
+                <!-- ============ LEFT : FORM ============ -->
+                <div style="display:flex; flex-direction:column; gap:16px; min-width:0;">
+
+                    <!-- RECOVER -->
+                    <div style="background:#FFFFFF; border:1px solid #E7E2DA; border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(45,38,30,.13);">
+                        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; margin-bottom:4px;">Récupérer un PC</div>
+                        <p style="margin:0 0 10px; font-size:12px; color:#8A8276; line-height:1.5;">Colle ici le <b>HTML</b> d'un PC déjà posté : les données y sont intégrées, la boîte est retrouvée automatiquement.</p>
+                        <textarea onInput="{{ onLoadInput }}" value="{{ loadInput }}" placeholder="Colle ici le HTML de ton PC…" style="width:100%; height:60px; resize:vertical; padding:9px 10px; border:1px solid #DED8CE; border-radius:9px; font-family:ui-monospace,monospace; font-size:11.5px; color:#4E483F; background:#F7F4EF; line-height:1.4;"></textarea>
+                        <div style="display:flex; gap:8px; margin-top:9px;">
+                            <button onClick="{{ loadCard }}" style="flex:1; padding:9px 12px; border:none; border-radius:9px; background:#C25C3A; color:#fff; font:inherit; font-weight:700; font-size:13px; cursor:pointer;">Charger le PC</button>
+                            <button onClick="{{ resetCard }}" style="padding:9px 12px; border:1px solid #DED8CE; border-radius:9px; background:#F7F4EF; color:#5A5349; font:inherit; font-weight:600; font-size:13px; cursor:pointer;">Boîte d'exemple</button>
+                        </div>
+                    </div>
+
+                    <!-- BOX SETTINGS -->
+                    <div style="background:#FFFFFF; border:1px solid #E7E2DA; border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(45,38,30,.13);">
+                        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; margin-bottom:13px;">Réglages de la boîte</div>
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:11px; margin-bottom:13px;">
+                            <div>
+                                <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:5px;">Dresseur</label>
+                                <input value="{{ owner }}" onChange="{{ onOwner }}" style="width:100%; padding:8px 10px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                            </div>
+                            <div>
+                                <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:5px;">Nom de la boîte</label>
+                                <input value="{{ boxName }}" onChange="{{ onBoxName }}" style="width:100%; padding:8px 10px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                            </div>
+                        </div>
+                        <div style="margin-bottom:13px;">
+                            <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Sprite Motisma — URL de l'image</label>
+                            <input value="{{ motisma }}" onChange="{{ onMotisma }}" placeholder="https://...  (apparaît dans l'en-tête)" style="width:100%; padding:8px 10px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:12px; background:#F7F4EF; color:#4E483F;">
+                        </div>
+                        <div style="font-size:11px; color:#8A8276; line-height:1.5;">Couleurs fixées par le thème du forum.</div>
+                    </div>
+
+                    <!-- BOX GRID + SLOT EDITOR -->
+                    <div style="background:#FFFFFF; border:1px solid #E7E2DA; border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(45,38,30,.13);">
+                        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+                            <span style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px;">La boîte</span>
+                            <span style="font-size:12px; color:#8A8276; font-weight:600;">{{ total }} / 30</span>
+                        </div>
+
+                        <div style="display:grid; grid-template-columns:repeat(6,1fr); gap:7px;">
+                            <sc-for list="{{ slots }}" as="s" hint-placeholder-count="30">
+                                <button onClick="{{ s.select }}" style="aspect-ratio:1; padding:0; border-radius:9px; border:{{ s.border }}; background:{{ s.tileBg }}; box-shadow:{{ s.ring }}; cursor:pointer; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+                                    <sc-if value="{{ s.hasSprite }}" hint-placeholder-val="{{ false }}">
+                                        <img src="{{ s.sprite }}" alt="" style="max-width:100%; max-height:100%; object-fit:contain; image-rendering:pixelated;">
+                                    </sc-if>
+                                    <sc-if value="{{ s.showInitial }}" hint-placeholder-val="{{ false }}">
+                                        <span style="font-family:'Outfit',sans-serif; font-weight:800; font-size:15px; color:#A69E92;">{{ s.initial }}</span>
+                                    </sc-if>
+                                    <sc-if value="{{ s.empty }}" hint-placeholder-val="{{ true }}">
+                                        <span style="font-size:17px; color:#A89F93; font-weight:300;">+</span>
+                                    </sc-if>
+                                    <sc-if value="{{ s.filled }}" hint-placeholder-val="{{ false }}">
+                                        <span style="position:absolute; bottom:2px; left:2px; width:13px; height:13px; border-radius:50%; background:{{ s.ballTop }}; border:1.5px solid #1A1A1A;"></span>
+                                    </sc-if>
+                                </button>
+                            </sc-for>
+                        </div>
+
+                        <!-- slot editor -->
+                        <div style="margin-top:14px;">
+                            <sc-if value="{{ selNone }}" hint-placeholder-val="{{ true }}">
+                                <div style="padding:16px; border:1.5px dashed #D7DCE3; border-radius:11px; text-align:center; font-size:12.5px; color:#8A8276;">Clique un emplacement de la boîte pour l'éditer.</div>
+                            </sc-if>
+
+                            <sc-if value="{{ selEmpty }}" hint-placeholder-val="{{ false }}">
+                                <div style="padding:16px; border:1.5px dashed #D8D1C6; border-radius:11px; background:#F7F4EF; text-align:center;">
+                                    <div style="font-size:12.5px; color:#6F675C; margin-bottom:10px;">Emplacement {{ selNum }} — vide</div>
+                                    <button onClick="{{ addHere }}" style="padding:9px 16px; border:none; border-radius:9px; background:{{ theme }}; color:#fff; font:inherit; font-weight:700; font-size:13px; cursor:pointer;">+ Placer un Pokémon ici</button>
+                                </div>
+                            </sc-if>
+
+                            <sc-if value="{{ selFilled }}" hint-placeholder-val="{{ false }}">
+                                <div style="border:1px solid #E7E2DA; border-radius:11px; padding:13px; background:#F6F2EC;">
+                                    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:11px;">
+                                        <span style="font-family:'Outfit',sans-serif; font-weight:700; font-size:13.5px; color:{{ theme }};">Emplacement {{ selNum }}</span>
+                                        <button onClick="{{ clearHere }}" style="padding:5px 11px; border:1px solid rgba(214,54,90,.4); border-radius:8px; background:rgba(214,54,90,.14); color:#D6365A; font:inherit; font-weight:600; font-size:12px; cursor:pointer;">Vider</button>
+                                    </div>
+
+                                    <div style="display:flex; flex-direction:column; gap:11px;">
+                                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px;">
+                                            <div>
+                                                <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Surnom</label>
+                                                <input value="{{ mon.nickname }}" onChange="{{ mon.on.nickname }}" placeholder="Surnom" style="width:100%; padding:7px 9px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                                            </div>
+                                            <div>
+                                                <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Espèce</label>
+                                                <input value="{{ mon.species }}" onChange="{{ mon.on.species }}" placeholder="Espèce" style="width:100%; padding:7px 9px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                                            </div>
+                                        </div>
+
+                                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px;">
+                                            <div>
+                                                <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Type 1</label>
+                                                <select value="{{ mon.type0 }}" onChange="{{ mon.on.type0 }}" style="width:100%; padding:7px 9px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                                                    <sc-for list="{{ typeOptions }}" as="o" hint-placeholder-count="18"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Type 2</label>
+                                                <select value="{{ mon.type1 }}" onChange="{{ mon.on.type1 }}" style="width:100%; padding:7px 9px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                                                    <sc-for list="{{ type2Options }}" as="o" hint-placeholder-count="19"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div style="display:grid; grid-template-columns:80px 1fr 1.2fr; gap:9px;">
+                                            <div>
+                                                <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Niveau</label>
+                                                <input type="number" min="1" max="100" value="{{ mon.level }}" onChange="{{ mon.on.level }}" style="width:100%; padding:7px 9px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                                            </div>
+                                            <div>
+                                                <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Genre</label>
+                                                <select value="{{ mon.gender }}" onChange="{{ mon.on.gender }}" style="width:100%; padding:7px 9px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                                                    <sc-for list="{{ genderOptions }}" as="o" hint-placeholder-count="3"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Poké Ball</label>
+                                                <select value="{{ mon.ball }}" onChange="{{ mon.on.ball }}" style="width:100%; padding:7px 9px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                                                    <sc-for list="{{ ballOptions }}" as="o" hint-placeholder-count="12"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">URL de l'image (sprite)</label>
+                                            <input value="{{ mon.sprite }}" onChange="{{ mon.on.sprite }}" placeholder="https://...  (laisse vide pour un cadre)" style="width:100%; padding:7px 9px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:12px; background:#F7F4EF; color:#4E483F;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </sc-if>
+                        </div>
+                    </div>
+
+                    <!-- EXPORT -->
+                    <div style="background:#FFFFFF; border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(45,38,30,.16);">
+                        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; color:#26221D; margin-bottom:4px;">Exporter</div>
+
+                        <div style="margin-top:12px;">
+                            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
+                                <span style="font-size:11px; letter-spacing:.5px; text-transform:uppercase; color:#8A8276; font-weight:700;">Code forum (HTML)</span>
+                                <button onClick="{{ copyForum }}" style="padding:5px 11px; border:none; border-radius:7px; background:#C25C3A; color:#fff; font:inherit; font-weight:600; font-size:12px; cursor:pointer;">Copier</button>
+                            </div>
+                            <textarea readOnly value="{{ forumCode }}" style="width:100%; height:74px; resize:vertical; padding:9px 10px; border:1px solid #E7E2DA; border-radius:9px; font-family:ui-monospace,monospace; font-size:10.5px; color:#4E483F; background:#F5F1EA; line-height:1.4;"></textarea>
+                            <p style="margin:6px 0 0; font-size:11px; color:#8A8276; line-height:1.5;">À coller dans un message de forum acceptant le HTML. Survol = nom + niveau, clic = fiche, sans script.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ============ RIGHT : PREVIEW ============ -->
+                <div style="position:sticky; top:20px; min-width:0;">
+                    <div style="font-size:11px; letter-spacing:1px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:10px;">Aperçu en direct</div>
+                    <div style="width:100%;">{{ previewNode }}</div>
+                </div>
+
+            </div>
+
+            <sc-if value="{{ toast.show }}" hint-placeholder-val="{{ false }}">
+                <div style="position:fixed; left:50%; bottom:26px; transform:translateX(-50%); background:{{ toast.bg }}; color:#fff; padding:11px 20px; border-radius:11px; font-size:13.5px; font-weight:700; box-shadow:0 12px 30px -8px rgba(0,0,0,.4); z-index:50;">{{ toast.msg }}</div>
+            </sc-if>
+
         </div>
-      </div>
+    </x-dc>
+    <script type="text/x-dc" data-dc-script>
+        class Component extends DCLogic {
+          constructor(props) {
+            super(props);
+            const T = window.TCARD;
+            this.state = {
+              data: this.normalize(T ? T.clone(T.DEFAULT_PC) : { mons: [] }),
+              sel: null,
+              loadInput: '',
+              toast: null
+            };
+          }
 
-      <!-- EXPORT -->
-      <div style="background:#15110E; border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(20,24,40,.4);">
-        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; color:#fff; margin-bottom:4px;">Exporter</div>
+          componentDidMount() {
+            if (window.TCARD) {
+              if (!this.state.data.mons.length) this.loadDefaults();
+            } else {
+              this._t = setInterval(() => {
+                if (window.TCARD) {
+                  clearInterval(this._t);
+                  if (!this.state.data.mons.length) this.loadDefaults();
+                  else this.forceUpdate();
+                }
+              }, 50);
+            }
+          }
+          componentWillUnmount() { clearInterval(this._t); clearTimeout(this._toastT); }
 
-        <div style="margin-top:12px;">
-          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
-            <span style="font-size:11px; letter-spacing:.5px; text-transform:uppercase; color:#8E867A; font-weight:700;">Code de sauvegarde</span>
-            <button onClick="{{ copySave }}" style="padding:5px 11px; border:none; border-radius:7px; background:#3A332B; color:#fff; font:inherit; font-weight:600; font-size:12px; cursor:pointer;">Copier</button>
-          </div>
-          <textarea readOnly value="{{ saveCode }}" style="width:100%; height:58px; resize:vertical; padding:9px 10px; border:1px solid rgba(232,210,190,.14); border-radius:9px; font-family:ui-monospace,monospace; font-size:11px; color:#C4BBAF; background:#100B08; line-height:1.4;"></textarea>
-          <p style="margin:6px 0 0; font-size:11px; color:#8E867A; line-height:1.5;">Garde ce code : recolle-le dans « Récupérer un PC » pour ré-éditer ta boîte plus tard.</p>
-        </div>
+          loadDefaults() { this.setState({ data: this.normalize(window.TCARD.clone(window.TCARD.DEFAULT_PC)) }); }
 
-        <div style="margin-top:16px;">
-          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
-            <span style="font-size:11px; letter-spacing:.5px; text-transform:uppercase; color:#8E867A; font-weight:700;">Code forum (HTML)</span>
-            <button onClick="{{ copyForum }}" style="padding:5px 11px; border:none; border-radius:7px; background:#C25C3A; color:#fff; font:inherit; font-weight:600; font-size:12px; cursor:pointer;">Copier</button>
-          </div>
-          <textarea readOnly value="{{ forumCode }}" style="width:100%; height:74px; resize:vertical; padding:9px 10px; border:1px solid rgba(232,210,190,.14); border-radius:9px; font-family:ui-monospace,monospace; font-size:10.5px; color:#C4BBAF; background:#100B08; line-height:1.4;"></textarea>
-        </div>
-      </div>
+          normMon(m) {
+            if (!m) return null;
+            const out = Object.assign({ sprite: '', nickname: '', species: 'Pokémon', level: 5, types: ['Normal'], ball: 'Poké Ball', gender: '♂' }, m);
+            out.types = (Array.isArray(out.types) ? out.types : ['Normal']).filter(Boolean).slice(0, 2);
+            if (!out.types.length) out.types = ['Normal'];
+            out.level = out.level != null ? out.level : 1;
+            out.gender = out.gender || '♂';
+            out.ball = out.ball || 'Poké Ball';
+            out.sprite = out.sprite || '';
+            return out;
+          }
+          normalize(d) {
+            d = d || {};
+            const src = Array.isArray(d.mons) ? d.mons : [];
+            const mons = [];
+            for (let i = 0; i < 30; i++) mons.push(this.normMon(src[i]));
+            return {
+              owner: d.owner != null ? d.owner : 'Dresseur',
+              boxName: d.boxName != null ? d.boxName : 'Boîte 1',
+              theme: d.theme || '#C25C3A',
+              motisma: d.motisma || 'https://i.imgur.com/4GXlWf5.png',
+              mons
+            };
+          }
 
-    </div>
+          showToast(msg, ok) {
+            clearTimeout(this._toastT);
+            this.setState({ toast: { show: true, msg, bg: ok ? '#16A34A' : '#DC2626' } });
+            this._toastT = setTimeout(() => this.setState({ toast: null }), 2400);
+          }
 
-    <!-- ============ RIGHT : PREVIEW ============ -->
-    <div style="position:sticky; top:20px; min-width:0;">
-      <div style="font-size:11px; letter-spacing:1px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:10px;">Aperçu en direct</div>
-      <div style="width:100%;">{{ previewNode }}</div>
-    </div>
+          setTop(field, val) { this.setState(s => ({ data: Object.assign({}, s.data, { [field]: val }) })); }
+          setMon(i, field, val) {
+            this.setState(s => ({
+              data: Object.assign({}, s.data, {
+                mons: s.data.mons.map((m, idx) => (idx !== i || !m) ? m : Object.assign({}, m, { [field]: val }))
+              })
+            }));
+          }
+          setMonType(i, ti, val) {
+            this.setState(s => ({
+              data: Object.assign({}, s.data, {
+                mons: s.data.mons.map((m, idx) => {
+                  if (idx !== i || !m) return m;
+                  const t0 = ti === 0 ? val : (m.types[0] || 'Normal');
+                  const t1 = ti === 1 ? val : (m.types[1] || '');
+                  const arr = [t0 || 'Normal'];
+                  if (t1) arr.push(t1);
+                  return Object.assign({}, m, { types: arr });
+                })
+              })
+            }));
+          }
+          toInt(v) { const n = parseInt(v, 10); return isNaN(n) ? 0 : n; }
 
-  </div>
+          onOwner = (e) => this.setTop('owner', e.target.value);
+          onBoxName = (e) => this.setTop('boxName', e.target.value);
+          onTheme = (e) => this.setTop('theme', e.target.value);
+          onMotisma = (e) => this.setTop('motisma', e.target.value);
+          onLoadInput = (e) => this.setState({ loadInput: e.target.value });
 
-  <sc-if value="{{ toast.show }}" hint-placeholder-val="{{ false }}">
-    <div style="position:fixed; left:50%; bottom:26px; transform:translateX(-50%); background:{{ toast.bg }}; color:#fff; padding:11px 20px; border-radius:11px; font-size:13.5px; font-weight:700; box-shadow:0 12px 30px -8px rgba(0,0,0,.4); z-index:50;">{{ toast.msg }}</div>
-  </sc-if>
+          addHere = () => {
+            const T = window.TCARD; if (!T) return;
+            const i = this.state.sel; if (i == null) return;
+            this.setState(s => ({ data: Object.assign({}, s.data, { mons: s.data.mons.map((m, idx) => idx === i ? T.blankMon() : m) }) }));
+          };
+          clearHere = () => {
+            const i = this.state.sel; if (i == null) return;
+            this.setState(s => ({ data: Object.assign({}, s.data, { mons: s.data.mons.map((m, idx) => idx === i ? null : m) }) }));
+          };
 
-</div>
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  constructor(props) {
-    super(props);
-    const T = window.TCARD;
-    this.state = {
-      data: this.normalize(T ? T.clone(T.DEFAULT_PC) : { mons: [] }),
-      sel: null,
-      loadInput: '',
-      toast: null
-    };
-  }
+          loadCard = () => {
+            const T = window.TCARD; if (!T) return;
+            try {
+              const data = this.normalize(T.decodePC(this.state.loadInput));
+              this.setState({ data, sel: null });
+              this.showToast('PC chargé ✓', true);
+            } catch (err) { this.showToast('Code invalide', false); }
+          };
+          resetCard = () => {
+            const T = window.TCARD; if (!T) return;
+            this.setState({ data: this.normalize(T.clone(T.DEFAULT_PC)), sel: null, loadInput: '' });
+            this.showToast('Boîte d\'exemple chargée', true);
+          };
 
-  componentDidMount() {
-    if (window.TCARD) {
-      if (!this.state.data.mons.length) this.loadDefaults();
-    } else {
-      this._t = setInterval(() => {
-        if (window.TCARD) {
-          clearInterval(this._t);
-          if (!this.state.data.mons.length) this.loadDefaults();
-          else this.forceUpdate();
+          copy(text, label) {
+            const done = () => this.showToast(label + ' copié ✓', true);
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, () => this.fallbackCopy(text, done));
+            } else { this.fallbackCopy(text, done); }
+          }
+          fallbackCopy(text, done) {
+            const ta = document.createElement('textarea');
+            ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+            document.body.appendChild(ta); ta.select();
+            try { document.execCommand('copy'); done(); } catch (e) {}
+            document.body.removeChild(ta);
+          }
+
+          renderVals() {
+            const T = window.TCARD || {};
+            const ballColors = T.ballColors || (() => ({ top: '#CCC' }));
+            const d = this.state.data;
+            const theme = d.theme || '#C25C3A';
+            const sel = this.state.sel;
+
+            const typeOptions = (T.TYPE_LIST || []).map(t => ({ v: t, label: t }));
+            const type2Options = [{ v: '', label: '— Aucun —' }].concat(typeOptions);
+            const ballOptions = (T.BALL_LIST || []).map(b => ({ v: b, label: b }));
+            const genderOptions = [
+              { v: '♂', label: '♂ Mâle' }, { v: '♀', label: '♀ Femelle' }, { v: '⚲', label: '⚲ Inconnu' }
+            ];
+            const themeSwatches = (T.THEMES || []).map(hex => ({
+              hex,
+              border: hex.toLowerCase() === theme.toLowerCase() ? '3px solid #26221D' : '2px solid #D8D1C6',
+              set: () => this.setTop('theme', hex)
+            }));
+
+            const slots = d.mons.map((p, i) => ({
+              index: i,
+              filled: !!p,
+              empty: !p,
+              hasSprite: !!(p && p.sprite),
+              showInitial: !!(p && !p.sprite),
+              sprite: p ? p.sprite : '',
+              initial: p ? (p.species || '?').charAt(0) : '',
+              ballTop: p ? ballColors(p.ball).top : '#ccc',
+              tileBg: p ? '#FFFFFF' : '#F7F4EF',
+              border: p ? '1px solid #E7E2DA' : '1px dashed #DED8CE',
+              ring: sel === i ? ('0 0 0 3px ' + theme) : 'none',
+              select: () => this.setState({ sel: i })
+            }));
+
+            const selMon = sel != null ? d.mons[sel] : null;
+            let mon = null;
+            if (selMon) {
+              const i = sel;
+              mon = {
+                nickname: selMon.nickname || '',
+                species: selMon.species || '',
+                type0: selMon.types[0] || 'Normal',
+                type1: selMon.types[1] || '',
+                level: selMon.level,
+                gender: selMon.gender || '♂',
+                ball: selMon.ball || 'Poké Ball',
+                sprite: selMon.sprite || '',
+                on: {
+                  nickname: (e) => this.setMon(i, 'nickname', e.target.value),
+                  species: (e) => this.setMon(i, 'species', e.target.value),
+                  level: (e) => this.setMon(i, 'level', this.toInt(e.target.value)),
+                  gender: (e) => this.setMon(i, 'gender', e.target.value),
+                  ball: (e) => this.setMon(i, 'ball', e.target.value),
+                  sprite: (e) => this.setMon(i, 'sprite', e.target.value),
+                  type0: (e) => this.setMonType(i, 0, e.target.value),
+                  type1: (e) => this.setMonType(i, 1, e.target.value)
+                }
+              };
+            }
+
+            let saveCode = '', forumCode = '', previewNode = null;
+            try { if (T.encodePC) saveCode = T.encodePC(d); } catch (e) {}
+            try { if (T.buildPcForumHTML) forumCode = T.buildPcForumHTML(d); } catch (e) {}
+            try { if (T.buildPcForumHTML) previewNode = React.createElement('div', { dangerouslySetInnerHTML: { __html: T.buildPcForumHTML(d) } }); } catch (e) {}
+
+            return {
+              owner: d.owner != null ? d.owner : '',
+              boxName: d.boxName != null ? d.boxName : '',
+              theme,
+              motisma: d.motisma || 'https://i.imgur.com/4GXlWf5.png',
+              total: d.mons.filter(Boolean).length,
+              slots,
+              selNone: sel == null,
+              selEmpty: sel != null && !selMon,
+              selFilled: sel != null && !!selMon,
+              selNum: sel != null ? sel + 1 : '',
+              mon: mon || { nickname: '', species: '', type0: 'Normal', type1: '', level: 1, gender: '♂', ball: 'Poké Ball', sprite: '', on: {} },
+              typeOptions, type2Options, ballOptions, genderOptions, themeSwatches,
+              loadInput: this.state.loadInput,
+              saveCode, forumCode, previewNode,
+              toast: this.state.toast || { show: false, msg: '', bg: '#16A34A' },
+              onOwner: this.onOwner, onBoxName: this.onBoxName, onTheme: this.onTheme, onMotisma: this.onMotisma,
+              onLoadInput: this.onLoadInput, loadCard: this.loadCard, resetCard: this.resetCard,
+              addHere: this.addHere, clearHere: this.clearHere,
+              copyForum: () => this.copy(forumCode, 'Code forum')
+            };
+          }
         }
-      }, 50);
-    }
-  }
-  componentWillUnmount() { clearInterval(this._t); clearTimeout(this._toastT); }
-
-  loadDefaults() { this.setState({ data: this.normalize(window.TCARD.clone(window.TCARD.DEFAULT_PC)) }); }
-
-  normMon(m) {
-    if (!m) return null;
-    const out = Object.assign({ sprite: '', nickname: '', species: 'Pokémon', level: 5, types: ['Normal'], ball: 'Poké Ball', gender: '♂' }, m);
-    out.types = (Array.isArray(out.types) ? out.types : ['Normal']).filter(Boolean).slice(0, 2);
-    if (!out.types.length) out.types = ['Normal'];
-    out.level = out.level != null ? out.level : 1;
-    out.gender = out.gender || '♂';
-    out.ball = out.ball || 'Poké Ball';
-    out.sprite = out.sprite || '';
-    return out;
-  }
-  normalize(d) {
-    d = d || {};
-    const src = Array.isArray(d.mons) ? d.mons : [];
-    const mons = [];
-    for (let i = 0; i < 30; i++) mons.push(this.normMon(src[i]));
-    return {
-      owner: d.owner != null ? d.owner : 'Dresseur',
-      boxName: d.boxName != null ? d.boxName : 'Boîte 1',
-      theme: d.theme || '#C25C3A',
-      motisma: d.motisma || 'https://i.imgur.com/4GXlWf5.png',
-      mons
-    };
-  }
-
-  showToast(msg, ok) {
-    clearTimeout(this._toastT);
-    this.setState({ toast: { show: true, msg, bg: ok ? '#16A34A' : '#DC2626' } });
-    this._toastT = setTimeout(() => this.setState({ toast: null }), 2400);
-  }
-
-  setTop(field, val) { this.setState(s => ({ data: Object.assign({}, s.data, { [field]: val }) })); }
-  setMon(i, field, val) {
-    this.setState(s => ({
-      data: Object.assign({}, s.data, {
-        mons: s.data.mons.map((m, idx) => (idx !== i || !m) ? m : Object.assign({}, m, { [field]: val }))
-      })
-    }));
-  }
-  setMonType(i, ti, val) {
-    this.setState(s => ({
-      data: Object.assign({}, s.data, {
-        mons: s.data.mons.map((m, idx) => {
-          if (idx !== i || !m) return m;
-          const t0 = ti === 0 ? val : (m.types[0] || 'Normal');
-          const t1 = ti === 1 ? val : (m.types[1] || '');
-          const arr = [t0 || 'Normal'];
-          if (t1) arr.push(t1);
-          return Object.assign({}, m, { types: arr });
-        })
-      })
-    }));
-  }
-  toInt(v) { const n = parseInt(v, 10); return isNaN(n) ? 0 : n; }
-
-  onOwner = (e) => this.setTop('owner', e.target.value);
-  onBoxName = (e) => this.setTop('boxName', e.target.value);
-  onTheme = (e) => this.setTop('theme', e.target.value);
-  onMotisma = (e) => this.setTop('motisma', e.target.value);
-  onLoadInput = (e) => this.setState({ loadInput: e.target.value });
-
-  addHere = () => {
-    const T = window.TCARD; if (!T) return;
-    const i = this.state.sel; if (i == null) return;
-    this.setState(s => ({ data: Object.assign({}, s.data, { mons: s.data.mons.map((m, idx) => idx === i ? T.blankMon() : m) }) }));
-  };
-  clearHere = () => {
-    const i = this.state.sel; if (i == null) return;
-    this.setState(s => ({ data: Object.assign({}, s.data, { mons: s.data.mons.map((m, idx) => idx === i ? null : m) }) }));
-  };
-
-  loadCard = () => {
-    const T = window.TCARD; if (!T) return;
-    try {
-      const data = this.normalize(T.decodePC(this.state.loadInput));
-      this.setState({ data, sel: null });
-      this.showToast('PC chargé ✓', true);
-    } catch (err) { this.showToast('Code invalide', false); }
-  };
-  resetCard = () => {
-    const T = window.TCARD; if (!T) return;
-    this.setState({ data: this.normalize(T.clone(T.DEFAULT_PC)), sel: null, loadInput: '' });
-    this.showToast('Boîte d\'exemple chargée', true);
-  };
-
-  copy(text, label) {
-    const done = () => this.showToast(label + ' copié ✓', true);
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(done, () => this.fallbackCopy(text, done));
-    } else { this.fallbackCopy(text, done); }
-  }
-  fallbackCopy(text, done) {
-    const ta = document.createElement('textarea');
-    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-    document.body.appendChild(ta); ta.select();
-    try { document.execCommand('copy'); done(); } catch (e) {}
-    document.body.removeChild(ta);
-  }
-
-  renderVals() {
-    const T = window.TCARD || {};
-    const ballColors = T.ballColors || (() => ({ top: '#CCC' }));
-    const d = this.state.data;
-    const theme = d.theme || '#C25C3A';
-    const sel = this.state.sel;
-
-    const typeOptions = (T.TYPE_LIST || []).map(t => ({ v: t, label: t }));
-    const type2Options = [{ v: '', label: '— Aucun —' }].concat(typeOptions);
-    const ballOptions = (T.BALL_LIST || []).map(b => ({ v: b, label: b }));
-    const genderOptions = [
-      { v: '♂', label: '♂ Mâle' }, { v: '♀', label: '♀ Femelle' }, { v: '⚲', label: '⚲ Inconnu' }
-    ];
-    const themeSwatches = (T.THEMES || []).map(hex => ({
-      hex,
-      border: hex.toLowerCase() === theme.toLowerCase() ? '3px solid #ECE5DC' : '2px solid rgba(232,210,190,.25)',
-      set: () => this.setTop('theme', hex)
-    }));
-
-    const slots = d.mons.map((p, i) => ({
-      index: i,
-      filled: !!p,
-      empty: !p,
-      hasSprite: !!(p && p.sprite),
-      showInitial: !!(p && !p.sprite),
-      sprite: p ? p.sprite : '',
-      initial: p ? (p.species || '?').charAt(0) : '',
-      ballTop: p ? ballColors(p.ball).top : '#ccc',
-      tileBg: p ? '#241F1B' : '#19120E',
-      border: p ? '1px solid rgba(232,210,190,.14)' : '1px dashed rgba(232,210,190,.18)',
-      ring: sel === i ? ('0 0 0 3px ' + theme) : 'none',
-      select: () => this.setState({ sel: i })
-    }));
-
-    const selMon = sel != null ? d.mons[sel] : null;
-    let mon = null;
-    if (selMon) {
-      const i = sel;
-      mon = {
-        nickname: selMon.nickname || '',
-        species: selMon.species || '',
-        type0: selMon.types[0] || 'Normal',
-        type1: selMon.types[1] || '',
-        level: selMon.level,
-        gender: selMon.gender || '♂',
-        ball: selMon.ball || 'Poké Ball',
-        sprite: selMon.sprite || '',
-        on: {
-          nickname: (e) => this.setMon(i, 'nickname', e.target.value),
-          species: (e) => this.setMon(i, 'species', e.target.value),
-          level: (e) => this.setMon(i, 'level', this.toInt(e.target.value)),
-          gender: (e) => this.setMon(i, 'gender', e.target.value),
-          ball: (e) => this.setMon(i, 'ball', e.target.value),
-          sprite: (e) => this.setMon(i, 'sprite', e.target.value),
-          type0: (e) => this.setMonType(i, 0, e.target.value),
-          type1: (e) => this.setMonType(i, 1, e.target.value)
-        }
-      };
-    }
-
-    let saveCode = '', forumCode = '', previewNode = null;
-    try { if (T.encodePC) saveCode = T.encodePC(d); } catch (e) {}
-    try { if (T.buildPcForumHTML) forumCode = T.buildPcForumHTML(d); } catch (e) {}
-    try { if (T.buildPcForumHTML) previewNode = React.createElement('div', { dangerouslySetInnerHTML: { __html: T.buildPcForumHTML(d) } }); } catch (e) {}
-
-    return {
-      owner: d.owner != null ? d.owner : '',
-      boxName: d.boxName != null ? d.boxName : '',
-      theme,
-      motisma: d.motisma || 'https://i.imgur.com/4GXlWf5.png',
-      total: d.mons.filter(Boolean).length,
-      slots,
-      selNone: sel == null,
-      selEmpty: sel != null && !selMon,
-      selFilled: sel != null && !!selMon,
-      selNum: sel != null ? sel + 1 : '',
-      mon: mon || { nickname: '', species: '', type0: 'Normal', type1: '', level: 1, gender: '♂', ball: 'Poké Ball', sprite: '', on: {} },
-      typeOptions, type2Options, ballOptions, genderOptions, themeSwatches,
-      loadInput: this.state.loadInput,
-      saveCode, forumCode, previewNode,
-      toast: this.state.toast || { show: false, msg: '', bg: '#16A34A' },
-      onOwner: this.onOwner, onBoxName: this.onBoxName, onTheme: this.onTheme, onMotisma: this.onMotisma,
-      onLoadInput: this.onLoadInput, loadCard: this.loadCard, resetCard: this.resetCard,
-      addHere: this.addHere, clearHere: this.clearHere,
-      copySave: () => this.copy(saveCode, 'Code de sauvegarde'),
-      copyForum: () => this.copy(forumCode, 'Code forum')
-    };
-  }
-}
-</script>
+    </script>
 </body>
 </html>

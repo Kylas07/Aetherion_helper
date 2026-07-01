@@ -1,415 +1,425 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-<script src="./tcard-data.js"></script>
-<template id="__bundler_thumbnail" data-bg-color="#EDF0F5">
-  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-    <rect width="1200" height="800" fill="#EDF0F5"/>
-    <rect x="300" y="150" width="600" height="500" rx="30" fill="#ffffff" stroke="#E2E6EC" stroke-width="3"/>
-    <rect x="300" y="150" width="600" height="92" rx="30" fill="#C25C3A"/>
-    <rect x="300" y="200" width="600" height="42" fill="#C25C3A"/>
-    <circle cx="355" cy="196" r="22" fill="#fff"/><circle cx="355" cy="196" r="13" fill="#2A75BB"/>
-    <rect x="340" y="290" width="200" height="280" rx="14" fill="#F1F3F7" stroke="#E2E6EC" stroke-width="2"/>
-    <circle cx="440" cy="395" r="46" fill="#D7DEE8"/>
-    <path d="M380 520c0-33 27-60 60-60s60 27 60 60Z" fill="#D7DEE8"/>
-    <g fill="#E7EBF1">
-      <rect x="575" y="300" width="285" height="26" rx="13"/>
-      <rect x="575" y="348" width="220" height="20" rx="10"/>
-      <rect x="575" y="400" width="80" height="34" rx="17" fill="#F0D9DD"/>
-      <rect x="668" y="400" width="80" height="34" rx="17" fill="#DCE7F5"/>
-      <rect x="761" y="400" width="80" height="34" rx="17" fill="#F4E7CF"/>
-      <rect x="575" y="460" width="285" height="18" rx="9"/>
-      <rect x="575" y="494" width="240" height="18" rx="9"/>
-    </g>
-  </svg>
-</template>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./support.js"></script>
+    <script src="./tcard-data.js"></script>
+    <template id="__bundler_thumbnail" data-bg-color="#EDF0F5">
+        <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+            <rect width="1200" height="800" fill="#EDF0F5" />
+            <rect x="300" y="150" width="600" height="500" rx="30" fill="#ffffff" stroke="#E2E6EC" stroke-width="3" />
+            <rect x="300" y="150" width="600" height="92" rx="30" fill="#C25C3A" />
+            <rect x="300" y="200" width="600" height="42" fill="#C25C3A" />
+            <circle cx="355" cy="196" r="22" fill="#fff" />
+            <circle cx="355" cy="196" r="13" fill="#2A75BB" />
+            <rect x="340" y="290" width="200" height="280" rx="14" fill="#F1F3F7" stroke="#E2E6EC" stroke-width="2" />
+            <circle cx="440" cy="395" r="46" fill="#D7DEE8" />
+            <path d="M380 520c0-33 27-60 60-60s60 27 60 60Z" fill="#D7DEE8" />
+            <g fill="#E7EBF1">
+                <rect x="575" y="300" width="285" height="26" rx="13" />
+                <rect x="575" y="348" width="220" height="20" rx="10" />
+                <rect x="575" y="400" width="80" height="34" rx="17" fill="#F0D9DD" />
+                <rect x="668" y="400" width="80" height="34" rx="17" fill="#DCE7F5" />
+                <rect x="761" y="400" width="80" height="34" rx="17" fill="#F4E7CF" />
+                <rect x="575" y="460" width="285" height="18" rx="9" />
+                <rect x="575" y="494" width="240" height="18" rx="9" />
+            </g>
+        </svg>
+    </template>
 </head>
 <body>
-<x-dc>
-<helmet>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; background: #1A1613; }
-    textarea, input, select { outline: none; color: #ECE5DC; }
-    select option { color: #ECE5DC; background: #241F1B; }
-    ::placeholder { color: #6E665C; opacity: 1; }
-    input:focus, select:focus, textarea:focus { border-color: #C25C3A !important; box-shadow: 0 0 0 3px rgba(194,92,58,.22); }
-  </style>
-</helmet>
+    <x-dc>
+        <helmet>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+            <style>
+                * {
+                    box-sizing: border-box;
+                }
 
-<div style="font-family:'Manrope',system-ui,sans-serif; color:#ECE5DC; min-height:100vh; padding:26px 26px 80px;">
+                body {
+                    margin: 0;
+                    background: #EDEAE3;
+                }
 
-  <div style="max-width:1180px; margin:0 auto 22px; display:flex; align-items:center; gap:14px;">
-    <div style="width:38px; height:38px; border-radius:9px; background:radial-gradient(circle at 32% 28%, #E07A4E, #C25C3A 72%); border:3px solid #fff; box-shadow:0 0 0 2px rgba(0,0,0,.12); display:flex; align-items:center; justify-content:center;">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"></path></svg>
-    </div>
-    <div>
-      <div style="font-family:'Outfit',sans-serif; font-size:24px; font-weight:800; line-height:1;">Éditeur de carte de dresseur</div>
-    </div>
-  </div>
+                textarea, input, select {
+                    outline: none;
+                    color: #26221D;
+                }
 
-  <div style="max-width:1180px; margin:0 auto; display:grid; grid-template-columns:minmax(0,460px) minmax(0,1fr); gap:26px; align-items:start;">
+                    select option {
+                        color: #26221D;
+                        background: #FFFFFF;
+                    }
 
-    <!-- ============ LEFT : FORM ============ -->
-    <div style="display:flex; flex-direction:column; gap:16px; min-width:0;">
+                ::placeholder {
+                    color: #A89F93;
+                    opacity: 1;
+                }
 
-      <!-- RECOVER -->
-      <div style="background:#241F1B; border:1px solid rgba(232,210,190,.12); border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(20,24,40,.3);">
-        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; margin-bottom:4px;">Récupérer une carte</div>
-        <p style="margin:0 0 10px; font-size:12px; color:#857C70; line-height:1.5;">Colle un <b>code de sauvegarde</b> (commençant par <code>DRESS1:</code>) pour retrouver une carte déjà créée.</p>
-        <textarea onInput="{{ onLoadInput }}" value="{{ loadInput }}" placeholder="DRESS1:eyJhdmF0YXIi..." style="width:100%; height:60px; resize:vertical; padding:9px 10px; border:1px solid rgba(232,210,190,.18); border-radius:9px; font-family:ui-monospace,monospace; font-size:11.5px; color:#CFC7BC; background:#19120E; line-height:1.4;"></textarea>
-        <div style="display:flex; gap:8px; margin-top:9px;">
-          <button onClick="{{ loadCard }}" style="flex:1; padding:9px 12px; border:none; border-radius:9px; background:#C25C3A; color:#fff; font:inherit; font-weight:700; font-size:13px; cursor:pointer;">Charger la carte</button>
-          <button onClick="{{ resetCard }}" style="padding:9px 12px; border:1px solid rgba(232,210,190,.18); border-radius:9px; background:#19120E; color:#B4ABA0; font:inherit; font-weight:600; font-size:13px; cursor:pointer;">Carte d'exemple</button>
-        </div>
-      </div>
+                input:focus, select:focus, textarea:focus {
+                    border-color: #C25C3A !important;
+                    box-shadow: 0 0 0 3px rgba(194,92,58,.22);
+                }
+            </style>
+        </helmet>
 
-      <!-- IDENTITY -->
-      <div style="background:#241F1B; border:1px solid rgba(232,210,190,.12); border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(20,24,40,.3);">
-        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; margin-bottom:13px;">Identité</div>
+        <div style="font-family:'Manrope',system-ui,sans-serif; color:#26221D; min-height:100vh; padding:26px 26px 80px;">
 
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-bottom:11px;">
-          <div>
-            <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Prénom</label>
-            <input value="{{ firstName }}" onChange="{{ onFirst }}" style="width:100%; padding:8px 10px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-          </div>
-          <div>
-            <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Nom</label>
-            <input value="{{ lastName }}" onChange="{{ onLast }}" style="width:100%; padding:8px 10px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-          </div>
-        </div>
-
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-bottom:11px;">
-          <div>
-            <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Groupe</label>
-            <input value="{{ group }}" onChange="{{ onGroup }}" style="width:100%; padding:8px 10px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-          </div>
-          <div>
-            <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Rang</label>
-            <select value="{{ rank }}" onChange="{{ onRank }}" style="width:100%; padding:8px 10px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-              <sc-for list="{{ rankOptions }}" as="o" hint-placeholder-count="5"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
-            </select>
-          </div>
-        </div>
-
-        <div style="margin-bottom:11px;">
-          <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Occupation</label>
-          <input value="{{ occupation }}" onChange="{{ onOcc }}" style="width:100%; padding:8px 10px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-        </div>
-
-        <div style="margin-bottom:11px;">
-          <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Avatar — URL de l'image (250 × 350)</label>
-          <input value="{{ avatar }}" onChange="{{ onAvatar }}" placeholder="https://... " style="width:100%; padding:8px 10px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:12px; background:#19120E; color:#CFC7BC;">
-        </div>
-
-        <div style="margin-bottom:11px;">
-          <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:4px;">Sprite dresseur — URL de l'image</label>
-          <input value="{{ motisma }}" onChange="{{ onMotisma }}" placeholder="https://... " style="width:100%; padding:8px 10px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:12px; background:#19120E; color:#CFC7BC;">
-        </div>
-        <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:6px;">Couleur d'accent</label>
-        <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
-          <sc-for list="{{ accentSwatches }}" as="sw" hint-placeholder-count="6">
-            <button onClick="{{ sw.set }}" title="{{ sw.hex }}" style="width:26px; height:26px; border-radius:50%; background:{{ sw.hex }}; cursor:pointer; border:{{ sw.border }}; box-shadow:0 1px 3px rgba(0,0,0,.18);"></button>
-          </sc-for>
-          <input type="color" value="{{ accent }}" onChange="{{ onAccent }}" style="width:34px; height:30px; padding:0; border:1px solid rgba(232,210,190,.18); border-radius:8px; background:#19120E; cursor:pointer; margin-left:2px;">
-        </div>
-      </div>
-
-      <!-- TALENTS -->
-      <div style="background:#241F1B; border:1px solid rgba(232,210,190,.12); border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(20,24,40,.3);">
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:5px;">
-          <span style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px;">Talents</span>
-          <span style="font-size:12px; color:#857C70; font-weight:600;">{{ talentCount }} / 18</span>
-        </div>
-        <p style="margin:0 0 11px; font-size:11.5px; color:#857C70;">Chaque talent a un niveau : T1, T2 ou T3.</p>
-        <div style="display:flex; flex-direction:column; gap:7px;">
-          <sc-for list="{{ talents }}" as="t" hint-placeholder-count="6">
-            <div style="display:grid; grid-template-columns:1fr 132px 30px; gap:7px; align-items:center;">
-              <input value="{{ t.name }}" onChange="{{ t.on.name }}" placeholder="Talent {{ t.num }}" style="width:100%; padding:7px 9px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-              <div style="display:flex; gap:4px;">
-                <sc-for list="{{ t.tierBtns }}" as="b" hint-placeholder-count="3">
-                  <button onClick="{{ b.set }}" style="flex:1; padding:7px 0; border:{{ b.border }}; border-radius:7px; background:{{ b.bg }}; color:{{ b.color }}; font:inherit; font-weight:800; font-size:12px; cursor:pointer;">{{ b.label }}</button>
-                </sc-for>
-              </div>
-              <button onClick="{{ t.remove }}" title="Supprimer" style="width:30px; height:32px; border-radius:7px; border:1px solid rgba(214,54,90,.4); background:rgba(214,54,90,.14); color:#D6365A; font-size:15px; line-height:1; cursor:pointer;">×</button>
+            <div style="max-width:1180px; margin:0 auto 22px; display:flex; align-items:center; gap:14px;">
+                <div style="width:38px; height:38px; border-radius:9px; background:radial-gradient(circle at 32% 28%, #E07A4E, #C25C3A 72%); border:3px solid #fff; box-shadow:0 0 0 2px rgba(0,0,0,.12); display:flex; align-items:center; justify-content:center;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"></path></svg>
+                </div>
+                <div>
+                    <div style="font-family:'Outfit',sans-serif; font-size:24px; font-weight:800; line-height:1;">Éditeur de carte de dresseur</div>
+                    <div style="font-size:13px; color:#6F675C; margin-top:4px;">Remplis ta fiche, récupère une ancienne carte, puis exporte le code forum.</div>
+                </div>
             </div>
-          </sc-for>
-        </div>
-        <sc-if value="{{ canAddTalent }}" hint-placeholder-val="{{ true }}">
-          <button onClick="{{ addTalent }}" style="width:100%; margin-top:10px; padding:9px; border:1.5px dashed rgba(232,210,190,.22); border-radius:10px; background:#19120E; color:#B4ABA0; font:inherit; font-weight:700; font-size:13px; cursor:pointer;">+ Ajouter un talent</button>
-        </sc-if>
-      </div>
 
-      <!-- CT / CS -->
-      <div style="background:#241F1B; border:1px solid rgba(232,210,190,.12); border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(20,24,40,.3);">
-        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; margin-bottom:11px;">CT / CS connues</div>
-        <div style="display:flex; flex-direction:column; gap:7px;">
-          <sc-for list="{{ moves }}" as="m" hint-placeholder-count="3">
-            <div style="display:grid; grid-template-columns:96px 1fr 30px; gap:7px; align-items:center;">
-              <select value="{{ m.kind }}" onChange="{{ m.on.kind }}" style="width:100%; padding:7px 8px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-                <option value="CT">CT</option>
-                <option value="CS">CS</option>
-              </select>
-              <input value="{{ m.name }}" onChange="{{ m.on.name }}" placeholder="Nom de la capacité" style="width:100%; padding:7px 9px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-              <button onClick="{{ m.remove }}" title="Supprimer" style="width:30px; height:32px; border-radius:7px; border:1px solid rgba(214,54,90,.4); background:rgba(214,54,90,.14); color:#D6365A; font-size:15px; line-height:1; cursor:pointer;">×</button>
+            <div style="max-width:1180px; margin:0 auto; display:grid; grid-template-columns:minmax(0,460px) minmax(0,1fr); gap:26px; align-items:start;">
+
+                <!-- ============ LEFT : FORM ============ -->
+                <div style="display:flex; flex-direction:column; gap:16px; min-width:0;">
+
+                    <!-- RECOVER -->
+                    <div style="background:#FFFFFF; border:1px solid #E7E2DA; border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(45,38,30,.13);">
+                        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; margin-bottom:4px;">Récupérer une carte</div>
+                        <p style="margin:0 0 10px; font-size:12px; color:#8A8276; line-height:1.5;">Colle ici le <b>HTML</b> d'une carte déjà postée : les données y sont intégrées, la carte est retrouvée automatiquement.</p>
+                        <textarea onInput="{{ onLoadInput }}" value="{{ loadInput }}" placeholder="Colle ici le HTML de ta carte…" style="width:100%; height:60px; resize:vertical; padding:9px 10px; border:1px solid #DED8CE; border-radius:9px; font-family:ui-monospace,monospace; font-size:11.5px; color:#4E483F; background:#F7F4EF; line-height:1.4;"></textarea>
+                        <div style="display:flex; gap:8px; margin-top:9px;">
+                            <button onClick="{{ loadCard }}" style="flex:1; padding:9px 12px; border:none; border-radius:9px; background:#C25C3A; color:#fff; font:inherit; font-weight:700; font-size:13px; cursor:pointer;">Charger la carte</button>
+                            <button onClick="{{ resetCard }}" style="padding:9px 12px; border:1px solid #DED8CE; border-radius:9px; background:#F7F4EF; color:#5A5349; font:inherit; font-weight:600; font-size:13px; cursor:pointer;">Carte d'exemple</button>
+                        </div>
+                    </div>
+
+                    <!-- IDENTITY -->
+                    <div style="background:#FFFFFF; border:1px solid #E7E2DA; border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(45,38,30,.13);">
+                        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; margin-bottom:13px;">Identité</div>
+
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-bottom:11px;">
+                            <div>
+                                <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Prénom</label>
+                                <input value="{{ firstName }}" onChange="{{ onFirst }}" style="width:100%; padding:8px 10px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                            </div>
+                            <div>
+                                <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Nom</label>
+                                <input value="{{ lastName }}" onChange="{{ onLast }}" style="width:100%; padding:8px 10px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                            </div>
+                        </div>
+
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-bottom:11px;">
+                            <div>
+                                <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Groupe</label>
+                                <input value="{{ group }}" onChange="{{ onGroup }}" style="width:100%; padding:8px 10px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                            </div>
+                            <div>
+                                <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Rang</label>
+                                <select value="{{ rank }}" onChange="{{ onRank }}" style="width:100%; padding:8px 10px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                                    <sc-for list="{{ rankOptions }}" as="o" hint-placeholder-count="5"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom:11px;">
+                            <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Occupation</label>
+                            <input value="{{ occupation }}" onChange="{{ onOcc }}" style="width:100%; padding:8px 10px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                        </div>
+
+                        <div style="margin-bottom:11px;">
+                            <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Avatar — URL de l'image (250 × 350)</label>
+                            <input value="{{ avatar }}" onChange="{{ onAvatar }}" placeholder="https://...  (laisse vide pour un cadre)" style="width:100%; padding:8px 10px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:12px; background:#F7F4EF; color:#4E483F;">
+                        </div>
+
+                        <div style="margin-bottom:11px;">
+                            <label style="display:block; font-size:10px; letter-spacing:.6px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:4px;">Sprite Motisma — URL de l'image</label>
+                            <input value="{{ motisma }}" onChange="{{ onMotisma }}" placeholder="https://...  (apparaît dans l'en-tête)" style="width:100%; padding:8px 10px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:12px; background:#F7F4EF; color:#4E483F;">
+                        </div>
+                        <div style="font-size:11px; color:#8A8276; line-height:1.5;">Couleur d'accent fixée par le thème du forum.</div>
+                    </div>
+
+                    <!-- TALENTS -->
+                    <div style="background:#FFFFFF; border:1px solid #E7E2DA; border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(45,38,30,.13);">
+                        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:5px;">
+                            <span style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px;">Talents</span>
+                            <span style="font-size:12px; color:#8A8276; font-weight:600;">{{ talentCount }} / 18</span>
+                        </div>
+                        <p style="margin:0 0 11px; font-size:11.5px; color:#8A8276;">Chaque talent a un niveau : T1, T2 ou T3.</p>
+                        <div style="display:flex; flex-direction:column; gap:7px;">
+                            <sc-for list="{{ talents }}" as="t" hint-placeholder-count="6">
+                                <div style="display:grid; grid-template-columns:1fr 132px 30px; gap:7px; align-items:center;">
+                                    <input value="{{ t.name }}" onChange="{{ t.on.name }}" placeholder="Talent {{ t.num }}" style="width:100%; padding:7px 9px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                                    <div style="display:flex; gap:4px;">
+                                        <sc-for list="{{ t.tierBtns }}" as="b" hint-placeholder-count="3">
+                                            <button onClick="{{ b.set }}" style="flex:1; padding:7px 0; border:{{ b.border }}; border-radius:7px; background:{{ b.bg }}; color:{{ b.color }}; font:inherit; font-weight:800; font-size:12px; cursor:pointer;">{{ b.label }}</button>
+                                        </sc-for>
+                                    </div>
+                                    <button onClick="{{ t.remove }}" title="Supprimer" style="width:30px; height:32px; border-radius:7px; border:1px solid rgba(214,54,90,.4); background:rgba(214,54,90,.14); color:#D6365A; font-size:15px; line-height:1; cursor:pointer;">×</button>
+                                </div>
+                            </sc-for>
+                        </div>
+                        <sc-if value="{{ canAddTalent }}" hint-placeholder-val="{{ true }}">
+                            <button onClick="{{ addTalent }}" style="width:100%; margin-top:10px; padding:9px; border:1.5px dashed #D8D1C6; border-radius:10px; background:#F7F4EF; color:#5A5349; font:inherit; font-weight:700; font-size:13px; cursor:pointer;">+ Ajouter un talent</button>
+                        </sc-if>
+                    </div>
+
+                    <!-- CT / CS -->
+                    <div style="background:#FFFFFF; border:1px solid #E7E2DA; border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(45,38,30,.13);">
+                        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; margin-bottom:11px;">CT / CS connues</div>
+                        <div style="display:flex; flex-direction:column; gap:7px;">
+                            <sc-for list="{{ moves }}" as="m" hint-placeholder-count="3">
+                                <div style="display:grid; grid-template-columns:96px 1fr 30px; gap:7px; align-items:center;">
+                                    <select value="{{ m.kind }}" onChange="{{ m.on.kind }}" style="width:100%; padding:7px 8px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                                        <option value="CT">CT</option>
+                                        <option value="CS">CS</option>
+                                    </select>
+                                    <input value="{{ m.name }}" onChange="{{ m.on.name }}" placeholder="Nom de la capacité" style="width:100%; padding:7px 9px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                                    <button onClick="{{ m.remove }}" title="Supprimer" style="width:30px; height:32px; border-radius:7px; border:1px solid rgba(214,54,90,.4); background:rgba(214,54,90,.14); color:#D6365A; font-size:15px; line-height:1; cursor:pointer;">×</button>
+                                </div>
+                            </sc-for>
+                        </div>
+                        <button onClick="{{ addMove }}" style="width:100%; margin-top:10px; padding:9px; border:1.5px dashed #D8D1C6; border-radius:10px; background:#F7F4EF; color:#5A5349; font:inherit; font-weight:700; font-size:13px; cursor:pointer;">+ Ajouter une CT / CS</button>
+                    </div>
+
+                    <!-- INVENTORY -->
+                    <div style="background:#FFFFFF; border:1px solid #E7E2DA; border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(45,38,30,.13);">
+                        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; margin-bottom:11px;">Inventaire</div>
+                        <div style="display:flex; flex-direction:column; gap:7px;">
+                            <sc-for list="{{ inventory }}" as="it" hint-placeholder-count="4">
+                                <div style="display:grid; grid-template-columns:1fr 30px; gap:7px; align-items:center;">
+                                    <input value="{{ it.value }}" onChange="{{ it.on }}" placeholder="Objet {{ it.num }}" style="width:100%; padding:7px 9px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; background:#F7F4EF;">
+                                    <button onClick="{{ it.remove }}" title="Supprimer" style="width:30px; height:32px; border-radius:7px; border:1px solid rgba(214,54,90,.4); background:rgba(214,54,90,.14); color:#D6365A; font-size:15px; line-height:1; cursor:pointer;">×</button>
+                                </div>
+                            </sc-for>
+                        </div>
+                        <button onClick="{{ addItem }}" style="width:100%; margin-top:10px; padding:9px; border:1.5px dashed #D8D1C6; border-radius:10px; background:#F7F4EF; color:#5A5349; font:inherit; font-weight:700; font-size:13px; cursor:pointer;">+ Ajouter un objet</button>
+                    </div>
+
+                    <!-- BIO -->
+                    <div style="background:#FFFFFF; border:1px solid #E7E2DA; border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(45,38,30,.13);">
+                        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; margin-bottom:11px;">Biographie</div>
+                        <textarea value="{{ bio }}" onChange="{{ onBio }}" placeholder="Histoire, caractère du dresseur..." style="width:100%; height:84px; resize:vertical; padding:9px 10px; border:1px solid #DED8CE; border-radius:8px; font:inherit; font-size:13px; line-height:1.5; background:#F7F4EF; color:#4E483F;"></textarea>
+                    </div>
+
+                    <!-- EXPORT -->
+                    <div style="background:#FFFFFF; border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(45,38,30,.16);">
+                        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; color:#26221D; margin-bottom:4px;">Exporter</div>
+
+                        <div style="margin-top:12px;">
+                            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
+                                <span style="font-size:11px; letter-spacing:.5px; text-transform:uppercase; color:#8A8276; font-weight:700;">Code forum (HTML)</span>
+                                <button onClick="{{ copyForum }}" style="padding:5px 11px; border:none; border-radius:7px; background:#C25C3A; color:#fff; font:inherit; font-weight:600; font-size:12px; cursor:pointer;">Copier</button>
+                            </div>
+                            <textarea readOnly value="{{ forumCode }}" style="width:100%; height:74px; resize:vertical; padding:9px 10px; border:1px solid #E7E2DA; border-radius:9px; font-family:ui-monospace,monospace; font-size:10.5px; color:#4E483F; background:#F5F1EA; line-height:1.4;"></textarea>
+                            <p style="margin:6px 0 0; font-size:11px; color:#8A8276; line-height:1.5;">À coller dans un message de forum acceptant le HTML.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ============ RIGHT : PREVIEW ============ -->
+                <div style="position:sticky; top:20px; min-width:0;">
+                    <div style="font-size:11px; letter-spacing:1px; text-transform:uppercase; color:#8A8276; font-weight:700; margin-bottom:10px;">Aperçu en direct</div>
+                    <div style="width:100%;">{{ previewNode }}</div>
+                </div>
+
             </div>
-          </sc-for>
+
+            <sc-if value="{{ toast.show }}" hint-placeholder-val="{{ false }}">
+                <div style="position:fixed; left:50%; bottom:26px; transform:translateX(-50%); background:{{ toast.bg }}; color:#fff; padding:11px 20px; border-radius:11px; font-size:13.5px; font-weight:700; box-shadow:0 12px 30px -8px rgba(0,0,0,.4); z-index:50;">{{ toast.msg }}</div>
+            </sc-if>
+
         </div>
-        <button onClick="{{ addMove }}" style="width:100%; margin-top:10px; padding:9px; border:1.5px dashed rgba(232,210,190,.22); border-radius:10px; background:#19120E; color:#B4ABA0; font:inherit; font-weight:700; font-size:13px; cursor:pointer;">+ Ajouter une CT / CS</button>
-      </div>
-
-      <!-- INVENTORY -->
-      <div style="background:#241F1B; border:1px solid rgba(232,210,190,.12); border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(20,24,40,.3);">
-        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; margin-bottom:11px;">Inventaire</div>
-        <div style="display:flex; flex-direction:column; gap:7px;">
-          <sc-for list="{{ inventory }}" as="it" hint-placeholder-count="4">
-            <div style="display:grid; grid-template-columns:1fr 30px; gap:7px; align-items:center;">
-              <input value="{{ it.value }}" onChange="{{ it.on }}" placeholder="Objet {{ it.num }}" style="width:100%; padding:7px 9px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; background:#19120E;">
-              <button onClick="{{ it.remove }}" title="Supprimer" style="width:30px; height:32px; border-radius:7px; border:1px solid rgba(214,54,90,.4); background:rgba(214,54,90,.14); color:#D6365A; font-size:15px; line-height:1; cursor:pointer;">×</button>
-            </div>
-          </sc-for>
-        </div>
-        <button onClick="{{ addItem }}" style="width:100%; margin-top:10px; padding:9px; border:1.5px dashed rgba(232,210,190,.22); border-radius:10px; background:#19120E; color:#B4ABA0; font:inherit; font-weight:700; font-size:13px; cursor:pointer;">+ Ajouter un objet</button>
-      </div>
-
-      <!-- BIO -->
-      <div style="background:#241F1B; border:1px solid rgba(232,210,190,.12); border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(20,24,40,.3);">
-        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; margin-bottom:11px;">Biographie</div>
-        <textarea value="{{ bio }}" onChange="{{ onBio }}" placeholder="Histoire, caractère du dresseur..." style="width:100%; height:84px; resize:vertical; padding:9px 10px; border:1px solid rgba(232,210,190,.18); border-radius:8px; font:inherit; font-size:13px; line-height:1.5; background:#19120E; color:#CFC7BC;"></textarea>
-      </div>
-
-      <!-- EXPORT -->
-      <div style="background:#15110E; border-radius:14px; padding:16px; box-shadow:0 8px 24px -16px rgba(20,24,40,.4);">
-        <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; color:#fff; margin-bottom:4px;">Exporter</div>
-
-        <div style="margin-top:12px;">
-          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
-            <span style="font-size:11px; letter-spacing:.5px; text-transform:uppercase; color:#8E867A; font-weight:700;">Code de sauvegarde</span>
-            <button onClick="{{ copySave }}" style="padding:5px 11px; border:none; border-radius:7px; background:#3A332B; color:#fff; font:inherit; font-weight:600; font-size:12px; cursor:pointer;">Copier</button>
-          </div>
-          <textarea readOnly value="{{ saveCode }}" style="width:100%; height:58px; resize:vertical; padding:9px 10px; border:1px solid rgba(232,210,190,.14); border-radius:9px; font-family:ui-monospace,monospace; font-size:11px; color:#C4BBAF; background:#100B08; line-height:1.4;"></textarea>
-          <p style="margin:6px 0 0; font-size:11px; color:#8E867A; line-height:1.5;">Garde ce code : recolle-le dans « Récupérer une carte » pour ré-éditer plus tard.</p>
-        </div>
-
-        <div style="margin-top:16px;">
-          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
-            <span style="font-size:11px; letter-spacing:.5px; text-transform:uppercase; color:#8E867A; font-weight:700;">Code forum (HTML)</span>
-            <button onClick="{{ copyForum }}" style="padding:5px 11px; border:none; border-radius:7px; background:#C25C3A; color:#fff; font:inherit; font-weight:600; font-size:12px; cursor:pointer;">Copier</button>
-          </div>
-          <textarea readOnly value="{{ forumCode }}" style="width:100%; height:74px; resize:vertical; padding:9px 10px; border:1px solid rgba(232,210,190,.14); border-radius:9px; font-family:ui-monospace,monospace; font-size:10.5px; color:#C4BBAF; background:#100B08; line-height:1.4;"></textarea>
-        </div>
-      </div>
-
-    </div>
-    <!-- ============ RIGHT : PREVIEW ============ -->
-    <div style="position:sticky; top:20px; min-width:0;">
-      <div style="font-size:11px; letter-spacing:1px; text-transform:uppercase; color:#857C70; font-weight:700; margin-bottom:10px;">Aperçu en direct</div>
-      <div style="width:100%;">{{ previewNode }}</div>
-    </div>
-
-  </div>
-
-  <sc-if value="{{ toast.show }}" hint-placeholder-val="{{ false }}">
-    <div style="position:fixed; left:50%; bottom:26px; transform:translateX(-50%); background:{{ toast.bg }}; color:#fff; padding:11px 20px; border-radius:11px; font-size:13.5px; font-weight:700; box-shadow:0 12px 30px -8px rgba(0,0,0,.4); z-index:50;">{{ toast.msg }}</div>
-  </sc-if>
-
-</div>
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-    class Component extends DCLogic {
-      constructor(props) {
-        super(props);
-        const T = window.TCARD;
-        this.state = {
-          data: this.normalize(T ? T.clone(T.DEFAULT_TRAINER) : {}),
-          loadInput: '',
-          toast: null,
-          ready: !!T
-        };
-      }
-
-      componentDidMount() {
-        if (window.TCARD) {
-          if (!this.state.ready) this.loadDefaults();
-        } else {
-          this._t = setInterval(() => {
-            if (window.TCARD) { clearInterval(this._t); this.loadDefaults(); }
-          }, 50);
-        }
-      }
-      componentWillUnmount() { clearInterval(this._t); clearTimeout(this._toastT); }
-
-      loadDefaults() { this.setState({ data: this.normalize(window.TCARD.clone(window.TCARD.DEFAULT_TRAINER)), ready: true }); }
-
-      normalize(d) {
-        d = d || {};
-        const talents = (Array.isArray(d.talents) ? d.talents : []).slice(0, 18).map(t => ({
-          name: (t && t.name) || '', tier: (t && [1, 2, 3].indexOf(+t.tier) >= 0) ? +t.tier : 1
-        }));
-        const moves = (Array.isArray(d.moves) ? d.moves : []).map(m => ({
-          name: (m && m.name) || '', kind: (m && m.kind === 'CS') ? 'CS' : 'CT'
-        }));
-        const inventory = (Array.isArray(d.inventory) ? d.inventory : []).map(x => x == null ? '' : String(x));
-        return {
-          avatar: d.avatar || '',
-          firstName: d.firstName != null ? d.firstName : '',
-          lastName: d.lastName != null ? d.lastName : '',
-          group: d.group != null ? d.group : '',
-          occupation: d.occupation != null ? d.occupation : '',
-          rank: ['D', 'C', 'B', 'A', 'S'].indexOf(d.rank) >= 0 ? d.rank : 'D',
-          accent: d.accent || '#C25C3A',
-          motisma: d.motisma || 'https://i.imgur.com/4GXlWf5.png',
-          inventory, moves, talents,
-          bio: d.bio != null ? d.bio : ''
-        };
-      }
-
-      showToast(msg, ok) {
-        clearTimeout(this._toastT);
-        this.setState({ toast: { show: true, msg, bg: ok ? '#16A34A' : '#DC2626' } });
-        this._toastT = setTimeout(() => this.setState({ toast: null }), 2400);
-      }
-
-      setTop(field, val) { this.setState(s => ({ data: Object.assign({}, s.data, { [field]: val }) })); }
-
-      setTalent(i, field, val) {
-        this.setState(s => ({ data: Object.assign({}, s.data, { talents: s.data.talents.map((t, idx) => idx !== i ? t : Object.assign({}, t, { [field]: val })) }) }));
-      }
-      addTalent = () => {
-        this.setState(s => {
-          if (s.data.talents.length >= 18) return {};
-          return { data: Object.assign({}, s.data, { talents: s.data.talents.concat([{ name: '', tier: 1 }]) }) };
-        });
-      };
-      makeRemoveTalent(i) { return () => this.setState(s => ({ data: Object.assign({}, s.data, { talents: s.data.talents.filter((_, idx) => idx !== i) }) })); }
-
-      setMove(i, field, val) {
-        this.setState(s => ({ data: Object.assign({}, s.data, { moves: s.data.moves.map((m, idx) => idx !== i ? m : Object.assign({}, m, { [field]: val })) }) }));
-      }
-      addMove = () => this.setState(s => ({ data: Object.assign({}, s.data, { moves: s.data.moves.concat([{ name: '', kind: 'CT' }]) }) }));
-      makeRemoveMove(i) { return () => this.setState(s => ({ data: Object.assign({}, s.data, { moves: s.data.moves.filter((_, idx) => idx !== i) }) })); }
-
-      setItem(i, val) {
-        this.setState(s => ({ data: Object.assign({}, s.data, { inventory: s.data.inventory.map((x, idx) => idx === i ? val : x) }) }));
-      }
-      addItem = () => this.setState(s => ({ data: Object.assign({}, s.data, { inventory: s.data.inventory.concat(['']) }) }));
-      makeRemoveItem(i) { return () => this.setState(s => ({ data: Object.assign({}, s.data, { inventory: s.data.inventory.filter((_, idx) => idx !== i) }) })); }
-
-      onFirst = (e) => this.setTop('firstName', e.target.value);
-      onLast = (e) => this.setTop('lastName', e.target.value);
-      onGroup = (e) => this.setTop('group', e.target.value);
-      onOcc = (e) => this.setTop('occupation', e.target.value);
-      onRank = (e) => this.setTop('rank', e.target.value);
-      onAvatar = (e) => this.setTop('avatar', e.target.value);
-      onAccent = (e) => this.setTop('accent', e.target.value);
-      onMotisma = (e) => this.setTop('motisma', e.target.value);
-      onBio = (e) => this.setTop('bio', e.target.value);
-      onLoadInput = (e) => this.setState({ loadInput: e.target.value });
-
-      loadCard = () => {
-        const T = window.TCARD; if (!T) return;
-        try {
-          const data = this.normalize(T.decodeTrainer(this.state.loadInput));
-          this.setState({ data });
-          this.showToast('Carte chargée ✓', true);
-        } catch (err) { this.showToast('Code invalide', false); }
-      };
-      resetCard = () => {
-        const T = window.TCARD; if (!T) return;
-        this.setState({ data: this.normalize(T.clone(T.DEFAULT_TRAINER)), loadInput: '' });
-        this.showToast('Carte d\'exemple chargée', true);
-      };
-
-      copy(text, label) {
-        const done = () => this.showToast(label + ' copié ✓', true);
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text).then(done, () => this.fallbackCopy(text, done));
-        } else { this.fallbackCopy(text, done); }
-      }
-      fallbackCopy(text, done) {
-        const ta = document.createElement('textarea');
-        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-        document.body.appendChild(ta); ta.select();
-        try { document.execCommand('copy'); done(); } catch (e) {}
-        document.body.removeChild(ta);
-      }
-
-      renderVals() {
-        const T = window.TCARD || {};
-        const tierColor = T.tierColor || (() => '#8C97A6');
-        const d = this.state.data;
-        const accent = d.accent || '#C25C3A';
-
-        const rankOptions = (T.RANKS || ['D', 'C', 'B', 'A', 'S']).map(r => ({ v: r, label: 'Rang ' + r }));
-        const accentSwatches = (T.ACCENTS || []).map(hex => ({
-          hex,
-          border: hex.toLowerCase() === accent.toLowerCase() ? '3px solid #ECE5DC' : '2px solid rgba(232,210,190,.25)',
-          set: () => this.setTop('accent', hex)
-        }));
-
-        const talents = d.talents.map((t, i) => ({
-          index: i, num: i + 1, name: t.name || '',
-          remove: this.makeRemoveTalent(i),
-          on: { name: (e) => this.setTalent(i, 'name', e.target.value) },
-          tierBtns: [1, 2, 3].map(n => {
-            const active = t.tier === n;
-            return {
-              label: 'T' + n,
-              set: () => this.setTalent(i, 'tier', n),
-              bg: active ? tierColor(n) : '#241F1B',
-              color: active ? '#241F1B' : '#857C70',
-              border: active ? ('1px solid ' + tierColor(n)) : '1px solid #D7DCE3'
+    </x-dc>
+    <script type="text/x-dc" data-dc-script>
+        class Component extends DCLogic {
+          constructor(props) {
+            super(props);
+            const T = window.TCARD;
+            this.state = {
+              data: this.normalize(T ? T.clone(T.DEFAULT_TRAINER) : {}),
+              loadInput: '',
+              toast: null,
+              ready: !!T
             };
-          })
-        }));
-
-        const moves = d.moves.map((m, i) => ({
-          index: i, name: m.name || '', kind: m.kind || 'CT',
-          remove: this.makeRemoveMove(i),
-          on: {
-            name: (e) => this.setMove(i, 'name', e.target.value),
-            kind: (e) => this.setMove(i, 'kind', e.target.value)
           }
-        }));
 
-        const inventory = d.inventory.map((x, i) => ({
-          index: i, num: i + 1, value: x,
-          on: (e) => this.setItem(i, e.target.value),
-          remove: this.makeRemoveItem(i)
-        }));
+          componentDidMount() {
+            if (window.TCARD) {
+              if (!this.state.ready) this.loadDefaults();
+            } else {
+              this._t = setInterval(() => {
+                if (window.TCARD) { clearInterval(this._t); this.loadDefaults(); }
+              }, 50);
+            }
+          }
+          componentWillUnmount() { clearInterval(this._t); clearTimeout(this._toastT); }
 
-        let saveCode = '', forumCode = '', previewNode = null;
-        try { if (T.encodeTrainer) saveCode = T.encodeTrainer(d); } catch (e) {}
-        try { if (T.buildTrainerForumHTML) forumCode = T.buildTrainerForumHTML(d); } catch (e) {}
-        try { if (T.buildTrainerForumHTML) previewNode = React.createElement('div', { dangerouslySetInnerHTML: { __html: T.buildTrainerForumHTML(d) } }); } catch (e) {}
+          loadDefaults() { this.setState({ data: this.normalize(window.TCARD.clone(window.TCARD.DEFAULT_TRAINER)), ready: true }); }
 
-        return {
-          avatar: d.avatar,
-          motisma: d.motisma || 'https://i.imgur.com/4GXlWf5.png',
-          firstName: d.firstName, lastName: d.lastName,
-          group: d.group, occupation: d.occupation, rank: d.rank,
-          accent, bio: d.bio,
-          rankOptions, accentSwatches,
-          talents, talentCount: d.talents.length, canAddTalent: d.talents.length < 18,
-          moves, inventory,
-          loadInput: this.state.loadInput,
-          saveCode, forumCode, previewNode,
-          toast: this.state.toast || { show: false, msg: '', bg: '#16A34A' },
-          onFirst: this.onFirst, onLast: this.onLast, onGroup: this.onGroup, onOcc: this.onOcc,
-          onRank: this.onRank, onAvatar: this.onAvatar, onAccent: this.onAccent, onMotisma: this.onMotisma, onBio: this.onBio,
-          onLoadInput: this.onLoadInput, loadCard: this.loadCard, resetCard: this.resetCard,
-          addTalent: this.addTalent, addMove: this.addMove, addItem: this.addItem,
-          copySave: () => this.copy(saveCode, 'Code de sauvegarde'),
-          copyForum: () => this.copy(forumCode, 'Code forum')
-        };
-      }
-    }
-</script>
+          normalize(d) {
+            d = d || {};
+            const talents = (Array.isArray(d.talents) ? d.talents : []).slice(0, 18).map(t => ({
+              name: (t && t.name) || '', tier: (t && [1, 2, 3].indexOf(+t.tier) >= 0) ? +t.tier : 1
+            }));
+            const moves = (Array.isArray(d.moves) ? d.moves : []).map(m => ({
+              name: (m && m.name) || '', kind: (m && m.kind === 'CS') ? 'CS' : 'CT'
+            }));
+            const inventory = (Array.isArray(d.inventory) ? d.inventory : []).map(x => x == null ? '' : String(x));
+            return {
+              avatar: d.avatar || '',
+              firstName: d.firstName != null ? d.firstName : '',
+              lastName: d.lastName != null ? d.lastName : '',
+              group: d.group != null ? d.group : '',
+              occupation: d.occupation != null ? d.occupation : '',
+              rank: ['D', 'C', 'B', 'A', 'S'].indexOf(d.rank) >= 0 ? d.rank : 'D',
+              accent: d.accent || '#C25C3A',
+              motisma: d.motisma || 'https://i.imgur.com/4GXlWf5.png',
+              inventory, moves, talents,
+              bio: d.bio != null ? d.bio : ''
+            };
+          }
+
+          showToast(msg, ok) {
+            clearTimeout(this._toastT);
+            this.setState({ toast: { show: true, msg, bg: ok ? '#16A34A' : '#DC2626' } });
+            this._toastT = setTimeout(() => this.setState({ toast: null }), 2400);
+          }
+
+          setTop(field, val) { this.setState(s => ({ data: Object.assign({}, s.data, { [field]: val }) })); }
+
+          setTalent(i, field, val) {
+            this.setState(s => ({ data: Object.assign({}, s.data, { talents: s.data.talents.map((t, idx) => idx !== i ? t : Object.assign({}, t, { [field]: val })) }) }));
+          }
+          addTalent = () => {
+            this.setState(s => {
+              if (s.data.talents.length >= 18) return {};
+              return { data: Object.assign({}, s.data, { talents: s.data.talents.concat([{ name: '', tier: 1 }]) }) };
+            });
+          };
+          makeRemoveTalent(i) { return () => this.setState(s => ({ data: Object.assign({}, s.data, { talents: s.data.talents.filter((_, idx) => idx !== i) }) })); }
+
+          setMove(i, field, val) {
+            this.setState(s => ({ data: Object.assign({}, s.data, { moves: s.data.moves.map((m, idx) => idx !== i ? m : Object.assign({}, m, { [field]: val })) }) }));
+          }
+          addMove = () => this.setState(s => ({ data: Object.assign({}, s.data, { moves: s.data.moves.concat([{ name: '', kind: 'CT' }]) }) }));
+          makeRemoveMove(i) { return () => this.setState(s => ({ data: Object.assign({}, s.data, { moves: s.data.moves.filter((_, idx) => idx !== i) }) })); }
+
+          setItem(i, val) {
+            this.setState(s => ({ data: Object.assign({}, s.data, { inventory: s.data.inventory.map((x, idx) => idx === i ? val : x) }) }));
+          }
+          addItem = () => this.setState(s => ({ data: Object.assign({}, s.data, { inventory: s.data.inventory.concat(['']) }) }));
+          makeRemoveItem(i) { return () => this.setState(s => ({ data: Object.assign({}, s.data, { inventory: s.data.inventory.filter((_, idx) => idx !== i) }) })); }
+
+          onFirst = (e) => this.setTop('firstName', e.target.value);
+          onLast = (e) => this.setTop('lastName', e.target.value);
+          onGroup = (e) => this.setTop('group', e.target.value);
+          onOcc = (e) => this.setTop('occupation', e.target.value);
+          onRank = (e) => this.setTop('rank', e.target.value);
+          onAvatar = (e) => this.setTop('avatar', e.target.value);
+          onAccent = (e) => this.setTop('accent', e.target.value);
+          onMotisma = (e) => this.setTop('motisma', e.target.value);
+          onBio = (e) => this.setTop('bio', e.target.value);
+          onLoadInput = (e) => this.setState({ loadInput: e.target.value });
+
+          loadCard = () => {
+            const T = window.TCARD; if (!T) return;
+            try {
+              const data = this.normalize(T.decodeTrainer(this.state.loadInput));
+              this.setState({ data });
+              this.showToast('Carte chargée ✓', true);
+            } catch (err) { this.showToast('Code invalide', false); }
+          };
+          resetCard = () => {
+            const T = window.TCARD; if (!T) return;
+            this.setState({ data: this.normalize(T.clone(T.DEFAULT_TRAINER)), loadInput: '' });
+            this.showToast('Carte d\'exemple chargée', true);
+          };
+
+          copy(text, label) {
+            const done = () => this.showToast(label + ' copié ✓', true);
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, () => this.fallbackCopy(text, done));
+            } else { this.fallbackCopy(text, done); }
+          }
+          fallbackCopy(text, done) {
+            const ta = document.createElement('textarea');
+            ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+            document.body.appendChild(ta); ta.select();
+            try { document.execCommand('copy'); done(); } catch (e) {}
+            document.body.removeChild(ta);
+          }
+
+          renderVals() {
+            const T = window.TCARD || {};
+            const tierColor = T.tierColor || (() => '#8C97A6');
+            const d = this.state.data;
+            const accent = d.accent || '#C25C3A';
+
+            const rankOptions = (T.RANKS || ['D', 'C', 'B', 'A', 'S']).map(r => ({ v: r, label: 'Rang ' + r }));
+            const accentSwatches = (T.ACCENTS || []).map(hex => ({
+              hex,
+              border: hex.toLowerCase() === accent.toLowerCase() ? '3px solid #26221D' : '2px solid #D8D1C6',
+              set: () => this.setTop('accent', hex)
+            }));
+
+            const talents = d.talents.map((t, i) => ({
+              index: i, num: i + 1, name: t.name || '',
+              remove: this.makeRemoveTalent(i),
+              on: { name: (e) => this.setTalent(i, 'name', e.target.value) },
+              tierBtns: [1, 2, 3].map(n => {
+                const active = t.tier === n;
+                return {
+                  label: 'T' + n,
+                  set: () => this.setTalent(i, 'tier', n),
+                  bg: active ? tierColor(n) : '#FFFFFF',
+                  color: active ? '#FFFFFF' : '#8A8276',
+                  border: active ? ('1px solid ' + tierColor(n)) : '1px solid #D7DCE3'
+                };
+              })
+            }));
+
+            const moves = d.moves.map((m, i) => ({
+              index: i, name: m.name || '', kind: m.kind || 'CT',
+              remove: this.makeRemoveMove(i),
+              on: {
+                name: (e) => this.setMove(i, 'name', e.target.value),
+                kind: (e) => this.setMove(i, 'kind', e.target.value)
+              }
+            }));
+
+            const inventory = d.inventory.map((x, i) => ({
+              index: i, num: i + 1, value: x,
+              on: (e) => this.setItem(i, e.target.value),
+              remove: this.makeRemoveItem(i)
+            }));
+
+            let saveCode = '', forumCode = '', previewNode = null;
+            try { if (T.encodeTrainer) saveCode = T.encodeTrainer(d); } catch (e) {}
+            try { if (T.buildTrainerForumHTML) forumCode = T.buildTrainerForumHTML(d); } catch (e) {}
+            try { if (T.buildTrainerForumHTML) previewNode = React.createElement('div', { dangerouslySetInnerHTML: { __html: T.buildTrainerForumHTML(d) } }); } catch (e) {}
+
+            return {
+              avatar: d.avatar,
+              motisma: d.motisma || 'https://i.imgur.com/4GXlWf5.png',
+              firstName: d.firstName, lastName: d.lastName,
+              group: d.group, occupation: d.occupation, rank: d.rank,
+              accent, bio: d.bio,
+              rankOptions, accentSwatches,
+              talents, talentCount: d.talents.length, canAddTalent: d.talents.length < 18,
+              moves, inventory,
+              loadInput: this.state.loadInput,
+              saveCode, forumCode, previewNode,
+              toast: this.state.toast || { show: false, msg: '', bg: '#16A34A' },
+              onFirst: this.onFirst, onLast: this.onLast, onGroup: this.onGroup, onOcc: this.onOcc,
+              onRank: this.onRank, onAvatar: this.onAvatar, onAccent: this.onAccent, onMotisma: this.onMotisma, onBio: this.onBio,
+              onLoadInput: this.onLoadInput, loadCard: this.loadCard, resetCard: this.resetCard,
+              addTalent: this.addTalent, addMove: this.addMove, addItem: this.addItem,
+              copyForum: () => this.copy(forumCode, 'Code forum')
+            };
+          }
+        }
+    </script>
 </body>
 </html>
