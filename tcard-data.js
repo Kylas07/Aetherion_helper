@@ -326,13 +326,13 @@
 
         return '<div class="pcbox" data-pc="' + encodePC(d) + '" style="width:650px;max-width:100%;margin:0 auto;font-family:' + THEME.bodyFont + ';background:' + THEME.card + ';border-radius:16px;overflow:visible;border:1px solid ' + THEME.border + ';box-shadow:' + THEME.shadow + ';">' +
             '<style>.pcbox details>summary::-webkit-details-marker{display:none}.pcbox details>summary{list-style:none}.pcbox .cap{opacity:0;transition:opacity .15s}.pcbox .cell:hover .cap{opacity:1}.pcbox details[open] .cap{opacity:0}.pcbox details[open]>summary{box-shadow:0 0 0 2px ' + theme + ';border-radius:10px}</style>' +
-            '<div style="background:linear-gradient(120deg,' + theme + '24,' + THEME.header + ' 62%);padding:15px 20px;display:flex;align-items:center;gap:13px;border-bottom:3px solid ' + theme + ';border-radius:16px 16px 0 0;">' +
+            '<div style="background:' + THEME.header + ';padding:15px 20px;display:flex;align-items:center;gap:13px;border-bottom:3px solid ' + theme + ';border-radius:16px 16px 0 0;">' +
             motismaBadge(d.motisma, 44) +
             '<span style="flex:1;min-width:0;line-height:1.04;"><span style="display:block;font-family:' + THEME.disp + ';font-size:10.5px;letter-spacing:3px;text-transform:uppercase;color:' + theme + ';font-weight:600;">PC · ' + owner + '</span>' +
             '<span style="display:block;font-family:' + THEME.disp + ';font-size:22px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:' + THEME.headText + ';margin-top:1px;">' + boxName + '</span></span>' +
             '<span style="font-family:' + THEME.disp + ';background:' + theme + ';border:none;border-radius:7px;padding:5px 12px;font-size:13px;font-weight:700;letter-spacing:1px;color:#fff;flex:none;">' + total + ' / 30</span>' +
             '</div>' +
-            '<div style="padding:16px;background:linear-gradient(180deg,' + theme + '12,#F8F5F0);border-radius:0 0 16px 16px;">' +
+            '<div style="padding:16px;background:#F8F5F0;border-radius:0 0 16px 16px;">' +
             '<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;">' + cells + '</div>' +
             '<div style="margin-top:11px;font-size:11px;color:' + THEME.muted + ';text-align:center;letter-spacing:.3px;">Clique un Pokémon pour voir sa fiche</div>' +
             '</div></div>';
