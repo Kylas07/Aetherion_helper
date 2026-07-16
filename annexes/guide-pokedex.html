@@ -9,7 +9,7 @@
         <div class="guide-logo"><b>Guide <em>Aetherion</em></b><span>les annexes du forum</span></div>
         <span class="guide-cat">01. Accueil</span>
         <a href="guide-accueil.html#reglement">Règlement</a>
-        <a href="guide-accueil.html#credits">Crédits &amp; équipe</a>
+        <a href="guide-accueil.html#credits">Crédits &amp; équipe</a>1
         <span class="guide-cat">02. Lore</span>
         <a href="guide-lore.html#contexte">Contexte</a>
         <a href="guide-lore.html#chrono-reelle">Chronologie réelle</a>
@@ -70,14 +70,34 @@
                 </div>
             </div>
 
-            <!-- carte cliquable -->
-            <div class="dex-carte">
-                <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Carte de la tour">
-                <button type="button" class="dex-spot" data-zone="etage03" style="left:38%; top:14%;">Étage 03</button>
-                <button type="button" class="dex-spot actif" data-zone="etage02" style="left:56%; top:36%;">Étage 02</button>
-                <button type="button" class="dex-spot" data-zone="etage01" style="left:40%; top:58%;">Étage 01</button>
-                <button type="button" class="dex-spot" data-zone="etage00" style="left:58%; top:80%;">Étage 00</button>
-                <button type="button" class="dex-spot" data-zone="safari" style="left:82%; top:52%;">Safari</button>
+            <!-- la tour : un étage = une plateforme cliquable (remplace les img par tes visuels de zone) -->
+            <div class="dex-tour">
+                <span class="dex-tour-titre">— La tour d'Aetherion —</span>
+                <button type="button" class="dex-etage" data-zone="etage03" style="--w:52%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">03</span>
+                    <span class="nom"><b>Étage 03</b><small>Sommets</small></span>
+                </button>
+                <button type="button" class="dex-etage actif" data-zone="etage02" style="--w:66%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">02</span>
+                    <span class="nom"><b>Étage 02</b><small>Montagne rocheuse</small></span>
+                </button>
+                <button type="button" class="dex-etage safari" data-zone="safari" style="--w:34%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">S</span>
+                    <span class="nom"><b>Safari</b><small>Zone spéciale</small></span>
+                </button>
+                <button type="button" class="dex-etage" data-zone="etage01" style="--w:80%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">01</span>
+                    <span class="nom"><b>Étage 01</b><small>Forêt prismatique</small></span>
+                </button>
+                <button type="button" class="dex-etage" data-zone="etage00" style="--w:94%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">00</span>
+                    <span class="nom"><b>Étage 00</b><small>Le pied de la tour</small></span>
+                </button>
             </div>
             <div class="dex-chips">
                 <button type="button" data-zone="etage00">Étage 00</button>
