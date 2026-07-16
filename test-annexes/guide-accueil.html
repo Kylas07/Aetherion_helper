@@ -1,0 +1,110 @@
+<!-- ═══ Guidebook Aetherion — catégorie 01. Accueil ═══
+     À héberger comme page HTML Forumactif. CSS requis : aetherion-unifie.css.
+     · Les boutons de la catégorie basculent les .guide-page au clic.
+     · Les autres catégories pointent vers leurs pages (adapte les href
+       aux URLs Forumactif, ex. /h1-guide-accueil). Ancre = page ouverte. -->
+<div class="guide">
+    <div class="guide-sommaire">
+        <div class="guide-logo"><b>Guide <em>Aetherion</em></b><span>les annexes du forum</span></div>
+
+        <span class="guide-cat">01. Accueil</span>
+        <button type="button" data-page="reglement" class="actif">Règlement</button>
+        <button type="button" data-page="credits">Crédits &amp; équipe</button>
+
+        <span class="guide-cat">02. Lore</span>
+        <a href="guide-lore#contexte">Contexte</a>
+        <a href="guide-lore#chrono-reelle">Chronologie réelle</a>
+        <a href="guide-lore#chrono-aetherion">Chronologie Aetherion</a>
+
+        <span class="guide-cat">03. Cartes</span>
+        <a href="guide-cartes#verrieres">Les Verrières</a>
+        <a href="guide-cartes#paliers">Les Paliers</a>
+
+        <span class="guide-cat">04. Groupes</span>
+        <div class="guide-groupes">
+            <a href="guide-groupes#couronne" style="--g:#D43535" class="large">Couronne de Cendre</a>
+            <a href="guide-groupes#ascendants" style="--g:#5CA35E">Ascendants</a>
+            <a href="guide-groupes#ancres" style="--g:#6FBEBD">Ancres</a>
+            <a href="guide-groupes#brises" style="--g:#9285D1">Brisés</a>
+            <a href="guide-groupes#eveilles" style="--g:#DBAE61">Éveillés</a>
+        </div>
+
+        <span class="guide-cat">05. Pokédex</span>
+        <a href="guide-pokedex">Zones &amp; rencontres</a>
+
+        <span class="guide-cat">06. Progression</span>
+        <a href="guide-progression#rangs">Rangs &amp; gains</a>
+        <a href="guide-progression#talents">Talents</a>
+
+        <div class="guide-pied"><span>Guide — équipe Aetherion</span></div>
+    </div>
+
+    <div class="guide-corps">
+        <div class="guide-retour"><a href="/forum">Revenir sur le forum</a></div>
+
+        <!-- ── page : Règlement ── -->
+        <div class="guide-page actif" id="reglement">
+            <div class="guide-hero">
+                <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                <div class="guide-hero-titre"><small>— 01. Accueil</small><b>Règlement</b></div>
+                <span class="guide-hero-num">01</span>
+            </div>
+
+            <div class="guide-staff">
+                <div class="guide-staff-avatar">St</div>
+                <div class="guide-staff-texte">
+                    <small>Le mot du staff</small>
+                    <p>Les règles existent pour que tout le monde grimpe la tour dans de bonnes conditions. Lis-les une fois sérieusement — le staff est là si quelque chose n'est pas clair.</p>
+                </div>
+            </div>
+
+            <div class="guide-section">
+                <h2 class="guide-titre">Règles <em>générales</em></h2>
+                <div class="guide-bloc"><b>Respect</b><p>Le respect vaut autant pour le staff que pour les membres et les invités. Aucun propos discriminatoire ne sera toléré ; en cas de conflit, réglez-le en privé ou contactez un membre du staff.</p></div>
+                <div class="guide-bloc"><b>Public averti</b><p>Des sujets sérieux peuvent être abordés dans le cadre d'événements ou par les membres. Nous déconseillons l'inscription aux mineurs.</p></div>
+            </div>
+
+            <div class="guide-section">
+                <h2 class="guide-titre">Gains <em>d'XP</em></h2>
+                <div class="guide-table"><table>
+                    <tr><th>Action</th><th>XP</th><th>Pokédollars</th></tr>
+                    <tr><td>Post RP</td><td>10 XP</td><td>150 P$</td></tr>
+                    <tr><td>RP terminé</td><td>50 XP</td><td>600 P$</td></tr>
+                </table></div>
+            </div>
+        </div>
+
+        <!-- ── page : Crédits & équipe ── -->
+        <div class="guide-page" id="credits">
+            <div class="guide-hero">
+                <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                <div class="guide-hero-titre"><small>— 01. Accueil</small><b>Crédits &amp; équipe</b></div>
+                <span class="guide-hero-num">01</span>
+            </div>
+            <div class="guide-section">
+                <h2 class="guide-titre">L'<em>équipe</em></h2>
+                <div class="guide-bloc"><b>Fondation</b><p>Nom — fondation, lore. Nom — codes, design.</p></div>
+                <div class="guide-bloc"><b>Crédits</b><p>Skin &amp; codes : l'équipe Aetherion, optimisé BlankTheme. Illustrations : à créditer. Icônes Pokémon : Poképédia.</p></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+(function () {
+  var pages = document.querySelectorAll('.guide-page');
+  var boutons = document.querySelectorAll('.guide-sommaire [data-page]');
+  function ouvre(id) {
+    pages.forEach(function (p) { p.classList.toggle('actif', p.id === id); });
+    boutons.forEach(function (b) { b.classList.toggle('actif', b.getAttribute('data-page') === id); });
+  }
+  boutons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      ouvre(b.getAttribute('data-page'));
+      history.replaceState(null, '', '#' + b.getAttribute('data-page'));
+    });
+  });
+  var h = location.hash.replace("#", "");
+  if (h && document.getElementById(h)) ouvre(h);
+})();
+</script>
