@@ -1,0 +1,226 @@
+<link href="aetherion-unifie.css" rel="stylesheet" />
+<!-- ═══ Guidebook Aetherion — 05. Pokédex ═══
+     Carte cliquable : chaque bouton .dex-spot est posé sur la carte
+     (ajuste left/top en % selon ton illustration), les chips dessous
+     font la même chose. Les icônes sont des exemples : remplace les
+     <img> des .dex-grille par tes sprites. CSS : aetherion-unifie.css. -->
+<div class="guide">
+    <div class="guide-sommaire">
+        <div class="guide-logo"><b>Guide <em>Aetherion</em></b><span>les annexes du forum</span></div>
+        <span class="guide-cat">01. Accueil</span>
+        <a href="guide-accueil.html#reglement">Règlement</a>
+        <a href="guide-accueil.html#credits">Crédits &amp; équipe</a>
+        <span class="guide-cat">02. Lore</span>
+        <a href="guide-lore.html#contexte">Contexte</a>
+        <a href="guide-lore.html#chrono-reelle">Chronologie réelle</a>
+        <a href="guide-lore.html#chrono-aetherion">Chronologie Aetherion</a>
+        <span class="guide-cat">03. Cartes</span>
+        <a href="guide-cartes.html#verrieres">Les Verrières</a>
+        <a href="guide-cartes.html#paliers">Les Paliers</a>
+        <span class="guide-cat">04. Groupes</span>
+        <div class="guide-groupes">
+            <a href="guide-groupes.html#couronne" style="--g:#D43535" class="large">Couronne de Cendre</a>
+            <a href="guide-groupes.html#ascendants" style="--g:#5CA35E">Ascendants</a>
+            <a href="guide-groupes.html#ancres" style="--g:#6FBEBD">Ancres</a>
+            <a href="guide-groupes.html#brises" style="--g:#9285D1">Brisés</a>
+            <a href="guide-groupes.html#eveilles" style="--g:#DBAE61">Éveillés</a>
+        </div>
+        <span class="guide-cat">05. Pokédex</span>
+        <button type="button" class="actif">Zones &amp; rencontres</button>
+        <span class="guide-cat">06. Progression</span>
+        <a href="guide-progression.html#rangs">Rangs &amp; gains</a>
+        <a href="guide-progression.html#talents">Talents</a>
+
+        <div class="guide-pied"><span>Guide — équipe Aetherion</span></div>
+    </div>
+
+    <div class="guide-corps">
+        <div class="guide-retour"><a href="/forum">Revenir sur le forum</a></div>
+
+        <div class="guide-page actif" id="pokedex">
+            <div class="guide-hero">
+                <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                <div class="guide-hero-titre"><small>— 05. Pokédex</small><b>Pokédex</b></div>
+                <span class="guide-hero-num">05</span>
+            </div>
+
+            <div class="guide-staff">
+                <div class="guide-staff-avatar">Dx</div>
+                <div class="guide-staff-texte">
+                    <small>Comment ça marche</small>
+                    <p>Clique sur une zone de la carte pour voir les espèces qui y apparaissent. Toutes les rencontres se font au niveau 05 — jette un œil au système de captures avant de partir.</p>
+                </div>
+            </div>
+
+            <!-- hordes : partout, changent chaque mois -->
+            <div class="dex-hordes">
+                <b>Hordes <em>Pokémon</em></b>
+                <p>14 espèces additionnelles disponibles dans vos captures quelle que soit la zone. Certaines n'apparaissent QUE dans les hordes.</p>
+                <span class="dex-mois">Rotation : Juillet 2026</span>
+                <div class="dex-grille" style="width:100%;">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/167.png" alt="Pokémon 167" title="Pokémon 167">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/41.png" alt="Pokémon 41" title="Pokémon 41">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/425.png" alt="Pokémon 425" title="Pokémon 425">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/77.png" alt="Pokémon 77" title="Pokémon 77">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/228.png" alt="Pokémon 228" title="Pokémon 228">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/355.png" alt="Pokémon 355" title="Pokémon 355">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/131.png" alt="Pokémon 131" title="Pokémon 131">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/217.png" alt="Pokémon 217" title="Pokémon 217">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/179.png" alt="Pokémon 179" title="Pokémon 179">
+                </div>
+            </div>
+
+            <!-- carte cliquable -->
+            <div class="dex-carte">
+                <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Carte de la tour">
+                <button type="button" class="dex-spot" data-zone="etage03" style="left:38%; top:14%;">Étage 03</button>
+                <button type="button" class="dex-spot actif" data-zone="etage02" style="left:56%; top:36%;">Étage 02</button>
+                <button type="button" class="dex-spot" data-zone="etage01" style="left:40%; top:58%;">Étage 01</button>
+                <button type="button" class="dex-spot" data-zone="etage00" style="left:58%; top:80%;">Étage 00</button>
+                <button type="button" class="dex-spot" data-zone="safari" style="left:82%; top:52%;">Safari</button>
+            </div>
+            <div class="dex-chips">
+                <button type="button" data-zone="etage00">Étage 00</button>
+                <button type="button" data-zone="etage01">Étage 01</button>
+                <button type="button" data-zone="etage02" class="actif">Étage 02</button>
+                <button type="button" data-zone="etage03">Étage 03</button>
+                <button type="button" data-zone="safari">Safari</button>
+            </div>
+
+        <!-- ── zone : Étage 00 ── -->
+        <div class="dex-zone" id="etage00">
+            <h3 class="dex-sous">Étage 00 <small>· zones sauvages</small></h3>
+            <div class="dex-grille">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png" alt="Pokémon 19" title="Pokémon 19">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/16.png" alt="Pokémon 16" title="Pokémon 16">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/21.png" alt="Pokémon 21" title="Pokémon 21">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/161.png" alt="Pokémon 161" title="Pokémon 161">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/163.png" alt="Pokémon 163" title="Pokémon 163">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/261.png" alt="Pokémon 261" title="Pokémon 261">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/263.png" alt="Pokémon 263" title="Pokémon 263">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/396.png" alt="Pokémon 396" title="Pokémon 396">
+            </div>
+            <h3 class="dex-sous">Étage 00 <small>· dans le labyrinthe</small></h3>
+            <div class="dex-grille">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/50.png" alt="Pokémon 50" title="Pokémon 50">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/74.png" alt="Pokémon 74" title="Pokémon 74">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png" alt="Pokémon 27" title="Pokémon 27">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/104.png" alt="Pokémon 104" title="Pokémon 104">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/231.png" alt="Pokémon 231" title="Pokémon 231">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/328.png" alt="Pokémon 328" title="Pokémon 328">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/343.png" alt="Pokémon 343" title="Pokémon 343">
+            </div>
+        </div>
+        <!-- ── zone : Étage 01 › Forêt prismatique ── -->
+        <div class="dex-zone" id="etage01">
+            <h3 class="dex-sous">Étage 01 › Forêt prismatique <small>· zones sauvages</small></h3>
+            <div class="dex-grille">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="Pokémon 1" title="Pokémon 1">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/152.png" alt="Pokémon 152" title="Pokémon 152">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/252.png" alt="Pokémon 252" title="Pokémon 252">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png" alt="Pokémon 10" title="Pokémon 10">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/165.png" alt="Pokémon 165" title="Pokémon 165">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/187.png" alt="Pokémon 187" title="Pokémon 187">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/191.png" alt="Pokémon 191" title="Pokémon 191">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/285.png" alt="Pokémon 285" title="Pokémon 285">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/540.png" alt="Pokémon 540" title="Pokémon 540">
+            </div>
+            <h3 class="dex-sous">Étage 01 › Forêt prismatique <small>· dans le labyrinthe</small></h3>
+            <div class="dex-grille">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/172.png" alt="Pokémon 172" title="Pokémon 172">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/304.png" alt="Pokémon 304" title="Pokémon 304">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png" alt="Pokémon 133" title="Pokémon 133">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/234.png" alt="Pokémon 234" title="Pokémon 234">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/203.png" alt="Pokémon 203" title="Pokémon 203">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/241.png" alt="Pokémon 241" title="Pokémon 241">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/128.png" alt="Pokémon 128" title="Pokémon 128">
+            </div>
+        </div>
+        <!-- ── zone : Étage 02 › Montagne rocheuse ── -->
+        <div class="dex-zone actif" id="etage02">
+            <h3 class="dex-sous">Étage 02 › Montagne rocheuse <small>· zones sauvages</small></h3>
+            <div class="dex-grille">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/74.png" alt="Pokémon 74" title="Pokémon 74">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png" alt="Pokémon 35" title="Pokémon 35">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/246.png" alt="Pokémon 246" title="Pokémon 246">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/304.png" alt="Pokémon 304" title="Pokémon 304">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/111.png" alt="Pokémon 111" title="Pokémon 111">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/213.png" alt="Pokémon 213" title="Pokémon 213">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/371.png" alt="Pokémon 371" title="Pokémon 371">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/443.png" alt="Pokémon 443" title="Pokémon 443">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/610.png" alt="Pokémon 610" title="Pokémon 610">
+            </div>
+            <h3 class="dex-sous">Étage 02 › Montagne rocheuse <small>· dans le labyrinthe</small></h3>
+            <div class="dex-grille">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/218.png" alt="Pokémon 218" title="Pokémon 218">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/322.png" alt="Pokémon 322" title="Pokémon 322">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/66.png" alt="Pokémon 66" title="Pokémon 66">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/296.png" alt="Pokémon 296" title="Pokémon 296">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/447.png" alt="Pokémon 447" title="Pokémon 447">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/532.png" alt="Pokémon 532" title="Pokémon 532">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/559.png" alt="Pokémon 559" title="Pokémon 559">
+            </div>
+        </div>
+        <!-- ── zone : Étage 03 ── -->
+        <div class="dex-zone" id="etage03">
+            <h3 class="dex-sous">Étage 03 <small>· zones sauvages</small></h3>
+            <div class="dex-grille">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/147.png" alt="Pokémon 147" title="Pokémon 147">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/371.png" alt="Pokémon 371" title="Pokémon 371">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/621.png" alt="Pokémon 621" title="Pokémon 621">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/633.png" alt="Pokémon 633" title="Pokémon 633">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/704.png" alt="Pokémon 704" title="Pokémon 704">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/782.png" alt="Pokémon 782" title="Pokémon 782">
+            </div>
+            <h3 class="dex-sous">Étage 03 <small>· dans le labyrinthe</small></h3>
+            <div class="dex-grille">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/92.png" alt="Pokémon 92" title="Pokémon 92">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/200.png" alt="Pokémon 200" title="Pokémon 200">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/353.png" alt="Pokémon 353" title="Pokémon 353">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/355.png" alt="Pokémon 355" title="Pokémon 355">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/425.png" alt="Pokémon 425" title="Pokémon 425">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/562.png" alt="Pokémon 562" title="Pokémon 562">
+            </div>
+        </div>
+        <!-- ── zone : Safari ── -->
+        <div class="dex-zone" id="safari">
+            <h3 class="dex-sous">Safari <small>· zones sauvages</small></h3>
+            <div class="dex-grille">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/113.png" alt="Pokémon 113" title="Pokémon 113">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/115.png" alt="Pokémon 115" title="Pokémon 115">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/123.png" alt="Pokémon 123" title="Pokémon 123">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/127.png" alt="Pokémon 127" title="Pokémon 127">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/128.png" alt="Pokémon 128" title="Pokémon 128">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/84.png" alt="Pokémon 84" title="Pokémon 84">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/102.png" alt="Pokémon 102" title="Pokémon 102">
+            </div>
+            <h3 class="dex-sous">Safari <small>· dans le labyrinthe</small></h3>
+            <div class="dex-grille">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/46.png" alt="Pokémon 46" title="Pokémon 46">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/48.png" alt="Pokémon 48" title="Pokémon 48">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/118.png" alt="Pokémon 118" title="Pokémon 118">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/129.png" alt="Pokémon 129" title="Pokémon 129">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/147.png" alt="Pokémon 147" title="Pokémon 147">
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<script>
+(function () {
+  var zones = document.querySelectorAll('.dex-zone');
+  var boutons = document.querySelectorAll('[data-zone]');
+  function ouvre(id) {
+    zones.forEach(function (z) { z.classList.toggle('actif', z.id === id); });
+    boutons.forEach(function (b) { b.classList.toggle('actif', b.getAttribute('data-zone') === id); });
+  }
+  boutons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      ouvre(b.getAttribute('data-zone'));
+      history.replaceState(null, '', '#' + b.getAttribute('data-zone'));
+    });
+  });
+  var h = location.hash.replace('#', '');
+  if (h && document.getElementById(h)) ouvre(h);
+})();
+</script>

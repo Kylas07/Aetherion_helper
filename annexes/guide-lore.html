@@ -1,0 +1,109 @@
+<link href="aetherion-unifie.css" rel="stylesheet" />
+<!-- ═══ Guidebook Aetherion — catégorie 02. Lore ═══
+     Même principe que guide-accueil.html. -->
+<div class="guide">
+    <div class="guide-sommaire">
+        <div class="guide-logo"><b>Guide <em>Aetherion</em></b><span>les annexes du forum</span></div>
+
+        <span class="guide-cat">01. Accueil</span>
+        <a href="guide-accueil.html#reglement">Règlement</a>
+        <a href="guide-accueil.html#credits">Crédits &amp; équipe</a>
+
+        <span class="guide-cat">02. Lore</span>
+        <button type="button" data-page="contexte" class="actif">Contexte</button>
+        <button type="button" data-page="chrono-reelle">Chronologie réelle</button>
+        <button type="button" data-page="chrono-aetherion">Chronologie Aetherion</button>
+
+        <span class="guide-cat">03. Cartes</span>
+        <a href="guide-cartes.html#verrieres">Les Verrières</a>
+        <a href="guide-cartes.html#paliers">Les Paliers</a>
+
+        <span class="guide-cat">04. Groupes</span>
+        <div class="guide-groupes">
+            <a href="guide-groupes.html#couronne" style="--g:#D43535" class="large">Couronne de Cendre</a>
+            <a href="guide-groupes.html#ascendants" style="--g:#5CA35E">Ascendants</a>
+            <a href="guide-groupes.html#ancres" style="--g:#6FBEBD">Ancres</a>
+            <a href="guide-groupes.html#brises" style="--g:#9285D1">Brisés</a>
+            <a href="guide-groupes.html#eveilles" style="--g:#DBAE61">Éveillés</a>
+        </div>
+
+        <span class="guide-cat">05. Pokédex</span>
+        <a href="guide-pokedex.html">Zones &amp; rencontres</a>
+
+        <span class="guide-cat">06. Progression</span>
+        <a href="guide-progression.html#rangs">Rangs &amp; gains</a>
+        <a href="guide-progression.html#talents">Talents</a>
+
+        <div class="guide-pied"><span>Guide — équipe Aetherion</span></div>
+    </div>
+
+    <div class="guide-corps">
+        <div class="guide-retour"><a href="/forum">Revenir sur le forum</a></div>
+
+        <!-- ── page : Contexte ── -->
+        <div class="guide-page actif" id="contexte">
+            <div class="guide-hero">
+                <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                <div class="guide-hero-titre"><small>— 02. Lore</small><b>Contexte</b></div>
+                <span class="guide-hero-num">02</span>
+            </div>
+            <div class="guide-section">
+                <h2 class="guide-titre">Le <em>monde</em></h2>
+                <div class="guide-bloc"><b>Aetherion</b><p>Texte du contexte à coller ici — une page simple, quelques encadrés suffisent.</p></div>
+            </div>
+        </div>
+
+        <!-- ── page : Chronologie réelle ── -->
+        <div class="guide-page" id="chrono-reelle">
+            <div class="guide-hero">
+                <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                <div class="guide-hero-titre"><small>— 02. Lore</small><b>Chronologie réelle</b></div>
+                <span class="guide-hero-num">02</span>
+            </div>
+            <div class="guide-section">
+                <h2 class="guide-titre">Les <em>dates</em></h2>
+                <div class="frise">
+                    <div class="frise-item"><span class="frise-date">2024</span><div class="frise-texte"><b>Ouverture du forum</b><p>Description courte de l'événement.</p></div></div>
+                    <div class="frise-item"><span class="frise-date">2025</span><div class="frise-texte"><b>Événement</b><p>Description courte.</p></div></div>
+                    <div class="frise-item"><span class="frise-date">2026</span><div class="frise-texte"><b>Refonte Aetherion</b><p>Description courte.</p></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── page : Chronologie Aetherion ── -->
+        <div class="guide-page" id="chrono-aetherion">
+            <div class="guide-hero">
+                <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                <div class="guide-hero-titre"><small>— 02. Lore</small><b>Chronologie Aetherion</b></div>
+                <span class="guide-hero-num">02</span>
+            </div>
+            <div class="guide-section">
+                <h2 class="guide-titre">L'<em>histoire</em></h2>
+                <div class="frise">
+                    <div class="frise-item"><span class="frise-date">An 0</span><div class="frise-texte"><b>Élévation des tours</b><p>Description courte de l'événement fondateur.</p></div></div>
+                    <div class="frise-item"><span class="frise-date">An 214</span><div class="frise-texte"><b>Chute des anciennes tours</b><p>Naissance des Brisés.</p></div></div>
+                    <div class="frise-item"><span class="frise-date">Aujourd'hui</span><div class="frise-texte"><b>Le présent du jeu</b><p>Où commence votre histoire.</p></div></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+(function () {
+  var pages = document.querySelectorAll('.guide-page');
+  var boutons = document.querySelectorAll('.guide-sommaire [data-page]');
+  function ouvre(id) {
+    pages.forEach(function (p) { p.classList.toggle('actif', p.id === id); });
+    boutons.forEach(function (b) { b.classList.toggle('actif', b.getAttribute('data-page') === id); });
+  }
+  boutons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      ouvre(b.getAttribute('data-page'));
+      history.replaceState(null, '', '#' + b.getAttribute('data-page'));
+    });
+  });
+  var h = location.hash.replace("#", "");
+  if (h && document.getElementById(h)) ouvre(h);
+})();
+</script>

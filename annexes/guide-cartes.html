@@ -1,0 +1,84 @@
+<link href="aetherion-unifie.css" rel="stylesheet" />
+<!-- ═══ Guidebook Aetherion — catégorie 03. Cartes ═══
+     Une .guide-page par zone (bascule au clic). Remplace les images
+     par tes cartes. CSS : aetherion-unifie.css. -->
+<div class="guide">
+    <div class="guide-sommaire">
+        <div class="guide-logo"><b>Guide <em>Aetherion</em></b><span>les annexes du forum</span></div>
+        <span class="guide-cat">01. Accueil</span>
+        <a href="guide-accueil.html#reglement">Règlement</a>
+        <a href="guide-accueil.html#credits">Crédits &amp; équipe</a>
+        <span class="guide-cat">02. Lore</span>
+        <a href="guide-lore.html#contexte">Contexte</a>
+        <a href="guide-lore.html#chrono-reelle">Chronologie réelle</a>
+        <a href="guide-lore.html#chrono-aetherion">Chronologie Aetherion</a>
+        <span class="guide-cat">03. Cartes</span>
+        <button type="button" data-page="verrieres" class="actif">Les Verrières</button>
+        <button type="button" data-page="paliers">Les Paliers</button>
+        <span class="guide-cat">04. Groupes</span>
+        <div class="guide-groupes">
+            <a href="guide-groupes.html#couronne" style="--g:#D43535" class="large">Couronne de Cendre</a>
+            <a href="guide-groupes.html#ascendants" style="--g:#5CA35E">Ascendants</a>
+            <a href="guide-groupes.html#ancres" style="--g:#6FBEBD">Ancres</a>
+            <a href="guide-groupes.html#brises" style="--g:#9285D1">Brisés</a>
+            <a href="guide-groupes.html#eveilles" style="--g:#DBAE61">Éveillés</a>
+        </div>
+        <span class="guide-cat">05. Pokédex</span>
+        <a href="guide-pokedex.html">Zones &amp; rencontres</a>
+        <span class="guide-cat">06. Progression</span>
+        <a href="guide-progression.html#rangs">Rangs &amp; gains</a>
+        <a href="guide-progression.html#talents">Talents</a>
+        <div class="guide-pied"><span>Guide — équipe Aetherion</span></div>
+    </div>
+
+    <div class="guide-corps">
+        <div class="guide-retour"><a href="/forum">Revenir sur le forum</a></div>
+
+        <!-- ── page : Les Verrières ── -->
+        <div class="guide-page actif" id="verrieres">
+            <div class="guide-hero">
+                <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                <div class="guide-hero-titre"><small>— 03. Cartes</small><b>Les Verrières</b></div>
+                <span class="guide-hero-num">03</span>
+            </div>
+            <div class="guide-section">
+                <h2 class="guide-titre">La <em>zone</em></h2>
+                <div class="guide-bloc"><b>Description</b><p>Description de la zone, ses ambiances, ce qu'on peut y jouer. À compléter — ajoute ta carte en pleine largeur ci-dessous.</p></div>
+                <div class="guide-hero" style="height:360px;"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Carte des Verrières"></div>
+            </div>
+        </div>
+
+        <!-- ── page : Les Paliers ── -->
+        <div class="guide-page" id="paliers">
+            <div class="guide-hero">
+                <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                <div class="guide-hero-titre"><small>— 03. Cartes</small><b>Les Paliers</b></div>
+                <span class="guide-hero-num">03</span>
+            </div>
+            <div class="guide-section">
+                <h2 class="guide-titre">La <em>zone</em></h2>
+                <div class="guide-bloc"><b>Description</b><p>À compléter sur le modèle des Verrières.</p></div>
+                <div class="guide-hero" style="height:360px;"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Carte des Paliers"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+(function () {
+  var pages = document.querySelectorAll('.guide-page');
+  var boutons = document.querySelectorAll('.guide-sommaire [data-page]');
+  function ouvre(id) {
+    pages.forEach(function (p) { p.classList.toggle('actif', p.id === id); });
+    boutons.forEach(function (b) { b.classList.toggle('actif', b.getAttribute('data-page') === id); });
+  }
+  boutons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      ouvre(b.getAttribute('data-page'));
+      history.replaceState(null, '', '#' + b.getAttribute('data-page'));
+    });
+  });
+  var h = location.hash.replace('#', '');
+  if (h && document.getElementById(h)) ouvre(h);
+})();
+</script>
