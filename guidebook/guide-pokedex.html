@@ -1,0 +1,399 @@
+<link href="aetherion-unifie.css" rel="stylesheet" />
+<!-- ╔═══════════════════════════════════════════════════════════════════╗
+     ║  MODE D'EMPLOI  —  pas besoin de savoir coder                       ║
+     ╠═══════════════════════════════════════════════════════════════════╣
+     ║  • Pour CHANGER UN TEXTE : trouve-le plus bas et récris-le entre    ║
+     ║    les balises. Ex : <p>ton texte ici</p> → écris entre <p> et </p>.║
+     ║    Ne touche PAS aux < >, aux "guillemets", ni aux mots en anglais. ║
+     ║                                                                     ║
+     ║  • Pour CHANGER UNE IMAGE : remplace le lien qui suit src=" par     ║
+     ║    l'adresse de ton image. Ex : src="http://.../mon-image.png"      ║
+     ║                                                                     ║
+     ║  • Pour CHANGER UN LIEN : remplace ce qui suit href=" par ton URL.  ║
+     ║                                                                     ║
+     ║  • CHAQUE onglet du menu de gauche correspond à un bloc plus bas    ║
+     ║    marqué  <!-- PAGE : ... -->. Le texte de cette page est dedans.  ║
+     ║                                                                     ║
+     ║  • Le MENU DE GAUCHE est identique sur toutes les pages : si tu le  ║
+     ║    modifies ici, reporte le même changement sur les autres pages.   ║
+     ╚═══════════════════════════════════════════════════════════════════╝ -->
+<!-- ═══ Guidebook Aetherion — guide-pokedex — CSS : aetherion-unifie.css ═══
+     Sous-pages = blocs .guide-page (bascule au clic dans le sommaire).
+     Adapte les href "guide-xxx.html" aux URLs réelles de Forumactif. -->
+<div class="guide">
+    <!-- ▼▼▼  MENU DE GAUCHE (le même sur toutes les pages)  ▼▼▼
+         Chaque <button> ou <a> = un onglet. Le texte de l'onglet est
+         écrit juste avant </button> ou </a>. -->
+    <div class="guide-sommaire">
+        <div class="guide-logo"><b>Guide <em>Aetherion</em></b><span>les annexes du forum</span></div>
+        <span class="guide-cat">01. Accueil</span>
+        <a href="guide-accueil.html#reglement">Règlement</a>
+        <a href="guide-accueil.html#guide-nouveau">Guide du nouveau</a>
+        <a href="guide-accueil.html#credits">Crédits et staff</a>
+        <span class="guide-cat">02. Lore</span>
+        <a href="guide-lore.html#contexte">Contexte</a>
+        <a href="guide-lore.html#chrono-reelle">Chronologie réelle</a>
+        <a href="guide-lore.html#chrono-jeu">Chronologie du jeu</a>
+        <a href="guide-lore.html#vivre">Vivre à Aetherion</a>
+        <a href="guide-lore.html#specificite">Spécificité du jeu</a>
+        <span class="guide-cat">03. Cartes</span>
+        <a href="guide-cartes.html#etage00">Étage 00 · Zone de départ</a>
+        <a href="guide-cartes.html#etage01">Étage 01 · Forêt Prismatique</a>
+        <a href="guide-cartes.html#etage02">Étage 02 · Montagne Rocheuse</a>
+        <a href="guide-cartes.html#etage03">Étage 03 · Îles Ouragan</a>
+        <span class="guide-cat">04. Groupes</span>
+        <div class="guide-groupes">
+            <a href="guide-groupes.html#couronne" class="large" style="--g:#D43535">Couronne de Cendre</a>
+            <a href="guide-groupes.html#vigie" style="--g:#6FBEBD">Vigie du Seuil</a>
+            <a href="guide-groupes.html#colporteur" style="--g:#9285D1">Colporteur de l'Ombre</a>
+            <a href="guide-groupes.html#arpenteur" style="--g:#5CA35E">Arpenteur du Vide</a>
+            <a href="guide-groupes.html#heraut" style="--g:#DBAE61">Héraut Silencieux</a>
+        </div>
+        <span class="guide-cat">05. Personnages</span>
+        <a href="guide-progression.html#progression">Progression</a>
+        <a href="guide-progression.html#talents">Talents</a>
+        <a href="guide-progression.html#argent">Argent</a>
+        <a href="guide-progression.html#pvp">PVP</a>
+        <span class="guide-cat">06. Pokémons</span>
+        <button type="button" data-page="generalite" class="actif">Généralité</button>
+        <button type="button" data-page="pkmn-progression">Progression</button>
+        <button type="button" data-page="attaques">Attaques</button>
+        <button type="button" data-page="pkmn-talents">Talents</button>
+        <button type="button" data-page="capture">Capture</button>
+        <button type="button" data-page="obtention">Obtention spéciales</button>
+        <button type="button" data-page="combat">Système de Combat</button>
+        <div class="guide-pied"><span>Guide — équipe Aetherion</span></div>
+    </div>
+
+    <!-- ▼▼▼  CONTENU DES PAGES (une PAGE = un onglet du menu)  ▼▼▼ -->
+    <div class="guide-corps">
+        <!-- Bouton « revenir au forum » : mets l'adresse de ton forum dans href -->
+        <div class="guide-retour"><a href="/forum">Revenir sur le forum</a></div>
+
+        <!-- ══════════ PAGE : « generalite » (onglet du menu) ══════════
+             Pour renommer/retexturer cette page, édite les textes ci-dessous. -->
+        <div class="guide-page actif" id="generalite">
+            <!-- IMAGE DE BANNIÈRE : remplace le lien après src=". Le petit texte et le grand titre se changent entre les balises juste en dessous. -->
+            <div class="guide-hero">
+                <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                <div class="guide-hero-titre"><small>— 06. Pokémons</small><b>Généralité</b></div>
+                <span class="guide-hero-num">06</span>
+            </div>
+            <!-- ENCADRÉ : le titre est entre <b> et </b>, le texte entre <p> et </p>. Copie-colle un encadré entier pour en ajouter un. -->
+            <div class="guide-section"><h2 class="guide-titre">À <em>compléter</em></h2><div class="guide-bloc"><b>Section</b><p>Présentation générale : starters, équipe, box, niveaux.</p></div></div>
+        </div>
+
+        <!-- ══════════ PAGE : « pkmn-progression » (onglet du menu) ══════════
+             Pour renommer/retexturer cette page, édite les textes ci-dessous. -->
+        <div class="guide-page" id="pkmn-progression">
+            <div class="guide-hero">
+                <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                <div class="guide-hero-titre"><small>— 06. Pokémons</small><b>Progression</b></div>
+                <span class="guide-hero-num">06</span>
+            </div>
+            <div class="guide-section"><h2 class="guide-titre">À <em>compléter</em></h2><div class="guide-bloc"><b>Section</b><p>Comment un Pokémon gagne des niveaux et évolue.</p></div></div>
+        </div>
+
+        <!-- ══════════ PAGE : « attaques » (onglet du menu) ══════════
+             Pour renommer/retexturer cette page, édite les textes ci-dessous. -->
+        <div class="guide-page" id="attaques">
+            <div class="guide-hero">
+                <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                <div class="guide-hero-titre"><small>— 06. Pokémons</small><b>Attaques</b></div>
+                <span class="guide-hero-num">06</span>
+            </div>
+            <div class="guide-section"><h2 class="guide-titre">À <em>compléter</em></h2><div class="guide-bloc"><b>Section</b><p>Le système d'attaques : apprentissage, CT, limites.</p></div></div>
+        </div>
+
+        <!-- ══════════ PAGE : « pkmn-talents » (onglet du menu) ══════════
+             Pour renommer/retexturer cette page, édite les textes ci-dessous. -->
+        <div class="guide-page" id="pkmn-talents">
+            <div class="guide-hero">
+                <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                <div class="guide-hero-titre"><small>— 06. Pokémons</small><b>Talents</b></div>
+                <span class="guide-hero-num">06</span>
+            </div>
+            <div class="guide-section"><h2 class="guide-titre">À <em>compléter</em></h2><div class="guide-bloc"><b>Section</b><p>Les talents des Pokémon (à distinguer de ceux du personnage).</p></div></div>
+        </div>
+
+        <!-- ══════════ PAGE : « capture » (onglet du menu) ══════════
+             Pour renommer/retexturer cette page, édite les textes ci-dessous. -->
+        <div class="guide-page" id="capture">
+            <div class="guide-hero">
+                <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                <div class="guide-hero-titre"><small>— 06. Pokémons</small><b>Capture</b></div>
+                <span class="guide-hero-num">06</span>
+            </div>
+            <div class="guide-staff"><div class="guide-staff-avatar">Dx</div><div class="guide-staff-texte"><small>Comment ça marche</small><p>Clique sur un étage de la tour pour voir les espèces qui y apparaissent. Seuls les étages débloqués sont cliquables.</p></div></div>
+            <!-- hordes : partout, changent chaque mois (mets à jour le badge + les sprites) -->
+            <!-- HORDES (change chaque mois) : mets à jour le mois dans <span class="dex-mois"> et les images ci-dessous. -->
+            <div class="dex-hordes"><b>Hordes <em>Pokémon</em></b><p>Espèces additionnelles disponibles quelle que soit la zone. Certaines n'apparaissent QUE dans les hordes.</p><span class="dex-mois">Rotation : Juillet 2026</span><div class="dex-grille" style="width:100%;">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/167.png" alt="#167" title="#167">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/41.png" alt="#41" title="#41">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/425.png" alt="#425" title="#425">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/77.png" alt="#77" title="#77">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/228.png" alt="#228" title="#228">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/355.png" alt="#355" title="#355">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/131.png" alt="#131" title="#131">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/217.png" alt="#217" title="#217">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/179.png" alt="#179" title="#179">
+            </div></div>
+            <!-- la tour : un étage = une plateforme. Débloque un étage en retirant class="verrouillee" + disabled et en ajoutant son data-zone + panneau .dex-zone -->
+            <!-- LA TOUR : un étage = un <button>. Les étages « verrouillee disabled » ne sont pas cliquables.
+                 <!-- POKÉMON D'UNE ZONE : chaque <img> est un Pokémon (le numéro dans le lien = numéro du Pokédex national). Ajoute/retire des <img>. -->
+                 Pour DÉBLOQUER un étage : retire  verrouillee  et  disabled, ajoute-lui  data-zone="zoneXX"  et crée le panneau <div class="dex-zone" id="zoneXX"> plus bas. -->
+            <div class="dex-tour">
+                <button type="button" class="dex-etage verrouillee" disabled style="--w:68%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">19</span>
+                </button>
+                <button type="button" class="dex-etage verrouillee" disabled style="--w:70%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">18</span>
+                </button>
+                <button type="button" class="dex-etage verrouillee" disabled style="--w:71%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">17</span>
+                </button>
+                <button type="button" class="dex-etage verrouillee" disabled style="--w:73%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">16</span>
+                </button>
+                <button type="button" class="dex-etage verrouillee" disabled style="--w:75%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">15</span>
+                </button>
+                <button type="button" class="dex-etage verrouillee" disabled style="--w:76%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">14</span>
+                </button>
+                <button type="button" class="dex-etage verrouillee" disabled style="--w:78%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">13</span>
+                </button>
+                <button type="button" class="dex-etage verrouillee" disabled style="--w:80%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">12</span>
+                </button>
+                <button type="button" class="dex-etage verrouillee" disabled style="--w:81%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">11</span>
+                </button>
+                <button type="button" class="dex-etage verrouillee" disabled style="--w:83%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">10</span>
+                </button>
+                <button type="button" class="dex-etage verrouillee" disabled style="--w:85%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">09</span>
+                </button>
+                <button type="button" class="dex-etage verrouillee" disabled style="--w:87%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">08</span>
+                </button>
+                <button type="button" class="dex-etage verrouillee" disabled style="--w:88%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">07</span>
+                </button>
+                <button type="button" class="dex-etage verrouillee" disabled style="--w:90%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">06</span>
+                </button>
+                <button type="button" class="dex-etage verrouillee" disabled style="--w:92%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">05</span>
+                </button>
+                <button type="button" class="dex-etage verrouillee" disabled style="--w:93%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">04</span>
+                </button>
+                <button type="button" class="dex-etage" data-zone="zone03" style="--w:95%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">03</span>
+                    <span class="nom"><b>Étage 03</b><small>Îles Ouragan</small></span>
+                </button>
+                <button type="button" class="dex-etage" data-zone="zone02" style="--w:97%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">02</span>
+                    <span class="nom"><b>Étage 02</b><small>Montagne Rocheuse</small></span>
+                </button>
+                <button type="button" class="dex-etage safari" data-zone="safari" style="--w:34%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">S</span>
+                    <span class="nom"><b>Safari</b><small>Zone spéciale</small></span>
+                </button>
+                <button type="button" class="dex-etage" data-zone="zone01" style="--w:98%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">01</span>
+                    <span class="nom"><b>Étage 01</b><small>Forêt Prismatique</small></span>
+                </button>
+                <button type="button" class="dex-etage actif" data-zone="zone00" style="--w:100%;">
+                    <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                    <span class="num">00</span>
+                    <span class="nom"><b>Étage 00</b><small>Zone de départ</small></span>
+                </button>
+            </div>
+            <div class="dex-chips">
+                <button type="button" data-zone="zone00" class="actif">Étage 00</button>
+                <button type="button" data-zone="zone01">Étage 01</button>
+                <button type="button" data-zone="zone02">Étage 02</button>
+                <button type="button" data-zone="zone03">Étage 03</button>
+                <button type="button" data-zone="safari">Safari</button>
+            </div>
+                <div class="dex-zone actif" id="zone00">
+                    <h3 class="dex-sous">Étage 00 · Zone de départ <small>· zones sauvages</small></h3>
+                    <div class="dex-grille">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png" alt="#19" title="#19">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/16.png" alt="#16" title="#16">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/21.png" alt="#21" title="#21">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/161.png" alt="#161" title="#161">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/163.png" alt="#163" title="#163">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/261.png" alt="#261" title="#261">
+                    </div>
+                    <h3 class="dex-sous">Étage 00 · Zone de départ <small>· dans le labyrinthe</small></h3>
+                    <div class="dex-grille">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/50.png" alt="#50" title="#50">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/74.png" alt="#74" title="#74">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png" alt="#27" title="#27">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/104.png" alt="#104" title="#104">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/231.png" alt="#231" title="#231">
+                    </div>
+                </div>
+                <div class="dex-zone" id="zone01">
+                    <h3 class="dex-sous">Étage 01 · Forêt Prismatique <small>· zones sauvages</small></h3>
+                    <div class="dex-grille">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="#1" title="#1">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/152.png" alt="#152" title="#152">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/252.png" alt="#252" title="#252">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png" alt="#10" title="#10">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/165.png" alt="#165" title="#165">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/187.png" alt="#187" title="#187">
+                    </div>
+                    <h3 class="dex-sous">Étage 01 · Forêt Prismatique <small>· dans le labyrinthe</small></h3>
+                    <div class="dex-grille">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/172.png" alt="#172" title="#172">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/304.png" alt="#304" title="#304">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png" alt="#133" title="#133">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/234.png" alt="#234" title="#234">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/203.png" alt="#203" title="#203">
+                    </div>
+                </div>
+                <div class="dex-zone" id="zone02">
+                    <h3 class="dex-sous">Étage 02 · Montagne Rocheuse <small>· zones sauvages</small></h3>
+                    <div class="dex-grille">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/74.png" alt="#74" title="#74">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png" alt="#35" title="#35">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/246.png" alt="#246" title="#246">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/304.png" alt="#304" title="#304">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/111.png" alt="#111" title="#111">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/213.png" alt="#213" title="#213">
+                    </div>
+                    <h3 class="dex-sous">Étage 02 · Montagne Rocheuse <small>· dans le labyrinthe</small></h3>
+                    <div class="dex-grille">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/218.png" alt="#218" title="#218">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/322.png" alt="#322" title="#322">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/66.png" alt="#66" title="#66">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/296.png" alt="#296" title="#296">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/447.png" alt="#447" title="#447">
+                    </div>
+                </div>
+                <div class="dex-zone" id="zone03">
+                    <h3 class="dex-sous">Étage 03 · Îles Ouragan <small>· zones sauvages</small></h3>
+                    <div class="dex-grille">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/278.png" alt="#278" title="#278">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/279.png" alt="#279" title="#279">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/170.png" alt="#170" title="#170">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/320.png" alt="#320" title="#320">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/456.png" alt="#456" title="#456">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/690.png" alt="#690" title="#690">
+                    </div>
+                    <h3 class="dex-sous">Étage 03 · Îles Ouragan <small>· dans le labyrinthe</small></h3>
+                    <div class="dex-grille">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/72.png" alt="#72" title="#72">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/90.png" alt="#90" title="#90">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/116.png" alt="#116" title="#116">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/223.png" alt="#223" title="#223">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/340.png" alt="#340" title="#340">
+                    </div>
+                </div>
+                <div class="dex-zone" id="safari">
+                    <h3 class="dex-sous">Safari · Zone spéciale <small>· zones sauvages</small></h3>
+                    <div class="dex-grille">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/113.png" alt="#113" title="#113">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/115.png" alt="#115" title="#115">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/123.png" alt="#123" title="#123">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/127.png" alt="#127" title="#127">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/128.png" alt="#128" title="#128">
+                    </div>
+                    <h3 class="dex-sous">Safari · Zone spéciale <small>· dans le labyrinthe</small></h3>
+                    <div class="dex-grille">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/46.png" alt="#46" title="#46">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/48.png" alt="#48" title="#48">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/118.png" alt="#118" title="#118">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/129.png" alt="#129" title="#129">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/147.png" alt="#147" title="#147">
+                    </div>
+                </div>
+        </div>
+
+        <!-- ══════════ PAGE : « obtention » (onglet du menu) ══════════
+             Pour renommer/retexturer cette page, édite les textes ci-dessous. -->
+        <div class="guide-page" id="obtention">
+            <div class="guide-hero">
+                <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                <div class="guide-hero-titre"><small>— 06. Pokémons</small><b>Obtention spéciales</b></div>
+                <span class="guide-hero-num">06</span>
+            </div>
+            <div class="guide-section"><h2 class="guide-titre">À <em>compléter</em></h2><div class="guide-bloc"><b>Section</b><p>Œufs, fossiles, échanges, événements, chromatiques.</p></div></div>
+        </div>
+
+        <!-- ══════════ PAGE : « combat » (onglet du menu) ══════════
+             Pour renommer/retexturer cette page, édite les textes ci-dessous. -->
+        <div class="guide-page" id="combat">
+            <div class="guide-hero">
+                <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                <div class="guide-hero-titre"><small>— 06. Pokémons</small><b>Système de Combat</b></div>
+                <span class="guide-hero-num">06</span>
+            </div>
+            <div class="guide-section"><h2 class="guide-titre">À <em>compléter</em></h2><div class="guide-bloc"><b>Section</b><p>Comment se résolvent les combats sur le forum.</p></div></div>
+        </div>
+
+    </div>
+</div>
+<script>
+(function () {
+  var pages = document.querySelectorAll(".guide-page");
+  var boutons = document.querySelectorAll(".guide-sommaire [data-page]");
+  function ouvre(id) {
+    pages.forEach(function (p) { p.classList.toggle("actif", p.id === id); });
+    boutons.forEach(function (b) { b.classList.toggle("actif", b.getAttribute("data-page") === id); });
+  }
+  boutons.forEach(function (b) {
+    b.addEventListener("click", function () {
+      ouvre(b.getAttribute("data-page"));
+      history.replaceState(null, "", "#" + b.getAttribute("data-page"));
+      document.querySelector(".guide-corps").scrollTo({ top: 0 });
+    });
+  });
+  var h = location.hash.replace("#", "");
+  if (h && document.getElementById(h)) ouvre(h);
+})();
+</script>
+<script>
+(function () {
+  var zones = document.querySelectorAll(".dex-zone");
+  var boutons = document.querySelectorAll("[data-zone]");
+  var tour = document.querySelector(".dex-tour");
+  function ouvre(id) {
+    zones.forEach(function (z) { z.classList.toggle("actif", z.id === id); });
+    boutons.forEach(function (b) { b.classList.toggle("actif", b.getAttribute("data-zone") === id); });
+  }
+  boutons.forEach(function (b) {
+    b.addEventListener("click", function () {
+      if (b.disabled) return;
+      ouvre(b.getAttribute("data-zone"));
+      if (tour && b.classList.contains("dex-etage")) { tour.scrollTo({ top: b.offsetTop - (tour.clientHeight - b.offsetHeight) / 2, behavior: "smooth" }); }
+    });
+  });
+})();
+</script>

@@ -1,0 +1,23 @@
+GUIDE AETHERION — dossier à héberger
+====================================
+
+Pages (une catégorie = un fichier ; les sous-pages basculent au clic) :
+· guide-accueil.html      01. Accueil     — Règlement / Guide du nouveau / Crédits et staff
+· guide-lore.html         02. Lore        — Contexte / Chrono réelle / Chrono du jeu / Vivre / Spécificité
+· guide-cartes.html       03. Cartes      — Étages 00 à 03 (texte + bouton Pokédex + PNJ)
+· guide-groupes.html      04. Groupes     — Couronne de Cendre (complète) + 4 groupes à étoffer
+· guide-progression.html  05. Personnages — Progression / Talents / Argent / PVP
+· guide-pokedex.html      06. Pokémons    — Généralité / Progression / Attaques / Talents / Capture (tour) / Obtention / Combat
+· aetherion-unifie.css    feuille de style (liée en tête de chaque page)
+
+Modifier la structure du sommaire : il est identique sur toutes les pages.
+Pour ajouter/retirer une sous-page, édite le <span class="guide-cat"> et les
+boutons/liens qui suivent, ET ajoute/retire le bloc <div class="guide-page" id="…">
+correspondant dans le corps de la page.
+
+Sur Forumactif :
+1. Héberge aetherion-unifie.css (ou colle-le dans le CSS du forum et retire la
+   ligne <link> en tête de chaque page).
+2. Crée une page HTML par fichier (Modules → Pages HTML), colle le contenu.
+3. Remplace les liens "guide-xxx.html#ancre" par les URLs réelles (ex. /h21-guide-lore#contexte).
+4. Remplace les images d'exemple et les sprites par les tiens.
