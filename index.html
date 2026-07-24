@@ -166,6 +166,13 @@
                 e('line', { x1: 15, y1: 10.5, x2: 21, y2: 10.5 })
               );
             }
+            if (kind === 'guide') {
+              return e('svg', common,
+                e('path', { d: 'M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z' }),
+                e('line', { x1: 8, y1: 7, x2: 15, y2: 7 }),
+                e('line', { x1: 8, y1: 10, x2: 15, y2: 10 })
+              );
+            }
             return e('svg', common,
               e('circle', { cx: 12, cy: 8, r: 4 }),
               e('path', { d: 'M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7' })
@@ -191,7 +198,13 @@
                 desc: 'Ta fiche de dresseur : identité, rang, talents (T1–T3), CT/CS et inventaire.',
                 href: 'Carte dresseur.html', target: '_self', cta: 'Ouvrir',
                 color: '#A8A096', iconBg: 'rgba(168,160,150,.1)', iconBorder: 'rgba(168,160,150,.28)', tint: 'rgba(168,160,150,.12)', soon: false, opacity: 1
-              }
+              },
+             {
+               key: 'guide', tag: 'IV', name: 'Guidebook · Annexes',
+               desc: 'Le guide complet du forum : règlement, lore, cartes des étages, groupes, progression et Pokédex.',
+               href: 'Guidebook/index.html', target: '_self', cta: 'Ouvrir',
+               color: '#8A8276', iconBg: 'rgba(138,130,118,.1)', iconBorder: 'rgba(138,130,118,.28)', tint: 'rgba(138,130,118,.12)', soon: false, opacity: 1
+             }
             ].map(t => Object.assign(t, { icon: this.icon(t.key, t.color) }));
 
             return {
