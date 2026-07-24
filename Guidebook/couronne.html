@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Couronne de Cendre — Guide Aetherion</title>
+<link href="aetherion-unifie.css" rel="stylesheet" />
+</head>
+<body style="--g:#D43535">
+<!-- MODE D'EMPLOI (pas besoin de savoir coder) :
+     • Changer un TEXTE  : récris-le entre les balises, ex <p>ton texte</p>. Ne touche pas aux < >, aux "guillemets", ni aux mots anglais.
+     • Changer une IMAGE : remplace le lien après  src="  par l'adresse de ton image.
+     • Changer un LIEN   : remplace le lien après  href="  par ton adresse.
+     • Cette page = un onglet du menu. Le MENU de gauche est le même partout : reporte tes changements de menu sur chaque fichier.
+     • Chaque annexe est un fichier séparé (id.html) ; les onglets pointent les uns vers les autres. -->
+<div class="guide">
+    <!-- ▼ MENU DE GAUCHE — identique sur toutes les pages. Un onglet = un lien vers une autre page (id.html).
+         Reporte tout changement de menu sur les autres fichiers. ▼ -->
+    <div class="guide-sommaire">
+        <div class="guide-logo"><b>Guide <em>Aetherion</em></b><span>les annexes du forum</span></div>
+        <span class="guide-cat">01. Accueil</span>
+        <a href="reglement.html">Règlement</a>
+        <a href="guide-nouveau.html">Guide du nouveau</a>
+        <a href="credits.html">Crédits et staff</a>
+        <span class="guide-cat">02. Lore</span>
+        <a href="contexte.html">Contexte</a>
+        <a href="chrono-reelle.html">Chronologie réelle</a>
+        <a href="chrono-jeu.html">Chronologie du jeu</a>
+        <a href="vivre.html">Vivre à Aetherion</a>
+        <a href="specificite.html">Spécificité du jeu</a>
+        <span class="guide-cat">03. Cartes</span>
+        <a href="etage00.html">Étage 00 · Zone de départ</a>
+        <a href="etage01.html">Étage 01 · Forêt Prismatique</a>
+        <a href="etage02.html">Étage 02 · Montagne Rocheuse</a>
+        <a href="etage03.html">Étage 03 · Îles Ouragan</a>
+        <span class="guide-cat">04. Groupes</span>
+        <div class="guide-groupes">
+            <a href="couronne.html" class="actif large" style="--g:#D43535">Couronne de Cendre</a>
+            <a href="vigie.html" style="--g:#6FBEBD">Vigie du Seuil</a>
+            <a href="colporteur.html" style="--g:#9285D1">Colporteur de l'Ombre</a>
+            <a href="arpenteur.html" style="--g:#5CA35E">Arpenteur du Vide</a>
+            <a href="heraut.html" style="--g:#DBAE61">Héraut Silencieux</a>
+        </div>
+        <span class="guide-cat">05. Personnages</span>
+        <a href="progression.html">Progression</a>
+        <a href="talents.html">Talents</a>
+        <a href="argent.html">Argent</a>
+        <a href="pvp.html">PVP</a>
+        <span class="guide-cat">06. Pokémons</span>
+        <a href="generalite.html">Généralité</a>
+        <a href="pkmn-progression.html">Progression</a>
+        <a href="attaques.html">Attaques</a>
+        <a href="pkmn-talents.html">Talents</a>
+        <a href="capture.html">Capture</a>
+        <a href="obtention.html">Obtention spéciales</a>
+        <a href="combat.html">Système de Combat</a>
+        <div class="guide-pied"><span>Guide — équipe Aetherion</span></div>
+    </div>
+
+    <!-- ▼ CONTENU DE CETTE PAGE ▼ -->
+    <div class="guide-corps">
+        <!-- Bouton « revenir au forum » : mets l'adresse de ton forum dans href. -->
+        <div class="guide-retour"><a href="/forum">Revenir sur le forum</a></div>
+
+        <!-- ══ PAGE : couronne ══ -->
+        <div class="guide-page actif" id="couronne">
+            <!-- IMAGE DE BANNIÈRE du groupe. La couleur du groupe se règle plus haut : style="--g:#D43535" sur <body>. -->
+            <div class="grp-bandeau">
+                <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                <div class="guide-hero-titre"><small>— 04. Groupes</small><b>Couronne <em>de Cendre</em></b></div>
+                <!-- RÔLE / DEVISE (coin du bandeau). -->
+                <span class="grp-role">Antagoniste — le pouvoir comme unique vérité</span>
+            </div>
+            <!-- MOTS-CLÉS : une étiquette = un <span>. -->
+            <div class="grp-chips"><span>Dévotion</span><span>Loyautés familiales</span><span>Autorité assumée</span><span>Secte plus qu'armée</span></div>
+            <div class="guide-bloc"><b>Philosophie</b><p>Aetherion n'est pas un monde à sauver, c'est un monde à posséder. La Couronne considère que la notion même de « joueur libre » est un mensonge confortable : quelqu'un commande toujours, alors autant que ce soit eux, sans hypocrisie. Ils cultivent des loyautés presque familiales : on entre à la Couronne parce qu'on a besoin qu'on ait besoin de nous. C'est une secte de la dévotion plus qu'une armée.</p></div>
+            <div class="guide-bloc"><b>La faille</b><p>Leurs membres sont souvent des gens qui ont été abandonnés, ou ont de forts désirs inavoués. La cruauté du groupe n'est jamais gratuite dans leur tête — elle est logique, presque tendre en interne. Ça les rend dangereusement attachants.</p></div>
+            <div class="grp-bloc"><b>Notoriété gagnée par</b><ul><li>Sabotage de convois</li><li>Soumission d'autres joueurs / PNJ à l'autorité de la Couronne</li><li>Missions d'« épuration » de zones contestées</li><li>Rapports d'espionnage sur les autres groupes</li><li>Exécution d'ordres sans poser de question</li><li>Deals et braconnage de Pokémon pour financer le groupe</li></ul></div>
+            <!-- ÉCHELLE DES GRADES : un palier = un grp-grade (numéro / titre / condition / avantages). Copie un palier pour en ajouter. -->
+            <div class="guide-section">
+                <h2 class="guide-titre">Les <em>grades</em></h2>
+                <div class="grp-grades">
+                <div class="grp-grade">
+                    <span class="num">1</span>
+                    <span class="titre-grade"><b>Cendre-née</b><small>Notoriété : 0</small></span>
+                    <p>Accès au repaire et ses missions, tag de groupe.</p>
+                </div>
+                <div class="grp-grade">
+                    <span class="num">2</span>
+                    <span class="titre-grade"><b>Lame Servile</b><small>Notoriété : 150</small></span>
+                    <p>Missions exclusives, accès à un sous-forum Discord privé.</p>
+                </div>
+                <div class="grp-grade">
+                    <span class="num">3</span>
+                    <span class="titre-grade"><b>Porte-Sceau</b><small>Notoriété : 400</small></span>
+                    <p>Droit de « marquer » un territoire en RP, mentorat d'un Cendre-née qui rapporte de l'XP.</p>
+                </div>
+                <div class="grp-grade">
+                    <span class="num">4</span>
+                    <span class="titre-grade"><b>Voix du Trône</b><small>Notoriété : 800 + mission staff</small></span>
+                    <p>Droit de proposer des missions de groupe, intrigues en avant-première.</p>
+                </div>
+                <div class="grp-grade">
+                    <span class="num">5</span>
+                    <span class="titre-grade"><b>Régent de Cendre</b><small>Notoriété : 1 500 + décision staff</small></span>
+                    <p>Voix décisionnaire sur le lore, autorité RP sur un sous-territoire, badge unique.</p>
+                </div>
+                </div>
+            </div>
+            <div class="guide-section">
+                <h2 class="guide-titre">Figures <em>importantes</em></h2>
+                <!-- PERSONNAGES : les ronds du haut changent de fiche (même numéro après data-figure=" et id="). Copie un rond + sa fiche pour ajouter un personnage. -->
+                <div class="grp-figures-nav">
+                    <button type="button" data-figure="couronne-pnj0" class="actif" title="Nom du PNJ"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Nom du PNJ"></button>
+                    <button type="button" data-figure="couronne-pnj1" title="Second PNJ"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Second PNJ"></button>
+                </div>
+                <div class="grp-figure-panneau actif" id="couronne-pnj0">
+                <div class="grp-figure">
+                    <div class="portrait"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Portrait"></div>
+                    <div class="fiche">
+                        <header><b>Nom du PNJ</b><small>Régente de Cendre — 61 ans</small></header>
+                        <div class="traits"><span>autoritaire</span><span>éloquente</span><span>caustique</span></div>
+                        <blockquote>« Une citation marquante, dite en RP. »<cite>Le PNJ dans « Nom du RP »</cite></blockquote>
+                        <p>Description du personnage : son histoire, sa place dans la Couronne, ce qu'on croise en RP.</p>
+                    </div>
+                </div>
+                </div>
+                <div class="grp-figure-panneau" id="couronne-pnj1">
+                <div class="grp-figure">
+                    <div class="portrait"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Portrait"></div>
+                    <div class="fiche">
+                        <header><b>Second PNJ</b><small>Voix du Trône — 34 ans</small></header>
+                        <div class="traits"><span>loyal</span><span>taciturne</span><span>implacable</span></div>
+                        <blockquote>« Une autre citation. »<cite>Le PNJ dans « Nom du RP »</cite></blockquote>
+                        <p>Description du second personnage.</p>
+                    </div>
+                </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+(function () {
+  document.querySelectorAll(".grp-figures-nav").forEach(function (nav) {
+    var btns = nav.querySelectorAll("[data-figure]");
+    btns.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var section = nav.parentElement;
+        btns.forEach(function (x) { x.classList.toggle("actif", x === b); });
+        section.querySelectorAll(".grp-figure-panneau").forEach(function (p) { p.classList.toggle("actif", p.id === b.getAttribute("data-figure")); });
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

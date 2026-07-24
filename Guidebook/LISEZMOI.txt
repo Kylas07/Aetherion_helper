@@ -1,0 +1,16 @@
+GUIDE AETHERION — site individuel (une annexe = une page)
+=========================================================
+
+Chaque onglet est un fichier .html séparé (ex : reglement.html, contexte.html,
+couronne.html, capture.html…). Les onglets du menu de gauche pointent les uns
+vers les autres. index.html ouvre le Règlement.
+
+Hébergement : mets TOUS les fichiers de ce dossier au même endroit (les .html
+ET aetherion-unifie.css). C'est tout — ça marche tel quel.
+
+Transitions : le fondu entre pages est automatique sur les navigateurs récents
+(Chrome, Edge). Sur les autres, la page apparaît en fondu au chargement.
+
+Modifier une page : ouvre le fichier correspondant, chaque bloc est commenté en
+français. Le menu de gauche est identique partout : reporte tout changement de
+menu sur chaque fichier.

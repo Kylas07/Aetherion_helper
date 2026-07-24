@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Talents — Guide Aetherion</title>
+<link href="aetherion-unifie.css" rel="stylesheet" />
+</head>
+<body>
+<!-- MODE D'EMPLOI (pas besoin de savoir coder) :
+     • Changer un TEXTE  : récris-le entre les balises, ex <p>ton texte</p>. Ne touche pas aux < >, aux "guillemets", ni aux mots anglais.
+     • Changer une IMAGE : remplace le lien après  src="  par l'adresse de ton image.
+     • Changer un LIEN   : remplace le lien après  href="  par ton adresse.
+     • Cette page = un onglet du menu. Le MENU de gauche est le même partout : reporte tes changements de menu sur chaque fichier.
+     • Chaque annexe est un fichier séparé (id.html) ; les onglets pointent les uns vers les autres. -->
+<div class="guide">
+    <!-- ▼ MENU DE GAUCHE — identique sur toutes les pages. Un onglet = un lien vers une autre page (id.html).
+         Reporte tout changement de menu sur les autres fichiers. ▼ -->
+    <div class="guide-sommaire">
+        <div class="guide-logo"><b>Guide <em>Aetherion</em></b><span>les annexes du forum</span></div>
+        <span class="guide-cat">01. Accueil</span>
+        <a href="reglement.html">Règlement</a>
+        <a href="guide-nouveau.html">Guide du nouveau</a>
+        <a href="credits.html">Crédits et staff</a>
+        <span class="guide-cat">02. Lore</span>
+        <a href="contexte.html">Contexte</a>
+        <a href="chrono-reelle.html">Chronologie réelle</a>
+        <a href="chrono-jeu.html">Chronologie du jeu</a>
+        <a href="vivre.html">Vivre à Aetherion</a>
+        <a href="specificite.html">Spécificité du jeu</a>
+        <span class="guide-cat">03. Cartes</span>
+        <a href="etage00.html">Étage 00 · Zone de départ</a>
+        <a href="etage01.html">Étage 01 · Forêt Prismatique</a>
+        <a href="etage02.html">Étage 02 · Montagne Rocheuse</a>
+        <a href="etage03.html">Étage 03 · Îles Ouragan</a>
+        <span class="guide-cat">04. Groupes</span>
+        <div class="guide-groupes">
+            <a href="couronne.html" class="large" style="--g:#D43535">Couronne de Cendre</a>
+            <a href="vigie.html" style="--g:#6FBEBD">Vigie du Seuil</a>
+            <a href="colporteur.html" style="--g:#9285D1">Colporteur de l'Ombre</a>
+            <a href="arpenteur.html" style="--g:#5CA35E">Arpenteur du Vide</a>
+            <a href="heraut.html" style="--g:#DBAE61">Héraut Silencieux</a>
+        </div>
+        <span class="guide-cat">05. Personnages</span>
+        <a href="progression.html">Progression</a>
+        <a href="talents.html" class="actif">Talents</a>
+        <a href="argent.html">Argent</a>
+        <a href="pvp.html">PVP</a>
+        <span class="guide-cat">06. Pokémons</span>
+        <a href="generalite.html">Généralité</a>
+        <a href="pkmn-progression.html">Progression</a>
+        <a href="attaques.html">Attaques</a>
+        <a href="pkmn-talents.html">Talents</a>
+        <a href="capture.html">Capture</a>
+        <a href="obtention.html">Obtention spéciales</a>
+        <a href="combat.html">Système de Combat</a>
+        <div class="guide-pied"><span>Guide — équipe Aetherion</span></div>
+    </div>
+
+    <!-- ▼ CONTENU DE CETTE PAGE ▼ -->
+    <div class="guide-corps">
+        <!-- Bouton « revenir au forum » : mets l'adresse de ton forum dans href. -->
+        <div class="guide-retour"><a href="/forum">Revenir sur le forum</a></div>
+
+        <!-- ══ PAGE : talents ══ -->
+        <div class="guide-page actif" id="talents">
+            <!-- IMAGE DE BANNIÈRE : remplace le lien après src=". Petit texte et grand titre se changent entre les balises. -->
+            <div class="guide-hero">
+                <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                <div class="guide-hero-titre"><small>— 05. Personnages</small><b>Talents</b></div>
+                <span class="guide-hero-num">05</span>
+            </div>
+            <div class="guide-staff"><div class="guide-staff-avatar">St</div><div class="guide-staff-texte"><small>Le mot du staff</small><p>Votre personnage gagne des talents à mesure qu'il cumule de l'XP : avantages en RP comme hors RP. Retrouvez-les tous dans l'onglet listing.</p></div></div>
+            <div class="guide-bloc"><b>La règle</b><p>Le nombre de talents est limité par le rang. Choisissez bien : pas de retour en arrière !</p></div>
+            <!-- QUOTAS : une ligne par rang, une pastille = un <span> (garde tal-bronze/argent/or). -->
+            <div class="guide-section">
+                <h2 class="guide-titre">Quotas <em>par rang</em></h2>
+                <div class="prog-quotas">
+                    <div class="prog-quota"><span class="rang">D</span><div class="lots">
+                        <span class="tal-bronze">3 bronze</span>
+                        <span class="tal-argent">1 argent</span>
+                    </div></div>
+                    <div class="prog-quota"><span class="rang">C</span><div class="lots">
+                        <span class="tal-bronze">4 bronze</span>
+                        <span class="tal-argent">2 argent</span>
+                        <span class="tal-or">1 or</span>
+                    </div></div>
+                    <div class="prog-quota"><span class="rang">B</span><div class="lots">
+                        <span class="tal-bronze">5 bronze</span>
+                        <span class="tal-argent">3 argent</span>
+                        <span class="tal-or">2 or</span>
+                    </div></div>
+                    <div class="prog-quota"><span class="rang">A</span><div class="lots">
+                        <span class="tal-bronze">6 bronze</span>
+                        <span class="tal-argent">4 argent</span>
+                        <span class="tal-or">3 or</span>
+                    </div></div>
+                    <div class="prog-quota"><span class="rang">S</span><div class="lots">
+                        <span class="tal-bronze">8 bronze</span>
+                        <span class="tal-argent">6 argent</span>
+                        <span class="tal-or">5 or</span>
+                    </div></div>
+                </div>
+            </div>
+            <!-- LISTE DE TALENTS : une carte = un tal-carte. Copie une carte pour en ajouter. -->
+            <div class="guide-section tal-bronze">
+                <h2 class="guide-titre">Qualité <em>bronze</em> <span class="tal-qualite">bronze</span></h2>
+                <div class="tal-grille">
+                    <div class="tal-carte"><b>Matérialisation</b><p>Permet de créer 15 Pokéballs OU 4 Superballs OU 2 Hyperballs par mois.</p></div>
+                    <div class="tal-carte"><b>Capture Type</b><p>+20% aux chances de capture sur un type donné — ne peut pas être changé.</p></div>
+                    <div class="tal-carte"><b>Capture Pro</b><p>+10% aux chances de capture de tous les Pokémon.</p></div>
+                    <div class="tal-carte"><b>Prime</b><p>Donne 350 P$ par mois.</p></div>
+                    <div class="tal-carte"><b>Parfumeur</b><p>Permet de créer deux encens de type au choix par mois.</p></div>
+                    <div class="tal-carte"><b>Évolutif</b><p>Permet de créer deux objets évolutifs par mois.</p></div>
+                    <div class="tal-carte"><b>Œuf</b><p>Permet de créer deux œufs par mois.</p></div>
+                    <div class="tal-carte"><b>Radar-chance</b><p>20% de chances de faire apparaître le Pokémon de votre choix. 4 usages/mois.</p></div>
+                    <div class="tal-carte"><b>Second Starter</b><p>Permet d'obtenir un second starter.</p></div>
+                    <div class="tal-carte"><b>Shasseur</b><p>+20% aux chances de chromatiques (capture, éclosion, éveil des fossiles).</p></div>
+                    <div class="tal-carte"><b>Fuyard</b><p>Permet d'assurer 2 fuites par mois.</p></div>
+                    <div class="tal-carte"><b>Spécialiste</b><p>40% de chances de tomber sur un type choisi — ne peut pas être changé.</p></div>
+                    <div class="tal-carte"><b>Miel pops</b><p>Permet de créer deux miels par mois.</p></div>
+                    <div class="tal-carte"><b>Technicien</b><p>Permet de créer deux CT par mois.</p></div>
+                    <div class="tal-carte"><b>Bourgeois</b><p>Donne accès à la boutique de luxe.</p></div>
+                    <div class="tal-carte"><b>Fermier</b><p>À compléter.</p></div>
+                </div>
+            </div>
+            <div class="guide-section tal-argent">
+                <h2 class="guide-titre">Qualité <em>argent</em> <span class="tal-qualite">argent</span></h2>
+                <div class="tal-grille">
+                    <div class="tal-carte"><b>Nom du talent</b><p>À compléter sur le modèle bronze.</p></div>
+                </div>
+            </div>
+            <div class="guide-section tal-or">
+                <h2 class="guide-titre">Qualité <em>or</em> <span class="tal-qualite">or</span></h2>
+                <div class="tal-grille">
+                    <div class="tal-carte"><b>Nom du talent</b><p>À compléter sur le modèle bronze.</p></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

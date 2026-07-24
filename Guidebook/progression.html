@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Progression — Guide Aetherion</title>
+<link href="aetherion-unifie.css" rel="stylesheet" />
+</head>
+<body>
+<!-- MODE D'EMPLOI (pas besoin de savoir coder) :
+     • Changer un TEXTE  : récris-le entre les balises, ex <p>ton texte</p>. Ne touche pas aux < >, aux "guillemets", ni aux mots anglais.
+     • Changer une IMAGE : remplace le lien après  src="  par l'adresse de ton image.
+     • Changer un LIEN   : remplace le lien après  href="  par ton adresse.
+     • Cette page = un onglet du menu. Le MENU de gauche est le même partout : reporte tes changements de menu sur chaque fichier.
+     • Chaque annexe est un fichier séparé (id.html) ; les onglets pointent les uns vers les autres. -->
+<div class="guide">
+    <!-- ▼ MENU DE GAUCHE — identique sur toutes les pages. Un onglet = un lien vers une autre page (id.html).
+         Reporte tout changement de menu sur les autres fichiers. ▼ -->
+    <div class="guide-sommaire">
+        <div class="guide-logo"><b>Guide <em>Aetherion</em></b><span>les annexes du forum</span></div>
+        <span class="guide-cat">01. Accueil</span>
+        <a href="reglement.html">Règlement</a>
+        <a href="guide-nouveau.html">Guide du nouveau</a>
+        <a href="credits.html">Crédits et staff</a>
+        <span class="guide-cat">02. Lore</span>
+        <a href="contexte.html">Contexte</a>
+        <a href="chrono-reelle.html">Chronologie réelle</a>
+        <a href="chrono-jeu.html">Chronologie du jeu</a>
+        <a href="vivre.html">Vivre à Aetherion</a>
+        <a href="specificite.html">Spécificité du jeu</a>
+        <span class="guide-cat">03. Cartes</span>
+        <a href="etage00.html">Étage 00 · Zone de départ</a>
+        <a href="etage01.html">Étage 01 · Forêt Prismatique</a>
+        <a href="etage02.html">Étage 02 · Montagne Rocheuse</a>
+        <a href="etage03.html">Étage 03 · Îles Ouragan</a>
+        <span class="guide-cat">04. Groupes</span>
+        <div class="guide-groupes">
+            <a href="couronne.html" class="large" style="--g:#D43535">Couronne de Cendre</a>
+            <a href="vigie.html" style="--g:#6FBEBD">Vigie du Seuil</a>
+            <a href="colporteur.html" style="--g:#9285D1">Colporteur de l'Ombre</a>
+            <a href="arpenteur.html" style="--g:#5CA35E">Arpenteur du Vide</a>
+            <a href="heraut.html" style="--g:#DBAE61">Héraut Silencieux</a>
+        </div>
+        <span class="guide-cat">05. Personnages</span>
+        <a href="progression.html" class="actif">Progression</a>
+        <a href="talents.html">Talents</a>
+        <a href="argent.html">Argent</a>
+        <a href="pvp.html">PVP</a>
+        <span class="guide-cat">06. Pokémons</span>
+        <a href="generalite.html">Généralité</a>
+        <a href="pkmn-progression.html">Progression</a>
+        <a href="attaques.html">Attaques</a>
+        <a href="pkmn-talents.html">Talents</a>
+        <a href="capture.html">Capture</a>
+        <a href="obtention.html">Obtention spéciales</a>
+        <a href="combat.html">Système de Combat</a>
+        <div class="guide-pied"><span>Guide — équipe Aetherion</span></div>
+    </div>
+
+    <!-- ▼ CONTENU DE CETTE PAGE ▼ -->
+    <div class="guide-corps">
+        <!-- Bouton « revenir au forum » : mets l'adresse de ton forum dans href. -->
+        <div class="guide-retour"><a href="/forum">Revenir sur le forum</a></div>
+
+        <!-- ══ PAGE : progression ══ -->
+        <div class="guide-page actif" id="progression">
+            <!-- IMAGE DE BANNIÈRE : remplace le lien après src=". Petit texte et grand titre se changent entre les balises. -->
+            <div class="guide-hero">
+                <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                <div class="guide-hero-titre"><small>— 05. Personnages</small><b>Progression</b></div>
+                <span class="guide-hero-num">05</span>
+            </div>
+            <!-- ÉCHELLE DES RANGS : un rang = un grp-grade. -->
+            <div class="guide-section">
+                <h2 class="guide-titre">Les <em>rangs</em></h2>
+                <div class="grp-grades">
+                <div class="grp-grade">
+                    <span class="num">D</span>
+                    <span class="titre-grade"><b>Rang D</b><small>Départ</small></span>
+                    <p>0 XP — le rang de tous les nouveaux personnages.</p>
+                </div>
+                <div class="grp-grade">
+                    <span class="num">C</span>
+                    <span class="titre-grade"><b>Rang C</b><small>150 XP</small></span>
+                    <p>Atteint en jouant régulièrement.</p>
+                </div>
+                <div class="grp-grade">
+                    <span class="num">B</span>
+                    <span class="titre-grade"><b>Rang B</b><small>500 XP</small></span>
+                    <p>Un personnage confirmé.</p>
+                </div>
+                <div class="grp-grade">
+                    <span class="num">A</span>
+                    <span class="titre-grade"><b>Rang A</b><small>1 000 XP</small></span>
+                    <p>Parmi les dresseurs les plus aguerris.</p>
+                </div>
+                <div class="grp-grade">
+                    <span class="num">S</span>
+                    <span class="titre-grade"><b>Rang S</b><small>1 500 XP</small></span>
+                    <p>Le sommet de la tour.</p>
+                </div>
+                </div>
+            </div>
+            <!-- TABLEAU : une ligne = <tr><td>…</td><td>…</td></tr>. -->
+            <div class="guide-section">
+                <h2 class="guide-titre">Les <em>gains</em></h2>
+                <div class="guide-table"><table>
+                    <tr><th>Action</th><th>Gain</th></tr>
+                    <tr><td>Poster sa présentation</td><td>+10 points à la validation</td></tr>
+                    <tr><td>Poster sa card</td><td>+10 points en postant le premier message</td></tr>
+                    <tr><td>Se recenser</td><td>+05 points par bottin</td></tr>
+                    <tr><td>Ouvrir un RP</td><td>+10 points, petit bonus pour l'ouverture</td></tr>
+                    <tr><td>Répondre à un RP</td><td>+05 points par post RP</td></tr>
+                    <tr><td>Clôturer un RP</td><td>Entre 05 et 15 points selon la longueur</td></tr>
+                    <tr><td>Participer à un event</td><td>Dépend de l'événement</td></tr>
+                </table></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
