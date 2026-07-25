@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capture · Admin — Guide Aetherion</title>
+<style>
+/* ══════════════ STYLE ALIGNÉ SUR LE SOCLE « .adm » DU FORUM ══════════════ */
+:root{
+  --accent:#c8502d; --accent-clair:#e8916f; --encre:#1b1714; --blanc:#fff;
+  --carte:#fffdf8; --bordure:#e3dbcd; --filet:#e3dbcd;
+  --beige:#f6f1e6; --beige-band:#faf6ec; --beige-bordure:#e8e0d0;
+  --texte:#3b332c; --texte-doux:#6b6157; --titre:#241f1a; --muet-clair:#a79c8e;
+  --shadowCard:0 2px 10px rgba(27,23,20,.07);
+  --mono:'Space Mono',ui-monospace,'Courier New',monospace;
+  --sans:'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--beige);color:var(--texte);font:14px/1.7 var(--sans)}
+a{color:var(--accent);text-decoration:none}
+a:hover{color:var(--titre);text-decoration:underline}
+.wrap{max-width:1060px;margin:0 auto;padding:22px 16px 90px}
+
+.hero,.panneau{background:var(--carte);border:1px solid var(--bordure);border-radius:16px;box-shadow:var(--shadowCard);overflow:hidden}
+.hero .sur{background:var(--encre);border-bottom:2px solid var(--accent);padding:16px 26px;display:flex;align-items:center;gap:12px;
+  font:700 19px/1.2 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--blanc)}
+.hero .sur::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none}
+.hero .sur em{font-style:normal;color:var(--accent-clair)}
+.hero .intro{padding:20px 26px;font-size:13.5px;line-height:1.7;color:var(--texte-doux);text-align:justify}
+
+.panneau{margin-top:18px}
+.num{background:var(--encre);border-bottom:2px solid var(--accent);padding:14px 26px;display:flex;align-items:center;gap:12px;
+  font:700 11px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--accent-clair)}
+.num::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none}
+.panneau{padding:0 30px 30px}
+.panneau .num{margin:0 -30px}
+.panneau h2{position:relative;font:800 24px/1.1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+  padding:0 0 12px;margin:24px 0 14px;border-bottom:1px solid var(--filet)}
+.panneau h2::before{content:"";display:inline-block;width:22px;height:4px;border-radius:2px;background:var(--accent);vertical-align:middle;margin-right:14px}
+
+label.lbl{display:block;font:700 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:12px 0 5px}
+input,select,textarea{padding:9px 12px;border:1px solid var(--bordure);border-radius:8px;background:var(--blanc);color:var(--texte);font:13px var(--sans)}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.cfg{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.cfg input{width:100%}
+
+table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;border:1px solid var(--bordure);border-radius:10px;overflow:hidden}
+th{background:var(--encre);color:var(--blanc);text-align:left;padding:10px 8px;
+  font:700 9.5px var(--mono);letter-spacing:.14em;text-transform:uppercase}
+td{padding:5px;border-bottom:1px solid var(--filet);vertical-align:top;background:var(--carte)}
+tr:nth-child(even) td{background:var(--beige-band)}
+td input,td select{width:100%;font-size:12.5px;padding:6px 8px}
+.c-de{width:62px}.c-stade{width:64px}.c-genre{width:92px}.c-ratio{width:60px}.c-x{width:38px}
+
+button.btn{border:0;border-radius:8px;padding:11px 18px;cursor:pointer;font:700 10.5px var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.btn-p{background:var(--accent);color:var(--blanc)}.btn-p:hover{background:var(--titre)}
+.btn-s{background:var(--beige-band);border:1px solid var(--bordure);color:var(--texte)}.btn-s:hover{border-color:var(--accent);color:var(--accent)}
+.btn-n{background:var(--encre);color:var(--blanc)}.btn-n:hover{background:var(--accent)}
+.suppr{background:none;border:1px solid var(--bordure);border-radius:6px;color:var(--texte-doux);cursor:pointer;font:700 13px var(--sans);width:28px;height:28px}
+.suppr:hover{border-color:var(--accent);color:var(--accent)}
+.barre{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+
+textarea.code{width:100%;height:230px;padding:14px 16px;border-radius:10px;background:var(--beige-band);border:1px solid var(--bordure);
+  font:11.5px/1.7 var(--mono);color:var(--texte);resize:vertical}
+.note{font-size:12.5px;line-height:1.6;color:var(--texte-doux);margin:8px 0 0;text-align:justify}
+.statut{margin-top:10px;font:700 11.5px var(--mono)}
+.statut.ok{color:#4a7a4a}.statut.ko{color:var(--accent)}
+.zonesel{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap}
+.zonesel>div{flex:1;min-width:170px}
+.zonesel input,.zonesel select{width:100%}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="sur">capture · <em>administration</em></div>
+    <div class="intro">Gère les taux, les talents et les Pokémon de chaque zone, puis exporte le fichier <b>data-captures.json</b> à héberger à côté du générateur. Page réservée au staff (non listée).</div>
+  </div>
+
+  <!-- ── 01 · Réglages ── -->
+  <div class="panneau">
+    <div class="num">01. Réglages</div>
+    <h2>Taux &amp; talents</h2>
+    <div class="cfg">
+      <div><label class="lbl">Taux shiny de base (1/X)</label><input type="number" id="c-shiny" min="1" step="1"></div>
+      <div><label class="lbl">Shasseur (multiplicateur)</label><input type="number" id="c-sh1" step="0.05"></div>
+      <div><label class="lbl">Shasseur + (multiplicateur)</label><input type="number" id="c-sh2" step="0.05"></div>
+      <div><label class="lbl">Radar-chance (seuil D100)</label><input type="number" id="c-radar" min="1" max="100"></div>
+      <div><label class="lbl">Spécialiste (seuil D100)</label><input type="number" id="c-spec" min="1" max="100"></div>
+      <div><label class="lbl">Spécialiste + (seuil D100)</label><input type="number" id="c-spec2" min="1" max="100"></div>
+      <div><label class="lbl">Niveau affiché</label><input type="text" id="c-niveau"></div>
+    </div>
+  </div>
+
+  <!-- ── 02 · Pokémon par zone ── -->
+  <div class="panneau">
+    <div class="num">02. Zones</div>
+    <h2>Pokémon par zone</h2>
+    <div class="zonesel">
+      <div><label class="lbl">Zone</label><select id="z-sel"></select></div>
+      <div><label class="lbl">Libellé de la zone</label><input type="text" id="z-label" style="width:100%"></div>
+      <div id="z-faces-w" style="display:none"><label class="lbl">Faces du dé</label><input type="number" id="z-faces" min="1" style="width:100%"></div>
+      <button class="btn btn-s" onclick="ajouterLigne()">+ Ajouter un Pokémon</button>
+    </div>
+    <div class="barre" style="margin-top:12px">
+      <button class="btn btn-s" onclick="nouveauLieu()">+ Nouveau lieu</button>
+      <button class="btn btn-s" onclick="supprimerLieu()">Supprimer ce lieu</button>
+      <button class="btn btn-s" onclick="dupliquerLieu()">Dupliquer ce lieu</button>
+    </div>
+    <p class="note" id="z-note"></p>
+    <p class="note" id="z-manques" style="font-weight:700"></p>
+    <p class="note">Le sprite est déduit du <b>n° national</b> via PokéAPI ; ne remplis « sprite perso » que pour une image spécifique (forme régionale, sprite maison). Les chromatiques utilisent automatiquement le sprite shiny.</p>
+    <table>
+      <thead><tr>
+        <th class="c-de">Dé</th><th>Nom</th><th class="c-de">N° dex</th><th>Types (virgule)</th><th class="c-stade">Stade</th>
+        <th class="c-genre">Genre</th><th class="c-ratio">% ♂</th><th>Sprite perso (facultatif)</th><th class="c-x"></th>
+      </tr></thead>
+      <tbody id="z-corps"></tbody>
+    </table>
+  </div>
+
+  <!-- ── 03 · Publication ── -->
+  <div class="panneau">
+    <div class="num">03. Publication</div>
+    <h2>Enregistrer &amp; publier</h2>
+    <p class="note">« Export JSON » produit le fichier <b>data-captures.json</b> à héberger à côté du générateur (l'interface joueur le charge via <code>CONFIG.dataUrl</code>). « Générer le bloc » reste disponible si les données sont stockées dans un post caché du forum. « Enregistrer en local » met à jour ce navigateur immédiatement (test).</p>
+    <div class="barre">
+      <button class="btn btn-p" onclick="exporterJSON()">Export JSON (data-captures.json)</button>
+      <button class="btn btn-n" onclick="sauverLocal()">Enregistrer en local (ce navigateur)</button>
+      <button class="btn btn-s" onclick="copierCode()">Copier</button>
+      <button class="btn btn-s" onclick="telechargerJSON()">Télécharger le fichier</button>
+      <button class="btn btn-s" onclick="genererBloc()">Bloc pour post caché</button>
+      <button class="btn btn-s" onclick="importerJSON()">Importer le JSON collé</button>
+    </div>
+    <label class="lbl" style="margin-top:14px">Bloc / JSON</label>
+    <textarea class="code" id="sortie" spellcheck="false"></textarea>
+    <div class="statut" id="statut"></div>
+  </div>
+</div>
+
+<script>
+/* ════════════════════════════════════════════════════════════════
+   OUTIL DE CAPTURE — Interface ADMIN (staff uniquement, page non listée)
+   Édite les données, puis publie le bloc dans le post caché du forum.
+   ════════════════════════════════════════════════════════════════ */
+
+var MARQUEUR_DEBUT = "##CAPTURE_DATA##", MARQUEUR_FIN = "##FIN_CAPTURE_DATA##";
+var CLE_LOCAL = "aetherion_capture_data"; // même clé que l'interface joueur
+
+/* Données par défaut (identiques à l'interface joueur) */
+var DATA_DEFAUT = {
+ config: {"shinyBase":0.04,"shasseurMult":1.2,"shasseurPlusMult":1.4,"radarSeuil":20,"specSeuil":40,"specPlusSeuil":60,"niveau":"05"},
+ hordes: [
+  {"de":28,"nom":"CANINOS HISUI","types":["Feu","Roche"],"stade":1,"genre":"mixte","img":"https://2img.net/i.imgur.com/v1gCTLT.png"},
+  {"de":29,"nom":"RACAILLOU ALOLA","types":["Roche","Électrik"],"stade":1,"genre":"mixte","img":"","dex":74},
+  {"de":30,"nom":"PONYTA GALAR","types":["Psy"],"stade":1,"genre":"mixte","img":"https://2img.net/i.imgur.com/lZr4km6.png"},
+  {"de":31,"nom":"VOLTORBE HISUI","types":["Électrik","Plante"],"stade":1,"genre":"mixte","img":"https://2img.net/i.imgur.com/9yWe8bp.png"},
+  {"de":32,"nom":"KANGOUREX","types":["Normal"],"stade":2,"genre":"femelle","img":"","dex":115},
+  {"de":33,"nom":"TAUROS PALDEA","types":["Combat"],"stade":2,"genre":"male","img":"https://2img.net/i.imgur.com/CIYEEeU.png"},
+  {"de":34,"nom":"LOKHLASS","types":["Eau","Glace"],"stade":2,"genre":"mixte","img":"","dex":131},
+  {"de":35,"nom":"AXOLOTO PALDEA","types":["Poison","Sol"],"stade":1,"genre":"mixte","img":"https://2img.net/i.imgur.com/416L0jI.png"},
+  {"de":36,"nom":"CORAYON GALAR","types":["Spectre"],"stade":2,"genre":"mixte","img":"https://2img.net/i.imgur.com/8vROAxt.png"},
+  {"de":37,"nom":"ZIGZATON GALAR","types":["Ténèbres","Normal"],"stade":1,"genre":"mixte","img":"https://2img.net/i.imgur.com/FV55hiZ.png"},
+  {"de":38,"nom":"MOTISMA","types":["Électrik","Spectre"],"stade":1,"genre":"asexue","img":"","dex":479},
+  {"de":39,"nom":"ZORUA HISUI","types":["Normal","Spectre"],"stade":1,"genre":"mixte","img":"https://2img.net/i.imgur.com/X8J2YNx.png"},
+  {"de":40,"nom":"SABELETTE ALOLA","types":["Glace","Acier"],"stade":1,"genre":"mixte","img":"","dex":27},
+  {"de":41,"nom":"MIAOUSS ALOLA","types":["Ténèbres"],"stade":1,"genre":"mixte","img":"","dex":52},
+  {"de":42,"nom":"TAUPIQUEUR ALOLA","types":["Sol","Acier"],"stade":1,"genre":"mixte","img":"","dex":50},
+  {"de":43,"nom":"GOUPIX","types":["Feu"],"stade":1,"genre":"mixte","img":"","dex":37},
+  {"de":44,"nom":"TADMORV","types":["Poison"],"stade":1,"genre":"mixte","img":"","dex":88},
+  {"de":45,"nom":"MIME JR.","types":["Psy","Fée"],"stade":1,"genre":"mixte","img":"","dex":439},
+  {"de":46,"nom":"INSOLOURDO","types":["Normal","Psy"],"stade":2,"genre":"mixte","img":"","dex":206},
+  {"de":47,"nom":"ABSOL","types":["Ténèbres"],"stade":2,"genre":"mixte","img":"","dex":359}
+ ],
+ zones: {
+ etage00: {label:"Étage 00 › Zone de départ", type:"etage", pokemon:[
+  {"de":1,"nom":"MIAOUSS","types":["Normal"],"stade":1,"genre":"mixte","img":"","dex":52},
+  {"de":2,"nom":"FOUINETTE","types":["Normal"],"stade":1,"genre":"mixte","img":"","dex":161},
+  {"de":3,"nom":"PACHIRISU","types":["Électrik"],"stade":2,"genre":"mixte","img":"","dex":417},
+  {"de":4,"nom":"ZIGZATON","types":["Normal"],"stade":1,"genre":"mixte","img":"","dex":263},
+  {"de":5,"nom":"MEDHYENA","types":["Ténèbres"],"stade":1,"genre":"mixte","img":"","dex":261},
+  {"de":6,"nom":"PONCHIOT","types":["Normal"],"stade":1,"genre":"mixte","img":"","dex":506},
+  {"de":7,"nom":"EMOLGA","types":["Électrik","Vol"],"stade":2,"genre":"mixte","img":"","dex":587},
+  {"de":8,"nom":"GRENOUSSE","types":["Eau"],"stade":1,"genre":"mixte","img":"","dex":656},
+  {"de":9,"nom":"SAPEREAU","types":["Normal"],"stade":1,"genre":"mixte","img":"","dex":659},
+  {"de":10,"nom":"COUAFAREL","types":["Normal"],"stade":3,"genre":"mixte","img":"","dex":676},
+  {"de":11,"nom":"VOLTOUTOU","types":["Électrik"],"stade":1,"genre":"mixte","img":"","dex":835},
+  {"de":12,"nom":"MOUMOUTON","types":["Plante"],"stade":1,"genre":"mixte","img":"","dex":831},
+  {"de":13,"nom":"COMPAGNOL","types":["Normal"],"stade":2,"genre":"mixte","img":"","dex":819},
+  {"de":14,"nom":"LILLITERELLE","types":["Plante"],"stade":2,"genre":"femelle","img":"","dex":919},
+  {"de":15,"nom":"ROUCOOL","types":["Normal","Vol"],"stade":1,"genre":"mixte","img":"","dex":16},
+  {"de":16,"nom":"ROUCOUPS","types":["Normal","Vol"],"stade":2,"genre":"mixte","img":"","dex":17},
+  {"de":17,"nom":"WATTOUAT","types":["Électrik"],"stade":1,"genre":"mixte","img":"","dex":179},
+  {"de":18,"nom":"TAUROS","types":["Normal"],"stade":2,"genre":"male","img":"","dex":128},
+  {"de":19,"nom":"NENUPIOT","types":["Eau","Plante"],"stade":1,"genre":"mixte","img":"","dex":270},
+  {"de":20,"nom":"LAPOREILLE","types":["Normal"],"stade":1,"genre":"mixte","img":"","dex":427},
+  {"de":21,"nom":"CHENITI","types":["Insecte"],"stade":1,"genre":"mixte","img":"","dex":412},
+  {"de":22,"nom":"LARVIBULE","types":["Insecte","Eau"],"stade":1,"genre":"mixte","img":"","dex":736},
+  {"de":23,"nom":"RONGOURMAND","types":["Normal"],"stade":1,"genre":"mixte","img":"","dex":820},
+  {"de":24,"nom":"PSYKOKWAK","types":["Eau"],"stade":1,"genre":"mixte","img":"","dex":54},
+  {"de":25,"nom":"CANARTICHO","types":["Normal","Vol"],"stade":2,"genre":"mixte","img":"","dex":83},
+  {"de":26,"nom":"MUSTEBOUEE","types":["Eau"],"stade":2,"genre":"mixte","img":"","dex":418},
+  {"de":27,"nom":"PASSEROUGE","types":["Normal","Vol"],"stade":1,"genre":"mixte","img":"","dex":661}
+ ]},
+ laby00: {label:"Étage 00 › Labyrinthe", type:"simple", faces:18, pokemon:[
+  {"de":1,"nom":"ESCARGAUME","types":["Insecte"],"stade":1,"genre":"mixte","img":"","dex":616},
+  {"de":2,"nom":"OKEOKE","types":["Normal"],"stade":2,"genre":"mixte","img":"","dex":360},
+  {"de":3,"nom":"DEDENNE","types":["Électrik","Fée"],"stade":2,"genre":"mixte","img":"","dex":702},
+  {"de":4,"nom":"TROUSSELIN","types":["Acier","Fée"],"stade":2,"genre":"mixte","img":"","dex":707},
+  {"de":5,"nom":"TIC","types":["Insecte"],"stade":1,"genre":"mixte","img":"","dex":599},
+  {"de":6,"nom":"CHINCHIDOU","types":["Normal"],"stade":2,"genre":"mixte","img":"","dex":572},
+  {"de":7,"nom":"RATTATA ALOLA","types":["Ténèbres","Normal"],"stade":1,"genre":"mixte","img":"","dex":19},
+  {"de":8,"nom":"GOUPILOU","types":["Ténèbres"],"stade":1,"genre":"mixte","img":"","dex":827},
+  {"de":9,"nom":"SPINDA","types":["Normal"],"stade":2,"genre":"mixte","img":"","dex":327},
+  {"de":10,"nom":"RATENTIF","types":["Normal"],"stade":1,"genre":"mixte","img":"","dex":504},
+  {"de":11,"nom":"POICHIGEON","types":["Normal","Vol"],"stade":1,"genre":"mixte","img":"","dex":519},
+  {"de":12,"nom":"CREMY","types":["Fée"],"stade":1,"genre":"mixte","img":"","dex":868},
+  {"de":13,"nom":"QUEULORIOR","types":["Normal","Vol"],"stade":2,"genre":"mixte","img":"","dex":235},
+  {"de":14,"nom":"FOUINAR","types":["Normal"],"stade":3,"genre":"mixte","img":"","dex":162},
+  {"de":15,"nom":"NANMEOUIE","types":["Normal"],"stade":2,"genre":"mixte","img":"","dex":531},
+  {"de":16,"nom":"SNUBBULL","types":["Fée"],"stade":1,"genre":"mixte","img":"","dex":209},
+  {"de":17,"nom":"SKITTY","types":["Normal"],"stade":2,"genre":"mixte","img":"","dex":300},
+  {"de":18,"nom":"SPOINK","types":["Psy"],"stade":1,"genre":"mixte","img":"","dex":325}
+ ]},
+ etage01: {label:"Étage 01 › Forêt prismatique", type:"etage", pokemon:[
+  {"de":1,"nom":"BULBIZARRE","types":["Plante","Poison"],"stade":1,"genre":"mixte","img":"","dex":1},
+  {"de":2,"nom":"CHENIPAN","types":["Insecte"],"stade":1,"genre":"mixte","img":"","dex":10},
+  {"de":3,"nom":"CHRYSACIER","types":["Insecte"],"stade":2,"genre":"mixte","img":"","dex":11},
+  {"de":4,"nom":"ASPICOT","types":["Insecte","Poison"],"stade":1,"genre":"mixte","img":"","dex":13},
+  {"de":5,"nom":"COCONFORT","types":["Insecte","Poison"],"stade":2,"genre":"mixte","img":"","dex":14},
+  {"de":6,"nom":"MYSTHERBE","types":["Plante","Poison"],"stade":1,"genre":"mixte","img":"","dex":43},
+  {"de":7,"nom":"MIMIGAL","types":["Insecte","Poison"],"stade":1,"genre":"mixte","img":"","dex":167},
+  {"de":8,"nom":"CHENIPOTTE","types":["Insecte"],"stade":1,"genre":"mixte","img":"","dex":265},
+  {"de":9,"nom":"ARMULYS","types":["Insecte"],"stade":2,"genre":"mixte","img":"","dex":266},
+  {"de":10,"nom":"BLINDALYS","types":["Insecte"],"stade":3,"genre":"mixte","img":"","dex":268},
+  {"de":11,"nom":"MUCIOLE","types":["Insecte"],"stade":1,"genre":"mixte","img":"","dex":313},
+  {"de":12,"nom":"LUMIVOLE","types":["Insecte"],"stade":1,"genre":"mixte","img":"","dex":314},
+  {"de":13,"nom":"ROZBOUTON","types":["Plante","Poison"],"stade":1,"genre":"mixte","img":"","dex":406},
+  {"de":14,"nom":"RAPION","types":["Poison","Insecte"],"stade":1,"genre":"mixte","img":"","dex":451},
+  {"de":15,"nom":"LARVEYETTE","types":["Insecte"],"stade":1,"genre":"asexue","img":"","dex":540},
+  {"de":16,"nom":"VENIPATTE","types":["Insecte","Poison"],"stade":1,"genre":"mixte","img":"","dex":543},
+  {"de":17,"nom":"VIVALDAIM","types":["Normal","Plante"],"stade":1,"genre":"mixte","img":"","dex":585},
+  {"de":18,"nom":"TROMPIGNON","types":["Plante"],"stade":1,"genre":"mixte","img":"","dex":590},
+  {"de":19,"nom":"PANDESPIEGLE","types":["Combat"],"stade":1,"genre":"mixte","img":"","dex":674},
+  {"de":20,"nom":"MIMANTIS","types":["Plante"],"stade":2,"genre":"femelle","img":"","dex":753},
+  {"de":21,"nom":"SPODODO","types":["Insecte","Combat"],"stade":2,"genre":"mixte","img":"","dex":755},
+  {"de":22,"nom":"GRIMALIN","types":["Spectre","Plante"],"stade":1,"genre":"mixte","img":"","dex":859},
+  {"de":23,"nom":"MORPEKO","types":["Électrik","Ténèbres"],"stade":2,"genre":"mixte","img":"","dex":877},
+  {"de":24,"nom":"COIFFETON","types":["Eau"],"stade":1,"genre":"mixte","img":"","dex":912},
+  {"de":25,"nom":"GOURMELET","types":["Ténèbres"],"stade":1,"genre":"mixte","img":"","dex":915},
+  {"de":26,"nom":"GRIBOURAIGNE","types":["Poison","Normal"],"stade":2,"genre":"mixte","img":"","dex":944},
+  {"de":27,"nom":"MIMITOSS","types":["Insecte","Poison"],"stade":2,"genre":"mixte","img":"","dex":48}
+ ]},
+ laby01: {label:"Étage 01 › Labyrinthe", type:"simple", faces:18, pokemon:[
+  {"de":1,"nom":"SOPORIFIK","types":["Psy"],"stade":1,"genre":"mixte","img":"","dex":96},
+  {"de":2,"nom":"SCARHINO","types":["Insecte"],"stade":2,"genre":"mixte","img":"","dex":214},
+  {"de":3,"nom":"TEDDIURSA","types":["Normal"],"stade":1,"genre":"mixte","img":"","dex":216},
+  {"de":4,"nom":"CERFROUSSE","types":["Normal"],"stade":2,"genre":"mixte","img":"","dex":234},
+  {"de":5,"nom":"GRAINIPIOT","types":["Plante"],"stade":1,"genre":"mixte","img":"","dex":273},
+  {"de":6,"nom":"NIRONDELLE","types":["Normal","Vol"],"stade":1,"genre":"mixte","img":"","dex":276},
+  {"de":7,"nom":"MANGLOUTON","types":["Normal"],"stade":1,"genre":"mixte","img":"","dex":734},
+  {"de":8,"nom":"ETOURMI","types":["Normal","Vol"],"stade":1,"genre":"mixte","img":"","dex":396},
+  {"de":9,"nom":"KEUNOTOR","types":["Normal"],"stade":1,"genre":"mixte","img":"","dex":399},
+  {"de":10,"nom":"CRIKZIK","types":["Insecte"],"stade":1,"genre":"mixte","img":"","dex":401},
+  {"de":11,"nom":"ZEBIBRON","types":["Électrik"],"stade":1,"genre":"mixte","img":"","dex":522},
+  {"de":12,"nom":"NUCLEOS","types":["Psy"],"stade":1,"genre":"mixte","img":"","dex":577},
+  {"de":13,"nom":"COUANETON","types":["Normal","Vol"],"stade":1,"genre":"mixte","img":"","dex":580},
+  {"de":14,"nom":"STATITIK","types":["Insecte","Électrik"],"stade":1,"genre":"mixte","img":"","dex":595},
+  {"de":15,"nom":"MARISSON","types":["Plante"],"stade":1,"genre":"mixte","img":"","dex":650},
+  {"de":16,"nom":"LEPIDONILLE","types":["Insecte"],"stade":1,"genre":"mixte","img":"","dex":664},
+  {"de":17,"nom":"PEREGRAIN","types":["Insecte"],"stade":2,"genre":"mixte","img":"","dex":665},
+  {"de":18,"nom":"NOUNOURSON","types":["Normal","Combat"],"stade":1,"genre":"mixte","img":"","dex":759}
+ ]},
+ etage02: {label:"Étage 02 › Montagne rocheuse", type:"etage", pokemon:[
+  {"de":1,"nom":"PIAFABEC","types":["Normal","Vol"],"stade":1,"genre":"mixte","img":"","dex":21},
+  {"de":2,"nom":"MELO","types":["Fée"],"stade":1,"genre":"mixte","img":"","dex":173},
+  {"de":3,"nom":"MELOFEE","types":["Fée"],"stade":2,"genre":"mixte","img":"","dex":35},
+  {"de":4,"nom":"FEROSINGE","types":["Combat"],"stade":1,"genre":"mixte","img":"","dex":56},
+  {"de":5,"nom":"NATU","types":["Psy","Vol"],"stade":1,"genre":"mixte","img":"","dex":177},
+  {"de":6,"nom":"SCORPLANE","types":["Sol","Vol"],"stade":1,"genre":"mixte","img":"","dex":207},
+  {"de":7,"nom":"FARFURET HISUI","types":["Combat","Poison"],"stade":2,"genre":"mixte","img":"https://2img.net/i.imgur.com/FXIx0Zs.png"},
+  {"de":8,"nom":"AIRMURE","types":["Acier","Vol"],"stade":2,"genre":"mixte","img":"","dex":227},
+  {"de":9,"nom":"PARECOOL","types":["Normal"],"stade":2,"genre":"mixte","img":"","dex":287},
+  {"de":10,"nom":"CHUCHMUR","types":["Normal"],"stade":1,"genre":"mixte","img":"","dex":293},
+  {"de":11,"nom":"SELEROC","types":["Roche","Psy"],"stade":1,"genre":"mixte","img":"","dex":337},
+  {"de":12,"nom":"SOLAROC","types":["Roche","Psy"],"stade":2,"genre":"mixte","img":"","dex":338},
+  {"de":13,"nom":"DRABY","types":["Dragon"],"stade":1,"genre":"mixte","img":"","dex":371},
+  {"de":14,"nom":"LIXY","types":["Électrik"],"stade":1,"genre":"mixte","img":"","dex":403},
+  {"de":15,"nom":"ARCHEOMIRE","types":["Acier","Psy"],"stade":1,"genre":"asexue","img":"","dex":436},
+  {"de":16,"nom":"NODULITHE","types":["Roche"],"stade":1,"genre":"mixte","img":"","dex":524},
+  {"de":17,"nom":"CHOVSOURIR","types":["Psy","Vol"],"stade":1,"genre":"mixte","img":"","dex":527},
+  {"de":18,"nom":"BAGGIGUANE","types":["Ténèbres"],"stade":1,"genre":"mixte","img":"","dex":559},
+  {"de":19,"nom":"LIMONDE GALAR","types":["Sol","Acier"],"stade":2,"genre":"mixte","img":"https://2img.net/i.imgur.com/BDsAjqE.png"},
+  {"de":20,"nom":"KUNGFOUINE","types":["Combat"],"stade":1,"genre":"mixte","img":"","dex":619},
+  {"de":21,"nom":"DRAKKARMIN","types":["Acier","Dragon"],"stade":1,"genre":"mixte","img":"","dex":621},
+  {"de":22,"nom":"FERMITE","types":["Insecte","Acier"],"stade":1,"genre":"mixte","img":"","dex":632},
+  {"de":23,"nom":"STRASSIE","types":["Roche","Fée"],"stade":2,"genre":"mixte","img":"","dex":703},
+  {"de":24,"nom":"ROCABOT","types":["Roche"],"stade":1,"genre":"mixte","img":"","dex":744},
+  {"de":25,"nom":"METENO","types":["Roche","Vol"],"stade":2,"genre":"asexue","img":"","dex":774},
+  {"de":26,"nom":"BEBECAILLE","types":["Dragon","Combat"],"stade":1,"genre":"mixte","img":"","dex":782},
+  {"de":27,"nom":"CHARBI","types":["Roche"],"stade":1,"genre":"mixte","img":"","dex":837}
+ ]},
+ laby02: {label:"Étage 02 › Labyrinthe", type:"simple", faces:18, pokemon:[
+  {"de":1,"nom":"HEXADRON","types":["Acier"],"stade":2,"genre":"asexue","img":"","dex":870},
+  {"de":2,"nom":"SELUTIN","types":["Roche"],"stade":1,"genre":"mixte","img":"","dex":932},
+  {"de":3,"nom":"LEBOULEROU","types":["Roche"],"stade":1,"genre":"mixte","img":"","dex":953},
+  {"de":4,"nom":"FERDETER","types":["Acier"],"stade":1,"genre":"asexue","img":"","dex":968},
+  {"de":5,"nom":"GERMECLAT","types":["Roche"],"stade":1,"genre":"asexue","img":"","dex":969},
+  {"de":6,"nom":"RACAILLOU","types":["Roche","Sol"],"stade":1,"genre":"mixte","img":"","dex":74},
+  {"de":7,"nom":"OSSELAIT","types":["Sol"],"stade":1,"genre":"mixte","img":"","dex":104},
+  {"de":8,"nom":"RHINOCORNE","types":["Sol","Roche"],"stade":1,"genre":"mixte","img":"","dex":111},
+  {"de":9,"nom":"CARATROC","types":["Roche","Insecte"],"stade":1,"genre":"mixte","img":"","dex":213},
+  {"de":10,"nom":"PHANPY","types":["Sol"],"stade":1,"genre":"mixte","img":"","dex":231},
+  {"de":11,"nom":"MYSDIBULE","types":["Acier","Fée"],"stade":1,"genre":"mixte","img":"","dex":303},
+  {"de":12,"nom":"DYNAVOLT","types":["Électrik"],"stade":1,"genre":"mixte","img":"","dex":309},
+  {"de":13,"nom":"CHARTOR","types":["Feu","Sol"],"stade":1,"genre":"mixte","img":"","dex":324},
+  {"de":14,"nom":"JUDOKRAK","types":["Combat"],"stade":1,"genre":"mixte","img":"","dex":538},
+  {"de":15,"nom":"KARACLEE","types":["Combat"],"stade":2,"genre":"mixte","img":"","dex":539},
+  {"de":16,"nom":"SCALPION","types":["Poison","Combat"],"stade":1,"genre":"mixte","img":"","dex":624},
+  {"de":17,"nom":"MONORPALE","types":["Acier","Spectre"],"stade":1,"genre":"mixte","img":"","dex":679},
+  {"de":18,"nom":"GALVARAN","types":["Électrik"],"stade":2,"genre":"mixte","img":"","dex":694}
+ ]},
+ etage03: {label:"Étage 03 › Îles ouragan", type:"etage", pokemon:[
+  {"de":1,"nom":"RAMOLOSS","types":["Eau","Psy"],"stade":1,"genre":"mixte","img":"","dex":79},
+  {"de":2,"nom":"RAMOLOSS GALAR","types":["Psy"],"stade":2,"genre":"mixte","img":"https://2img.net/i.imgur.com/g8wFaR6.png"},
+  {"de":3,"nom":"KRABBY","types":["Eau"],"stade":1,"genre":"mixte","img":"","dex":98},
+  {"de":4,"nom":"HYPOTREMPE","types":["Eau"],"stade":1,"genre":"mixte","img":"","dex":116},
+  {"de":5,"nom":"POISSIRENE","types":["Eau"],"stade":1,"genre":"mixte","img":"","dex":118},
+  {"de":6,"nom":"STARI","types":["Eau"],"stade":1,"genre":"mixte","img":"","dex":120},
+  {"de":7,"nom":"MAGICARPE","types":["Eau"],"stade":1,"genre":"mixte","img":"","dex":129},
+  {"de":8,"nom":"CORAYON","types":["Eau","Roche"],"stade":1,"genre":"mixte","img":"","dex":222},
+  {"de":9,"nom":"REMORAID","types":["Eau"],"stade":1,"genre":"mixte","img":"","dex":223},
+  {"de":10,"nom":"BABIMANTA","types":["Eau","Vol"],"stade":1,"genre":"mixte","img":"","dex":458},
+  {"de":11,"nom":"GOELISE","types":["Eau","Vol"],"stade":1,"genre":"mixte","img":"","dex":278},
+  {"de":12,"nom":"CARVANHA","types":["Eau","Ténèbres"],"stade":1,"genre":"mixte","img":"","dex":318},
+  {"de":13,"nom":"WAILMER","types":["Eau"],"stade":1,"genre":"mixte","img":"","dex":320},
+  {"de":14,"nom":"BARLOCHE","types":["Eau","Sol"],"stade":1,"genre":"mixte","img":"","dex":339},
+  {"de":15,"nom":"ECRAPINCE","types":["Eau"],"stade":1,"genre":"mixte","img":"","dex":341},
+  {"de":16,"nom":"BALBUTO","types":["Roche","Psy"],"stade":1,"genre":"mixte","img":"","dex":343},
+  {"de":17,"nom":"COQUIPERL","types":["Eau"],"stade":1,"genre":"mixte","img":"","dex":366},
+  {"de":18,"nom":"RELICANTH","types":["Eau","Roche"],"stade":2,"genre":"mixte","img":"","dex":369},
+  {"de":19,"nom":"LOVDISC","types":["Eau"],"stade":2,"genre":"mixte","img":"","dex":370},
+  {"de":20,"nom":"SANCOKI ORIENT","types":["Eau"],"stade":1,"genre":"mixte","img":"","dex":422},
+  {"de":21,"nom":"PIJAKO","types":["Normal","Vol"],"stade":2,"genre":"mixte","img":"","dex":441},
+  {"de":22,"nom":"CRABICOQUE","types":["Eau"],"stade":1,"genre":"mixte","img":"","dex":557},
+  {"de":23,"nom":"MOUSTILLON","types":["Eau"],"stade":1,"genre":"mixte","img":"","dex":501},
+  {"de":24,"nom":"MAMANBO","types":["Eau"],"stade":2,"genre":"mixte","img":"","dex":594},
+  {"de":25,"nom":"AFLAMANOIR","types":["Eau","Feu"],"stade":1,"genre":"mixte","img":"","dex":631},
+  {"de":26,"nom":"OPERMINE","types":["Eau","Ténèbres"],"stade":2,"genre":"mixte","img":"","dex":688},
+  {"de":27,"nom":"VENALGUE","types":["Poison","Eau"],"stade":1,"genre":"mixte","img":"","dex":690}
+ ]},
+ laby03: {label:"Étage 03 › Labyrinthe", type:"simple", faces:18, pokemon:[
+  {"de":1,"nom":"FLINGOUSTE","types":["Eau"],"stade":1,"genre":"mixte","img":"","dex":692},
+  {"de":2,"nom":"OTAQUIN","types":["Eau"],"stade":1,"genre":"mixte","img":"","dex":728},
+  {"de":3,"nom":"PICASSAUT","types":["Eau","Vol"],"stade":1,"genre":"mixte","img":"","dex":731},
+  {"de":4,"nom":"PLUMELINE FLAMENCO","types":["Feu","Vol"],"stade":2,"genre":"mixte","img":"","dex":741},
+  {"de":5,"nom":"PLUMELINE POM-POM","types":["Électrik","Vol"],"stade":2,"genre":"mixte","img":"","dex":741},
+  {"de":6,"nom":"PLUMELINE HULA","types":["Psy","Vol"],"stade":2,"genre":"mixte","img":"","dex":741},
+  {"de":7,"nom":"PLUMELINE BUYO","types":["Spectre","Vol"],"stade":2,"genre":"mixte","img":"","dex":741},
+  {"de":8,"nom":"CROQUINE","types":["Plante","Fée"],"stade":2,"genre":"mixte","img":"","dex":761},
+  {"de":9,"nom":"GUERILANDE","types":["Plante"],"stade":2,"genre":"mixte","img":"","dex":764},
+  {"de":10,"nom":"BACABOUH","types":["Eau","Spectre"],"stade":1,"genre":"mixte","img":"","dex":769},
+  {"de":11,"nom":"CONCOMBAFFE","types":["Eau"],"stade":2,"genre":"mixte","img":"","dex":771},
+  {"de":12,"nom":"TOGEDEMARU","types":["Électrik","Acier"],"stade":2,"genre":"mixte","img":"","dex":777},
+  {"de":13,"nom":"POICHIGEON ALOLA","types":["Sol","Spectre"],"stade":2,"genre":"mixte","img":"","dex":779},
+  {"de":14,"nom":"DODOALA","types":["Normal"],"stade":2,"genre":"mixte","img":"","dex":775},
+  {"de":15,"nom":"NIGOSIER","types":["Eau","Vol"],"stade":1,"genre":"mixte","img":"","dex":845},
+  {"de":16,"nom":"WATTAPIK","types":["Électrik"],"stade":1,"genre":"mixte","img":"","dex":871},
+  {"de":17,"nom":"TAPATOES","types":["Combat"],"stade":1,"genre":"mixte","img":"","dex":852},
+  {"de":18,"nom":"ZAPETREL","types":["Vol"],"stade":2,"genre":"mixte","img":"","dex":940}
+ ]},
+ safari: {label:"Espace safari", type:"simple", faces:15, pokemon:[
+  {"de":1,"nom":"EVOLI","types":["Normal"],"stade":1,"genre":"mixte","img":"","dex":133},
+  {"de":2,"nom":"METAMORPH","types":["Normal"],"stade":2,"genre":"asexue","img":"","dex":132},
+  {"de":3,"nom":"PORYGON","types":["Normal"],"stade":1,"genre":"asexue","img":"","dex":137},
+  {"de":4,"nom":"ZORUA","types":["Ténèbres"],"stade":1,"genre":"mixte","img":"","dex":570},
+  {"de":5,"nom":"COUPENOTTE","types":["Dragon"],"stade":1,"genre":"mixte","img":"","dex":610},
+  {"de":6,"nom":"PSYSTIGRI","types":["Psy"],"stade":1,"genre":"mixte","img":"","dex":677},
+  {"de":7,"nom":"MIMIQUI","types":["Spectre","Fée"],"stade":2,"genre":"mixte","img":"","dex":778},
+  {"de":8,"nom":"FANTYRM","types":["Poison","Dragon"],"stade":1,"genre":"mixte","img":"","dex":885},
+  {"de":9,"nom":"CHARBAMBIN","types":["Feu","Spectre"],"stade":1,"genre":"mixte","img":"","dex":935},
+  {"de":10,"nom":"TETAMPOULE","types":["Électrik","Spectre"],"stade":1,"genre":"mixte","img":"","dex":938},
+  {"de":11,"nom":"MOTORIZARD","types":["Feu","Dragon"],"stade":1,"genre":"mixte","img":"","dex":967},
+  {"de":12,"nom":"CAPUMAIN","types":["Normal"],"stade":1,"genre":"mixte","img":"","dex":190},
+  {"de":13,"nom":"AZURILL","types":["Normal","Fée"],"stade":1,"genre":"mixte","img":"","dex":298},
+  {"de":14,"nom":"BARPAU","types":["Eau"],"stade":1,"genre":"mixte","img":"","dex":349},
+  {"de":15,"nom":"GOINFREX","types":["Normal"],"stade":1,"genre":"mixte","img":"","dex":446}
+ ]}
+ }
+};
+
+function $(id){ return document.getElementById(id); }
+function echap(s){ var d=document.createElement("div"); d.textContent=s==null?"":s; return d.innerHTML; }
+function statut(msg, ok){ var s=$("statut"); s.textContent=msg; s.className="statut "+(ok?"ok":"ko"); }
+
+/* Charge : localStorage > défaut */
+var DATA;
+try{
+  var brut = localStorage.getItem(CLE_LOCAL);
+  DATA = brut ? JSON.parse(brut) : DATA_DEFAUT;
+  if (!DATA || !DATA.zones) DATA = DATA_DEFAUT;
+}catch(e){ DATA = DATA_DEFAUT; }
+if (!DATA.config) DATA.config = DATA_DEFAUT.config;
+
+/* ── 01 · Réglages ── */
+function chargerConfig(){
+  var c = DATA.config;
+  $("c-shiny").value  = Math.round(1/(c.shinyBase||0.04));
+  $("c-sh1").value    = c.shasseurMult||1.2;
+  $("c-sh2").value    = c.shasseurPlusMult||1.4;
+  $("c-radar").value  = c.radarSeuil||20;
+  $("c-spec").value   = c.specSeuil||40;
+  $("c-spec2").value  = c.specPlusSeuil||60;
+  $("c-niveau").value = c.niveau||"05";
+}
+function lireConfig(){
+  DATA.config = {
+    shinyBase: 1/Math.max(1, +$("c-shiny").value||25),
+    shasseurMult: +$("c-sh1").value||1.2,
+    shasseurPlusMult: +$("c-sh2").value||1.4,
+    radarSeuil: +$("c-radar").value||20,
+    specSeuil: +$("c-spec").value||40,
+    specPlusSeuil: +$("c-spec2").value||60,
+    niveau: $("c-niveau").value||"05"
+  };
+}
+
+/* ── 02 · Zones ── (la « zone » hordes est virtuelle : clé __hordes) */
+var zoneCourante = "__hordes";
+function listeZone(cle){ return cle==="__hordes" ? DATA.hordes : DATA.zones[cle].pokemon; }
+
+function majSelecteur(){
+  var sel = $("z-sel"); sel.innerHTML = "";
+  var o = document.createElement("option"); o.value="__hordes"; o.textContent="Hordes (faces 28–41, communes aux étages)"; sel.appendChild(o);
+  Object.keys(DATA.zones).forEach(function(k){
+    var o = document.createElement("option"); o.value=k; o.textContent=DATA.zones[k].label; sel.appendChild(o);
+  });
+  sel.value = zoneCourante;
+}
+$("z-sel") .addEventListener("change", function(){ lireTable(); zoneCourante=this.value; chargerZone(); });
+$("z-label").addEventListener("input", function(){ if(zoneCourante!=="__hordes") DATA.zones[zoneCourante].label=this.value; });
+$("z-faces").addEventListener("input", function(){ if(zoneCourante!=="__hordes"&&DATA.zones[zoneCourante].type==="simple") DATA.zones[zoneCourante].faces=+this.value||1; });
+
+function chargerZone(){
+  var hordes = zoneCourante==="__hordes";
+  var z = hordes ? null : DATA.zones[zoneCourante];
+  $("z-label").value = hordes ? "Hordes" : z.label;
+  $("z-label").disabled = hordes;
+  $("z-faces-w").style.display = (!hordes && z.type==="simple") ? "block" : "none";
+  if (!hordes && z.type==="simple") $("z-faces").value = z.faces||z.pokemon.length;
+  majManques();
+  $("z-note").textContent = hordes
+    ? "Faces 28 à 41 (14 espèces attendues) sur le 1D41 des étages. Si la liste compte plus de 14 entrées, le tirage pioche uniformément dans toute la liste — retire les espèces hors rotation du mois pour rester fidèle aux règles. Seules cibles du Détecteur."
+    : (z.type==="etage" ? "Numéros de dé attendus : 1 à 27 (les faces 28–41 sont les hordes)." : "Numéros de dé : 1 à "+(z.faces||"N")+".");
+  var corps = $("z-corps"); corps.innerHTML = "";
+  listeZone(zoneCourante).forEach(function(p){ corps.appendChild(ligne(p)); });
+}
+function ligne(p){
+  var tr = document.createElement("tr");
+  tr.innerHTML =
+    '<td class="c-de"><input type="number" data-c="de" value="'+(p.de||1)+'" min="1"></td>'+
+    '<td><input type="text" data-c="nom" value="'+echap(p.nom)+'"></td>'+
+    '<td class="c-de"><input type="number" data-c="dex" value="'+(p.dex||"")+'" min="1" placeholder="n°"></td>'+
+    '<td><input type="text" data-c="types" value="'+echap((p.types||[]).join(", "))+'"></td>'+
+    '<td class="c-stade"><select data-c="stade"><option'+(p.stade===1?" selected":"")+'>1</option><option'+(p.stade===2?" selected":"")+'>2</option><option'+(p.stade===3?" selected":"")+'>3</option></select></td>'+
+    '<td class="c-genre"><select data-c="genre">'+["mixte","asexue","male","femelle"].map(function(g){return '<option value="'+g+'"'+(p.genre===g?" selected":"")+'>'+g+'</option>';}).join("")+'</select></td>'+
+    '<td class="c-ratio"><input type="number" data-c="ratioM" value="'+(p.ratioM||"")+'" min="1" max="99" placeholder="50"></td>'+
+    '<td><input type="text" data-c="img" value="'+echap(p.img)+'" placeholder="vide = sprite PokéAPI"></td>'+
+    '<td class="c-x"></td>';
+  var btn = document.createElement("button"); btn.className="suppr"; btn.textContent="×"; btn.title="Supprimer";
+  btn.onclick = function(){ tr.remove(); };
+  tr.lastElementChild.appendChild(btn);
+  return tr;
+}
+function ajouterLigne(){
+  var l = listeZone(zoneCourante);
+  var prochain = l.length ? Math.max.apply(null, l.map(function(p){return p.de;}))+1 : (zoneCourante==="__hordes"?28:1);
+  $("z-corps").appendChild(ligne({de:prochain, nom:"", types:[], stade:1, genre:"mixte", dex:"", img:""}));
+}
+/* Signale les données incomplètes (types absents, dex absent) pour la zone affichée */
+function majManques(){
+  var l = listeZone(zoneCourante);
+  if (zoneCourante === "__hordes" && l.length !== 14){
+    $("z-manques").style.color = "var(--accent)";
+    $("z-manques").textContent = "⚠ " + l.length + " espèces dans la rotation au lieu des 14 prévues par la règle : le dé des étages devient 1D" + (27 + l.length) + " au lieu de 1D41. Retire les espèces hors rotation du mois.";
+    return;
+  }
+  var sansType = l.filter(function(p){ return !p.types || !p.types.length; }).length;
+  var sansDex  = l.filter(function(p){ return !p.dex && !p.img; }).length;
+  var el = $("z-manques");
+  if (!sansType && !sansDex){ el.textContent = "✓ Types renseignés et sprite disponible pour les " + l.length + " entrées."; el.style.color = "#4a7a4a"; return; }
+  el.style.color = "var(--accent)";
+  el.textContent = "⚠ " + (sansType ? sansType + " Pokémon sans type (Spécialiste/Instinct inopérants) · " : "")
+    + (sansDex ? sansDex + " sans n° dex ni sprite perso (image manquante)" : "");
+}
+
+/* Relit le tableau affiché → DATA (appelé avant tout changement de zone / sauvegarde) */
+function lireTable(){
+  var lignes = [].slice.call($("z-corps").querySelectorAll("tr")).map(function(tr){
+    function v(c){ var e=tr.querySelector('[data-c="'+c+'"]'); return e?e.value:""; }
+    var p = { de:+v("de")||1, nom:v("nom").trim(), dex:+v("dex")||0,
+      types:v("types").split(",").map(function(t){return t.trim();}).filter(Boolean),
+      stade:+v("stade")||1, genre:v("genre"), img:v("img").trim() };
+    var r = +v("ratioM"); if (r && r!==50) p.ratioM = r;
+    if (!p.dex) delete p.dex;
+    return p;
+  }).filter(function(p){ return p.nom; });
+  if (zoneCourante==="__hordes") DATA.hordes = lignes;
+  else DATA.zones[zoneCourante].pokemon = lignes;
+}
+
+/* Création / suppression / duplication d'un lieu.
+   type "etage" : 1D41 (1–27 zone, 28–41 hordes) · type "simple" : 1DN, sans horde. */
+function cleLibre(base){
+  var k = base.toLowerCase().normalize("NFD").replace(/[^a-z0-9]/g,"").slice(0,20) || "lieu";
+  var c = k, n = 2;
+  while (DATA.zones[c]) c = k + (n++);
+  return c;
+}
+function nouveauLieu(){
+  var label = prompt("Nom du lieu (ex : Étage 04 › Marais brumeux)");
+  if (!label) return;
+  var etage = confirm("Ce lieu est-il un ÉTAGE ?\n\nOK = étage (1D41, hordes incluses sur les faces 28–41)\nAnnuler = lieu simple (labyrinthe, safari… sans horde)");
+  var faces = 18;
+  if (!etage){
+    faces = parseInt(prompt("Nombre de faces du dé pour ce lieu", "18"), 10);
+    if (!faces || faces < 1) return;
+  }
+  lireTable();
+  var cle = cleLibre(label);
+  DATA.zones[cle] = etage ? {label:label, type:"etage", pokemon:[]} : {label:label, type:"simple", faces:faces, pokemon:[]};
+  zoneCourante = cle; majSelecteur(); chargerZone();
+  statut("Lieu « " + label + " » créé — ajoute ses Pokémon, puis exporte le JSON.", true);
+}
+function supprimerLieu(){
+  if (zoneCourante === "__hordes") return statut("La liste des hordes ne peut pas être supprimée.", false);
+  var z = DATA.zones[zoneCourante];
+  if (!confirm("Supprimer définitivement le lieu « " + z.label + " » et ses " + z.pokemon.length + " Pokémon ?")) return;
+  delete DATA.zones[zoneCourante];
+  zoneCourante = Object.keys(DATA.zones)[0] || "__hordes";
+  majSelecteur(); chargerZone();
+  statut("Lieu supprimé.", true);
+}
+function dupliquerLieu(){
+  if (zoneCourante === "__hordes") return statut("La liste des hordes ne peut pas être dupliquée.", false);
+  lireTable();
+  var src = DATA.zones[zoneCourante];
+  var label = prompt("Nom du nouveau lieu", src.label + " (copie)");
+  if (!label) return;
+  var cle = cleLibre(label);
+  DATA.zones[cle] = JSON.parse(JSON.stringify(src));
+  DATA.zones[cle].label = label;
+  zoneCourante = cle; majSelecteur(); chargerZone();
+  statut("Lieu dupliqué.", true);
+}
+
+/* ── 03 · Publication ── */
+function jsonComplet(){
+  lireConfig(); lireTable();
+  return JSON.stringify(DATA, null, 1);
+}
+function genererBloc(){
+  $("sortie").value = '<div style="display:none">\n' + MARQUEUR_DEBUT + '\n' + jsonComplet() + '\n' + MARQUEUR_FIN + '\n</div>';
+  statut("Bloc généré — colle-le (mode HTML) dans le message du sujet /t3-data-captures, puis enregistre.", true);
+}
+function sauverLocal(){
+  try{
+    localStorage.setItem(CLE_LOCAL, jsonComplet());
+    statut("Enregistré en local : l'interface joueur de CE navigateur utilise ces données (les autres joueurs passent par le post caché).", true);
+  }catch(e){ statut("Échec localStorage : "+e.message, false); }
+}
+function copierCode(){
+  $("sortie").select();
+  try{ document.execCommand("copy"); statut("Copié dans le presse-papiers.", true); }
+  catch(e){ statut("Copie impossible : sélectionne manuellement.", false); }
+}
+function exporterJSON(){
+  $("sortie").value = jsonComplet();
+  statut("JSON prêt — héberge-le sous le nom data-captures.json à côté du générateur.", true);
+}
+/* Téléchargement direct du fichier data-captures.json */
+function telechargerJSON(){
+  var blob = new Blob([jsonComplet()], {type:"application/json"});
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = "data-captures.json";
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 2000);
+  statut("Fichier data-captures.json téléchargé.", true);
+}
+function importerJSON(){
+  var txt = $("sortie").value.trim();
+  // Accepte le JSON brut OU un bloc complet avec marqueurs
+  var i = txt.indexOf(MARQUEUR_DEBUT), f = txt.indexOf(MARQUEUR_FIN);
+  if (i>-1 && f>i) txt = txt.slice(i+MARQUEUR_DEBUT.length, f);
+  try{
+    var d = JSON.parse(txt);
+    if (!d || !d.zones) throw new Error("structure invalide (clé « zones » absente)");
+    DATA = d; if (!DATA.config) DATA.config = DATA_DEFAUT.config;
+    chargerConfig(); majSelecteur(); chargerZone();
+    statut("Données importées dans l'éditeur — pense à « Enregistrer en local » ou à générer le bloc.", true);
+  }catch(e){ statut("Import impossible : "+e.message, false); }
+}
+
+/* Init */
+chargerConfig(); majSelecteur(); chargerZone();
+</script>
+</body>
+</html>

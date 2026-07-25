@@ -1,0 +1,46 @@
+OUTIL DE CAPTURE — GUIDE AETHERION
+==================================
+
+CONTENU
+  index.html          Interface joueur (à donner aux membres)
+  admin.html          Interface d'administration (page NON listée, réservée au staff)
+  data-captures.json  Données de zones : Pokémon, types, stades, genres, sprites
+
+HÉBERGEMENT
+  Placer les trois fichiers dans le MÊME dossier sur votre hébergement.
+  L'interface joueur charge data-captures.json au démarrage (CONFIG.dataUrl,
+  en tête du <script> de index.html). Le serveur doit servir le .json en
+  lecture (même origine, ou en-tête CORS "Access-Control-Allow-Origin: *"
+  si le générateur est appelé depuis un autre domaine que le forum).
+
+  Si le JSON est introuvable, les pages utilisent les données embarquées
+  (identiques) : rien ne casse, mais les mises à jour de l'admin ne seront
+  plus prises en compte.
+
+MISE À JOUR DES DONNÉES
+  1. Ouvrir admin.html
+  2. Modifier les taux / lieux / Pokémon
+  3. « Export JSON » puis « Télécharger le fichier »
+  4. Remplacer data-captures.json sur l'hébergement
+
+RÈGLES APPLIQUÉES
+  Étage      1D(27 + nb de hordes) — faces 1–27 : zone · au-delà : hordes
+             (rotation officielle : 14 hordes → 1D41)
+  Labyrinthe 1D18, sans horde
+  Safari     1D15, sans horde
+  Sexe       1D2, ou 1D100 selon le ratio ♂ renseigné ; espèces asexuées
+             ou à genre unique exclues du jet
+  Shiny      1D1000, taux de base 1/25 (4 %), ×1,2 Shasseur, ×1,4 Shasseur +
+  Ordre      apparitions → contraintes de pool → Sonar/Radar/Spécialiste →
+             dé → sexe → shiny
+
+SPRITES
+  Sprite déduit du n° national via PokéAPI (variante chromatique automatique).
+  Le champ "img" d'un Pokémon, s'il est rempli, est prioritaire — utilisé pour
+  les 11 formes régionales sans n° vérifié.
+
+POINTS À SURVEILLER
+  · La liste des hordes doit compter 14 espèces pour que le dé soit un 1D41.
+  · Les stades servent au Scanneur / Scanneur + : vérifier la colonne « Stade ».
+  · Le générateur ne poste pas : il produit le code HTML à coller dans le sujet RP,
+    avec le détail complet des jets pour contrôle par la modération.

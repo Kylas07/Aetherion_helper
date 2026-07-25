@@ -1,0 +1,2521 @@
+{
+ "config": {
+  "shinyBase": 0.04,
+  "shasseurMult": 1.2,
+  "shasseurPlusMult": 1.4,
+  "radarSeuil": 20,
+  "specSeuil": 40,
+  "specPlusSeuil": 60,
+  "niveau": "05"
+ },
+ "hordes": [
+  {
+   "de": 28,
+   "nom": "CANINOS HISUI",
+   "types": [
+    "Feu",
+    "Roche"
+   ],
+   "stade": 1,
+   "genre": "mixte",
+   "img": "https://2img.net/i.imgur.com/v1gCTLT.png"
+  },
+  {
+   "de": 29,
+   "nom": "RACAILLOU ALOLA",
+   "types": [
+    "Roche",
+    "Électrik"
+   ],
+   "stade": 1,
+   "genre": "mixte",
+   "img": "",
+   "dex": 74
+  },
+  {
+   "de": 30,
+   "nom": "PONYTA GALAR",
+   "types": [
+    "Psy"
+   ],
+   "stade": 1,
+   "genre": "mixte",
+   "img": "https://2img.net/i.imgur.com/lZr4km6.png"
+  },
+  {
+   "de": 31,
+   "nom": "VOLTORBE HISUI",
+   "types": [
+    "Électrik",
+    "Plante"
+   ],
+   "stade": 1,
+   "genre": "mixte",
+   "img": "https://2img.net/i.imgur.com/9yWe8bp.png"
+  },
+  {
+   "de": 32,
+   "nom": "KANGOUREX",
+   "types": [
+    "Normal"
+   ],
+   "stade": 2,
+   "genre": "femelle",
+   "img": "",
+   "dex": 115
+  },
+  {
+   "de": 33,
+   "nom": "TAUROS PALDEA",
+   "types": [
+    "Combat"
+   ],
+   "stade": 2,
+   "genre": "male",
+   "img": "https://2img.net/i.imgur.com/CIYEEeU.png"
+  },
+  {
+   "de": 34,
+   "nom": "LOKHLASS",
+   "types": [
+    "Eau",
+    "Glace"
+   ],
+   "stade": 2,
+   "genre": "mixte",
+   "img": "",
+   "dex": 131
+  },
+  {
+   "de": 35,
+   "nom": "AXOLOTO PALDEA",
+   "types": [
+    "Poison",
+    "Sol"
+   ],
+   "stade": 1,
+   "genre": "mixte",
+   "img": "https://2img.net/i.imgur.com/416L0jI.png"
+  },
+  {
+   "de": 36,
+   "nom": "CORAYON GALAR",
+   "types": [
+    "Spectre"
+   ],
+   "stade": 2,
+   "genre": "mixte",
+   "img": "https://2img.net/i.imgur.com/8vROAxt.png"
+  },
+  {
+   "de": 37,
+   "nom": "ZIGZATON GALAR",
+   "types": [
+    "Ténèbres",
+    "Normal"
+   ],
+   "stade": 1,
+   "genre": "mixte",
+   "img": "https://2img.net/i.imgur.com/FV55hiZ.png"
+  },
+  {
+   "de": 38,
+   "nom": "MOTISMA",
+   "types": [
+    "Électrik",
+    "Spectre"
+   ],
+   "stade": 1,
+   "genre": "asexue",
+   "img": "",
+   "dex": 479
+  },
+  {
+   "de": 39,
+   "nom": "ZORUA HISUI",
+   "types": [
+    "Normal",
+    "Spectre"
+   ],
+   "stade": 1,
+   "genre": "mixte",
+   "img": "https://2img.net/i.imgur.com/X8J2YNx.png"
+  },
+  {
+   "de": 40,
+   "nom": "SABELETTE ALOLA",
+   "types": [
+    "Glace",
+    "Acier"
+   ],
+   "stade": 1,
+   "genre": "mixte",
+   "img": "",
+   "dex": 27
+  },
+  {
+   "de": 41,
+   "nom": "MIAOUSS ALOLA",
+   "types": [
+    "Ténèbres"
+   ],
+   "stade": 1,
+   "genre": "mixte",
+   "img": "",
+   "dex": 52
+  },
+  {
+   "de": 42,
+   "nom": "TAUPIQUEUR ALOLA",
+   "types": [
+    "Sol",
+    "Acier"
+   ],
+   "stade": 1,
+   "genre": "mixte",
+   "img": "",
+   "dex": 50
+  },
+  {
+   "de": 43,
+   "nom": "GOUPIX",
+   "types": [
+    "Feu"
+   ],
+   "stade": 1,
+   "genre": "mixte",
+   "img": "",
+   "dex": 37
+  },
+  {
+   "de": 44,
+   "nom": "TADMORV",
+   "types": [
+    "Poison"
+   ],
+   "stade": 1,
+   "genre": "mixte",
+   "img": "",
+   "dex": 88
+  },
+  {
+   "de": 45,
+   "nom": "MIME JR.",
+   "types": [
+    "Psy",
+    "Fée"
+   ],
+   "stade": 1,
+   "genre": "mixte",
+   "img": "",
+   "dex": 439
+  },
+  {
+   "de": 46,
+   "nom": "INSOLOURDO",
+   "types": [
+    "Normal",
+    "Psy"
+   ],
+   "stade": 2,
+   "genre": "mixte",
+   "img": "",
+   "dex": 206
+  },
+  {
+   "de": 47,
+   "nom": "ABSOL",
+   "types": [
+    "Ténèbres"
+   ],
+   "stade": 2,
+   "genre": "mixte",
+   "img": "",
+   "dex": 359
+  }
+ ],
+ "zones": {
+  "etage00": {
+   "label": "Étage 00 › Zone de départ",
+   "type": "etage",
+   "pokemon": [
+    {
+     "de": 1,
+     "nom": "MIAOUSS",
+     "types": [
+      "Normal"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 52
+    },
+    {
+     "de": 2,
+     "nom": "FOUINETTE",
+     "types": [
+      "Normal"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 161
+    },
+    {
+     "de": 3,
+     "nom": "PACHIRISU",
+     "types": [
+      "Électrik"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 417
+    },
+    {
+     "de": 4,
+     "nom": "ZIGZATON",
+     "types": [
+      "Normal"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 263
+    },
+    {
+     "de": 5,
+     "nom": "MEDHYENA",
+     "types": [
+      "Ténèbres"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 261
+    },
+    {
+     "de": 6,
+     "nom": "PONCHIOT",
+     "types": [
+      "Normal"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 506
+    },
+    {
+     "de": 7,
+     "nom": "EMOLGA",
+     "types": [
+      "Électrik",
+      "Vol"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 587
+    },
+    {
+     "de": 8,
+     "nom": "GRENOUSSE",
+     "types": [
+      "Eau"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 656
+    },
+    {
+     "de": 9,
+     "nom": "SAPEREAU",
+     "types": [
+      "Normal"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 659
+    },
+    {
+     "de": 10,
+     "nom": "COUAFAREL",
+     "types": [
+      "Normal"
+     ],
+     "stade": 3,
+     "genre": "mixte",
+     "img": "",
+     "dex": 676
+    },
+    {
+     "de": 11,
+     "nom": "VOLTOUTOU",
+     "types": [
+      "Électrik"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 835
+    },
+    {
+     "de": 12,
+     "nom": "MOUMOUTON",
+     "types": [
+      "Plante"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 831
+    },
+    {
+     "de": 13,
+     "nom": "COMPAGNOL",
+     "types": [
+      "Normal"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 819
+    },
+    {
+     "de": 14,
+     "nom": "LILLITERELLE",
+     "types": [
+      "Plante"
+     ],
+     "stade": 2,
+     "genre": "femelle",
+     "img": "",
+     "dex": 919
+    },
+    {
+     "de": 15,
+     "nom": "ROUCOOL",
+     "types": [
+      "Normal",
+      "Vol"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 16
+    },
+    {
+     "de": 16,
+     "nom": "ROUCOUPS",
+     "types": [
+      "Normal",
+      "Vol"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 17
+    },
+    {
+     "de": 17,
+     "nom": "WATTOUAT",
+     "types": [
+      "Électrik"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 179
+    },
+    {
+     "de": 18,
+     "nom": "TAUROS",
+     "types": [
+      "Normal"
+     ],
+     "stade": 2,
+     "genre": "male",
+     "img": "",
+     "dex": 128
+    },
+    {
+     "de": 19,
+     "nom": "NENUPIOT",
+     "types": [
+      "Eau",
+      "Plante"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 270
+    },
+    {
+     "de": 20,
+     "nom": "LAPOREILLE",
+     "types": [
+      "Normal"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 427
+    },
+    {
+     "de": 21,
+     "nom": "CHENITI",
+     "types": [
+      "Insecte"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 412
+    },
+    {
+     "de": 22,
+     "nom": "LARVIBULE",
+     "types": [
+      "Insecte",
+      "Eau"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 736
+    },
+    {
+     "de": 23,
+     "nom": "RONGOURMAND",
+     "types": [
+      "Normal"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 820
+    },
+    {
+     "de": 24,
+     "nom": "PSYKOKWAK",
+     "types": [
+      "Eau"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 54
+    },
+    {
+     "de": 25,
+     "nom": "CANARTICHO",
+     "types": [
+      "Normal",
+      "Vol"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 83
+    },
+    {
+     "de": 26,
+     "nom": "MUSTEBOUEE",
+     "types": [
+      "Eau"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 418
+    },
+    {
+     "de": 27,
+     "nom": "PASSEROUGE",
+     "types": [
+      "Normal",
+      "Vol"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 661
+    }
+   ]
+  },
+  "laby00": {
+   "label": "Étage 00 › Labyrinthe",
+   "type": "simple",
+   "faces": 18,
+   "pokemon": [
+    {
+     "de": 1,
+     "nom": "ESCARGAUME",
+     "types": [
+      "Insecte"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 616
+    },
+    {
+     "de": 2,
+     "nom": "OKEOKE",
+     "types": [
+      "Normal"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 360
+    },
+    {
+     "de": 3,
+     "nom": "DEDENNE",
+     "types": [
+      "Électrik",
+      "Fée"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 702
+    },
+    {
+     "de": 4,
+     "nom": "TROUSSELIN",
+     "types": [
+      "Acier",
+      "Fée"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 707
+    },
+    {
+     "de": 5,
+     "nom": "TIC",
+     "types": [
+      "Insecte"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 599
+    },
+    {
+     "de": 6,
+     "nom": "CHINCHIDOU",
+     "types": [
+      "Normal"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 572
+    },
+    {
+     "de": 7,
+     "nom": "RATTATA ALOLA",
+     "types": [
+      "Ténèbres",
+      "Normal"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 19
+    },
+    {
+     "de": 8,
+     "nom": "GOUPILOU",
+     "types": [
+      "Ténèbres"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 827
+    },
+    {
+     "de": 9,
+     "nom": "SPINDA",
+     "types": [
+      "Normal"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 327
+    },
+    {
+     "de": 10,
+     "nom": "RATENTIF",
+     "types": [
+      "Normal"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 504
+    },
+    {
+     "de": 11,
+     "nom": "POICHIGEON",
+     "types": [
+      "Normal",
+      "Vol"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 519
+    },
+    {
+     "de": 12,
+     "nom": "CREMY",
+     "types": [
+      "Fée"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 868
+    },
+    {
+     "de": 13,
+     "nom": "QUEULORIOR",
+     "types": [
+      "Normal",
+      "Vol"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 235
+    },
+    {
+     "de": 14,
+     "nom": "FOUINAR",
+     "types": [
+      "Normal"
+     ],
+     "stade": 3,
+     "genre": "mixte",
+     "img": "",
+     "dex": 162
+    },
+    {
+     "de": 15,
+     "nom": "NANMEOUIE",
+     "types": [
+      "Normal"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 531
+    },
+    {
+     "de": 16,
+     "nom": "SNUBBULL",
+     "types": [
+      "Fée"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 209
+    },
+    {
+     "de": 17,
+     "nom": "SKITTY",
+     "types": [
+      "Normal"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 300
+    },
+    {
+     "de": 18,
+     "nom": "SPOINK",
+     "types": [
+      "Psy"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 325
+    }
+   ]
+  },
+  "etage01": {
+   "label": "Étage 01 › Forêt prismatique",
+   "type": "etage",
+   "pokemon": [
+    {
+     "de": 1,
+     "nom": "BULBIZARRE",
+     "types": [
+      "Plante",
+      "Poison"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 1
+    },
+    {
+     "de": 2,
+     "nom": "CHENIPAN",
+     "types": [
+      "Insecte"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 10
+    },
+    {
+     "de": 3,
+     "nom": "CHRYSACIER",
+     "types": [
+      "Insecte"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 11
+    },
+    {
+     "de": 4,
+     "nom": "ASPICOT",
+     "types": [
+      "Insecte",
+      "Poison"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 13
+    },
+    {
+     "de": 5,
+     "nom": "COCONFORT",
+     "types": [
+      "Insecte",
+      "Poison"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 14
+    },
+    {
+     "de": 6,
+     "nom": "MYSTHERBE",
+     "types": [
+      "Plante",
+      "Poison"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 43
+    },
+    {
+     "de": 7,
+     "nom": "MIMIGAL",
+     "types": [
+      "Insecte",
+      "Poison"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 167
+    },
+    {
+     "de": 8,
+     "nom": "CHENIPOTTE",
+     "types": [
+      "Insecte"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 265
+    },
+    {
+     "de": 9,
+     "nom": "ARMULYS",
+     "types": [
+      "Insecte"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 266
+    },
+    {
+     "de": 10,
+     "nom": "BLINDALYS",
+     "types": [
+      "Insecte"
+     ],
+     "stade": 3,
+     "genre": "mixte",
+     "img": "",
+     "dex": 268
+    },
+    {
+     "de": 11,
+     "nom": "MUCIOLE",
+     "types": [
+      "Insecte"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 313
+    },
+    {
+     "de": 12,
+     "nom": "LUMIVOLE",
+     "types": [
+      "Insecte"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 314
+    },
+    {
+     "de": 13,
+     "nom": "ROZBOUTON",
+     "types": [
+      "Plante",
+      "Poison"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 406
+    },
+    {
+     "de": 14,
+     "nom": "RAPION",
+     "types": [
+      "Poison",
+      "Insecte"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 451
+    },
+    {
+     "de": 15,
+     "nom": "LARVEYETTE",
+     "types": [
+      "Insecte"
+     ],
+     "stade": 1,
+     "genre": "asexue",
+     "img": "",
+     "dex": 540
+    },
+    {
+     "de": 16,
+     "nom": "VENIPATTE",
+     "types": [
+      "Insecte",
+      "Poison"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 543
+    },
+    {
+     "de": 17,
+     "nom": "VIVALDAIM",
+     "types": [
+      "Normal",
+      "Plante"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 585
+    },
+    {
+     "de": 18,
+     "nom": "TROMPIGNON",
+     "types": [
+      "Plante"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 590
+    },
+    {
+     "de": 19,
+     "nom": "PANDESPIEGLE",
+     "types": [
+      "Combat"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 674
+    },
+    {
+     "de": 20,
+     "nom": "MIMANTIS",
+     "types": [
+      "Plante"
+     ],
+     "stade": 2,
+     "genre": "femelle",
+     "img": "",
+     "dex": 753
+    },
+    {
+     "de": 21,
+     "nom": "SPODODO",
+     "types": [
+      "Insecte",
+      "Combat"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 755
+    },
+    {
+     "de": 22,
+     "nom": "GRIMALIN",
+     "types": [
+      "Spectre",
+      "Plante"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 859
+    },
+    {
+     "de": 23,
+     "nom": "MORPEKO",
+     "types": [
+      "Électrik",
+      "Ténèbres"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 877
+    },
+    {
+     "de": 24,
+     "nom": "COIFFETON",
+     "types": [
+      "Eau"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 912
+    },
+    {
+     "de": 25,
+     "nom": "GOURMELET",
+     "types": [
+      "Ténèbres"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 915
+    },
+    {
+     "de": 26,
+     "nom": "GRIBOURAIGNE",
+     "types": [
+      "Poison",
+      "Normal"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 944
+    },
+    {
+     "de": 27,
+     "nom": "MIMITOSS",
+     "types": [
+      "Insecte",
+      "Poison"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 48
+    }
+   ]
+  },
+  "laby01": {
+   "label": "Étage 01 › Labyrinthe",
+   "type": "simple",
+   "faces": 18,
+   "pokemon": [
+    {
+     "de": 1,
+     "nom": "SOPORIFIK",
+     "types": [
+      "Psy"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 96
+    },
+    {
+     "de": 2,
+     "nom": "SCARHINO",
+     "types": [
+      "Insecte"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 214
+    },
+    {
+     "de": 3,
+     "nom": "TEDDIURSA",
+     "types": [
+      "Normal"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 216
+    },
+    {
+     "de": 4,
+     "nom": "CERFROUSSE",
+     "types": [
+      "Normal"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 234
+    },
+    {
+     "de": 5,
+     "nom": "GRAINIPIOT",
+     "types": [
+      "Plante"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 273
+    },
+    {
+     "de": 6,
+     "nom": "NIRONDELLE",
+     "types": [
+      "Normal",
+      "Vol"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 276
+    },
+    {
+     "de": 7,
+     "nom": "MANGLOUTON",
+     "types": [
+      "Normal"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 734
+    },
+    {
+     "de": 8,
+     "nom": "ETOURMI",
+     "types": [
+      "Normal",
+      "Vol"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 396
+    },
+    {
+     "de": 9,
+     "nom": "KEUNOTOR",
+     "types": [
+      "Normal"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 399
+    },
+    {
+     "de": 10,
+     "nom": "CRIKZIK",
+     "types": [
+      "Insecte"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 401
+    },
+    {
+     "de": 11,
+     "nom": "ZEBIBRON",
+     "types": [
+      "Électrik"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 522
+    },
+    {
+     "de": 12,
+     "nom": "NUCLEOS",
+     "types": [
+      "Psy"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 577
+    },
+    {
+     "de": 13,
+     "nom": "COUANETON",
+     "types": [
+      "Normal",
+      "Vol"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 580
+    },
+    {
+     "de": 14,
+     "nom": "STATITIK",
+     "types": [
+      "Insecte",
+      "Électrik"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 595
+    },
+    {
+     "de": 15,
+     "nom": "MARISSON",
+     "types": [
+      "Plante"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 650
+    },
+    {
+     "de": 16,
+     "nom": "LEPIDONILLE",
+     "types": [
+      "Insecte"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 664
+    },
+    {
+     "de": 17,
+     "nom": "PEREGRAIN",
+     "types": [
+      "Insecte"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 665
+    },
+    {
+     "de": 18,
+     "nom": "NOUNOURSON",
+     "types": [
+      "Normal",
+      "Combat"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 759
+    }
+   ]
+  },
+  "etage02": {
+   "label": "Étage 02 › Montagne rocheuse",
+   "type": "etage",
+   "pokemon": [
+    {
+     "de": 1,
+     "nom": "PIAFABEC",
+     "types": [
+      "Normal",
+      "Vol"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 21
+    },
+    {
+     "de": 2,
+     "nom": "MELO",
+     "types": [
+      "Fée"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 173
+    },
+    {
+     "de": 3,
+     "nom": "MELOFEE",
+     "types": [
+      "Fée"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 35
+    },
+    {
+     "de": 4,
+     "nom": "FEROSINGE",
+     "types": [
+      "Combat"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 56
+    },
+    {
+     "de": 5,
+     "nom": "NATU",
+     "types": [
+      "Psy",
+      "Vol"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 177
+    },
+    {
+     "de": 6,
+     "nom": "SCORPLANE",
+     "types": [
+      "Sol",
+      "Vol"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 207
+    },
+    {
+     "de": 7,
+     "nom": "FARFURET HISUI",
+     "types": [
+      "Combat",
+      "Poison"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "https://2img.net/i.imgur.com/FXIx0Zs.png"
+    },
+    {
+     "de": 8,
+     "nom": "AIRMURE",
+     "types": [
+      "Acier",
+      "Vol"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 227
+    },
+    {
+     "de": 9,
+     "nom": "PARECOOL",
+     "types": [
+      "Normal"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 287
+    },
+    {
+     "de": 10,
+     "nom": "CHUCHMUR",
+     "types": [
+      "Normal"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 293
+    },
+    {
+     "de": 11,
+     "nom": "SELEROC",
+     "types": [
+      "Roche",
+      "Psy"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 337
+    },
+    {
+     "de": 12,
+     "nom": "SOLAROC",
+     "types": [
+      "Roche",
+      "Psy"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 338
+    },
+    {
+     "de": 13,
+     "nom": "DRABY",
+     "types": [
+      "Dragon"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 371
+    },
+    {
+     "de": 14,
+     "nom": "LIXY",
+     "types": [
+      "Électrik"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 403
+    },
+    {
+     "de": 15,
+     "nom": "ARCHEOMIRE",
+     "types": [
+      "Acier",
+      "Psy"
+     ],
+     "stade": 1,
+     "genre": "asexue",
+     "img": "",
+     "dex": 436
+    },
+    {
+     "de": 16,
+     "nom": "NODULITHE",
+     "types": [
+      "Roche"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 524
+    },
+    {
+     "de": 17,
+     "nom": "CHOVSOURIR",
+     "types": [
+      "Psy",
+      "Vol"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 527
+    },
+    {
+     "de": 18,
+     "nom": "BAGGIGUANE",
+     "types": [
+      "Ténèbres"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 559
+    },
+    {
+     "de": 19,
+     "nom": "LIMONDE GALAR",
+     "types": [
+      "Sol",
+      "Acier"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "https://2img.net/i.imgur.com/BDsAjqE.png"
+    },
+    {
+     "de": 20,
+     "nom": "KUNGFOUINE",
+     "types": [
+      "Combat"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 619
+    },
+    {
+     "de": 21,
+     "nom": "DRAKKARMIN",
+     "types": [
+      "Acier",
+      "Dragon"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 621
+    },
+    {
+     "de": 22,
+     "nom": "FERMITE",
+     "types": [
+      "Insecte",
+      "Acier"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 632
+    },
+    {
+     "de": 23,
+     "nom": "STRASSIE",
+     "types": [
+      "Roche",
+      "Fée"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 703
+    },
+    {
+     "de": 24,
+     "nom": "ROCABOT",
+     "types": [
+      "Roche"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 744
+    },
+    {
+     "de": 25,
+     "nom": "METENO",
+     "types": [
+      "Roche",
+      "Vol"
+     ],
+     "stade": 2,
+     "genre": "asexue",
+     "img": "",
+     "dex": 774
+    },
+    {
+     "de": 26,
+     "nom": "BEBECAILLE",
+     "types": [
+      "Dragon",
+      "Combat"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 782
+    },
+    {
+     "de": 27,
+     "nom": "CHARBI",
+     "types": [
+      "Roche"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 837
+    }
+   ]
+  },
+  "laby02": {
+   "label": "Étage 02 › Labyrinthe",
+   "type": "simple",
+   "faces": 18,
+   "pokemon": [
+    {
+     "de": 1,
+     "nom": "HEXADRON",
+     "types": [
+      "Acier"
+     ],
+     "stade": 2,
+     "genre": "asexue",
+     "img": "",
+     "dex": 870
+    },
+    {
+     "de": 2,
+     "nom": "SELUTIN",
+     "types": [
+      "Roche"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 932
+    },
+    {
+     "de": 3,
+     "nom": "LEBOULEROU",
+     "types": [
+      "Roche"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 953
+    },
+    {
+     "de": 4,
+     "nom": "FERDETER",
+     "types": [
+      "Acier"
+     ],
+     "stade": 1,
+     "genre": "asexue",
+     "img": "",
+     "dex": 968
+    },
+    {
+     "de": 5,
+     "nom": "GERMECLAT",
+     "types": [
+      "Roche"
+     ],
+     "stade": 1,
+     "genre": "asexue",
+     "img": "",
+     "dex": 969
+    },
+    {
+     "de": 6,
+     "nom": "RACAILLOU",
+     "types": [
+      "Roche",
+      "Sol"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 74
+    },
+    {
+     "de": 7,
+     "nom": "OSSELAIT",
+     "types": [
+      "Sol"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 104
+    },
+    {
+     "de": 8,
+     "nom": "RHINOCORNE",
+     "types": [
+      "Sol",
+      "Roche"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 111
+    },
+    {
+     "de": 9,
+     "nom": "CARATROC",
+     "types": [
+      "Roche",
+      "Insecte"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 213
+    },
+    {
+     "de": 10,
+     "nom": "PHANPY",
+     "types": [
+      "Sol"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 231
+    },
+    {
+     "de": 11,
+     "nom": "MYSDIBULE",
+     "types": [
+      "Acier",
+      "Fée"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 303
+    },
+    {
+     "de": 12,
+     "nom": "DYNAVOLT",
+     "types": [
+      "Électrik"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 309
+    },
+    {
+     "de": 13,
+     "nom": "CHARTOR",
+     "types": [
+      "Feu",
+      "Sol"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 324
+    },
+    {
+     "de": 14,
+     "nom": "JUDOKRAK",
+     "types": [
+      "Combat"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 538
+    },
+    {
+     "de": 15,
+     "nom": "KARACLEE",
+     "types": [
+      "Combat"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 539
+    },
+    {
+     "de": 16,
+     "nom": "SCALPION",
+     "types": [
+      "Poison",
+      "Combat"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 624
+    },
+    {
+     "de": 17,
+     "nom": "MONORPALE",
+     "types": [
+      "Acier",
+      "Spectre"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 679
+    },
+    {
+     "de": 18,
+     "nom": "GALVARAN",
+     "types": [
+      "Électrik"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 694
+    }
+   ]
+  },
+  "etage03": {
+   "label": "Étage 03 › Îles ouragan",
+   "type": "etage",
+   "pokemon": [
+    {
+     "de": 1,
+     "nom": "RAMOLOSS",
+     "types": [
+      "Eau",
+      "Psy"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 79
+    },
+    {
+     "de": 2,
+     "nom": "RAMOLOSS GALAR",
+     "types": [
+      "Psy"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "https://2img.net/i.imgur.com/g8wFaR6.png"
+    },
+    {
+     "de": 3,
+     "nom": "KRABBY",
+     "types": [
+      "Eau"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 98
+    },
+    {
+     "de": 4,
+     "nom": "HYPOTREMPE",
+     "types": [
+      "Eau"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 116
+    },
+    {
+     "de": 5,
+     "nom": "POISSIRENE",
+     "types": [
+      "Eau"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 118
+    },
+    {
+     "de": 6,
+     "nom": "STARI",
+     "types": [
+      "Eau"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 120
+    },
+    {
+     "de": 7,
+     "nom": "MAGICARPE",
+     "types": [
+      "Eau"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 129
+    },
+    {
+     "de": 8,
+     "nom": "CORAYON",
+     "types": [
+      "Eau",
+      "Roche"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 222
+    },
+    {
+     "de": 9,
+     "nom": "REMORAID",
+     "types": [
+      "Eau"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 223
+    },
+    {
+     "de": 10,
+     "nom": "BABIMANTA",
+     "types": [
+      "Eau",
+      "Vol"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 458
+    },
+    {
+     "de": 11,
+     "nom": "GOELISE",
+     "types": [
+      "Eau",
+      "Vol"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 278
+    },
+    {
+     "de": 12,
+     "nom": "CARVANHA",
+     "types": [
+      "Eau",
+      "Ténèbres"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 318
+    },
+    {
+     "de": 13,
+     "nom": "WAILMER",
+     "types": [
+      "Eau"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 320
+    },
+    {
+     "de": 14,
+     "nom": "BARLOCHE",
+     "types": [
+      "Eau",
+      "Sol"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 339
+    },
+    {
+     "de": 15,
+     "nom": "ECRAPINCE",
+     "types": [
+      "Eau"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 341
+    },
+    {
+     "de": 16,
+     "nom": "BALBUTO",
+     "types": [
+      "Roche",
+      "Psy"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 343
+    },
+    {
+     "de": 17,
+     "nom": "COQUIPERL",
+     "types": [
+      "Eau"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 366
+    },
+    {
+     "de": 18,
+     "nom": "RELICANTH",
+     "types": [
+      "Eau",
+      "Roche"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 369
+    },
+    {
+     "de": 19,
+     "nom": "LOVDISC",
+     "types": [
+      "Eau"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 370
+    },
+    {
+     "de": 20,
+     "nom": "SANCOKI ORIENT",
+     "types": [
+      "Eau"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 422
+    },
+    {
+     "de": 21,
+     "nom": "PIJAKO",
+     "types": [
+      "Normal",
+      "Vol"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 441
+    },
+    {
+     "de": 22,
+     "nom": "CRABICOQUE",
+     "types": [
+      "Eau"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 557
+    },
+    {
+     "de": 23,
+     "nom": "MOUSTILLON",
+     "types": [
+      "Eau"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 501
+    },
+    {
+     "de": 24,
+     "nom": "MAMANBO",
+     "types": [
+      "Eau"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 594
+    },
+    {
+     "de": 25,
+     "nom": "AFLAMANOIR",
+     "types": [
+      "Eau",
+      "Feu"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 631
+    },
+    {
+     "de": 26,
+     "nom": "OPERMINE",
+     "types": [
+      "Eau",
+      "Ténèbres"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 688
+    },
+    {
+     "de": 27,
+     "nom": "VENALGUE",
+     "types": [
+      "Poison",
+      "Eau"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 690
+    }
+   ]
+  },
+  "laby03": {
+   "label": "Étage 03 › Labyrinthe",
+   "type": "simple",
+   "faces": 18,
+   "pokemon": [
+    {
+     "de": 1,
+     "nom": "FLINGOUSTE",
+     "types": [
+      "Eau"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 692
+    },
+    {
+     "de": 2,
+     "nom": "OTAQUIN",
+     "types": [
+      "Eau"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 728
+    },
+    {
+     "de": 3,
+     "nom": "PICASSAUT",
+     "types": [
+      "Eau",
+      "Vol"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 731
+    },
+    {
+     "de": 4,
+     "nom": "PLUMELINE FLAMENCO",
+     "types": [
+      "Feu",
+      "Vol"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 741
+    },
+    {
+     "de": 5,
+     "nom": "PLUMELINE POM-POM",
+     "types": [
+      "Électrik",
+      "Vol"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 741
+    },
+    {
+     "de": 6,
+     "nom": "PLUMELINE HULA",
+     "types": [
+      "Psy",
+      "Vol"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 741
+    },
+    {
+     "de": 7,
+     "nom": "PLUMELINE BUYO",
+     "types": [
+      "Spectre",
+      "Vol"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 741
+    },
+    {
+     "de": 8,
+     "nom": "CROQUINE",
+     "types": [
+      "Plante",
+      "Fée"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 761
+    },
+    {
+     "de": 9,
+     "nom": "GUERILANDE",
+     "types": [
+      "Plante"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 764
+    },
+    {
+     "de": 10,
+     "nom": "BACABOUH",
+     "types": [
+      "Eau",
+      "Spectre"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 769
+    },
+    {
+     "de": 11,
+     "nom": "CONCOMBAFFE",
+     "types": [
+      "Eau"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 771
+    },
+    {
+     "de": 12,
+     "nom": "TOGEDEMARU",
+     "types": [
+      "Électrik",
+      "Acier"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 777
+    },
+    {
+     "de": 13,
+     "nom": "POICHIGEON ALOLA",
+     "types": [
+      "Sol",
+      "Spectre"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 779
+    },
+    {
+     "de": 14,
+     "nom": "DODOALA",
+     "types": [
+      "Normal"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 775
+    },
+    {
+     "de": 15,
+     "nom": "NIGOSIER",
+     "types": [
+      "Eau",
+      "Vol"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 845
+    },
+    {
+     "de": 16,
+     "nom": "WATTAPIK",
+     "types": [
+      "Électrik"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 871
+    },
+    {
+     "de": 17,
+     "nom": "TAPATOES",
+     "types": [
+      "Combat"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 852
+    },
+    {
+     "de": 18,
+     "nom": "ZAPETREL",
+     "types": [
+      "Vol"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 940
+    }
+   ]
+  },
+  "safari": {
+   "label": "Espace safari",
+   "type": "simple",
+   "faces": 15,
+   "pokemon": [
+    {
+     "de": 1,
+     "nom": "EVOLI",
+     "types": [
+      "Normal"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 133
+    },
+    {
+     "de": 2,
+     "nom": "METAMORPH",
+     "types": [
+      "Normal"
+     ],
+     "stade": 2,
+     "genre": "asexue",
+     "img": "",
+     "dex": 132
+    },
+    {
+     "de": 3,
+     "nom": "PORYGON",
+     "types": [
+      "Normal"
+     ],
+     "stade": 1,
+     "genre": "asexue",
+     "img": "",
+     "dex": 137
+    },
+    {
+     "de": 4,
+     "nom": "ZORUA",
+     "types": [
+      "Ténèbres"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 570
+    },
+    {
+     "de": 5,
+     "nom": "COUPENOTTE",
+     "types": [
+      "Dragon"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 610
+    },
+    {
+     "de": 6,
+     "nom": "PSYSTIGRI",
+     "types": [
+      "Psy"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 677
+    },
+    {
+     "de": 7,
+     "nom": "MIMIQUI",
+     "types": [
+      "Spectre",
+      "Fée"
+     ],
+     "stade": 2,
+     "genre": "mixte",
+     "img": "",
+     "dex": 778
+    },
+    {
+     "de": 8,
+     "nom": "FANTYRM",
+     "types": [
+      "Poison",
+      "Dragon"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 885
+    },
+    {
+     "de": 9,
+     "nom": "CHARBAMBIN",
+     "types": [
+      "Feu",
+      "Spectre"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 935
+    },
+    {
+     "de": 10,
+     "nom": "TETAMPOULE",
+     "types": [
+      "Électrik",
+      "Spectre"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 938
+    },
+    {
+     "de": 11,
+     "nom": "MOTORIZARD",
+     "types": [
+      "Feu",
+      "Dragon"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 967
+    },
+    {
+     "de": 12,
+     "nom": "CAPUMAIN",
+     "types": [
+      "Normal"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 190
+    },
+    {
+     "de": 13,
+     "nom": "AZURILL",
+     "types": [
+      "Normal",
+      "Fée"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 298
+    },
+    {
+     "de": 14,
+     "nom": "BARPAU",
+     "types": [
+      "Eau"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 349
+    },
+    {
+     "de": 15,
+     "nom": "GOINFREX",
+     "types": [
+      "Normal"
+     ],
+     "stade": 1,
+     "genre": "mixte",
+     "img": "",
+     "dex": 446
+    }
+   ]
+  }
+ }
+}
