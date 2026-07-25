@@ -83,8 +83,8 @@ textarea.code{width:100%;height:230px;padding:14px 16px;border-radius:10px;backg
     <h2>Taux &amp; talents</h2>
     <div class="cfg">
       <div><label class="lbl">Taux shiny de base (1/X)</label><input type="number" id="c-shiny" min="1" step="1"></div>
-      <div><label class="lbl">Shasseur (multiplicateur)</label><input type="number" id="c-sh1" step="0.05"></div>
-      <div><label class="lbl">Shasseur + (multiplicateur)</label><input type="number" id="c-sh2" step="0.05"></div>
+      <div><label class="lbl">Shasseur (+ points de %)</label><input type="number" id="c-sh1" step="1" min="0" max="100"></div>
+      <div><label class="lbl">Shasseur + (+ points de %)</label><input type="number" id="c-sh2" step="1" min="0" max="100"></div>
       <div><label class="lbl">Radar-chance (seuil D100)</label><input type="number" id="c-radar" min="1" max="100"></div>
       <div><label class="lbl">Spécialiste (seuil D100)</label><input type="number" id="c-spec" min="1" max="100"></div>
       <div><label class="lbl">Spécialiste + (seuil D100)</label><input type="number" id="c-spec2" min="1" max="100"></div>
@@ -149,7 +149,7 @@ var CLE_LOCAL = "aetherion_capture_data"; // même clé que l'interface joueur
 
 /* Données par défaut (identiques à l'interface joueur) */
 var DATA_DEFAUT = {
- config: {"shinyBase":0.04,"shasseurMult":1.2,"shasseurPlusMult":1.4,"radarSeuil":20,"specSeuil":40,"specPlusSeuil":60,"niveau":"05"},
+ config: {"shinyBase":0.04,"shasseurBonus":20,"shasseurPlusBonus":40,"radarSeuil":20,"specSeuil":40,"specPlusSeuil":60,"niveau":"05"},
  hordes: [
   {"de":28,"nom":"CANINOS HISUI","types":["Feu","Roche"],"stade":1,"genre":"mixte","img":"https://2img.net/i.imgur.com/v1gCTLT.png"},
   {"de":29,"nom":"RACAILLOU ALOLA","types":["Roche","Électrik"],"stade":1,"genre":"mixte","img":"","dex":74},
@@ -406,8 +406,8 @@ if (!DATA.config) DATA.config = DATA_DEFAUT.config;
 function chargerConfig(){
   var c = DATA.config;
   $("c-shiny").value  = Math.round(1/(c.shinyBase||0.04));
-  $("c-sh1").value    = c.shasseurMult||1.2;
-  $("c-sh2").value    = c.shasseurPlusMult||1.4;
+  $("c-sh1").value    = c.shasseurBonus!=null ? c.shasseurBonus : 20;
+  $("c-sh2").value    = c.shasseurPlusBonus!=null ? c.shasseurPlusBonus : 40;
   $("c-radar").value  = c.radarSeuil||20;
   $("c-spec").value   = c.specSeuil||40;
   $("c-spec2").value  = c.specPlusSeuil||60;
@@ -416,8 +416,8 @@ function chargerConfig(){
 function lireConfig(){
   DATA.config = {
     shinyBase: 1/Math.max(1, +$("c-shiny").value||25),
-    shasseurMult: +$("c-sh1").value||1.2,
-    shasseurPlusMult: +$("c-sh2").value||1.4,
+    shasseurBonus: +$("c-sh1").value||0,
+    shasseurPlusBonus: +$("c-sh2").value||0,
     radarSeuil: +$("c-radar").value||20,
     specSeuil: +$("c-spec").value||40,
     specPlusSeuil: +$("c-spec2").value||60,

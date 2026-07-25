@@ -134,6 +134,9 @@ textarea.bb{height:200px;font:11.5px/1.7 var(--mono);border-radius:10px;backgrou
 <div class="wrap">
   <div class="hero">
     <div class="sur">outil de <em>capture</em></div>
+    <div class="intro">Renseigne ton pseudo, ton sujet RP, ta zone et tes talents : l'outil effectue les jets et génère le code de mise en page à poster dans ton sujet. Le détail complet du tirage est joint au message pour vérification par le staff.</div>
+  </div>
+
   <div class="rail" id="rail"></div>
 
   <!-- ═══════ ÉTAPE 1 · IDENTITÉ ═══════ -->
@@ -145,6 +148,7 @@ textarea.bb{height:200px;font:11.5px/1.7 var(--mono);border-radius:10px;backgrou
     <label class="lbl" for="f-lien">Lien du sujet RP</label>
     <input type="url" id="f-lien" placeholder="https://votreforum.forumactif.com/t123-mon-sujet-rp">
     <div class="ok-topic" id="topic-ok"></div>
+    <p class="aide">L'outil extrait automatiquement l'identifiant du sujet. Tous les participants doivent poster dans ce même sujet.</p>
     <div class="err" id="err1"></div>
     <div class="nav"><span></span><button class="btn btn-p" onclick="valider1()">Continuer →</button></div>
   </section>
@@ -167,6 +171,7 @@ textarea.bb{height:200px;font:11.5px/1.7 var(--mono);border-radius:10px;backgrou
   <section class="etape" data-etape="3">
     <div class="num">03. Talents &amp; objets</div>
     <h2>Tes talents et objets</h2>
+    <p class="aide" style="margin-top:-8px">Seuls les talents et objets qui modifient le tirage figurent ici : les talents de capture (Capture Pro, Capture Type, Encore) et les talents de création n'ont aucun effet sur l'apparition. Coche uniquement ce que tu utilises pour CETTE capture. Chaque usage déclaré sera rappelé dans le message posté (contrôle par la modération). Les compteurs mensuels ne sont pas vérifiés par l'outil.</p>
     <div id="bloc-joueur"></div>
     <div class="err" id="err3"></div>
     <div class="nav">
@@ -198,6 +203,7 @@ textarea.bb{height:200px;font:11.5px/1.7 var(--mono);border-radius:10px;backgrou
       <button class="btn btn-s" onclick="aller(4)">← Retour</button>
       <button class="btn btn-p" id="btn-lancer" onclick="lancerCapture()">⟡ Lancer la capture</button>
     </div>
+    <p class="aide" style="text-align:right;margin-top:8px">Les jets sont définitifs : le code à poster est généré immédiatement.</p>
   </section>
 
   <!-- ═══════ RÉSULTATS ═══════ -->
@@ -231,8 +237,8 @@ var CONFIG = {
   spriteUrl:      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{dex}.png",
   spriteUrlShiny: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/{dex}.png",           // niveau affiché dans le pied du bloc d'apparition
   shinyBase: 1/25,        // taux de shiny de base (4 %)
-  shasseurMult: 1.2,      // Shasseur : taux ×1,2
-  shasseurPlusMult: 1.4,  // Shasseur + : taux ×1,4
+  shasseurBonus: 20,      // Shasseur : +20 points de % au taux de chromatique
+  shasseurPlusBonus: 40,  // Shasseur + : +40 points de %
   radarSeuil: 20,         // Radar-chance : réussite si 1D100 ≤ 20
   specSeuil: 40,          // Spécialiste : réussite si 1D100 ≤ 40
   specPlusSeuil: 60,      // Spécialiste + : réussite si 1D100 ≤ 60
@@ -531,7 +537,7 @@ function gabaritMessage(ctx){
   L.push("");
   ctx.journal.forEach(function(l){ L.push(l); });
   L.push("");
-  L.push("Réglages appliqués : shiny base " + Math.round(CONFIG.shinyBase*1000)/10 + " % · Shasseur ×" + CONFIG.shasseurMult + " · Shasseur + ×" + CONFIG.shasseurPlusMult + " · Radar ≤" + CONFIG.radarSeuil + " · Spécialiste ≤" + CONFIG.specSeuil + " / ≤" + CONFIG.specPlusSeuil + ".");
+  L.push("Réglages appliqués : chromatique base " + Math.round(CONFIG.shinyBase*1000)/10 + " % · Shasseur +" + CONFIG.shasseurBonus + " pts · Shasseur + +" + CONFIG.shasseurPlusBonus + " pts · Radar ≤" + CONFIG.radarSeuil + " · Spécialiste ≤" + CONFIG.specSeuil + " / ≤" + CONFIG.specPlusSeuil + ".");
   L.push("[/spoiler]");
   return L.join("\n");
 }
@@ -690,7 +696,7 @@ function blocTalents(prefix, pseudoInitial){
 
   '<div class="gtitre">Talents — shiny <em>base '+arrondi(CONFIG.shinyBase*100)+' %</em></div>'+
   '<div class="cases">'+
-    radioT(prefix,"shass","Shasseur",[["aucun","Non utilisé",""],["shass","Shasseur","+20 % aux chances de chromatique : "+arrondi(CONFIG.shinyBase*CONFIG.shasseurMult*100)+" % au lieu de "+arrondi(CONFIG.shinyBase*100)+" %."],["shassplus","Shasseur +","+40 % : "+arrondi(CONFIG.shinyBase*CONFIG.shasseurPlusMult*100)+" %. Shasseur requis."]])+
+    radioT(prefix,"shass","Shasseur",[["aucun","Non utilisé",""],["shass","Shasseur","+"+CONFIG.shasseurBonus+" points : "+arrondi(CONFIG.shinyBase*100+CONFIG.shasseurBonus)+" % de chromatique au lieu de "+arrondi(CONFIG.shinyBase*100)+" %."],["shassplus","Shasseur +","+"+CONFIG.shasseurPlusBonus+" points : "+arrondi(CONFIG.shinyBase*100+CONFIG.shasseurPlusBonus)+" %. Shasseur requis."]])+
   '</div>'+
 
   '<div class="gtitre">Objets <em>cumulables</em></div>'+
@@ -907,7 +913,9 @@ function resoudreParticipant(p, journal, dejaTires){
     else { var j2 = de(2); sexe = j2 === 1 ? "mâle" : "femelle"; sexeLog = " · sexe 1D2="+j2+" → "+sexe; }
 
     // 7) Shiny : 1D1000 ≤ taux×1000 (taux de base × multiplicateur Shasseur)
-    var taux = CONFIG.shinyBase * (p.shass==="shass" ? CONFIG.shasseurMult : p.shass==="shassplus" ? CONFIG.shasseurPlusMult : 1);
+    // Bonus de chromatique en points de pourcentage (augmentation « flat »)
+    var bonus = p.shass==="shass" ? CONFIG.shasseurBonus/100 : p.shass==="shassplus" ? CONFIG.shasseurPlusBonus/100 : 0;
+    var taux = Math.min(1, CONFIG.shinyBase + bonus);
     var seuilShiny = Math.round(taux*1000);
     var jsh = de(1000);
     var shiny = jsh <= seuilShiny;

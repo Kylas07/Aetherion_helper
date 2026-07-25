@@ -1,12 +1,12 @@
 {
  "config": {
   "shinyBase": 0.04,
-  "shasseurMult": 1.2,
-  "shasseurPlusMult": 1.4,
   "radarSeuil": 20,
   "specSeuil": 40,
   "specPlusSeuil": 60,
-  "niveau": "05"
+  "niveau": "05",
+  "shasseurBonus": 20,
+  "shasseurPlusBonus": 40
  },
  "hordes": [
   {
