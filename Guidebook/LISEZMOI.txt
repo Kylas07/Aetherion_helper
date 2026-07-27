@@ -1,8 +1,30 @@
-GUIDE AETHERION — site individuel (une annexe = une page)
+GUIDE AETHERION — site à héberger (une annexe = une page)
 =========================================================
 
-Chaque onglet est un fichier .html séparé (ex : reglement.html, contexte.html,
-couronne.html, capture.html…). Les onglets du menu de gauche pointent les uns
-vers les autres. index.html ouvre le Règlement.
+⚠ LE MENU DE GAUCHE EST DANS UN SEUL FICHIER : menu.js
+   Pour renommer, ajouter, supprimer un onglet ou changer une couleur de groupe,
+   modifie menu.js — le changement s'applique à toutes les pages d'un coup.
+   (Si tu ajoutes un onglet, crée aussi son fichier « id.html » en copiant une page.)
 
-Modifier une page : ouvre le fichier correspondant. Faites vos modifications puis appuyez sur "commit".
+Hébergement : mets TOUS les fichiers de ce dossier au même endroit
+(les .html + aetherion-unifie.css + menu.js). index.html ouvre le Règlement.
+
+Contenu :
+· 01 Accueil      reglement / guide-nouveau / credits
+· 02 Lore         contexte / chrono-reelle / chrono-jeu / vivre / specificite
+· 03 Cartes       etage00 → etage03 (texte + bouton Pokédex + PNJ de la zone)
+· 04 Groupes      groupes-general (généralités) + couronne / vigie /
+                  colporteur / arpenteur / heraut
+· 05 Personnages  progression / talents / argent / pvp
+· 06 Pokémons     generalite / pkmn-progression / attaques / pkmn-talents /
+                  capture (la tour) / obtention / combat
+
+Dans une page de groupe :
+· La couleur du groupe est la valeur après --g: dans la balise <body>.
+· Jauge de faction   : un palier = une ligne « grp-palier » (points / récompense).
+· Rangs fixes        : un rang = un bloc « grp-rang » (nom, places, obtention, privilèges).
+· Personnages        : les petits ronds changent de fiche ; pour en ajouter un, copie
+  un rond ET la fiche qui porte le même numéro.
+
+Transitions : le fondu entre pages est automatique sur les navigateurs récents ;
+ailleurs, la page apparaît simplement en fondu au chargement.

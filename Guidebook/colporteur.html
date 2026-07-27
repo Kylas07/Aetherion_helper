@@ -6,73 +6,118 @@
 <title>Colporteur de l'Ombre — Guide Aetherion</title>
 <link href="aetherion-unifie.css" rel="stylesheet" />
 </head>
-<body style="--g:#9285D1">
+<body style="--g:#8E7BB0">
 <!-- MODE D'EMPLOI (pas besoin de savoir coder) :
-     • Changer un TEXTE  : récris-le entre les balises, ex <p>ton texte</p>. Ne touche pas aux < >, aux "guillemets", ni aux mots anglais.
+     • Changer un TEXTE  : récris-le entre les balises, ex <p>ton texte</p>.
      • Changer une IMAGE : remplace le lien après  src="  par l'adresse de ton image.
-     • Changer un LIEN   : remplace le lien après  href="  par ton adresse.
-     • Cette page = un onglet du menu. Le MENU de gauche est le même partout : reporte tes changements de menu sur chaque fichier.
-     • Chaque annexe est un fichier séparé (id.html) ; les onglets pointent les uns vers les autres. -->
-<div class="guide">
-    <!-- ▼ MENU DE GAUCHE — identique sur toutes les pages. Un onglet = un lien vers une autre page (id.html).
-         Reporte tout changement de menu sur les autres fichiers. ▼ -->
-    <div class="guide-sommaire">
-        <div class="guide-logo"><b>Guide <em>Aetherion</em></b><span>les annexes du forum</span></div>
-        <span class="guide-cat">01. Accueil</span>
-        <a href="reglement.html">Règlement</a>
-        <a href="guide-nouveau.html">Guide du nouveau</a>
-        <a href="credits.html">Crédits et staff</a>
-        <span class="guide-cat">02. Lore</span>
-        <a href="contexte.html">Contexte</a>
-        <a href="chrono-reelle.html">Chronologie réelle</a>
-        <a href="chrono-jeu.html">Chronologie du jeu</a>
-        <a href="vivre.html">Vivre à Aetherion</a>
-        <a href="specificite.html">Spécificité du jeu</a>
-        <span class="guide-cat">03. Cartes</span>
-        <a href="etage00.html">Étage 00 · Zone de départ</a>
-        <a href="etage01.html">Étage 01 · Forêt Prismatique</a>
-        <a href="etage02.html">Étage 02 · Montagne Rocheuse</a>
-        <a href="etage03.html">Étage 03 · Îles Ouragan</a>
-        <span class="guide-cat">04. Groupes</span>
-        <div class="guide-groupes">
-            <a href="couronne.html" class="large" style="--g:#D43535">Couronne de Cendre</a>
-            <a href="vigie.html" style="--g:#6FBEBD">Vigie du Seuil</a>
-            <a href="colporteur.html" class="actif" style="--g:#9285D1">Colporteur de l'Ombre</a>
-            <a href="arpenteur.html" style="--g:#5CA35E">Arpenteur du Vide</a>
-            <a href="heraut.html" style="--g:#DBAE61">Héraut Silencieux</a>
-        </div>
-        <span class="guide-cat">05. Personnages</span>
-        <a href="progression.html">Progression</a>
-        <a href="talents.html">Talents</a>
-        <a href="argent.html">Argent</a>
-        <a href="pvp.html">PVP</a>
-        <span class="guide-cat">06. Pokémons</span>
-        <a href="generalite.html">Généralité</a>
-        <a href="pkmn-progression.html">Progression</a>
-        <a href="attaques.html">Attaques</a>
-        <a href="pkmn-talents.html">Talents</a>
-        <a href="capture.html">Capture</a>
-        <a href="obtention.html">Obtention spéciales</a>
-        <a href="combat.html">Système de Combat</a>
-        <div class="guide-pied"><span>Guide — équipe Aetherion</span></div>
-    </div>
+     • COULEUR DU GROUPE : la valeur après --g: dans <body> colore TOUTE la page.
+     • LE MENU DE GAUCHE est écrit une seule fois dans « menu.js ». -->
+<div class="guide" data-page="colporteur">
 
-    <!-- ▼ CONTENU DE CETTE PAGE ▼ -->
     <div class="guide-corps">
-        <!-- Bouton « revenir au forum » : mets l'adresse de ton forum dans href. -->
-        <div class="guide-retour"><a href="/forum">Revenir sur le forum</a></div>
 
-        <!-- ══ PAGE : colporteur ══ -->
         <div class="guide-page actif" id="colporteur">
+            <!-- BANNIÈRE : image après src=". La 2e partie du titre est en contour de couleur. -->
             <div class="grp-bandeau">
                 <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
-                <div class="guide-hero-titre"><small>— 04. Groupes</small><b>Colporteur de l'Ombre</b></div>
-                <span class="grp-role">Rôle — devise courte</span>
+                <div class="guide-hero-titre"><small>— 04. Groupes</small><b>Colporteur <em>de l'Ombre</em></b></div>
+                <span class="grp-role">Tout se négocie, y compris la loyauté</span>
             </div>
-            <div class="grp-bloc"><b>Philosophie</b><p>À compléter en reprenant la mise en page de la Couronne de Cendre (page couronne.html) : mots-clés, philosophie, faille, notoriété, grades, figures.</p></div>
+            <!-- FICHE D'IDENTITÉ : une case = un <div>. -->
+            <div class="grp-meta">
+                <div><b>Rôle</b><span>Groupe opportuniste</span></div>
+                <div><b>Couleur</b><span>Violet terne / or vieilli</span></div>
+                <div><b>Jauge</b><span>Réseau du Bazar</span></div>
+                <div><b>Spécificité</b><span>Orbes Téracristal</span></div>
+            </div>
+            <div class="grp-bloc"><b>Philosophie</b><p>Les Colporteurs ne croient ni au pouvoir de la Couronne ni à la vertu de la Vigie — ils croient à l'information et au troc. Ils vendent des renseignements aux deux camps, arment parfois les deux côtés d'un même conflit, et considèrent la neutralité comme la seule position réellement rentable dans un monde instable. Ils ont malgré tout un code d'honneur très strict : on ne trahit jamais un contrat signé, même si le client devient un ennemi.</p></div>
+            <div class="grp-bloc"><b>La faille</b><p>Leur détachement moral finit par les isoler. Beaucoup de Colporteurs n'ont plus vraiment de camp, plus vraiment d'attaches — et certains commencent à se demander ce qu'ils défendent, à part leur propre survie.</p></div>
+            <div class="grp-bloc"><b>Notoriété gagnée par</b><p>Missions d'infiltration et de collecte d'informations, commerce de ressources rares, contrats remplis pour d'autres factions (sans trahir la neutralité), négociation de trêves rémunérées, contrebande.</p></div>
+            <div class="guide-section">
+                <h2 class="guide-titre">Jauge de <em>faction</em></h2>
+                <!-- JAUGE DE FACTION : un palier = une ligne (points / récompense). -->
+                <div class="grp-jauge-nom"><b>Réseau du Bazar</b><small>jauge collective</small></div>
+                <div class="grp-jauge">
+                    <div class="grp-palier"><span class="pts">750 pts</span><p>Réduction de 10% sur la boutique générale + accès à la boutique de luxe sans avoir besoin du talent.</p></div>
+                    <div class="grp-palier"><span class="pts">2 000 pts</span><p>Accès à toutes les boutiques de « base » des autres factions, avec une majoration de 10%.</p></div>
+                    <div class="grp-palier"><span class="pts">4 000 pts</span><p>La limite de 3 primes est levée (impossible de valider plusieurs fois la même).</p></div>
+                    <div class="grp-palier"><span class="pts">7 000 pts</span><p>« Vente privée » : accès à un objet rare gratuitement dans le mois (Masterball, Méga-Gemme, etc.).</p></div>
+                    <div class="grp-palier"><span class="pts">12 000 pts</span><p>Chaque membre reçoit, une fois dans la vie de son personnage, un Orbe Téracristal pour le Pokémon de son choix (ne peut être échangé, vendu ou reproduit).</p></div>
+                </div>
+            </div>
+            <div class="guide-section">
+                <h2 class="guide-titre">Le joyau <em>Téracristal</em></h2>
+            <div class="grp-bloc"><b>Ce que c'est</b><p>Les Colporteurs ont mis la main sur les orbes Téracristal, qu'ils gardent jalousement pour leurs affaires personnelles. La Téracristallisation transforme l'apparence d'un Pokémon, le rendant aussi étincelant qu'une pierre précieuse. Sous cette apparence de cristal, le Pokémon reçoit une sorte de couronne sur la tête, le Joyau Téracristal, qui active son type Téracristal en remplaçant son ou ses types d'origine.</p></div>
+            <div class="grp-bloc"><b>Mécanique de jeu</b><ul><li>Le type du joyau Téracristal remplace tous les types du Pokémon.</li><li>Les types d'origine du Pokémon, ainsi que le type du joyau, obtiennent un bonus d'attaque (+10 PUIS. et +5 PREC.).</li></ul></div>
+            <div class="grp-bloc"><b>Restrictions</b><ul><li>Une seule Téracristallisation autorisée par combat.</li><li>Chaque personnage n'a droit qu'à un seul type de Téracristallisation pour 3 de ses Pokémon, sans possibilité d'en changer.</li><li>Seuls les membres des Colporteurs de l'Ombre peuvent avoir un orbe Téracristal (ne peut être échangé, vendu ou reproduit).</li></ul></div>
+            </div>
+            <div class="guide-section">
+                <h2 class="guide-titre">Rangs <em>fixes</em></h2>
+                <!-- RANGS : un rang = un bloc grp-rang. -->
+                <div class="grp-rangs">
+                <div class="grp-rang">
+                    <header><b>Porte-Sac</b><span class="places">Places illimitées</span></header>
+                    <dl><dt>Obtention</dt><dd>Dès validation dans le groupe.</dd><dt>Privilèges</dt><dd>Accès au Bazar des Colporteurs.</dd></dl>
+                </div>
+                <div class="grp-rang">
+                    <header><b>Marchand Itinérant</b><span class="places">10 places</span></header>
+                    <dl><dt>Obtention</dt><dd>Validation staff après plusieurs missions.</dd><dt>Privilèges</dt><dd>Droit à des missions liées au groupe avec bonus XP dédié.</dd></dl>
+                </div>
+                <div class="grp-rang">
+                    <header><b>Voix du Bazar</b><span class="places">5 places</span></header>
+                    <dl><dt>Obtention</dt><dd>Nommé + mission staff dédiée.</dd><dt>Privilèges</dt><dd>Taxe (talent spécial) : tous les mois, les membres reçoivent 500 P$.</dd></dl>
+                </div>
+                <div class="grp-rang">
+                    <header><b>Maître Colporteur</b><span class="places">3 places</span></header>
+                    <dl><dt>Obtention</dt><dd>Élu par vote &amp; validation staff — vacant si démission ou destitution.</dd><dt>Privilèges</dt><dd>Peut ajouter des bonus à son groupe (avec validation du staff). Tous les mois, il permet aux membres de son groupe d'importer dans leur boîte PC un Pokémon de leur choix, disponible sur Aetherion.</dd></dl>
+                </div>
+                </div>
+            </div>
+            <div class="guide-section">
+                <h2 class="guide-titre">Figures <em>importantes</em></h2>
+                <!-- PERSONNAGES : les ronds changent de fiche (même numéro après data-figure=" et id="). -->
+                <div class="grp-figures-nav">
+                    <button type="button" data-figure="colporteur-pnj0" class="actif" title="Iseult Cravenne"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Iseult Cravenne"></button>
+                    <button type="button" data-figure="colporteur-pnj1" title="Narcissus Brando"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Narcissus Brando"></button>
+                </div>
+                <div class="grp-figure-panneau actif" id="colporteur-pnj0">
+                <div class="grp-figure">
+                    <div class="portrait"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Portrait de Iseult Cravenne"></div>
+                    <div class="fiche">
+                        <header><b>Iseult Cravenne</b><small>Maîtresse Colporteuse</small></header>
+                        <div class="meta"><span><b>Âge</b> début de la trentaine</span><span><b>Rang</b> S — volontairement flou, personne ne connaît son vrai niveau</span><span><b>Feat</b> Jade · Honkai Star Rail</span></div>
+                        <h4>Apparence</h4>
+                        <p>Élégance étudiée jusqu'au moindre détail : un chapeau qui dissimule autant qu'il attire le regard, une robe qui ne révèle jamais tout à la fois. Elle porte systématiquement quelque chose de précieux à la main, jamais par vanité — un verre, un bijou, un objet : toujours de quoi occuper l'attention pendant qu'elle observe. Un serpent, réel ou symbolique, ne la quitte presque jamais : moins un animal de compagnie qu'un avertissement silencieux.</p>
+                        <h4>Avant</h4>
+                        <p>Iseult n'a jamais eu besoin de force pour obtenir ce qu'elle voulait. Dans son ancienne vie déjà, elle savait lire une pièce en quelques secondes : qui voulait plaire, qui avait peur, qui mentait. Elle n'a jamais rien volé qu'on ne lui ait, d'une façon ou d'une autre, donné le sentiment d'offrir librement. Bloquée dans le jeu, elle n'a pas paniqué plus longtemps qu'il ne le fallait : observer, cartographier les faiblesses, attendre le bon moment.</p>
+                        <h4>Après</h4>
+                        <p>Elle n'a jamais eu besoin de se battre pour un siège : elle a fait en sorte qu'on le lui propose. Sa méthode ne varie jamais — une conversation anodine, un verre partagé, un compliment placé au bon moment, et derrière tout ça un Pokémon qui prépare le terrain sans que la cible ne le remarque. Elle ne force jamais un accord : elle fait en sorte que la victime croie avoir eu l'idée elle-même. Elle ne dirige pas par peur ni par force, mais parce que chaque membre influent du réseau lui doit quelque chose qu'il ne saurait pas expliquer précisément.</p>
+                        <div class="team"><small>Team</small><span>Sepiatroce · Hypnomade · Mesmérella · Gardevoir · Arbok · Lugulabre</span></div>
+                    </div>
+                </div>
+                </div>
+                <div class="grp-figure-panneau" id="colporteur-pnj1">
+                <div class="grp-figure">
+                    <div class="portrait"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Portrait de Narcissus Brando"></div>
+                    <div class="fiche">
+                        <header><b>Narcissus Brando</b><small>Voix du Bazar</small></header>
+                        <div class="meta"><span><b>Âge</b> début de la vingtaine</span><span><b>Rang</b> A</span><span><b>Feat</b> Kaveh · Genshin Impact</span></div>
+                        <h4>Apparence</h4>
+                        <p>Le plus bel homme possible en ce monde — personne ne peut l'égaler sur ce point. La chevelure la plus somptueuse, de véritables fils d'or. De longs cils blonds et des iris semblables aux plus précieux des rubis. Un vrai corps d'Apollon, attirant femmes comme hommes. Il ne se pare que des plus riches et soyeux habits du marché, et des bijoux les plus ostentatoires possibles.</p>
+                        <h4>Avant</h4>
+                        <p>Enfant mannequin, sa beauté a été mise en valeur très tôt. Ses parents se sont enrichis sur sa carrière, mais tout l'argent a été flambé en dépenses outrancières et en jeux d'argent : un début de rêve devenu un cauchemar de pauvreté. Sa famille s'est endettée et il a traîné toutes les dettes dès sa vie adulte. En grandissant, Narcissus a perdu sa beauté juvénile et enchaîné les boulots humiliants — pour compenser, il s'est perdu dans les jeux vidéo, où il pouvait à nouveau s'imaginer une beauté virtuelle. Il ne s'y connaît pas en Pokémon, mais c'est un passionné de VR.</p>
+                        <h4>Après</h4>
+                        <p>Dès le bug, il a su jouer de son bel avatar pour charmer et se faire protéger par des personnes puissantes. Quand une économie a commencé à se créer entre joueurs, il a monétisé son apparence. Dès qu'il a croisé la route d'Iseult, il a su qu'il devait devenir son petit larbin de compagnie pour profiter de son influence et de sa richesse. Il est devenu une figure réputée du monde marchand, charmant vendeurs et acquéreurs — un beau démon habillé de soie, mais à la langue bien pendue. Et bien évidemment, il n'a que des chromatiques dans son équipe.</p>
+                        <div class="team"><small>Team</small><span>Oratoria ✧ · Milobellus ✧ · Sucreine ✧ · Feunard ✧ · Malamandre ✧ · Lackmécygne ✧</span></div>
+                    </div>
+                </div>
+                </div>
+
+            </div>
         </div>
 
     </div>
 </div>
+<script src="menu.js"></script>
 </body>
 </html>

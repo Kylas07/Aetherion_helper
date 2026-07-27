@@ -6,73 +6,97 @@
 <title>Arpenteur du Vide — Guide Aetherion</title>
 <link href="aetherion-unifie.css" rel="stylesheet" />
 </head>
-<body style="--g:#5CA35E">
+<body style="--g:#4F8A5B">
 <!-- MODE D'EMPLOI (pas besoin de savoir coder) :
-     • Changer un TEXTE  : récris-le entre les balises, ex <p>ton texte</p>. Ne touche pas aux < >, aux "guillemets", ni aux mots anglais.
+     • Changer un TEXTE  : récris-le entre les balises, ex <p>ton texte</p>.
      • Changer une IMAGE : remplace le lien après  src="  par l'adresse de ton image.
-     • Changer un LIEN   : remplace le lien après  href="  par ton adresse.
-     • Cette page = un onglet du menu. Le MENU de gauche est le même partout : reporte tes changements de menu sur chaque fichier.
-     • Chaque annexe est un fichier séparé (id.html) ; les onglets pointent les uns vers les autres. -->
-<div class="guide">
-    <!-- ▼ MENU DE GAUCHE — identique sur toutes les pages. Un onglet = un lien vers une autre page (id.html).
-         Reporte tout changement de menu sur les autres fichiers. ▼ -->
-    <div class="guide-sommaire">
-        <div class="guide-logo"><b>Guide <em>Aetherion</em></b><span>les annexes du forum</span></div>
-        <span class="guide-cat">01. Accueil</span>
-        <a href="reglement.html">Règlement</a>
-        <a href="guide-nouveau.html">Guide du nouveau</a>
-        <a href="credits.html">Crédits et staff</a>
-        <span class="guide-cat">02. Lore</span>
-        <a href="contexte.html">Contexte</a>
-        <a href="chrono-reelle.html">Chronologie réelle</a>
-        <a href="chrono-jeu.html">Chronologie du jeu</a>
-        <a href="vivre.html">Vivre à Aetherion</a>
-        <a href="specificite.html">Spécificité du jeu</a>
-        <span class="guide-cat">03. Cartes</span>
-        <a href="etage00.html">Étage 00 · Zone de départ</a>
-        <a href="etage01.html">Étage 01 · Forêt Prismatique</a>
-        <a href="etage02.html">Étage 02 · Montagne Rocheuse</a>
-        <a href="etage03.html">Étage 03 · Îles Ouragan</a>
-        <span class="guide-cat">04. Groupes</span>
-        <div class="guide-groupes">
-            <a href="couronne.html" class="large" style="--g:#D43535">Couronne de Cendre</a>
-            <a href="vigie.html" style="--g:#6FBEBD">Vigie du Seuil</a>
-            <a href="colporteur.html" style="--g:#9285D1">Colporteur de l'Ombre</a>
-            <a href="arpenteur.html" class="actif" style="--g:#5CA35E">Arpenteur du Vide</a>
-            <a href="heraut.html" style="--g:#DBAE61">Héraut Silencieux</a>
-        </div>
-        <span class="guide-cat">05. Personnages</span>
-        <a href="progression.html">Progression</a>
-        <a href="talents.html">Talents</a>
-        <a href="argent.html">Argent</a>
-        <a href="pvp.html">PVP</a>
-        <span class="guide-cat">06. Pokémons</span>
-        <a href="generalite.html">Généralité</a>
-        <a href="pkmn-progression.html">Progression</a>
-        <a href="attaques.html">Attaques</a>
-        <a href="pkmn-talents.html">Talents</a>
-        <a href="capture.html">Capture</a>
-        <a href="obtention.html">Obtention spéciales</a>
-        <a href="combat.html">Système de Combat</a>
-        <div class="guide-pied"><span>Guide — équipe Aetherion</span></div>
-    </div>
+     • COULEUR DU GROUPE : la valeur après --g: dans <body> colore TOUTE la page.
+     • LE MENU DE GAUCHE est écrit une seule fois dans « menu.js ». -->
+<div class="guide" data-page="arpenteur">
 
-    <!-- ▼ CONTENU DE CETTE PAGE ▼ -->
     <div class="guide-corps">
-        <!-- Bouton « revenir au forum » : mets l'adresse de ton forum dans href. -->
-        <div class="guide-retour"><a href="/forum">Revenir sur le forum</a></div>
 
-        <!-- ══ PAGE : arpenteur ══ -->
         <div class="guide-page actif" id="arpenteur">
+            <!-- BANNIÈRE : image après src=". La 2e partie du titre est en contour de couleur. -->
             <div class="grp-bandeau">
                 <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
-                <div class="guide-hero-titre"><small>— 04. Groupes</small><b>Arpenteur du Vide</b></div>
-                <span class="grp-role">Rôle — devise courte</span>
+                <div class="guide-hero-titre"><small>— 04. Groupes</small><b>Arpenteur <em>du Vide</em></b></div>
+                <span class="grp-role">La vérité est ailleurs, plus loin</span>
             </div>
-            <div class="grp-bloc"><b>Philosophie</b><p>À compléter en reprenant la mise en page de la Couronne de Cendre (page couronne.html) : mots-clés, philosophie, faille, notoriété, grades, figures.</p></div>
+            <!-- FICHE D'IDENTITÉ : une case = un <div>. -->
+            <div class="grp-meta">
+                <div><b>Rôle</b><span>Groupe aventurier</span></div>
+                <div><b>Couleur</b><span>Vert profond / cuivre</span></div>
+                <div><b>Jauge</b><span>Carte sans Fin</span></div>
+                <div><b>Spécificité</b><span>Ouverture de zones</span></div>
+            </div>
+            <div class="grp-bloc"><b>Philosophie</b><p>Les Arpenteurs se fichent du pouvoir, de l'ordre ou du commerce. Ils veulent comprendre ce qu'est réellement Aetherion — pourquoi le monde se comporte comme il le fait, ce qu'il y a au bout des zones jamais explorées. Ce sont les « clearers » des zones : ceux qui avancent la frontière de ce qui est RP-explorable. Beaucoup les respectent, personne ne les comprend vraiment.</p></div>
+            <div class="grp-bloc"><b>La faille</b><p>Leur obsession de la découverte les rend parfois négligents envers les vivants. Un Arpenteur laissera facilement un allié en difficulté pour ne pas perdre une piste. Leur détachement ressemble parfois à de l'indifférence pure.</p></div>
+            <div class="grp-bloc"><b>Notoriété gagnée par</b><p>Exploration de nouvelles zones, missions de recherche et de lore-hunting, capture ou étude de Pokémon rares et de phénomènes inexpliqués, rédaction de rapports d'expédition (contenu RP).</p></div>
+            <div class="guide-section">
+                <h2 class="guide-titre">Jauge de <em>faction</em></h2>
+                <!-- JAUGE DE FACTION : un palier = une ligne (points / récompense). -->
+                <div class="grp-jauge-nom"><b>Carte sans Fin</b><small>jauge collective</small></div>
+                <div class="grp-jauge">
+                    <div class="grp-palier"><span class="pts">750 pts</span><p>Réduction de 10% sur les objets d'exploration et de combat dans l'ensemble des boutiques disponibles (luxe inclus, à condition d'avoir le talent).</p></div>
+                    <div class="grp-palier"><span class="pts">2 000 pts</span><p>Un ticket Safari gratuit une fois par mois.</p></div>
+                    <div class="grp-palier"><span class="pts">4 000 pts</span><p>Les membres peuvent effectuer une mission solo + une mission multi en plus tous les mois.</p></div>
+                    <div class="grp-palier"><span class="pts">7 000 pts</span><p>« Lanceur d'élite » : chaque membre reçoit, deux fois par mois, une tentative de capture bonus garantie sur un Pokémon de la horde.</p></div>
+                    <div class="grp-palier"><span class="pts">12 000 pts</span><p>Chaque membre reçoit un Pokémon Aetherion aléatoire.</p></div>
+                </div>
+            </div>
+            <div class="guide-section">
+                <h2 class="guide-titre">Rangs <em>fixes</em></h2>
+                <!-- RANGS : un rang = un bloc grp-rang. -->
+                <div class="grp-rangs">
+                <div class="grp-rang">
+                    <header><b>Éclaireur</b><span class="places">Places illimitées</span></header>
+                    <dl><dt>Obtention</dt><dd>Dès validation dans le groupe.</dd><dt>Privilèges</dt><dd>Accès au Repère des Arpenteurs.</dd></dl>
+                </div>
+                <div class="grp-rang">
+                    <header><b>Traceur de Piste</b><span class="places">10 places</span></header>
+                    <dl><dt>Obtention</dt><dd>Validation staff après plusieurs missions.</dd><dt>Privilèges</dt><dd>Droit à des missions liées au groupe avec bonus XP dédié.</dd></dl>
+                </div>
+                <div class="grp-rang">
+                    <header><b>Chercheur du Vide</b><span class="places">5 places</span></header>
+                    <dl><dt>Obtention</dt><dd>Nommé + mission staff dédiée.</dd><dt>Privilèges</dt><dd>Greed (talent spécial) : les Chercheurs du Vide peuvent cumuler deux RP de capture en même temps.</dd></dl>
+                </div>
+                <div class="grp-rang">
+                    <header><b>Grand Arpenteur</b><span class="places">3 places</span></header>
+                    <dl><dt>Obtention</dt><dd>Élu par vote &amp; validation staff — vacant si démission ou destitution.</dd><dt>Privilèges</dt><dd>Peut ajouter des bonus à son groupe (avec validation du staff). Une fois par mois, il peut découvrir une zone du type de son choix pour une capture exclusive, accessible à l'ensemble des membres pendant un mois.</dd></dl>
+                </div>
+                </div>
+            </div>
+            <div class="guide-section">
+                <h2 class="guide-titre">Figures <em>importantes</em></h2>
+                <!-- PERSONNAGES : les ronds changent de fiche (même numéro après data-figure=" et id="). -->
+                <div class="grp-figures-nav">
+                    <button type="button" data-figure="arpenteur-pnj0" class="actif" title="Aude Verdier"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Aude Verdier"></button>
+                </div>
+                <div class="grp-figure-panneau actif" id="arpenteur-pnj0">
+                <div class="grp-figure">
+                    <div class="portrait"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Portrait de Aude Verdier"></div>
+                    <div class="fiche">
+                        <header><b>Aude Verdier</b><small>Grande Arpenteuse</small></header>
+                        <div class="meta"><span><b>Âge</b> début de la cinquantaine</span><span><b>Rang</b> S</span><span><b>Feat</b> Poison Ivy · DC Comics</span></div>
+                        <h4>Apparence</h4>
+                        <p>Silhouette longiligne, une chevelure orangée toujours à moitié défaite, comme si des lianes y avaient élu domicile. La peau marquée de veines sombres qui courent le long des bras — pas des blessures, mais quelque chose qui a fini par faire partie d'elle. Elle ne porte jamais rien de neuf : ses vêtements, toujours un peu tachés, un peu envahis de mousse ou de pousses naissantes aux coutures, comme si la nature refusait de la quitter.</p>
+                        <h4>Avant</h4>
+                        <p>Aude avait une vie qu'elle n'aurait jamais imaginé pouvoir perdre. Un fils encore petit, une maison simple, et une relation qu'elle chérissait par-dessus tout avec l'un de ses parents — le genre de complicité qui ne s'explique pas, juste un rituel du soir gardé de génération en génération : jouer ensemble. C'est ce rituel qui les a perdus. Une simple soirée, un jeu qu'ils avaient prévu de découvrir à deux. Elle n'a jamais revu l'écran de chargement s'éteindre normalement.</p>
+                        <h4>Après</h4>
+                        <p>Quand le piège s'est refermé, Aude n'a pas cherché à combattre ce monde : elle a cherché à le comprendre — parce que quelque part dehors, un petit garçon l'attendait, et qu'elle n'avait pas l'intention de lui manquer de parole. Elle a découvert vite que quelque chose, ici, lui répondait : le végétal. Là où les autres voyaient des ruines englouties sous une végétation hostile, elle voyait un chemin. Elle est devenue la seule capable de traverser les zones que la nature avait totalement reprises. Les Arpenteurs ne l'ont pas suivie par admiration héroïque : ils l'ont suivie parce qu'elle est, littéralement, la seule à pouvoir les mener au-delà de ce que ce monde refuse de laisser explorer.</p>
+                        <h4>Ce qui la définit</h4>
+                        <p>Elle ne se bat pas par colère ni par plaisir. Chaque décision, chaque prise de risque insensée, chaque zone qu'elle ouvre au prix d'un danger que personne d'autre n'oserait affronter — tout est calculé contre une seule chose : le temps qui passe loin de son fils. Il n'y a rien de plus déterminé qu'une mère prête à tout, et ce monde entier commence à l'apprendre.</p>
+                        <div class="team"><small>Team</small><span>Florizarre · Roserade · Sucreine · Prédastérie · Gaulet · Empiflor</span></div>
+                    </div>
+                </div>
+                </div>
+
+            </div>
         </div>
 
     </div>
 </div>
+<script src="menu.js"></script>
 </body>
 </html>

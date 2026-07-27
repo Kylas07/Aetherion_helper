@@ -6,73 +6,95 @@
 <title>Héraut Silencieux — Guide Aetherion</title>
 <link href="aetherion-unifie.css" rel="stylesheet" />
 </head>
-<body style="--g:#DBAE61">
+<body style="--g:#4A5C8F">
 <!-- MODE D'EMPLOI (pas besoin de savoir coder) :
-     • Changer un TEXTE  : récris-le entre les balises, ex <p>ton texte</p>. Ne touche pas aux < >, aux "guillemets", ni aux mots anglais.
+     • Changer un TEXTE  : récris-le entre les balises, ex <p>ton texte</p>.
      • Changer une IMAGE : remplace le lien après  src="  par l'adresse de ton image.
-     • Changer un LIEN   : remplace le lien après  href="  par ton adresse.
-     • Cette page = un onglet du menu. Le MENU de gauche est le même partout : reporte tes changements de menu sur chaque fichier.
-     • Chaque annexe est un fichier séparé (id.html) ; les onglets pointent les uns vers les autres. -->
-<div class="guide">
-    <!-- ▼ MENU DE GAUCHE — identique sur toutes les pages. Un onglet = un lien vers une autre page (id.html).
-         Reporte tout changement de menu sur les autres fichiers. ▼ -->
-    <div class="guide-sommaire">
-        <div class="guide-logo"><b>Guide <em>Aetherion</em></b><span>les annexes du forum</span></div>
-        <span class="guide-cat">01. Accueil</span>
-        <a href="reglement.html">Règlement</a>
-        <a href="guide-nouveau.html">Guide du nouveau</a>
-        <a href="credits.html">Crédits et staff</a>
-        <span class="guide-cat">02. Lore</span>
-        <a href="contexte.html">Contexte</a>
-        <a href="chrono-reelle.html">Chronologie réelle</a>
-        <a href="chrono-jeu.html">Chronologie du jeu</a>
-        <a href="vivre.html">Vivre à Aetherion</a>
-        <a href="specificite.html">Spécificité du jeu</a>
-        <span class="guide-cat">03. Cartes</span>
-        <a href="etage00.html">Étage 00 · Zone de départ</a>
-        <a href="etage01.html">Étage 01 · Forêt Prismatique</a>
-        <a href="etage02.html">Étage 02 · Montagne Rocheuse</a>
-        <a href="etage03.html">Étage 03 · Îles Ouragan</a>
-        <span class="guide-cat">04. Groupes</span>
-        <div class="guide-groupes">
-            <a href="couronne.html" class="large" style="--g:#D43535">Couronne de Cendre</a>
-            <a href="vigie.html" style="--g:#6FBEBD">Vigie du Seuil</a>
-            <a href="colporteur.html" style="--g:#9285D1">Colporteur de l'Ombre</a>
-            <a href="arpenteur.html" style="--g:#5CA35E">Arpenteur du Vide</a>
-            <a href="heraut.html" class="actif" style="--g:#DBAE61">Héraut Silencieux</a>
-        </div>
-        <span class="guide-cat">05. Personnages</span>
-        <a href="progression.html">Progression</a>
-        <a href="talents.html">Talents</a>
-        <a href="argent.html">Argent</a>
-        <a href="pvp.html">PVP</a>
-        <span class="guide-cat">06. Pokémons</span>
-        <a href="generalite.html">Généralité</a>
-        <a href="pkmn-progression.html">Progression</a>
-        <a href="attaques.html">Attaques</a>
-        <a href="pkmn-talents.html">Talents</a>
-        <a href="capture.html">Capture</a>
-        <a href="obtention.html">Obtention spéciales</a>
-        <a href="combat.html">Système de Combat</a>
-        <div class="guide-pied"><span>Guide — équipe Aetherion</span></div>
-    </div>
+     • COULEUR DU GROUPE : la valeur après --g: dans <body> colore TOUTE la page.
+     • LE MENU DE GAUCHE est écrit une seule fois dans « menu.js ». -->
+<div class="guide" data-page="heraut">
 
-    <!-- ▼ CONTENU DE CETTE PAGE ▼ -->
     <div class="guide-corps">
-        <!-- Bouton « revenir au forum » : mets l'adresse de ton forum dans href. -->
-        <div class="guide-retour"><a href="/forum">Revenir sur le forum</a></div>
 
-        <!-- ══ PAGE : heraut ══ -->
         <div class="guide-page actif" id="heraut">
+            <!-- BANNIÈRE : image après src=". La 2e partie du titre est en contour de couleur. -->
             <div class="grp-bandeau">
                 <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
-                <div class="guide-hero-titre"><small>— 04. Groupes</small><b>Héraut Silencieux</b></div>
-                <span class="grp-role">Rôle — devise courte</span>
+                <div class="guide-hero-titre"><small>— 04. Groupes</small><b>Héraut <em>Silencieux</em></b></div>
+                <span class="grp-role">Ceux qui écoutent ce que le monde tait</span>
             </div>
-            <div class="grp-bloc"><b>Philosophie</b><p>À compléter en reprenant la mise en page de la Couronne de Cendre (page couronne.html) : mots-clés, philosophie, faille, notoriété, grades, figures.</p></div>
+            <!-- FICHE D'IDENTITÉ : une case = un <div>. -->
+            <div class="grp-meta">
+                <div><b>Rôle</b><span>Groupe mystique</span></div>
+                <div><b>Couleur</b><span>Bleu nuit</span></div>
+                <div><b>Jauge</b><span>Écho du Sanctuaire</span></div>
+                <div><b>Spécificité</b><span>Éveil de conscience</span></div>
+            </div>
+            <div class="grp-bloc"><b>Philosophie</b><p>Les Hérauts sont un culte discret qui croit qu'Aetherion est conscient — que le monde réagit à ceux qui l'habitent, et que certains Pokémon (souvent liés aux Dragons, aux Spectres ou aux Psy) en sont les messagers. Ils ne cherchent ni pouvoir ni richesse, mais une forme de communion. Ils sont regardés avec méfiance par tout le monde, y compris par la Vigie qui les soupçonne de manipulation psychologique de leurs propres membres.</p></div>
+            <div class="grp-bloc"><b>La faille</b><p>Ils ne s'en cachent pas complètement : il y a bien une part de manipulation douce dans leur recrutement, un discours qui flatte le besoin d'appartenance de ceux qui se sentent invisibles ailleurs. Ce n'est jamais présenté comme malveillant en interne. C'est presque pire.</p></div>
+            <div class="grp-bloc"><b>Notoriété gagnée par</b><p>Rituels RP collectifs, missions liées à des Pokémon rares ou à des formes d'Aetherion, actes de « lecture » du monde (interprétation de signes, prophéties RP), recrutement discret de nouveaux adeptes.</p></div>
+            <div class="guide-section">
+                <h2 class="guide-titre">Jauge de <em>faction</em></h2>
+                <!-- JAUGE DE FACTION : un palier = une ligne (points / récompense). -->
+                <div class="grp-jauge-nom"><b>Écho du Sanctuaire</b><small>jauge collective</small></div>
+                <div class="grp-jauge">
+                    <div class="grp-palier"><span class="pts">750 pts</span><p>Réduction de 10% sur les objets d'évolution et les objets tenus (Vivegriffe, etc.).</p></div>
+                    <div class="grp-palier"><span class="pts">2 000 pts</span><p>Bonus de capture sur les types Dragon / Spectre / Psy — en choisir 2.</p></div>
+                    <div class="grp-palier"><span class="pts">4 000 pts</span><p>Un panier d'objets de soin spirituel (Herbes Rappel, Poudres Soin, Encens) distribué gratuitement à tous les membres une fois par mois.</p></div>
+                    <div class="grp-palier"><span class="pts">7 000 pts</span><p>« Communion » : une fois par mois, si au moins deux membres participent ensemble à une mission ou un RP de capture, ils bénéficient tous les deux d'une tentative de capture garantie sur le Pokémon ciblé (utilisable une fois).</p></div>
+                    <div class="grp-palier"><span class="pts">12 000 pts</span><p>Chaque membre reçoit, une fois dans la vie de son personnage, la possibilité d'éveiller la conscience de 3 Pokémon de son équipe : ils débloquent leurs talents cachés (ou un talent supplémentaire au choix parmi la sélection) et développent un lien empathique renforcé avec leur dresseur — méga-synergie (ne peut être échangé, vendu ou reproduit).</p></div>
+                </div>
+            </div>
+            <div class="guide-section">
+                <h2 class="guide-titre">Rangs <em>fixes</em></h2>
+                <!-- RANGS : un rang = un bloc grp-rang. -->
+                <div class="grp-rangs">
+                <div class="grp-rang">
+                    <header><b>Murmure</b><span class="places">Places illimitées</span></header>
+                    <dl><dt>Obtention</dt><dd>Dès validation dans le groupe.</dd><dt>Privilèges</dt><dd>Accès au Cénacle des Hérauts.</dd></dl>
+                </div>
+                <div class="grp-rang">
+                    <header><b>Écouteur</b><span class="places">10 places</span></header>
+                    <dl><dt>Obtention</dt><dd>Validation staff après plusieurs missions.</dd><dt>Privilèges</dt><dd>Droit à des missions liées au groupe avec bonus XP dédié.</dd></dl>
+                </div>
+                <div class="grp-rang">
+                    <header><b>Gardien du Silence</b><span class="places">5 places</span></header>
+                    <dl><dt>Obtention</dt><dd>Nommé + mission staff dédiée.</dd><dt>Privilèges</dt><dd>Vision (talent spécial) : une fois par mois, lors d'une session de capture, le joueur peut prédire la position d'un Pokémon de la horde pour une tentative de capture.</dd></dl>
+                </div>
+                <div class="grp-rang">
+                    <header><b>Héraut Suprême</b><span class="places">3 places</span></header>
+                    <dl><dt>Obtention</dt><dd>Élu par vote &amp; validation staff — vacant si démission ou destitution.</dd><dt>Privilèges</dt><dd>Peut ajouter des bonus à son groupe (avec validation du staff). Une fois par mois, il peut organiser une séance de lecture des signes : pendant 1 mois, tous les membres ont un taux de rencontre fortement augmenté pour les Pokémon de type Dragon, Spectre et Psy.</dd></dl>
+                </div>
+                </div>
+            </div>
+            <div class="guide-section">
+                <h2 class="guide-titre">Figures <em>importantes</em></h2>
+                <!-- PERSONNAGES : les ronds changent de fiche (même numéro après data-figure=" et id="). -->
+                <div class="grp-figures-nav">
+                    <button type="button" data-figure="heraut-pnj0" class="actif" title="Nom du PNJ"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Nom du PNJ"></button>
+                </div>
+                <div class="grp-figure-panneau actif" id="heraut-pnj0">
+                <div class="grp-figure">
+                    <div class="portrait"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Portrait de Nom du PNJ"></div>
+                    <div class="fiche">
+                        <header><b>Nom du PNJ</b><small>Héraut Suprême</small></header>
+                        <div class="meta"><span><b>Âge</b> à compléter</span><span><b>Rang</b> S</span><span><b>Feat</b> à compléter</span></div>
+                        <h4>Apparence</h4>
+                        <p>À compléter.</p>
+                        <h4>Avant</h4>
+                        <p>À compléter.</p>
+                        <h4>Après</h4>
+                        <p>À compléter.</p>
+                        <div class="team"><small>Team</small><span>À compléter</span></div>
+                    </div>
+                </div>
+                </div>
+
+            </div>
         </div>
 
     </div>
 </div>
+<script src="menu.js"></script>
 </body>
 </html>

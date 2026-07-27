@@ -2914,7 +2914,7 @@ form[name="form_login"] .content { display: grid; justify-content: center; justi
   color: #FFFFFF;
 }
 /* groupes : pilules aux couleurs (poser style="--g:#…" sur le lien) */
-.guide-groupes { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.guide-groupes { display: grid; grid-template-columns: 1fr; gap: 6px; }
 .guide-groupes a, .guide-groupes button {
   color: var(--g);
   background: color-mix(in srgb, var(--g) 10%, transparent);
@@ -3653,11 +3653,231 @@ form[name="form_login"] .content { display: grid; justify-content: center; justi
 
 
 /* — 16i. Transitions entre pages (chaque annexe = une page individuelle) — */
-/* transition douce entre pages sur les navigateurs compatibles */
-@view-transition { navigation: auto; }
+/* (la transition entre pages est gérée sans rechargement par menu.js) */
 /* entrée en fondu de la zone de contenu à chaque chargement de page */
 .guide-corps { animation: guideEnter .42s cubic-bezier(.22,.61,.36,1) both; }
 @keyframes guideEnter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-/* le menu de gauche ne rejoue pas l'animation d'une page à l'autre */
-::view-transition-group(menu) { animation-duration: .01ms; }
-.guide-sommaire { view-transition-name: menu; }
+
+
+/* — 16j. Groupes : jauge de faction, rangs fixes, mécaniques, fiches PNJ — */
+
+/* fiche d'identité du groupe (rôle / couleur / etc.) */
+.grp-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; }
+.grp-meta div {
+  background: var(--carte, #FFFFFF);
+  border: 1px solid var(--bordure, #E7E0D9);
+  border-top: 3px solid var(--g);
+  border-radius: 11px;
+  padding: 12px 16px;
+  display: flex; flex-direction: column; gap: 3px;
+}
+.grp-meta b {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px; font-weight: 400; letter-spacing: .12em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--g) 80%, var(--titre, #26221F));
+}
+.grp-meta span { font-weight: 700; font-size: 13px; color: var(--titre, #26221F); }
+
+/* jauge de faction : paliers cumulés */
+.grp-jauge-nom {
+  display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  background: var(--encre, #1D1B19);
+  border-radius: 12px 12px 0 0;
+  border-bottom: 3px solid var(--g);
+  padding: 14px 20px;
+}
+.grp-jauge-nom b {
+  font-weight: 900; font-size: 17px;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: #FFFFFF;
+}
+.grp-jauge-nom small {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--g);
+}
+.grp-jauge {
+  border: 1px solid var(--bordure, #E7E0D9);
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+}
+.grp-palier {
+  display: grid;
+  grid-template-columns: 128px 1fr;
+  align-items: center; gap: 16px;
+  background: var(--carte, #FFFFFF);
+  border-bottom: 1px solid var(--bordure, #E7E0D9);
+  padding: 13px 18px;
+}
+.grp-palier:last-child { border-bottom: none; background: color-mix(in srgb, var(--g) 7%, var(--carte, #FFFFFF)); }
+.grp-palier .pts {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+  text-align: center;
+  color: #FFFFFF;
+  background: color-mix(in srgb, var(--g) 70%, #1D1B19);
+  border-radius: 99px;
+  padding: 6px 10px;
+}
+.grp-palier p { margin: 0; font-weight: 500; font-size: 13px; line-height: 1.55; color: var(--texte, #3C3733); }
+
+/* rangs fixes : sièges limités */
+.grp-rangs { display: flex; flex-direction: column; gap: 10px; }
+.grp-rang {
+  background: var(--carte, #FFFFFF);
+  border: 1px solid var(--bordure, #E7E0D9);
+  border-left: 4px solid var(--g);
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.grp-rang header { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.grp-rang header b {
+  font-weight: 900; font-size: 16px;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--titre, #26221F);
+}
+.grp-rang header .places {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px; letter-spacing: .1em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--g) 80%, var(--titre, #26221F));
+  background: color-mix(in srgb, var(--g) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--g) 35%, transparent);
+  border-radius: 99px;
+  padding: 4px 12px;
+}
+.grp-rang dl { margin: 0; display: grid; grid-template-columns: 120px 1fr; gap: 5px 14px; }
+.grp-rang dt {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muet, #8A857C);
+  padding-top: 2px;
+}
+.grp-rang dd { margin: 0; font-weight: 500; font-size: 13px; line-height: 1.5; color: var(--texte, #3C3733); }
+
+/* fiche PNJ : lignes d'identité + équipe */
+.grp-figure .meta { display: flex; flex-wrap: wrap; gap: 6px 16px; }
+.grp-figure .meta span {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px; letter-spacing: .1em; text-transform: uppercase;
+  color: #C9C0B7;
+  background: none; border: none; border-radius: 0; padding: 0;
+}
+.grp-figure .meta span b { color: var(--g); font-weight: 400; }
+.grp-figure .fiche h4 {
+  margin: 6px 0 -6px;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px; font-weight: 400; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--g);
+}
+.grp-figure .team {
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, .08);
+  padding-top: 10px;
+  display: flex; gap: 10px; flex-wrap: wrap; align-items: baseline;
+}
+.grp-figure .team small {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px; letter-spacing: .1em; text-transform: uppercase;
+  color: #8B8279;
+}
+.grp-figure .team span { font-weight: 600; font-size: 12px; color: #DDD5CC; }
+
+@media (max-width: 760px) {
+  .grp-palier { grid-template-columns: 1fr; }
+  .grp-rang dl { grid-template-columns: 1fr; }
+}
+
+
+/* — 16k. Navigation fluide (changement de page sans rechargement) — */
+.guide-corps > .guide-page { transition: opacity .22s ease, transform .22s ease; }
+.guide.chargement .guide-corps > .guide-page { opacity: 0; transform: translateY(8px); }
+
+/* — 16l. Système de combat : formules, valeurs, listes de règles — */
+.cbt-formule {
+  background: var(--encre, #1D1B19);
+  border-radius: 12px;
+  border-left: 4px solid var(--accent, #BE5735);
+  padding: 18px 22px;
+  font-family: 'Space Mono', monospace;
+  font-size: 13px; line-height: 1.7;
+  letter-spacing: .04em;
+  color: #FFFFFF;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.cbt-formule em { font-style: normal; color: var(--accent-clair, #E07A54); }
+
+/* échelle de valeurs (rangs, multiplicateurs, fenêtres de critique) */
+.cbt-valeurs { display: flex; flex-wrap: wrap; gap: 8px; }
+.cbt-valeurs span {
+  display: inline-flex; align-items: baseline; gap: 8px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px; letter-spacing: .04em;
+  color: var(--texte, #3C3733);
+  background: var(--beige, #F4F0EA);
+  border: 1px solid var(--bordure, #E7E0D9);
+  border-radius: 99px;
+  padding: 7px 15px;
+}
+.cbt-valeurs span b {
+  font-weight: 700;
+  color: var(--accent, #BE5735);
+}
+
+/* exemples de calcul */
+.cbt-exemples {
+  display: flex; flex-direction: column; gap: 6px;
+  background: color-mix(in srgb, var(--accent-clair, #E07A54) 8%, var(--carte, #FFFFFF));
+  border: 1px solid color-mix(in srgb, var(--accent-clair, #E07A54) 30%, transparent);
+  border-radius: 12px;
+  padding: 15px 20px;
+}
+.cbt-exemples small {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--accent, #BE5735);
+  margin-bottom: 2px;
+}
+/* petit sprite d'illustration devant une ligne d'exemple */
+.cbt-exemples img {
+  width: 38px; height: 38px;
+  vertical-align: middle;
+  margin-right: 4px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+.cbt-exemples p {
+  margin: 0;
+  display: flex; align-items: center; gap: 2px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11.5px; line-height: 1.6;
+  color: var(--texte, #3C3733);
+}
+
+/* fiches de règles (altérations, climats, terrains, boosts) */
+.cbt-grille { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.cbt-carte {
+  background: var(--carte, #FFFFFF);
+  border: 1px solid var(--bordure, #E7E0D9);
+  border-top: 3px solid var(--q, var(--accent, #BE5735));
+  border-radius: 11px;
+  padding: 14px 18px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.cbt-carte b {
+  font-weight: 900; font-size: 14px;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--titre, #26221F);
+}
+.cbt-carte ul { margin: 0; padding-left: 16px; display: flex; flex-direction: column; gap: 4px; }
+.cbt-carte li { font-weight: 500; font-size: 12.5px; line-height: 1.5; color: var(--texte, #3C3733); }
+.cbt-carte li::marker { color: var(--q, var(--accent, #BE5735)); }
+/* couleurs d'accent par famille d'effet */
+.cbt-feu    { --q: #D4643B; }
+.cbt-glace  { --q: #6FBEBD; }
+.cbt-elec   { --q: #DBAE61; }
+.cbt-poison { --q: #9285D1; }
+.cbt-plante { --q: #5CA35E; }
+.cbt-psy    { --q: #C96A8E; }

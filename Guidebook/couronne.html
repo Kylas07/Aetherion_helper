@@ -8,131 +8,126 @@
 </head>
 <body style="--g:#D43535">
 <!-- MODE D'EMPLOI (pas besoin de savoir coder) :
-     • Changer un TEXTE  : récris-le entre les balises, ex <p>ton texte</p>. Ne touche pas aux < >, aux "guillemets", ni aux mots anglais.
+     • Changer un TEXTE  : récris-le entre les balises, ex <p>ton texte</p>.
      • Changer une IMAGE : remplace le lien après  src="  par l'adresse de ton image.
-     • Changer un LIEN   : remplace le lien après  href="  par ton adresse.
-     • Cette page = un onglet du menu. Le MENU de gauche est le même partout : reporte tes changements de menu sur chaque fichier.
-     • Chaque annexe est un fichier séparé (id.html) ; les onglets pointent les uns vers les autres. -->
-<div class="guide">
-    <!-- ▼ MENU DE GAUCHE — identique sur toutes les pages. Un onglet = un lien vers une autre page (id.html).
-         Reporte tout changement de menu sur les autres fichiers. ▼ -->
-    <div class="guide-sommaire">
-        <div class="guide-logo"><b>Guide <em>Aetherion</em></b><span>les annexes du forum</span></div>
-        <span class="guide-cat">01. Accueil</span>
-        <a href="reglement.html">Règlement</a>
-        <a href="guide-nouveau.html">Guide du nouveau</a>
-        <a href="credits.html">Crédits et staff</a>
-        <span class="guide-cat">02. Lore</span>
-        <a href="contexte.html">Contexte</a>
-        <a href="chrono-reelle.html">Chronologie réelle</a>
-        <a href="chrono-jeu.html">Chronologie du jeu</a>
-        <a href="vivre.html">Vivre à Aetherion</a>
-        <a href="specificite.html">Spécificité du jeu</a>
-        <span class="guide-cat">03. Cartes</span>
-        <a href="etage00.html">Étage 00 · Zone de départ</a>
-        <a href="etage01.html">Étage 01 · Forêt Prismatique</a>
-        <a href="etage02.html">Étage 02 · Montagne Rocheuse</a>
-        <a href="etage03.html">Étage 03 · Îles Ouragan</a>
-        <span class="guide-cat">04. Groupes</span>
-        <div class="guide-groupes">
-            <a href="couronne.html" class="actif large" style="--g:#D43535">Couronne de Cendre</a>
-            <a href="vigie.html" style="--g:#6FBEBD">Vigie du Seuil</a>
-            <a href="colporteur.html" style="--g:#9285D1">Colporteur de l'Ombre</a>
-            <a href="arpenteur.html" style="--g:#5CA35E">Arpenteur du Vide</a>
-            <a href="heraut.html" style="--g:#DBAE61">Héraut Silencieux</a>
-        </div>
-        <span class="guide-cat">05. Personnages</span>
-        <a href="progression.html">Progression</a>
-        <a href="talents.html">Talents</a>
-        <a href="argent.html">Argent</a>
-        <a href="pvp.html">PVP</a>
-        <span class="guide-cat">06. Pokémons</span>
-        <a href="generalite.html">Généralité</a>
-        <a href="pkmn-progression.html">Progression</a>
-        <a href="attaques.html">Attaques</a>
-        <a href="pkmn-talents.html">Talents</a>
-        <a href="capture.html">Capture</a>
-        <a href="obtention.html">Obtention spéciales</a>
-        <a href="combat.html">Système de Combat</a>
-        <div class="guide-pied"><span>Guide — équipe Aetherion</span></div>
-    </div>
+     • COULEUR DU GROUPE : la valeur après --g: dans la balise <body> ci-dessous
+       colore TOUTE la page (bandeau, blocs, jauge, rangs, fiches).
+     • LE MENU DE GAUCHE est écrit une seule fois dans « menu.js ». -->
+<div class="guide" data-page="couronne">
 
-    <!-- ▼ CONTENU DE CETTE PAGE ▼ -->
     <div class="guide-corps">
-        <!-- Bouton « revenir au forum » : mets l'adresse de ton forum dans href. -->
-        <div class="guide-retour"><a href="/forum">Revenir sur le forum</a></div>
 
-        <!-- ══ PAGE : couronne ══ -->
         <div class="guide-page actif" id="couronne">
-            <!-- IMAGE DE BANNIÈRE du groupe. La couleur du groupe se règle plus haut : style="--g:#D43535" sur <body>. -->
+            <!-- BANNIÈRE : image après src=". Le titre en 2 parties (la 2e est en contour de couleur). -->
             <div class="grp-bandeau">
                 <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
                 <div class="guide-hero-titre"><small>— 04. Groupes</small><b>Couronne <em>de Cendre</em></b></div>
-                <!-- RÔLE / DEVISE (coin du bandeau). -->
-                <span class="grp-role">Antagoniste — le pouvoir comme unique vérité</span>
+                <!-- DEVISE (coin du bandeau) -->
+                <span class="grp-role">Le pouvoir comme unique vérité</span>
             </div>
-            <!-- MOTS-CLÉS : une étiquette = un <span>. -->
-            <div class="grp-chips"><span>Dévotion</span><span>Loyautés familiales</span><span>Autorité assumée</span><span>Secte plus qu'armée</span></div>
-            <div class="guide-bloc"><b>Philosophie</b><p>Aetherion n'est pas un monde à sauver, c'est un monde à posséder. La Couronne considère que la notion même de « joueur libre » est un mensonge confortable : quelqu'un commande toujours, alors autant que ce soit eux, sans hypocrisie. Ils cultivent des loyautés presque familiales : on entre à la Couronne parce qu'on a besoin qu'on ait besoin de nous. C'est une secte de la dévotion plus qu'une armée.</p></div>
-            <div class="guide-bloc"><b>La faille</b><p>Leurs membres sont souvent des gens qui ont été abandonnés, ou ont de forts désirs inavoués. La cruauté du groupe n'est jamais gratuite dans leur tête — elle est logique, presque tendre en interne. Ça les rend dangereusement attachants.</p></div>
-            <div class="grp-bloc"><b>Notoriété gagnée par</b><ul><li>Sabotage de convois</li><li>Soumission d'autres joueurs / PNJ à l'autorité de la Couronne</li><li>Missions d'« épuration » de zones contestées</li><li>Rapports d'espionnage sur les autres groupes</li><li>Exécution d'ordres sans poser de question</li><li>Deals et braconnage de Pokémon pour financer le groupe</li></ul></div>
-            <!-- ÉCHELLE DES GRADES : un palier = un grp-grade (numéro / titre / condition / avantages). Copie un palier pour en ajouter. -->
+            <!-- FICHE D'IDENTITÉ : une case = un <div>. -->
+            <div class="grp-meta">
+                <div><b>Rôle</b><span>Groupe antagoniste</span></div>
+                <div><b>Couleur</b><span>Rouge</span></div>
+                <div><b>Jauge</b><span>Emprise du Trône</span></div>
+                <div><b>Spécificité</b><span>Pokémon obscurs</span></div>
+            </div>
+            <div class="grp-bloc"><b>Philosophie</b><p>Aetherion n'est pas un monde à sauver, c'est un monde à posséder. La Couronne considère que la notion même de « joueur libre » est un mensonge confortable : quelqu'un commande toujours, alors autant que ce soit eux, et qu'ils le fassent sans hypocrisie. Ils ne recrutent pas des soldats, ils cultivent des loyautés presque familiales : on entre à la Couronne parce qu'on a besoin qu'on ait besoin de nous. C'est une secte de la dévotion plus qu'une armée.</p></div>
+            <div class="grp-bloc"><b>La faille</b><p>Leurs membres sont souvent des gens qui ont été abandonnés, ou ont de forts désirs inavoués, inachevés. La cruauté du groupe n'est jamais gratuite dans leur tête — elle est logique, presque tendre en interne. Ça les rend dangereusement attachants pour qui les rejoint.</p></div>
+            <div class="grp-bloc"><b>Notoriété gagnée par</b><p>Sabotage de convois, soumission d'autres joueurs / PNJ à l'autorité de la Couronne, missions d'« épuration » de zones contestées, rapports d'espionnage sur les autres groupes, exécution d'ordres sans poser de question, deals et braconnage de Pokémon pour rapporter de l'argent au groupe.</p></div>
             <div class="guide-section">
-                <h2 class="guide-titre">Les <em>grades</em></h2>
-                <div class="grp-grades">
-                <div class="grp-grade">
-                    <span class="num">1</span>
-                    <span class="titre-grade"><b>Cendre-née</b><small>Notoriété : 0</small></span>
-                    <p>Accès au repaire et ses missions, tag de groupe.</p>
+                <h2 class="guide-titre">Jauge de <em>faction</em></h2>
+                <!-- JAUGE DE FACTION : un palier = une ligne. Points à gauche, récompense à droite. -->
+                <div class="grp-jauge-nom"><b>Emprise du Trône</b><small>jauge collective</small></div>
+                <div class="grp-jauge">
+                    <div class="grp-palier"><span class="pts">750 pts</span><p>Réduction de 10% sur toute la boutique de faction, pour tous les membres.</p></div>
+                    <div class="grp-palier"><span class="pts">2 000 pts</span><p>Bonus de capture sur les types Ténèbres / Combat.</p></div>
+                    <div class="grp-palier"><span class="pts">4 000 pts</span><p>Ouverture du Marché Obscur une fois par mois.</p></div>
+                    <div class="grp-palier"><span class="pts">7 000 pts</span><p>« Purge mensuelle » : chaque membre reçoit 1 tentative de capture garantie sur le spawn de la horde du mois.</p></div>
+                    <div class="grp-palier"><span class="pts">12 000 pts</span><p>Le Marché Obscur est ouvert en permanence à tous les membres. De plus, chaque membre reçoit un Pokémon obscur d'Aetherion, unique et introuvable ailleurs.</p></div>
                 </div>
-                <div class="grp-grade">
-                    <span class="num">2</span>
-                    <span class="titre-grade"><b>Lame Servile</b><small>Notoriété : 150</small></span>
-                    <p>Missions exclusives, accès à un sous-forum Discord privé.</p>
+            </div>
+            <div class="guide-section">
+                <h2 class="guide-titre">Les Pokémon <em>obscurs</em></h2>
+            <div class="grp-bloc"><b>Ce que c'est</b><p>Sur Aetherion, les Pokémon obscurs sont des créatures capturées dont la conscience a été « fermée » par un malware. Ils ont l'apparence de n'importe quel autre Pokémon de leur espèce, mais sont dépourvus d'empathie, ne ressentent plus la douleur de la même manière et obéissent par pure agressivité. Là où les Pokémon capturés se montrent réfractaires à attaquer directement un joueur, les obscurs n'ont plus l'occasion de refuser. Ils sont enfermés dans des ball modifiant leur conscience profonde, les « Shadowball », offertes par la régence à ses loyaux sujets.</p></div>
+            <div class="grp-bloc"><b>Mécanique de jeu</b><ul><li>Les statistiques des Pokémon obscurs sont les mêmes que celles d'un Pokémon classique, par souci de praticité.</li><li>Ils possèdent des capacités spécifiques à leur classe, les capacités obscures — ils en ont déjà une par défaut.</li><li>Lorsqu'un Pokémon obscur utilise une capacité obscure, il y a un risque de XX% qu'il tombe en « Crise » : pendant 2 tours, il ne peut plus être rappelé dans sa ball et s'en prend au décor et aux alliés uniquement.</li><li>Ils ne peuvent pas évoluer d'eux-mêmes : il faut acquérir un objet issu de la boutique de la Couronne.</li><li>Ils sont donnés à leur dresseur au niveau 5 et peuvent gagner des niveaux.</li></ul></div>
+            <div class="grp-bloc"><b>Restrictions</b><ul><li>Chaque membre de la Couronne peut avoir jusqu'à 3 Pokémon obscurs.</li><li>En théorie ils peuvent attaquer voire tuer des joueurs ; en pratique, vous ne pouvez pas blesser ou tuer un PJ sans son accord.</li><li>Seuls les membres de la Couronne de Cendre peuvent avoir un Pokémon obscur, unique et aléatoire (ne peut être échangé, vendu ou reproduit).</li></ul></div>
+            </div>
+            <div class="guide-section">
+                <h2 class="guide-titre">Rangs <em>fixes</em></h2>
+                <!-- RANGS : un rang = un bloc grp-rang (nom, places, obtention, privilèges). -->
+                <div class="grp-rangs">
+                <div class="grp-rang">
+                    <header><b>Cendre-née</b><span class="places">Places illimitées</span></header>
+                    <dl><dt>Obtention</dt><dd>Dès validation dans le groupe.</dd><dt>Privilèges</dt><dd>Accès à l'Alcôve des Cendres.</dd></dl>
                 </div>
-                <div class="grp-grade">
-                    <span class="num">3</span>
-                    <span class="titre-grade"><b>Porte-Sceau</b><small>Notoriété : 400</small></span>
-                    <p>Droit de « marquer » un territoire en RP, mentorat d'un Cendre-née qui rapporte de l'XP.</p>
+                <div class="grp-rang">
+                    <header><b>Porte-Sceau</b><span class="places">10 places</span></header>
+                    <dl><dt>Obtention</dt><dd>Validation staff après plusieurs missions.</dd><dt>Privilèges</dt><dd>Droit à des missions liées au groupe avec bonus XP dédié.</dd></dl>
                 </div>
-                <div class="grp-grade">
-                    <span class="num">4</span>
-                    <span class="titre-grade"><b>Voix du Trône</b><small>Notoriété : 800 + mission staff</small></span>
-                    <p>Droit de proposer des missions de groupe, intrigues en avant-première.</p>
+                <div class="grp-rang">
+                    <header><b>Voix du Trône</b><span class="places">5 places</span></header>
+                    <dl><dt>Obtention</dt><dd>Nommé + mission staff dédiée.</dd><dt>Privilèges</dt><dd>Braconnage (talent spécial) : une fois par mois, le joueur peut revendiquer et capturer un Pokémon sauvage apparu dans le RP « capture » d'un autre membre de la guilde si ce dernier ne l'a pas capturé.</dd></dl>
                 </div>
-                <div class="grp-grade">
-                    <span class="num">5</span>
-                    <span class="titre-grade"><b>Régent de Cendre</b><small>Notoriété : 1 500 + décision staff</small></span>
-                    <p>Voix décisionnaire sur le lore, autorité RP sur un sous-territoire, badge unique.</p>
+                <div class="grp-rang">
+                    <header><b>Triumvirat</b><span class="places">3 places</span></header>
+                    <dl><dt>Obtention</dt><dd>Élu par vote &amp; validation staff — vacant si démission ou destitution.</dd><dt>Privilèges</dt><dd>Peut ajouter des bonus à son groupe (avec validation du staff), accès total au Marché Obscur.</dd></dl>
                 </div>
                 </div>
             </div>
             <div class="guide-section">
                 <h2 class="guide-titre">Figures <em>importantes</em></h2>
-                <!-- PERSONNAGES : les ronds du haut changent de fiche (même numéro après data-figure=" et id="). Copie un rond + sa fiche pour ajouter un personnage. -->
+                <!-- PERSONNAGES : les ronds changent de fiche (même numéro après data-figure=" et id="). Copie un rond + sa fiche pour en ajouter un. -->
                 <div class="grp-figures-nav">
-                    <button type="button" data-figure="couronne-pnj0" class="actif" title="Nom du PNJ"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Nom du PNJ"></button>
-                    <button type="button" data-figure="couronne-pnj1" title="Second PNJ"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Second PNJ"></button>
+                    <button type="button" data-figure="couronne-pnj0" class="actif" title="Kaelen Vorth"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Kaelen Vorth"></button>
+                    <button type="button" data-figure="couronne-pnj1" title="Richard Kayser"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Richard Kayser"></button>
+                    <button type="button" data-figure="couronne-pnj2" title="Min-Sung Park"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Min-Sung Park"></button>
                 </div>
                 <div class="grp-figure-panneau actif" id="couronne-pnj0">
                 <div class="grp-figure">
-                    <div class="portrait"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Portrait"></div>
+                    <div class="portrait"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Portrait de Kaelen Vorth"></div>
                     <div class="fiche">
-                        <header><b>Nom du PNJ</b><small>Régente de Cendre — 61 ans</small></header>
-                        <div class="traits"><span>autoritaire</span><span>éloquente</span><span>caustique</span></div>
-                        <blockquote>« Une citation marquante, dite en RP. »<cite>Le PNJ dans « Nom du RP »</cite></blockquote>
-                        <p>Description du personnage : son histoire, sa place dans la Couronne, ce qu'on croise en RP.</p>
+                        <header><b>Kaelen Vorth</b><small>Régent de Cendre</small></header>
+                        <div class="meta"><span><b>Âge</b> la mi-quarantaine</span><span><b>Rang</b> S</span><span><b>Feat</b> Toji Fushiguro · JJK</span></div>
+                        <h4>Apparence</h4>
+                        <p>Grand, sec, une musculature qui ne vient jamais du gymnase mais du travail — pas un gramme de superflu. Cheveux noirs mi-longs souvent attachés à la va-vite, cicatrice fine qui traverse le sourcil droit. Tenue sombre, fonctionnelle, sans ornement : jamais rien qui puisse gêner un mouvement. Le seul signe de son rang : un sceau de cendre gravé à même la garde de sa lame, jamais montré, jamais expliqué.</p>
+                        <h4>Avant</h4>
+                        <p>Kaelen n'a jamais eu de talent inné pour quoi que ce soit. Ce qu'il avait, c'est un corps façonné jusqu'à l'obsession et une discipline froide, presque clinique. Il a grandi dans un milieu où la force physique se monnaie : petits boulots dangereux, contrats d'escorte limites, quelques affaires qu'il valait mieux ne jamais raconter. Il n'a jamais tué pour l'idéologie ni pour le plaisir — seulement quand le contrat l'exigeait, et toujours avec la même efficacité détachée. Il ne perdait jamais son sang-froid : ni la peur, ni la colère, ni l'excitation ne semblaient l'atteindre. Il s'est connecté au jeu presque par hasard. Quand le piège s'est refermé, il n'a pas paniqué. Il a évalué.</p>
+                        <h4>Après</h4>
+                        <p>Dans un monde où la survie dépend de la force, Kaelen a immédiatement compris une chose : ici, personne d'autre n'avait passé une vie entière à apprendre à se battre sans filet. Il n'a jamais cherché à diriger — il a survécu, méthodiquement, en refusant de dépendre de qui que ce soit, et les gens ont fini par se regrouper autour de cette froideur qui, au moins, ne trahissait jamais. Il dirige comme il a toujours vécu : sans excès, sans grands discours, avec une autorité qui n'a jamais eu besoin de se justifier. On ne suit pas Kaelen par admiration : on le suit parce qu'on a vu ce qui arrive à ceux qui se sont mis en travers de sa route. Son rang vient d'une maîtrise technique et tactique si totale qu'aucun adversaire n'a jamais réussi à lui imposer un rythme de combat.</p>
+                        <div class="team"><small>Team</small><span>Scalpereur · Ectoplasma · Dimoret · Zoroark · Trioxhydre · Scalproie</span></div>
                     </div>
                 </div>
                 </div>
                 <div class="grp-figure-panneau" id="couronne-pnj1">
                 <div class="grp-figure">
-                    <div class="portrait"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Portrait"></div>
+                    <div class="portrait"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Portrait de Richard Kayser"></div>
                     <div class="fiche">
-                        <header><b>Second PNJ</b><small>Voix du Trône — 34 ans</small></header>
-                        <div class="traits"><span>loyal</span><span>taciturne</span><span>implacable</span></div>
-                        <blockquote>« Une autre citation. »<cite>Le PNJ dans « Nom du RP »</cite></blockquote>
-                        <p>Description du second personnage.</p>
+                        <header><b>Richard Kayser</b><small>Voix du Trône</small></header>
+                        <div class="meta"><span><b>Âge</b> milieu de la trentaine</span><span><b>Rang</b> A</span><span><b>Feat</b> Gregor (Solemn Lament) · Limbus Company</span></div>
+                        <h4>Apparence</h4>
+                        <p>Un corps long et élancé, peu athlétique, constamment vêtu d'un costume bien taillé. Chevelure chocolat, une mèche qui recouvre son œil gauche, queue de cheval légèrement bouclée. Des yeux tombants dorés, un début de barbe peu entretenue et un sourire constant mais fatigué. Fume presque sans arrêt, plus par habitude que par besoin. Possède une aura purement cosmétique qui fait virevolter des papillons autour de lui.</p>
+                        <h4>Avant</h4>
+                        <p>Richard est un grand habitué de l'avarice, de l'orgueil et autres dépravations — plus en observateur qu'en client. Croupier de métier, il en a vu se faire happer par l'appât du gain jusqu'à changer de vie, dans la richesse ou la misère. Il sait parler pour s'attirer des faveurs : s'entourer des bonnes personnes et profiter des bénéfices qu'elles apportent. Il n'a jamais trop travaillé de sa vie ; être un discret papillon social lui a bien réussi.</p>
+                        <h4>Après</h4>
+                        <p>Au début, Richard trouvait ce jeu d'un fort ennui. Dès que le bug s'est produit, une forme d'intérêt malsaine s'est formée : il était maintenant égal, voire au-dessus de ses « amis bien placés ». Il n'a pas hésité à trahir et sacrifier son groupe quand il a vu ce que Kaelen Vorth pouvait lui apporter. Il emploie son éloquence empoisonnée pour amener des membres à la Couronne et provoquer des incidents dans les autres groupes — on ne le surnomme pas « Tisseur de Complots » pour rien. Spécialiste des Insecte, il prône une stratégie que beaucoup qualifient de cancer : accabler l'adversaire de malus et d'altérations, et laisser les vrais combattants finir le travail.</p>
+                        <div class="team"><small>Team</small><span>Papilusion · Aéromite · Cizayox · Pyrax · Manternel · Astronelle</span></div>
+                    </div>
+                </div>
+                </div>
+                <div class="grp-figure-panneau" id="couronne-pnj2">
+                <div class="grp-figure">
+                    <div class="portrait"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Portrait de Min-Sung Park"></div>
+                    <div class="fiche">
+                        <header><b>Min-Sung Park</b><small>Voix du Trône</small></header>
+                        <div class="meta"><span><b>Âge</b> milieu de la vingtaine</span><span><b>Rang</b> A</span><span><b>Feat</b> Camille · Arknights Endfield</span></div>
+                        <h4>Apparence</h4>
+                        <p>Taille moyenne (1m75), des vêtements choisis pour lui donner une apparence présentable et une forme d'autorité — de lui-même, il aurait pris le strict minimum. Cheveux noirs de jais, quelques mèches hirsutes rouges au sommet du crâne. Teint pâle, oreilles pointues : les signes de sa phase « vampirique / gothique » qu'il aime bien. Il porte une couronne rouge purement esthétique, loot rare d'un event limité.</p>
+                        <h4>Avant</h4>
+                        <p>Sacré champion d'un championnat du Monde Pokémon Senior à 14 ans, ce qui n'était qu'une formalité pour lui est devenu une montée en popularité sur la scène e-sport. Prodige de la stratégie, il lisait dans le jeu de ses adversaires avec des combos novateurs — c'est lui qui a popularisé Pachirisu. Mais la pression constante, les attentes et la fausseté du milieu l'ont détruit à petit feu jusqu'à une profonde dépression. Remis sur pied à 16 ans, un sponsor lui apporte un In'Gear pour relancer sa carrière. Le choix de son starter est une évidence : Pachirisu.</p>
+                        <h4>Après</h4>
+                        <p>Min-Sung ne cherche pas à s'échapper : la réalité extérieure n'a pas d'intérêt particulier pour lui, mais il comprend vite qu'il ne peut pas attendre que les choses se fassent. Richard Kayser l'a fait son « partenaire de dégâts », bien que son intérêt aille surtout à la Couronne et à son leader. Voix du Trône, il parle peu : il fait appliquer une directive sur la façon de mener la stratégie en combat. Son sang-froid en fait trembler plus d'un — la mort dans le jeu n'est pas réelle pour lui, ce n'est qu'une « fin de partie ». Hors missions, c'est un fantôme : enfermé dans sa chambre, il reprend ses habitudes adolescentes et préfère la voix et les messageries au contact direct.</p>
+                        <div class="team"><small>Team</small><span>Pachirisu · Carchacrok · Gardevoir · Léviator · Sidérella · Flambusard</span></div>
                     </div>
                 </div>
                 </div>
@@ -142,19 +137,6 @@
 
     </div>
 </div>
-<script>
-(function () {
-  document.querySelectorAll(".grp-figures-nav").forEach(function (nav) {
-    var btns = nav.querySelectorAll("[data-figure]");
-    btns.forEach(function (b) {
-      b.addEventListener("click", function () {
-        var section = nav.parentElement;
-        btns.forEach(function (x) { x.classList.toggle("actif", x === b); });
-        section.querySelectorAll(".grp-figure-panneau").forEach(function (p) { p.classList.toggle("actif", p.id === b.getAttribute("data-figure")); });
-      });
-    });
-  });
-})();
-</script>
+<script src="menu.js"></script>
 </body>
 </html>
