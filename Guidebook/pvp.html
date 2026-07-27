@@ -3,15 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PVP & combat — Guide Aetherion</title>
+<title>Système de combat — Guide Aetherion</title>
 <link href="aetherion-unifie.css" rel="stylesheet" />
 </head>
 <body>
-<!-- MODE D'EMPLOI (pas besoin de savoir coder) :
-     • Changer un TEXTE  : récris-le entre les balises, ex <p>ton texte</p>.
-     • Les FORMULES sont dans des blocs « cbt-formule », les valeurs en pastilles
-       « cbt-valeurs », les règles en fiches « cbt-carte » (copie une fiche pour en ajouter).
-     • LE MENU DE GAUCHE est écrit une seule fois dans « menu.js ». -->
 <div class="guide" data-page="pvp">
 
     <div class="guide-corps">
@@ -20,125 +15,147 @@
             <!-- BANNIÈRE : image après src=". -->
             <div class="guide-hero">
                 <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
-                <div class="guide-hero-titre"><small>— 05. Personnages</small><b>PVP &amp; combat</b></div>
+                <div class="guide-hero-titre"><small>— 05. Personnages</small><b>Système de combat</b></div>
                 <span class="guide-hero-num">05</span>
             </div>
-            <div class="guide-staff"><div class="guide-staff-avatar">Cb</div><div class="guide-staff-texte"><small>Comment lire cette page</small><p>Tout le système de combat d'Aetherion est ici : points de vie, dégâts, précision, altérations, climats et terrains, actions par tour, Méga-évolutions et synergies. Les formules sont encadrées en sombre, les valeurs de référence en pastilles.</p></div></div>
             <div class="guide-section">
-                <h2 class="guide-titre">Les <em>statistiques</em></h2>
-                <div class="guide-bloc"><b>Une seule stat variable</b><p>La seule et unique statistique qui varie et qui est prise en compte est la barre de PV. C'est ce qui permet de savoir à partir de quel moment un Pokémon est en danger, et à quel moment il tombe définitivement K.O. en combat.</p></div>
-                <!-- FORMULE : le texte entre <em> et </em> est mis en couleur. -->
-                <div class="cbt-formule">[ PV DE BASE DU POKÉMON <em>× 2</em> ] + [ <em>100 ×</em> RANG ] = PV TOTAL</div>
-                <div class="cbt-valeurs"><span>Rang D <b>×1</b></span><span>Rang C <b>×2</b></span><span>Rang B <b>×3</b></span><span>Rang A <b>×4</b></span><span>Rang S <b>×5</b></span></div>
-                <div class="cbt-exemples"><small>Exemples</small><p>› Dracaufeu de Rang B : (78 × 2) + (100 × 3) = 456 PV</p><p>› Chenipotte de Rang D : (45 × 2) + (100 × 1) = 190 PV</p></div>
+                <h2 class="guide-titre">Les <em>Statistiques</em></h2>
+                <div class="guide-bloc"><p>La seule et unique stat qui varie et qui est prise en compte est la barre de PV. C'est ce qui permet de savoir à partir de quel moment un Pokémon peut commencer à être en danger et à quel moment il tombe définitivement K.O. en combat.</p></div>
+                <div class="guide-bloc"><p>Pour calculer les PV d'un Pokémon, il faut faire le calcul suivant :</p></div>
+                <!-- FORMULE -->
+                <div class="cbt-formule">[ PV DE BASE DU POKÉMON<em>*2</em> ] + [ <em>100*</em>RANG ] = PV TOTAL DU POKÉMON</div>
+                <div class="guide-bloc"><p>Pour tout le système, on part sur cette base de valeur :</p></div>
+                <div class="cbt-valeurs"><span>Rang D <b>x1</b></span><span>Rang C <b>x2</b></span><span>Rang B <b>x3</b></span><span>Rang A <b>x4</b></span><span>Rang S <b>x5</b></span></div>
+                <div class="guide-bloc"><p>Voici quelques exemples pour permettre de visualiser :</p></div>
+                <div class="cbt-exemples"><small>Exemples</small><p><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" alt="Dracaufeu" title="Dracaufeu">› Dracaufeu de Rang B, il aura : ((78 en Base de vie)*2) + (100*3) = 456 PV</p><p><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/412.png" alt="Chenipotte" title="Chenipotte">› Chenipotte de Rang D, il aura : ((45 en Base de vie)*2) + (100*1) = 190 PV</p></div>
             </div>
             <div class="guide-section">
                 <h2 class="guide-titre">Les <em>attaques</em></h2>
-                <div class="guide-bloc"><b>Pas de limite de 4 attaques</b><p>Afin de permettre une liberté totale en combat, il n'y a plus de limite de 4 attaques maximum. Un Pokémon n'a plus besoin d'oublier ses anciennes capacités pour en obtenir d'autres, et un personnage peut lui faire apprendre autant d'attaques qu'il le souhaite. La seule limite est la liste de capacités que le Pokémon peut connaître via les niveaux, les CT, etc. Sur Aetherion, on se base toujours sur la liste d'attaques d'Écarlate et Violet.</p></div>
-                <div class="guide-bloc"><b>Les dégâts</b><p>On se base sur la Puissance (PUI) des attaques pour compter les dégâts infligés. Une attaque à 40 de Puissance a une base de 40 dégâts — auxquels s'ajoutent le STAB, l'efficacité du type et le rang.</p></div>
-                <!-- FORMULE : le texte entre <em> et </em> est mis en couleur. -->
-                <div class="cbt-formule">[ PUISSANCE <em>×</em> EFFICACITÉ DU TYPE ] + [ STAB ] + [ RANG <em>× 10</em> ]</div>
-                <h3 class="dex-sous">Efficacité du type</h3>
-                <div class="cbt-valeurs"><span>Très peu efficace <b>×0,5</b></span><span>Peu efficace <b>×0,75</b></span><span>Neutre <b>×1</b></span><span>Très efficace <b>×1,5</b></span><span>Super efficace <b>×2</b></span></div>
-                <h3 class="dex-sous">Valeur du STAB</h3>
+                <div class="guide-bloc"><p>Afin de permettre une liberté totale en combat, il n'y a plus de limite de 4 attaques maximum.</p></div>
+                <div class="guide-bloc"><p>Ainsi un Pokémon n'a plus besoin d'oublier ces anciennes capacités pour pouvoir en obtenir d'autres et un personnage peut faire apprendre à ses Pokémons autant d'attaques possibles qu'il le souhaite. La seule limite est la liste de capacités qu'un Pokémon peut connaître via les niveaux, les CT, etc.</p></div>
+                <div class="guide-bloc"><p>Sur Aetherion, on se base toujours sur la liste d'attaques de Écarlate et Violet.</p></div>
+                <h3 class="dex-sous">Les dégâts des attaques</h3>
+                <div class="guide-bloc"><p>Ici, on va se baser sur la Puissance (PUI) des attaques pour compter les dégâts infligés.</p></div>
+                <div class="guide-bloc"><p>Si une attaque possède 40 de Puissance, alors elle aura une base de 40 dégâts. Mais ça ne s'arrête pas juste à ça, car il y a d'autres facteurs à prendre en compte (STAB, Table des types, etc.) lorsqu'il faut calculer les dégâts finaux.</p></div>
+                <div class="guide-bloc"><p>Voici un schéma très simple du calcul des dégâts :</p></div>
+                <!-- FORMULE -->
+                <div class="cbt-formule">[ PUISSANCE DE L'ATTAQUE<em>*(EFFICACITÉ DU TYPE)</em> ] + [ STAB ] + [ <em>(RANG)*10</em> ]</div>
+                <div class="guide-bloc"><p>Comment on peut connaître la valeur d'Efficacité du type ? Voici les multiplicateurs ci-dessous.</p></div>
+                <div class="cbt-valeurs"><span>Très peu efficace <b>x0,5</b></span><span>Peu efficace <b>x0,75</b></span><span>Neutre <b>x1</b></span><span>Très Efficace <b>x1,5</b></span><span>Super Efficace <b>x2</b></span></div>
+                <div class="guide-bloc"><p>Comment on peut connaître la valeur de STAB ? Voici la valeur des bonus ci-dessous.</p></div>
                 <div class="cbt-valeurs"><span>Rang D <b>+5</b></span><span>Rang C <b>+10</b></span><span>Rang B <b>+20</b></span><span>Rang A <b>+40</b></span><span>Rang S <b>+80</b></span></div>
-                <div class="cbt-exemples"><small>Exemple concret — Arcko Rang D</small><p><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/252.png" alt="Arcko" title="Arcko">› Arcko utilise Griffe : 40 + 0 + 10 = 50 dégâts</p><p><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/258.png" alt="Gobou" title="Gobou">› Gobou ciblé par Griffe : (40 × 1) + 0 + 10 = 50 dégâts</p><p><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/252.png" alt="Arcko" title="Arcko">› Arcko utilise Feuillage : 40 + 5 + 10 = 55 dégâts</p><p><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/258.png" alt="Gobou" title="Gobou">› Gobou ciblé par Feuillage : (40 × 1,5 = 60) + 5 + 10 = 75 dégâts</p></div>
+                <div class="guide-bloc"><p>Voici un exemple concret avec un même Pokémon :</p></div>
+                <div class="cbt-exemples"><small>Exemple concret</small><p><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/252.png" alt="Arcko" title="Arcko">› Arcko Rang D utilise Griffe : 40 + 0 + 10 = 50 dégâts</p><p><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/258.png" alt="Gobou" title="Gobou">› Gobou est ciblé par l'attaque Griffe : (40*1) + 0 + 10 = 50 dégâts</p><p><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/252.png" alt="Arcko" title="Arcko">› Arcko Rang D utilise Feuillage : 40 + 5 + 10 = 55 dégâts</p><p><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/258.png" alt="Gobou" title="Gobou">› Gobou est ciblé par l'attaque Feuillage : (40*1,5 = 60) + 5 + 10 = 75 dégâts</p></div>
             </div>
             <div class="guide-section">
                 <h2 class="guide-titre">La <em>précision</em></h2>
-                <div class="guide-bloc"><b>Un jet par attaque</b><p>Toutes les attaques demandent un jet de précision sur un D100. Cela permet de savoir si le jet est réussi quand la précision de base de la capacité est en dessous de 100%, ou si le lanceur subit un malus. Cela définit aussi la valeur que la cible doit battre pour esquiver — et surtout si l'attaque est un coup critique.</p></div>
-                <div class="guide-bloc"><b>Effets d'un critique</b><ul><li>Offensif : augmente de 50% les dégâts totaux.</li><li>Défensif : permet une contre-attaque (max. 70 en PUI).</li></ul></div>
-                <div class="guide-bloc"><b>Faire un critique</b><p>Dans des conditions normales, il faut un résultat de 95 à 100 sur le D100. Si critique contre critique, le plus haut des deux l'emporte. Des variables élargissent la fenêtre de critique : les attaques, un talent, ou les deux à la fois.</p></div>
-                <div class="cbt-valeurs"><span>Niveau 1 <b>95 → 100</b></span><span>Niveau 2 <b>85 → 100</b></span><span>Niveau 3 <b>50 → 100</b></span><span>Niveau 4 <b>01 → 100</b></span></div>
-                <div class="cbt-exemples"><small>À noter</small><p>› Pour réussir une attaque à 30 de précision, il faut faire 71 à 100 sur le dé d'attaque.</p></div>
+                <div class="guide-bloc"><p>Toutes attaques demandent un jet de précision sur un D100.</p></div>
+                <div class="guide-bloc"><p>Cela permet de savoir si le jet est réussi ou non quand la précision de base de la capacité est en-dessous de 100% ou si le lanceur a subi un malus de précision. Cela peut aussi permettre de définir la valeur que la cible doit battre pour pouvoir l'esquiver, mais surtout cela permet de savoir si l'attaque est un coup critique ou non.</p></div>
+                <div class="guide-bloc"><b>Effet d'un critique</b><ul><li>Offensif : augmente de 50% les dégâts totaux.</li><li>Défense : permet une Contre-attaque (Max. 70 en PUI).</li></ul></div>
+                <div class="guide-bloc"><p>Maintenant, comment faire un coup critique : dans des conditions normales, il faut faire un résultat allant de 95 à 100 sur le D100 pour que ce soit considéré comme un critique. S'il y a critique contre critique, c'est le plus haut des deux qui l'emporte. Mais il y a des variables qui élargissent la fenêtre de critique, cela peut venir des attaques, d'un talent ou des deux à la fois.</p></div>
+                <div class="cbt-valeurs"><span>Niveau 1 <b>95 à 100</b></span><span>Niveau 2 <b>85 à 100</b></span><span>Niveau 3 <b>50 à 100</b></span><span>Niveau 4 <b>01 à 100</b></span></div>
+                <div class="guide-bloc"><p>Donc dans ce postulat, pour réussir une attaque à 30 de précision par exemple, il faut faire une valeur de 71 à 100 sur le dé d'attaque pour que cela fonctionne.</p></div>
             </div>
             <div class="guide-section">
                 <h2 class="guide-titre">Les altérations de <em>statut</em></h2>
-                <div class="guide-bloc"><b>Règle de cumul</b><p>Une seule altération de statut peut exister en même temps sur une cible ; néanmoins une même altération peut se cumuler sous certaines conditions : différents dresseurs qui posent chacun la même altération, plusieurs Pokémon d'une même équipe qui en sont capables, ou un Pokémon possédant plusieurs attaques posant l'altération. La seule limite : un même Pokémon avec la même capacité ne peut pas se cumuler de lui-même.</p></div>
-                <!-- FICHES DE RÈGLES : une fiche = un bloc cbt-carte. Copie une fiche pour en ajouter. -->
+                <div class="guide-bloc"><p>Une seule altération de statut peut exister en même temps sur une cible, néanmoins une même altération peut se cumuler sous certaines conditions.</p></div>
+                <div class="guide-bloc"><p>Soit il y a différents Dresseurs pour poser chacun la même altération, soit il peut y avoir plusieurs Pokémons dans une même équipe qui en sont capables ou tout simplement un Pokémon qui possède plusieurs attaques pouvant poser l'altération en question.</p></div>
+                <div class="guide-bloc"><p>La seule limite est qu'un même Pokémon avec la même capacité ne peut pas se cumuler de lui-même. Il faut un autre Pokémon ou bien une autre attaque qui donne l'altération.</p></div>
+                <!-- FICHES DE RÈGLES : une fiche = un bloc cbt-carte. -->
                 <div class="cbt-grille">
-                    <div class="cbt-carte cbt-feu"><b>Brûlure</b><ul><li>Inflige (Rang × 10) de dégâts à chaque fin de tour.</li><li>Le calcul des dégâts passe à un rang de moins, pareil pour le STAB.</li><li>Dure le combat, sauf si on la retire ou la remplace.</li><li>Accumulation : +10 dégâts en fin de tour.</li></ul></div>
-                    <div class="cbt-carte cbt-glace"><b>Gel</b><ul><li>Empêche la cible de faire une action d'attaque tant qu'elle est gelée.</li><li>La cible peut toujours esquiver ou recevoir les actions de son dresseur.</li><li>Dure 1 à 3 tours (décidé sur un D10).</li><li>Accumulation : prolonge la durée (+1T).</li></ul></div>
-                    <div class="cbt-carte cbt-elec"><b>Paralysie</b><ul><li>Diminue de 10 + (Rang × 5) la précision des attaques.</li><li>Diminue de 10 + (Rang × 6) la valeur des esquives.</li><li>Dure le combat, sauf si on la retire ou la remplace.</li><li>Accumulation : augmente les malus (+5).</li></ul></div>
-                    <div class="cbt-carte cbt-poison"><b>Poison (standard)</b><ul><li>Inflige (Rang × 10) de dégâts à chaque fin de tour.</li><li>Dure le combat, sauf si on le retire ou le remplace.</li><li>Accumulation : +10 dégâts en fin de tour.</li></ul></div>
-                    <div class="cbt-carte cbt-poison"><b>Poison (grave)</b><ul><li>Inflige (Rang × 5) × (nombre de tours) de dégâts à chaque fin de tour.</li><li>Le multiplicateur de tour est plafonné à 8.</li><li>Dure le combat, sauf si on le retire ou le remplace.</li><li>Accumulation : +5 dégâts en fin de tour.</li></ul></div>
-                    <div class="cbt-carte cbt-psy"><b>Sommeil</b><ul><li>Empêche la cible d'attaquer ou d'esquiver (sauf exceptions).</li><li>Recevoir des dégâts baisse de 1 la durée (1 par tour).</li><li>Dure 1 à 3 tours (décidé sur un D10).</li><li>Accumulation : prolonge la durée.</li></ul></div>
+                    <div class="cbt-carte cbt-feu"><b>Brûlure</b><ul><li>Inflige (Rang*10) de dégâts au Pokémon à chaque fin de tour.</li><li>Le calcul des dégâts passe à un Rang de moins, pareil pour le STAB.</li><li>Dure le combat, sauf si on le retire ou le remplace avec une autre altération.</li><li>Une accumulation rajoute des dégâts bonus (+10) en fin de tour.</li></ul></div>
+                    <div class="cbt-carte cbt-glace"><b>Gel</b><ul><li>Empêche la cible de faire une action d'attaque tant qu'elle est gelée.</li><li>Mais la cible peut toujours esquiver ou recevoir les actions de son Dresseur.</li><li>Dure le temps de 1 à 3 tours (décidé sur un D10).</li><li>Une accumulation prolonge la durée de l'altération (+1T).</li></ul></div>
+                    <div class="cbt-carte cbt-elec"><b>Paralysie</b><ul><li>Diminue de 10 + (Rang*5) la valeur de précision des attaques.</li><li>Diminue de 10 + (Rang*6) la valeur des esquives.</li><li>Dure le combat, sauf si on le retire ou le remplace avec une autre altération.</li><li>Une accumulation augmente la valeur des malus (+5).</li></ul></div>
+                    <div class="cbt-carte cbt-poison"><b>Poison (Standard)</b><ul><li>Inflige (Rang*10) de dégâts au Pokémon à chaque fin de tour.</li><li>Dure le combat, sauf si on le retire ou le remplace avec une autre altération.</li><li>Une accumulation rajoute des dégâts bonus (+10) en fin de tour.</li></ul></div>
+                    <div class="cbt-carte cbt-poison"><b>Poison (Grave)</b><ul><li>Inflige (Rang*5)*(Nombre de tour) de dégâts à chaque fin de tour.</li><li>Le maximum du multiplicateur de tour dans un combat est de 8.</li><li>Dure le combat, sauf si on le retire ou le remplace avec une autre altération.</li><li>Une accumulation rajoute des dégâts bonus (+5) en fin de tour.</li></ul></div>
+                    <div class="cbt-carte cbt-psy"><b>Sommeil</b><ul><li>Empêche la cible d'attaquer ou d'esquiver (sauf exceptions).</li><li>Recevoir des dégâts baisse de 1 la durée de Sommeil (1/tour).</li><li>Dure le temps de 1 à 3 tours (décidé sur un D10).</li><li>Une accumulation prolonge la durée de l'altération.</li></ul></div>
                 </div>
             </div>
             <div class="guide-section">
-                <h2 class="guide-titre">Les <em>pseudo-altérations</em></h2>
-                <div class="guide-bloc"><b>Règle</b><p>Pouvant exister en même temps qu'une altération de statut classique, il ne peut y avoir qu'une seule pseudo-altération à la fois. Les règles de cumul sont les mêmes. Les pseudo-altérations disparaissent quand la cible est retirée du combat.</p></div>
-                <!-- FICHES DE RÈGLES : une fiche = un bloc cbt-carte. Copie une fiche pour en ajouter. -->
+                <h2 class="guide-titre">Les pseudos-altérations de <em>statut</em></h2>
+                <div class="guide-bloc"><p>Pouvant exister en même temps qu'une altération de statut classique, il ne peut y avoir que une pseudo-altération à la fois. Les règles sont les mêmes au sujet de l'accumulation.</p></div>
+                <div class="guide-bloc"><p>Les pseudos-altérations disparaissent quand la cible est retirée du combat.</p></div>
+                <!-- FICHES DE RÈGLES : une fiche = un bloc cbt-carte. -->
                 <div class="cbt-grille">
-                    <div class="cbt-carte cbt-psy"><b>Amour</b><ul><li>Diminue de 20 + (Rang × 10) la précision des attaques envers le lanceur.</li><li>Dure tant que le lanceur ou la cible est sur le terrain.</li><li>Accumulation : augmente le nombre de personnes bénéficiant de l'effet.</li></ul></div>
-                    <div class="cbt-carte cbt-psy"><b>Confusion</b><ul><li>50% de chance de louper son attaque et de subir 40 dégâts.</li><li>Dure 1 à 4 attaques (décidé sur un D4).</li><li>Accumulation : +1 attaque de durée.</li></ul></div>
-                    <div class="cbt-carte cbt-poison"><b>Trouille</b><ul><li>Empêche la cible de faire plus d'une action d'attaque tant qu'elle est apeurée.</li><li>Dure uniquement le tour suivant l'attaque qui terrifie.</li><li>Accumulation : prolonge la durée (+1T).</li></ul></div>
+                    <div class="cbt-carte cbt-psy"><b>Amour</b><ul><li>Diminue de 20 + (Rang*10) la valeur de précision des attaques envers le Lanceur.</li><li>Dure le temps que la Lanceur ou la cible est sur le terrain.</li><li>Une accumulation augmente le nombre de personnes bénéficiants de l'effet.</li></ul></div>
+                    <div class="cbt-carte cbt-psy"><b>Confusion</b><ul><li>A 50% de chance de louper son attaque et se prendre 40 de dégâts.</li><li>Dure le temps de 1 à 4 attaques (décidé sur un D4).</li><li>Une accumulation augmente le nombre d'attaques de la durée (+1).</li></ul></div>
+                    <div class="cbt-carte cbt-poison"><b>Trouille</b><ul><li>Empêche la cible de faire plus de une action d'attaque tant qu'elle est apeurée.</li><li>Dure uniquement pour le tour suivant l'attaque qui terrifie.</li><li>Une accumulation prolonge la durée de l'altération (+1T).</li></ul></div>
                 </div>
             </div>
             <div class="guide-section">
-                <h2 class="guide-titre">Boosts &amp; <em>diminutions</em></h2>
-                <div class="guide-bloc"><b>Principe</b><p>Le gain et la perte de statistiques sont omniprésents dans les attaques et les talents. Bien qu'il n'y ait pas de principe de stats sur le forum, on garde les effets en les simplifiant. Dans un combat, un même Pokémon ne peut accumuler que 6 fois le même bonus, et un ennemi ne peut subir que 6 fois le même malus.</p></div>
-                <!-- FICHES DE RÈGLES : une fiche = un bloc cbt-carte. Copie une fiche pour en ajouter. -->
+                <h2 class="guide-titre">Les boost et les <em>diminutions</em></h2>
+                <div class="guide-bloc"><p>Le gain et la perte de statistiques sont un aspect omniprésent dans les attaques et dans les talents. Bien qu'il n'y a pas de principe de stats sur le forum, on gardera toujours les effets, mais en les simplifiant pour ce système de jeu.</p></div>
+                <div class="guide-bloc"><p>Dans un combat, un même Pokémon peut accumuler que jusqu'à 6 fois le même bonus. Tandis qu'un ennemi ne peut subir que jusqu'à 6 fois le même malus.</p></div>
+                <!-- FICHES DE RÈGLES : une fiche = un bloc cbt-carte. -->
                 <div class="cbt-grille">
-                    <div class="cbt-carte"><b>ATK &amp; ATK Spé</b><ul><li>Augmente ou baisse de 10 les dégâts par niveau de cumul.</li></ul></div>
-                    <div class="cbt-carte"><b>DEF &amp; DEF Spé</b><ul><li>Augmente ou baisse de 10 les dégâts reçus par niveau de cumul.</li></ul></div>
-                    <div class="cbt-carte"><b>Précision</b><ul><li>Augmente ou baisse de 10 la précision des attaques par niveau de cumul.</li></ul></div>
-                    <div class="cbt-carte"><b>Esquive</b><ul><li>Augmente ou baisse de 10 les tests d'esquive par niveau de cumul.</li></ul></div>
-                    <div class="cbt-carte"><b>Vitesse</b><ul><li>Augmente ou baisse de 5 les tests de précision et d'esquive par niveau de cumul.</li></ul></div>
+                    <div class="cbt-carte"><b>Boost &amp; Diminution en ATK et en ATK SPÉ</b><ul><li>Augmente ou baisse de 10 les dégâts par niveau de cumul.</li></ul></div>
+                    <div class="cbt-carte"><b>Boost &amp; Diminution en DEF et en DEF SPÉ</b><ul><li>Augmente ou baisse de 10 les dégâts reçus par niveau de cumul.</li></ul></div>
+                    <div class="cbt-carte"><b>Boost &amp; Diminution en Précision</b><ul><li>Augmente ou baisse de 10 la précision des attaques par niveau de cumul.</li></ul></div>
+                    <div class="cbt-carte"><b>Boost &amp; Diminution en Esquive</b><ul><li>Augmente ou baisse de 10 les tests d'esquive par niveau de cumul.</li></ul></div>
+                    <div class="cbt-carte"><b>Boost &amp; Diminution en Vitesse</b><ul><li>Augmente ou baisse de 5 les tests de précision et d'esquive par niveau de cumul.</li></ul></div>
                 </div>
             </div>
             <div class="guide-section">
-                <h2 class="guide-titre">Points de <em>pouvoir</em></h2>
-                <div class="guide-bloc"><b>Fonctionnement</b><p>Habituellement les PP définissent le nombre de fois qu'on peut lancer une capacité ; ici cela fonctionne différemment (pas de Lutte). Toutes les capacités qui diminuent les Points de Pouvoir interdisent à la cible d'utiliser une de ses attaques lancées durant le tour, pendant X actions — X étant le nombre de PP que la capacité retire.</p></div>
-                <div class="guide-bloc"><b>Exception : le talent Pression</b><p>Ce talent étant constant et doublant habituellement les dépenses en PP, il se traduit ainsi : un Pokémon faisant face à ce talent n'aura que 2 actions par tour.</p></div>
+                <h2 class="guide-titre">Les points de pouvoir <em>(PP)</em></h2>
+                <div class="guide-bloc"><p>Habituellement les PP servent à définir le nombre de fois qu'on peut lancer une capacité, mais dans ce système, cela fonctionne un peu différemment (pas de Lutte ici).</p></div>
+                <div class="guide-bloc"><p>Car globalement, toutes les capacités qui diminuent les Points de Pouvoir auront pour effet d'interdire la cible d'utiliser une de ses attaques lancées durant le tour, pendant X nombres d'actions (X représentant le nombre de PP que la capacité retire).</p></div>
+                <div class="guide-bloc"><p>L'unique exception à cette règle est le Talent de Pokémon → Pression, car celui-ci étant constant et doublant habituellement les dépenses en PP, il est logique par le système que cela se traduise ainsi : un Pokémon faisant face à ce Talent n'aura que 2 actions par tour.</p></div>
             </div>
             <div class="guide-section">
-                <h2 class="guide-titre">Autres <em>éléments</em></h2>
-                <!-- FICHES DE RÈGLES : une fiche = un bloc cbt-carte. Copie une fiche pour en ajouter. -->
+                <h2 class="guide-titre">Les autres <em>éléments</em></h2>
+                <!-- FICHES DE RÈGLES : une fiche = un bloc cbt-carte. -->
                 <div class="cbt-grille">
                     <div class="cbt-carte"><b>Attaque de priorité</b><ul><li>Au lieu de changer l'ordre des attaques, une priorité donne +10 d'esquive pour le tour.</li><li>À l'inverse, une baisse de priorité donne un malus d'esquive pour le tour.</li></ul></div>
                     <div class="cbt-carte"><b>Attaque OHKO</b><ul><li>Les attaques ne mettent plus K.O. en un coup.</li><li>À la place, elles ont une valeur de 200 en Puissance.</li></ul></div>
                 </div>
             </div>
             <div class="guide-section">
-                <h2 class="guide-titre">Climats &amp; <em>terrains</em></h2>
-                <div class="guide-bloc"><b>Règle</b><p>Plusieurs Pokémon sont impactés par la météo ou le terrain posé durant le combat. Pour éviter le chaos, un seul climat et un seul terrain sont comptés à la fois. Si un climat ou un terrain est déjà présent lorsque vous lancez une attaque similaire, les deux poseurs lancent chacun un D100 : le plus haut des deux détermine ce qui est actif, pour une certaine durée ou jusqu'à une nouvelle tentative de remplacement.</p></div>
-                <h3 class="dex-sous">Les climats</h3>
-                <!-- FICHES DE RÈGLES : une fiche = un bloc cbt-carte. Copie une fiche pour en ajouter. -->
+                <h2 class="guide-titre">Les climats &amp; <em>terrains</em></h2>
+                <div class="guide-bloc"><p>Que ce soit les attaques ou les talents, plusieurs Pokémons sont impactés par les effets de la météo ou encore de terrain posé durant le combat. Pour éviter des chaos statistiques à faire dans tous les sens, uniquement un climat et un terrain seront comptés à la fois.</p></div>
+                <div class="guide-bloc"><p>S'il y a déjà un autre climat ou un autre terrain qui est déjà présent lorsque vous lancer une attaque similaire, les deux poseurs de climat ou les deux poseurs de terrain doivent lancer chacun un D100. Le plus haut des deux sera le climat ou/et le terrain actif pendant une certaine durée (ou jusqu'à ce qu'on tente à nouveau de le remplacer).</p></div>
+                <h3 class="dex-sous">Les différents climats</h3>
+                <!-- FICHES DE RÈGLES : une fiche = un bloc cbt-carte. -->
                 <div class="cbt-grille">
-                    <div class="cbt-carte cbt-glace"><b>Grêle</b><ul><li>Bonus de +20 en précision aux Pokémon Glace.</li><li>Dure jusqu'à 3 tours, sauf opposition avec un autre climat.</li><li>Accumulation : +1T de durée.</li></ul></div>
-                    <div class="cbt-carte cbt-glace"><b>Pluie</b><ul><li>Bonus de +10 en précision aux Pokémon Eau.</li><li>Malus de -10 en précision aux Pokémon Feu.</li><li>Dure jusqu'à 3 tours, sauf opposition.</li><li>Accumulation : +1T de durée.</li></ul></div>
-                    <div class="cbt-carte cbt-elec"><b>Tempête de sable</b><ul><li>Bonus de +20 en esquive aux Pokémon Roche.</li><li>Dure jusqu'à 3 tours, sauf opposition.</li><li>Accumulation : +1T de durée.</li></ul></div>
-                    <div class="cbt-carte cbt-feu"><b>Zénith</b><ul><li>Bonus de +10 en précision aux Pokémon Feu.</li><li>Malus de -10 en précision aux Pokémon Eau.</li><li>Dure jusqu'à 3 tours, sauf opposition.</li><li>Accumulation : +1T de durée.</li></ul></div>
+                    <div class="cbt-carte cbt-glace"><b>Grêle</b><ul><li>Donne un bonus de +20 en précision aux Pokémons Glace.</li><li>Dure jusqu'à 3 tours, sauf opposition avec un autre climat.</li><li>Une accumulation augmente la durée de la météo (+1T).</li></ul></div>
+                    <div class="cbt-carte cbt-glace"><b>Pluie</b><ul><li>Donne un bonus de +10 en précision aux Pokémons Eau.</li><li>Donne un malus de -10 en précision aux Pokémons Feu.</li><li>Dure jusqu'à 3 tours, sauf opposition avec un autre climat.</li><li>Une accumulation augmente la durée de la météo (+1T).</li></ul></div>
+                    <div class="cbt-carte cbt-elec"><b>Tempête de sable</b><ul><li>Donne un bonus de +20 en esquive aux Pokémons Roche.</li><li>Dure jusqu'à 3 tours, sauf opposition avec un autre climat.</li><li>Une accumulation augmente la durée de la météo (+1T).</li></ul></div>
+                    <div class="cbt-carte cbt-feu"><b>Zénith</b><ul><li>Donne un bonus de +10 en précision aux Pokémons Feu.</li><li>Donne un malus de -10 en précision aux Pokémons Eau.</li><li>Dure jusqu'à 3 tours, sauf opposition avec un autre climat.</li><li>Une accumulation augmente la durée de la météo (+1T).</li></ul></div>
                 </div>
-                <div class="guide-bloc"><b>Note</b><p>Les talents qui imposent un climat ont l'avantage aux tests : 2D100, on garde le meilleur.</p></div>
-                <h3 class="dex-sous">Les terrains</h3>
-                <!-- FICHES DE RÈGLES : une fiche = un bloc cbt-carte. Copie une fiche pour en ajouter. -->
+                <div class="guide-bloc"><b>Note</b><p>Les talents qui imposent un climat ont l'avantage aux tests (2D100 et garde le meilleur).</p></div>
+                <h3 class="dex-sous">Les différents terrains</h3>
+                <!-- FICHES DE RÈGLES : une fiche = un bloc cbt-carte. -->
                 <div class="cbt-grille">
-                    <div class="cbt-carte cbt-psy"><b>Brumeux</b><ul><li>Malus de -20 en précision aux Pokémon Dragon.</li><li>Dure jusqu'à 3 tours, sauf opposition avec un autre terrain.</li><li>Accumulation : +1T de durée.</li></ul></div>
-                    <div class="cbt-carte cbt-elec"><b>Électrifié</b><ul><li>Bonus de +10 en précision et en esquive aux Pokémon Électrik.</li><li>Dure jusqu'à 3 tours, sauf opposition.</li><li>Accumulation : +1T de durée.</li></ul></div>
-                    <div class="cbt-carte cbt-plante"><b>Herbu</b><ul><li>Bonus de +10 en précision et en esquive aux Pokémon Plante.</li><li>Piétisol, Séisme et Ampleur ont -10 de précision.</li><li>Dure jusqu'à 3 tours, sauf opposition.</li><li>Accumulation : +1T de durée.</li></ul></div>
-                    <div class="cbt-carte cbt-psy"><b>Psychique</b><ul><li>Bonus de +10 en précision aux Pokémon Psy.</li><li>Les attaques prioritaires ont -10 de précision.</li><li>Dure jusqu'à 3 tours, sauf opposition.</li><li>Accumulation : +1T de durée.</li></ul></div>
+                    <div class="cbt-carte cbt-psy"><b>Brumeux</b><ul><li>Donne un malus de -20 en précision aux Pokémons Dragon.</li><li>Dure jusqu'à 3 tours, sauf opposition avec un autre territoire.</li><li>Une accumulation augmente la durée du terrain (+1T).</li></ul></div>
+                    <div class="cbt-carte cbt-elec"><b>Électrifié</b><ul><li>Donne un bonus de +10 en précision et en esquive aux Pokémons Électrik.</li><li>Dure jusqu'à 3 tours, sauf opposition avec un autre territoire.</li><li>Une accumulation augmente la durée du terrain (+1T).</li></ul></div>
+                    <div class="cbt-carte cbt-plante"><b>Herbu</b><ul><li>Donne un bonus de +10 en précision et en esquive aux Pokémons Plante.</li><li>Les attaques Piétisol, Séisme et Ampleur ont -10 de précision.</li><li>Dure jusqu'à 3 tours, sauf opposition avec un autre territoire.</li><li>Une accumulation augmente la durée du terrain (+1T).</li></ul></div>
+                    <div class="cbt-carte cbt-psy"><b>Psychique</b><ul><li>Donne un bonus de +10 en précision aux Pokémons Psy.</li><li>Les attaques prioritaires ont -10 de précision.</li><li>Dure jusqu'à 3 tours, sauf opposition avec un autre territoire.</li><li>Une accumulation augmente la durée du terrain (+1T).</li></ul></div>
                 </div>
             </div>
             <div class="guide-section">
                 <h2 class="guide-titre">Les <em>actions</em></h2>
-                <div class="guide-bloc"><b>Trois actions par tour</b><p>Chaque tour, vous et votre adversaire avez droit à 3 actions. L'ordre dépend de ce qu'il y a en face : si c'est un PNJ, vous commencez toujours en premier ; si c'est un autre membre, vous vous mettez d'accord ou vous faites un pile ou face.</p></div>
-                <div class="guide-bloc"><b>Possibilités à disposition</b><ul><li>Utiliser l'attaque d'un Pokémon</li><li>Switcher son Pokémon avec un autre</li><li>Utiliser un objet sur un Pokémon</li><li>Augmenter ses chances de réussite sur une attaque</li><li>Augmenter ses chances de réussite sur une esquive</li></ul></div>
-                <div class="guide-bloc"><b>Règles anti-abus</b><ul><li>Interdiction de faire 2 fois la même attaque dans le même tour.</li><li>Autant de tests d'esquive que d'attaques qui nous ciblent.</li><li>Limitation de 2 attaques offensives par tour.</li><li>Limitation de 2 attaques de boost par tour.</li><li>Limitation de 2 attaques de debuff par tour.</li><li>Limitation de 2 attaques d'altération par tour.</li><li>Limitation de 1 attaque qui soigne par tour.</li><li>Pas de limitation pour les objets de dresseurs.</li><li>Pas de limitation pour le switch de Pokémon.</li></ul></div>
-                <div class="guide-bloc"><b>Évolutif</b><p>Ces règles peuvent changer si des abus ou des soucis d'équilibrage apparaissent.</p></div>
+                <div class="guide-bloc"><p>Chaque tour, vous et votre adversaire aurez droit à 3 actions à chaque tour. L'ordre dépend ce qu'il y a en face de vous : si c'est un PNJ, vous commencez toujours en premier et si c'est un autre membre dans ce cas vous vous mettez d'accord ou vous faites un pile ou face pour vous décider.</p></div>
+                <div class="guide-bloc"><b>Voici les différentes possibilités qui vous sont à dispositions</b><ul><li>Utiliser l'attaque d'un Pokémon</li><li>Switcher son Pokémon avec un autre</li><li>Utiliser un objet sur un Pokémon</li><li>Augmenter ses chances de réussite sur une Attaque</li><li>Augmenter ses chances de réussite sur une Esquive</li></ul></div>
+                <div class="guide-bloc"><b>Cependant, il y a quelques règles afin d'éviter les abus</b><ul><li>Interdiction de faire 2 fois la même attaque dans le même tour</li><li>Possède autant de tests d'esquive que d'attaques qui nous cible</li><li>Limitation de 2 Attaques offensives par tour</li><li>Limitation de 2 Attaques de boost par tour</li><li>Limitation de 2 Attaques de debuff par tour</li><li>Limitation de 2 Attaques d'altération par tour</li><li>Limitation de 1 Attaque qui soigne par tour</li><li>Pas de limitation pour les objets de Dresseurs</li><li>Pas de limitation pour le switch de Pokémon</li></ul></div>
+                <div class="guide-bloc"><p>Notez que ces règles peuvent venir à changer si on voit des abus, des soucis d'équilibrage et autres.</p></div>
             </div>
             <div class="guide-section">
-                <h2 class="guide-titre">Méga &amp; <em>synergies</em></h2>
-                <div class="guide-bloc"><b>Accès</b><p>Lorsqu'un membre commence à prendre du galon (Rang B et plus), il peut accéder à des versions plus puissantes de ses Pokémon : Méga-évolution ou effets de synergie. C'est accessible grâce aux objets que peut créer le talent de personnage Méga-Synergie, spécialisable et améliorable.</p></div>
-                <!-- FICHES DE RÈGLES : une fiche = un bloc cbt-carte. Copie une fiche pour en ajouter. -->
+                <h2 class="guide-titre">Les Méga et <em>Synergies</em></h2>
+                <div class="guide-bloc"><p>Lorsqu'un membre commence à prendre du galon (Rang B et +), il peut accéder à des versions plus puissantes de ses Pokémons. Cela peut aussi bien être sous forme de Méga-Évolution, que par des effets de synergie. Cela est accessible grâce aux objets que peut créer le talent de personnage Méga-Synergie, ce dernier est spécialisable et améliorable.</p></div>
+                <h3 class="dex-sous">Méga-Évolution</h3>
+                <div class="guide-bloc"><p>Cela se limite aux Pokémons possédant une Méga dans les jeux de base. La Méga-évolution dure tant que le Pokémon est sur le terrain.</p></div>
+                <!-- FICHES DE RÈGLES : une fiche = un bloc cbt-carte. -->
                 <div class="cbt-grille">
-                    <div class="cbt-carte"><b>Méga-évolution — Rang B</b><ul><li>Limité aux Pokémon possédant une Méga dans les jeux de base.</li><li>Le Pokémon obtient le talent et les changements de types de sa Méga-évolution.</li><li>Il gagne un bonus de PV équivalant à sa base de points de vie.</li><li>Dure tant que le Pokémon est sur le terrain.</li></ul></div>
-                    <div class="cbt-carte"><b>Méga-évolution — Rang A</b><ul><li>Tous les effets du Rang B.</li><li>Bonus de +12 à ses tests.</li></ul></div>
-                    <div class="cbt-carte"><b>Synergie — Rang B</b><ul><li>Possible sur n'importe quel Pokémon disponible.</li><li>Bonus de +8 à ses tests.</li><li>Dure tant que le Pokémon est sur le terrain.</li></ul></div>
-                    <div class="cbt-carte"><b>Synergie — Rang A</b><ul><li>Tous les effets du Rang B.</li><li>+1 action supplémentaire à ses tours.</li></ul></div>
+                    <div class="cbt-carte"><b>Rang B</b><ul><li>Le Pokémon obtient le talent et les possibles changement de types de sa Méga-Évolution.</li><li>Il gagne également un bonus de PV équivalant à base de points de vie.</li></ul></div>
+                    <div class="cbt-carte"><b>Rang A</b><ul><li>Le Pokémon obtient tous les effets du Rang B.</li><li>Il gagne également un bonus de +12 à ses tests.</li></ul></div>
                 </div>
-                <div class="guide-bloc"><b>Limite</b><p>Une Méga ou une Synergie ne peut être faite qu'une fois par combat.</p></div>
+                <h3 class="dex-sous">Synergie</h3>
+                <div class="guide-bloc"><p>Cela peut être fait sur n'importe quel Pokémon disponible. La Synergie dure tant que le Pokémon est sur le terrain.</p></div>
+                <!-- FICHES DE RÈGLES : une fiche = un bloc cbt-carte. -->
+                <div class="cbt-grille">
+                    <div class="cbt-carte"><b>Rang B</b><ul><li>Le Pokémon obtient un bonus de +8 à ses tests.</li></ul></div>
+                    <div class="cbt-carte"><b>Rang A</b><ul><li>Le Pokémon obtient tous les effets du Rang B.</li><li>Le Pokémon a également +1 Action supplémentaire à ses tours.</li></ul></div>
+                </div>
+                <div class="guide-bloc"><p>Notez qu'une Méga ou une Synergie ne peuvent être fait qu'une fois par combat.</p></div>
             </div>
         </div>
 
