@@ -133,6 +133,8 @@ textarea {
 /* ════════ 16. GUIDEBOOK ════════*/
 .guide {
   display: grid;
+  width:80%;
+  justify-self: center;
   grid-template-columns: 280px 1fr;
   background: var(--carte, #FFFFFF);
   border-radius: 18px;
