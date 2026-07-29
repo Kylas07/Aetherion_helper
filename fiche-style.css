@@ -1,59 +1,207 @@
 /* ================================================================
-   Aetherion · style de la fiche de présentation
-   À héberger UNE fois sur le forum (ex. dans le CSS du forum, ou en
-   <link>/<style> global). Une fois cette feuille chargée partout,
-   décoche "Inclure la CSS dans le code" dans l'éditeur : les posts
-   ne contiendront plus que le HTML de la fiche (bien plus léger).
+   Aetherion · fiche de présentation — habillage v3 (refonte)
+   ----------------------------------------------------------------
+   Écrit en spécificité doublée (.aeth-fiche.aeth-fiche) : cette
+   feuille prend le dessus sur le CSS injecté par fiche-data.js,
+   donc AUCUNE modification du script n'est nécessaire.
+   • à héberger une fois (CSS du forum, ou <link> global)
+   • structure et noms de classes inchangés → les anciennes fiches
+     et la récupération (scanFiche) continuent de fonctionner
    ================================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap');
-.aeth-fiche{width:650px;max-width:100%;margin:0 auto;font-family:'Barlow',Verdana,Geneva,sans-serif;background:#FFFFFF;border:1px solid #E7E2DA;border-radius:16px;overflow:hidden;box-shadow:0 18px 44px -22px rgba(45,38,30,.38);color:#4E483F}
-.aeth-fiche *{box-sizing:border-box}
-.aeth-fiche .af-banner{background:#211C18;padding:26px 30px;border-bottom:3px solid var(--acc)}
-.aeth-fiche .af-kick{font-family:'Oswald','Arial Narrow',Verdana,sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--acc);font-weight:600}
-.aeth-fiche .af-name{font-family:'Oswald','Arial Narrow',Verdana,sans-serif;font-size:38px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#FFFFFF;line-height:1;margin-top:7px}
-.aeth-fiche .af-alias{font-style:italic;color:#EDE6DD;font-size:14px;margin-top:9px;opacity:.92}
-.aeth-fiche .af-groupband{display:flex;align-items:center;justify-content:center;gap:14px;background:var(--gc);padding:10px 16px;color:#fff}
-.aeth-fiche .af-groupname{font-family:'Oswald','Arial Narrow',Verdana,sans-serif;letter-spacing:5px;text-transform:uppercase;font-weight:700;font-size:15px}
-.aeth-fiche .af-grouptag{font-size:11.5px;font-style:italic;opacity:.9;border-left:1px solid rgba(255,255,255,.4);padding-left:14px}
-.aeth-fiche .af-idrow{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#ECE6DD}
-.aeth-fiche .af-idcell{background:#F8F5F0;padding:13px 16px}
-.aeth-fiche .af-idlabel{font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:#948B7F;font-weight:700}
-.aeth-fiche .af-idval{font-size:13.5px;font-weight:600;color:#26221D;margin-top:3px}
-.aeth-fiche .af-sec{padding:22px 30px}
-.aeth-fiche .af-sec+.af-sec{border-top:1px solid #E7E2DA}
-.aeth-fiche .af-sech{font-family:'Oswald','Arial Narrow',Verdana,sans-serif;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:var(--acc);font-weight:600;display:flex;align-items:center;gap:13px;margin-bottom:15px}
-.aeth-fiche .af-sech::after{content:"";flex:1;height:2px;background:var(--acc);opacity:.28;border-radius:2px}
-.aeth-fiche .af-fold>summary{list-style:none;cursor:pointer;margin-bottom:0}
-.aeth-fiche .af-fold>summary::-webkit-details-marker{display:none}
-.aeth-fiche summary.af-sech::after{display:none}
-.aeth-fiche .af-fold[open]>summary{margin-bottom:15px}
-.aeth-fiche .af-line{flex:1;height:2px;background:var(--acc);opacity:.28;border-radius:2px}
-.aeth-fiche .af-chev{font-size:10px;opacity:.6;transition:transform .2s;flex:none}
-.aeth-fiche .af-fold[open]>summary .af-chev{transform:rotate(180deg)}
-.aeth-fiche .af-traits{display:flex;flex-wrap:wrap;gap:7px}
-.aeth-fiche .af-trait{background:#F8F5F0;border:1px solid #ECE6DD;border-radius:7px;padding:6px 13px;font-size:12.5px;font-weight:600;color:#4E483F}
-.aeth-fiche .af-perso{display:flex;gap:22px;flex-wrap:wrap}
-.aeth-fiche .af-portrait{width:250px;flex:none;aspect-ratio:250/350;border-radius:13px;overflow:hidden;border:1px solid #E7E2DA;background:repeating-linear-gradient(45deg,#F0ECE4 0 7px,#E7E1D8 7px 14px);display:flex;align-items:center;justify-content:center}
-.aeth-fiche .af-portrait img{width:100%;height:100%;object-fit:cover;display:block}
-.aeth-fiche .af-portrait .ph{font-family:monospace;font-size:11px;color:#948B7F}
-.aeth-fiche .af-txt{flex:1;min-width:220px;max-height:300px;overflow:auto;}
-.aeth-fiche .af-txt p{margin:0 0 12px;font-size:13.5px;line-height:1.72}
-.aeth-fiche .af-txt p:last-child{margin-bottom:0}
-.aeth-fiche .af-personality{max-height:350px;overflow-y:auto;padding-right:10px}
-.aeth-fiche .af-pkmn{display:flex;gap:18px;align-items:center;background:#211C18;border-radius:14px;padding:18px 20px}
-.aeth-fiche .af-pkmn-sprite{width:104px;height:104px;flex:none;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12)}
-.aeth-fiche .af-pkmn-sprite img{max-width:100%;max-height:100%;object-fit:contain;image-rendering:pixelated}
-.aeth-fiche .af-pkmn-sprite .ph{font-family:monospace;font-size:10px;color:#8B837A}
-.aeth-fiche .af-pkmn-body{flex:1;min-width:0}
-.aeth-fiche .af-pkmn-top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-.aeth-fiche .af-pkmn-name{font-family:'Oswald','Arial Narrow',Verdana,sans-serif;font-size:22px;font-weight:700;letter-spacing:.5px;color:var(--acc)}
-.aeth-fiche .af-pkmn-meta{font-size:12px;color:#EDE6DD}
-.aeth-fiche .af-pkmn-types{display:flex;gap:5px;margin:9px 0}
-.aeth-fiche .af-pkmn-type{color:#fff;font-size:10.5px;font-weight:700;padding:3px 10px;border-radius:6px;letter-spacing:.3px}
-.aeth-fiche .af-pkmn-desc{margin:0;font-size:12.5px;line-height:1.62;color:#EDE6DD;font-style:italic}
-.aeth-fiche .af-player{background:#F8F5F0;border:1px solid #ECE6DD;border-radius:13px;padding:18px 20px}
-.aeth-fiche .af-player-grid{display:flex;gap:26px;flex-wrap:wrap;margin-bottom:10px}
-.aeth-fiche .af-player-cell .l{font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:#948B7F;font-weight:700}
-.aeth-fiche .af-player-cell .v{font-size:14px;font-weight:700;color:#26221D;margin-top:2px}
-.aeth-fiche .af-player-note{margin:0;font-size:12.5px;line-height:1.6;color:#4E483F}
-.aeth-fiche .af-empty{font-size:12px;color:#948B7F;font-style:italic}
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap');
+
+.aeth-fiche.aeth-fiche{
+  --enc:#1D1B19; --pap:#FFFFFF; --sable:#F8F5F0; --filet:#ECE6DD; --bord:#E7E2DA;
+  --enk:#26221D; --txt:#3C3733; --doux:#6B645E; --muet:#948B7F;
+  --disp:'Archivo',system-ui,sans-serif; --mono:'Space Mono',ui-monospace,monospace;
+  width:650px; max-width:100%; margin:0 auto;
+  font-family:var(--disp); color:var(--txt);
+  background:var(--pap); border:1px solid var(--bord); border-radius:16px; overflow:hidden;
+  box-shadow:0 1px 2px rgba(30,25,20,.05), 0 20px 46px -22px rgba(30,25,20,.34);
+}
+.aeth-fiche.aeth-fiche *{box-sizing:border-box}
+.aeth-fiche.aeth-fiche .ph{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muet)}
+
+/* ─── bannière ─── */
+.aeth-fiche.aeth-fiche .af-banner{
+  position:relative;height:240px;overflow:hidden;
+  background:var(--enc);
+}
+.aeth-fiche.aeth-fiche .af-banner-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.92) contrast(1.04)}
+.aeth-fiche.aeth-fiche .af-banner-ph{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#8B837A;
+}
+.aeth-fiche.aeth-fiche .af-banner-grad{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(29,27,25,.55) 0%,rgba(29,27,25,.08) 32%,rgba(29,27,25,.92) 100%);
+}
+.aeth-fiche.aeth-fiche .af-kick{
+  position:absolute;left:28px;top:20px;display:flex;align-items:center;gap:9px;
+  font-family:var(--mono);font-weight:700;font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  color:#EDE6DD;opacity:.9;
+}
+.aeth-fiche.aeth-fiche .af-kick::before{
+  content:"";width:8px;height:8px;border-radius:50%;background:var(--acc);flex:none;
+  box-shadow:0 0 0 3px rgba(255,255,255,.14);
+}
+.aeth-fiche.aeth-fiche .af-groupchip{
+  position:absolute;right:28px;top:17px;background:var(--gc);border-radius:8px;padding:7px 15px;color:#fff;
+  box-shadow:0 6px 18px -8px rgba(0,0,0,.6);
+}
+.aeth-fiche.aeth-fiche .af-groupname{
+  font-family:var(--mono);font-weight:700;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+}
+.aeth-fiche.aeth-fiche .af-headline{position:absolute;left:28px;right:28px;bottom:20px}
+.aeth-fiche.aeth-fiche .af-name{
+  font-family:var(--disp);font-weight:900;font-size:42px;line-height:.94;letter-spacing:.055em;
+  text-transform:uppercase;color:#FFFFFF;text-shadow:0 3px 18px rgba(0,0,0,.55);
+}
+.aeth-fiche.aeth-fiche .af-alias{
+  margin-top:9px;font-size:13px;line-height:1.45;color:#EDE6DD;font-style:normal;opacity:.94;
+}
+.aeth-fiche.aeth-fiche .af-aliastxt{font-style:italic}
+.aeth-fiche.aeth-fiche .af-grouptag{
+  font-family:var(--mono);font-style:normal;font-weight:700;font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:#fff;
+}
+.aeth-fiche.aeth-fiche .af-accentbar{
+  height:5px;
+  background:linear-gradient(90deg,var(--acc) 0 250px,var(--gc) 250px);
+}
+
+/* ─── corps : colonne portrait + textes ─── */
+.aeth-fiche.aeth-fiche .af-body{display:flex;align-items:stretch}
+.aeth-fiche.aeth-fiche .af-side{
+  width:250px;flex:none;background:var(--sable);border-right:1px solid var(--filet);
+  display:flex;flex-direction:column;
+}
+.aeth-fiche.aeth-fiche .af-portrait{
+  width:250px;height:350px;overflow:hidden;border-bottom:1px solid var(--filet);
+  background:var(--enc);display:flex;align-items:center;justify-content:center;
+}
+.aeth-fiche.aeth-fiche .af-portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.aeth-fiche.aeth-fiche .af-idlist{padding:18px 20px 8px;display:grid;gap:2px}
+.aeth-fiche.aeth-fiche .af-idlist > div{
+  padding:9px 12px;background:var(--pap);border-left:3px solid var(--acc);
+}
+.aeth-fiche.aeth-fiche .af-idlist > div:nth-child(even){background:#FCFAF7}
+.aeth-fiche.aeth-fiche .af-idlabel{
+  font-family:var(--mono);font-weight:700;font-size:9px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--acc);
+}
+.aeth-fiche.aeth-fiche .af-idval{font-size:13.5px;font-weight:700;color:var(--enk);margin-top:3px}
+.aeth-fiche.aeth-fiche .af-sidetraits{padding:16px 20px 22px;margin-top:auto}
+.aeth-fiche.aeth-fiche .af-sidetraits .af-idlabel{margin-bottom:9px;color:var(--muet)}
+.aeth-fiche.aeth-fiche .af-traits{display:flex;flex-wrap:wrap;gap:6px}
+.aeth-fiche.aeth-fiche .af-trait{
+  background:var(--enc);border:none;border-radius:6px;padding:5px 11px;
+  font-family:var(--mono);font-weight:700;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#EDE6DD;
+}
+.aeth-fiche.aeth-fiche .af-main{flex:1;min-width:0;padding:24px 26px;display:grid;gap:24px;align-content:start}
+
+/* ─── titres de section ─── */
+.aeth-fiche.aeth-fiche .af-sech{
+  display:flex;align-items:center;gap:12px;margin-bottom:12px;
+  font-family:var(--disp);font-weight:900;font-size:12.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--acc);
+}
+.aeth-fiche.aeth-fiche .af-sech::before{
+  content:"";width:20px;height:4px;border-radius:2px;background:var(--acc);flex:none;
+}
+.aeth-fiche.aeth-fiche .af-sech::after{content:"";flex:1;height:1px;background:var(--filet);border-radius:2px;opacity:1}
+.aeth-fiche.aeth-fiche .af-scroll{max-height:300px;overflow-y:auto;padding-right:10px}
+.aeth-fiche.aeth-fiche .af-scroll::-webkit-scrollbar{width:6px}
+.aeth-fiche.aeth-fiche .af-scroll::-webkit-scrollbar-track{background:var(--filet);border-radius:3px}
+.aeth-fiche.aeth-fiche .af-scroll::-webkit-scrollbar-thumb{background:var(--acc);border-radius:3px}
+.aeth-fiche.aeth-fiche .af-txt p{margin:0 0 12px;font-size:13.5px;line-height:1.75;text-align:justify;text-wrap:pretty}
+.aeth-fiche.aeth-fiche .af-txt p:last-child{margin-bottom:0}
+
+/* ─── histoire ─── */
+.aeth-fiche.aeth-fiche .af-histsec{padding:24px 26px;border-top:1px solid var(--bord);background:#FCFAF7}
+.aeth-fiche.aeth-fiche .af-histrow{display:flex;gap:20px;align-items:flex-start}
+.aeth-fiche.aeth-fiche .af-photo{
+  width:220px;height:220px;flex:none;border-radius:12px;overflow:hidden;border:none;
+  background:var(--enc);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 14px 30px -18px rgba(30,25,20,.55);
+}
+.aeth-fiche.aeth-fiche .af-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.aeth-fiche.aeth-fiche .af-histtxt{flex:1;min-width:0}
+
+/* ─── pokémon fétiche ─── */
+.aeth-fiche.aeth-fiche .af-pkmn{
+  position:relative;background:var(--enc);padding:22px 26px;display:flex;gap:20px;align-items:center;overflow:hidden;
+}
+.aeth-fiche.aeth-fiche .af-pkmn::after{
+  content:"";position:absolute;right:-70px;top:-70px;width:220px;height:220px;border-radius:50%;
+  background:radial-gradient(circle,var(--acc) 0%,transparent 68%);opacity:.22;pointer-events:none;
+}
+.aeth-fiche.aeth-fiche .af-pkmn-sprite{
+  position:relative;width:104px;height:104px;flex:none;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+  background:rgba(255,255,255,.06);border:1px solid var(--acc);
+}
+.aeth-fiche.aeth-fiche .af-pkmn-sprite img{max-width:100%;max-height:100%;object-fit:contain;image-rendering:pixelated}
+.aeth-fiche.aeth-fiche .af-pkmn-sprite .ph{font-size:9px;color:#8B837A}
+.aeth-fiche.aeth-fiche .af-pkmn-body{position:relative;flex:1;min-width:0}
+.aeth-fiche.aeth-fiche .af-pkmn-kick{
+  font-family:var(--mono);font-weight:700;font-size:9.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--muet);margin-bottom:6px;
+}
+.aeth-fiche.aeth-fiche .af-pkmn-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.aeth-fiche.aeth-fiche .af-pkmn-name{
+  font-family:var(--disp);font-weight:900;font-size:24px;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);
+}
+.aeth-fiche.aeth-fiche .af-pkmn-meta{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:#C7BFB5}
+.aeth-fiche.aeth-fiche .af-pkmn-meta b,
+.aeth-fiche.aeth-fiche .af-pkmn-species,
+.aeth-fiche.aeth-fiche .af-pkmn-level,
+.aeth-fiche.aeth-fiche .af-pkmn-nature{color:#EDE6DD;font-weight:700}
+.aeth-fiche.aeth-fiche .af-pkmn-type{
+  color:#fff;font-family:var(--mono);font-size:9.5px;font-weight:700;
+  padding:4px 10px;border-radius:6px;letter-spacing:.14em;text-transform:uppercase;
+}
+.aeth-fiche.aeth-fiche .af-pkmn-desc{
+  margin:10px 0 0;padding-left:14px;border-left:2px solid rgba(255,255,255,.16);
+  font-size:12.5px;line-height:1.65;color:#C7BFB5;font-style:italic;
+}
+
+/* ─── derrière l'écran ─── */
+.aeth-fiche.aeth-fiche .af-player{
+  background:var(--sable);border-top:1px solid var(--filet);padding:18px 26px;
+  display:flex;gap:10px 26px;align-items:baseline;flex-wrap:wrap;
+}
+.aeth-fiche.aeth-fiche .af-player-kick{
+  font-family:var(--mono);font-weight:700;font-size:9.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--acc);
+}
+.aeth-fiche.aeth-fiche .af-plc{font-size:13px;color:var(--enk)}
+.aeth-fiche.aeth-fiche .af-plc .l{
+  font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muet);font-weight:700;margin-right:6px;
+}
+.aeth-fiche.aeth-fiche .af-player-note{
+  margin:4px 0 0;width:100%;font-size:12px;line-height:1.65;color:var(--doux);font-style:italic;
+}
+.aeth-fiche.aeth-fiche .af-empty{font-family:var(--mono);font-size:11px;color:var(--muet);font-style:normal}
+
+/* ─── mode nuit du forum ─── */
+[data-color-scheme="dark"] .aeth-fiche.aeth-fiche{
+  --pap:#211E1B; --sable:#262220; --filet:#2E2925; --bord:#363029;
+  --enk:#EFEAE4; --txt:#D6CFC7; --doux:#A79E95; --muet:#8A8279;
+  box-shadow:0 1px 2px rgba(0,0,0,.25), 0 20px 46px -22px rgba(0,0,0,.6);
+}
+[data-color-scheme="dark"] .aeth-fiche.aeth-fiche .af-idlist > div{background:#241F1C}
+[data-color-scheme="dark"] .aeth-fiche.aeth-fiche .af-idlist > div:nth-child(even){background:#282320}
+[data-color-scheme="dark"] .aeth-fiche.aeth-fiche .af-histsec{background:#232019}
+[data-color-scheme="dark"] .aeth-fiche.aeth-fiche .af-trait{background:#121110;color:#D6CFC7}
+
+/* ─── petits écrans ─── */
+@media (max-width:700px){
+  .aeth-fiche.aeth-fiche .af-body{flex-direction:column}
+  .aeth-fiche.aeth-fiche .af-side{width:100%;border-right:none;border-bottom:1px solid var(--filet)}
+  .aeth-fiche.aeth-fiche .af-portrait{width:100%;height:320px}
+  .aeth-fiche.aeth-fiche .af-histrow{flex-direction:column}
+  .aeth-fiche.aeth-fiche .af-photo{width:100%;height:240px}
+  .aeth-fiche.aeth-fiche .af-name{font-size:32px}
+}
