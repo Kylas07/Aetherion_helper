@@ -1285,6 +1285,7 @@ textarea {
 .dexa-l {
   display: grid; grid-template-columns: 1fr auto auto auto; gap: 9px; align-items: center;
   padding: 7px 13px;
+  text-transform: uppercase;
   border-top: 1px solid var(--bordure, #E7E0D9);
   font-size: 12px;
 }
