@@ -7,11 +7,6 @@
 <link href="aetherion-unifie.css" rel="stylesheet" />
 </head>
 <body style="--g:#4F8A5B">
-<!-- MODE D'EMPLOI (pas besoin de savoir coder) :
-     • Changer un TEXTE  : récris-le entre les balises, ex <p>ton texte</p>.
-     • Changer une IMAGE : remplace le lien après  src="  par l'adresse de ton image.
-     • COULEUR DU GROUPE : la valeur après --g: dans <body> colore TOUTE la page.
-     • LE MENU DE GAUCHE est écrit une seule fois dans « menu.js ». -->
 <div class="guide" data-page="arpenteur">
 
     <div class="guide-corps">
@@ -71,11 +66,13 @@
                 <h2 class="guide-titre">Figures <em>importantes</em></h2>
                 <!-- PERSONNAGES : les ronds changent de fiche (même numéro après data-figure=" et id="). -->
                 <div class="grp-figures-nav">
-                    <button type="button" data-figure="arpenteur-pnj0" class="actif" title="Aude Verdier"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Aude Verdier"></button>
+                    <button type="button" data-figure="arpenteur-pnj0" class="actif" title="Aude Verdier"><img src="avatar-npc/ivy.png" alt="Aude Verdier"></button>
+                    <button type="button" data-figure="arpenteur-pnj1" class="actif" title="DOCTEUR IZANAGI"><img src="avatar-npc/dazai.png" alt="DOCTEUR IZANAGI"></button>
+                    <button type="button" data-figure="arpenteur-pnj2" class="actif" title="NOZOMI FUJIMOTO"><img src="avatar-npc/ark.png" alt="NOZOMI FUJIMOTO"></button>
                 </div>
                 <div class="grp-figure-panneau actif" id="arpenteur-pnj0">
                 <div class="grp-figure">
-                    <div class="portrait"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Portrait de Aude Verdier"></div>
+                    <div class="portrait"><img src="avatar-npc/ivy.png" alt="Portrait de Aude Verdier"></div>
                     <div class="fiche">
                         <header><b>Aude Verdier</b><small>Grande Arpenteuse</small></header>
                         <div class="meta"><span><b>Âge</b> début de la cinquantaine</span><span><b>Rang</b> S</span><span><b>Feat</b> Poison Ivy · DC Comics</span></div>
@@ -91,7 +88,47 @@
                     </div>
                 </div>
                 </div>
+                <!-- PNJ 2 : DOCTEUR IZANAGI -->
+                <div class="grp-figure-panneau" id="arpenteur-pnj1">
+                <div class="grp-figure">
+                    <div class="portrait"><img src="avatar-npc/dazai.png" alt="Portrait de Docteur Izanagi"></div>
+                    <div class="fiche">
+                        <header><b>Docteur Izanagi</b><small>Chercheur du Vide</small></header>
+                        <div class="meta"><span><b>Âge apparent</b> début de la trentaine</span><span><b>Rang</b> A</span><span><b>Feat</b> Dazai Osamu · Bungou Stray Dogs</span></div>
+                        <h4>Apparence</h4>
+                        <p>Pour le décrire, les gens parlent souvent d'une sorte de momie, à cause de son corps et de son visage recouvert de bandages. C'est vraiment ce qui le distingue le plus, car sinon il a tout de l'asiatique classique : les cheveux sombres en bataille, les yeux allant vers les couleurs noisette et une carnation pâle à force d'esquiver le soleil. Il est toujours avec son gros manteau noir et son long foulard de couleur écarlate. Sous ses vêtements et ses bandages se cachent des marbrures buguées, comme si son corps avait des textures défectueuses.</p>
+                        <h4>Avant d'être bloqué dans le jeu</h4>
+                        <p>Izanagi n'a pas beaucoup de souvenirs de sa vraie vie, ayant eu un accident de voiture qui l'a rendu complétement amnésique. Il a eu quelques mois pour apprendre à connaître cette vie qui lui semblait inconnu. On lui disait qu'il était un nerd, on lui disait qu'il ne jurait que les jeux vidéos. On lui disait qu'il n'arrêtait pas de parler d'un jeu Pokémon qui allait sortir... Donc le jeune homme avait tenté de voir ce qui avait tant passionné l'ancien lui. Il a testé le jeu et... Et bien on connait la suite.</p>
+                        <h4>Après</h4>
+                        <p>Lorsque le bug s'est produit, Izanagi a fait partie de ceux qui ont tenté la mort pour se déconnecter, mais plus par curiosité morbide que par désespoir. Mais de son côté, cela l'a juste téléporté dans une zone instable de l'étage 0, comme s'il avait respawn et glitché. Il a pu s'en sortir, mais cela n'a fait qu'empirer sa curiosité dangereuse et surtout cet oubli de soi dérangeant. L'homme n'a que faire de mourir, il est juste affreusement curieux. Il teste de tout, que ce soit sur les Pokémons que sur lui-même, tel un scientifique fou.</p>
+                        <p>Il se fait appeler Docteur, même s'il n'a pas de réelles connaissances en médecine. Cela est juste venu avec le temps, car c'était toujours le premier à venir examiner les survivants d'anomalies. Au sein des Arpenteurs, il est à la tête de l'équipe scientifique.</p>
+                        <h4>Ce qui le définit</h4>
+                        <p>Son équipe Pokémon consiste principalement à des outils pour ses recherches, tant qu'ils lui sont utiles, Izanagi les gardent. Mais dès qu'ils n'ont plus la moindre utilité, il les jette sans la moindre hésitation et passe à l'outil ou au cobaye suivant.</p>
+                        <div class="team"><small>Team</small><span>Métalosse · Neitram · Porygon-Z · Motisma · Roigada de Galar · Sepiatroce</span></div>
+                    </div>
+                </div>
+                </div>
 
+                <!-- PNJ 3 : NOZOMI FUJIMOTO -->
+                <div class="grp-figure-panneau" id="arpenteur-pnj2">
+                <div class="grp-figure">
+                    <div class="portrait"><img src="avatar-npc/ark.png" alt="Portrait de Nozomi Fujimoto"></div>
+                    <div class="fiche">
+                        <header><b>Nozomi Fujimoto</b><small>Chercheur du Vide</small></header>
+                        <div class="meta"><span><b>Âge apparent</b> la trentaine environs</span><span><b>Rang</b> A</span><span><b>Feat</b> Hoshiguma · Arknight</span></div>
+                        <h4>Apparence</h4>
+                        <p>Grande et élancée, cette jeune femme dégage une prestance calme et solide, presque irréelle, comme si le vacarme du monde glissait sans jamais l'atteindre. Une longue chevelure émeraude, nouée en une haute queue de cheval, cascade jusqu'au bas de son dos, où quelques mèches rebelles dansent au gré du vent. Une corne émerge de sa chevelure, renforçant son allure d'être surnaturel. Son visage aux traits fins est illuminé par des yeux ambrés, perçants et impassibles, dont le regard semble toujours perdu dans un horizon invisible. Sa tenue, à la garçonne, mêle avec élégance influences traditionnelles et esthétique futuriste. Une veste noire courte en cuir, ornée de motifs géométriques et de broderies, laisse apparaître son abdomen, tandis que des étoffes blanches et rouges rappellent la coupe d'un kimono revisité.</p>
+                        <h4>Avant d'être bloquée dans le jeu</h4>
+                        <p>Nozomi a grandi là où l'on apprend très tôt que personne ne viendra vous tendre la main. Fille des quartiers populaires, elle s'est forgée dans l'effort, les petits boulots et les responsabilités bien trop lourdes pour son âge. Chaque journée était consacrée à une seule ambition : rapporter de quoi soigner sa mère malade et offrir à sa petite sœur un quotidien un peu moins cruel que le sien. Elle n'a jamais cherché à être forte. Les circonstances l'ont exigé. Lorsque son père abandonna le foyer, Nozomi combla instinctivement le vide qu'il laissait derrière lui. Non par orgueil, mais parce qu'il fallait bien que quelqu'un tienne la maison debout. Peu à peu, elle adopta une allure plus sobre, des gestes plus francs, une voix plus assurée. Les vêtements pratiques remplacèrent les artifices, ses mains se couvrirent de callosités et son caractère se fit aussi solide que l'acier qu'elle maniait parfois. Beaucoup la comparaient à un garçon ; elle n'y prêtait guère attention. Ce n'était ni une identité, ni un rôle : seulement la conséquence d'une vie où la douceur avait rarement eu sa place. Pourtant, derrière cette façade robuste se cachait un cœur d'une générosité presque déraisonnable. Nozomi portait les fardeaux des autres avec une simplicité désarmante, préférant encaisser les coups plutôt que de voir ceux qu'elle aimait vaciller. Protectrice jusqu'à l'oubli d'elle-même, elle avançait avec une détermination silencieuse, convaincue qu'un véritable pilier n'a pas besoin d'être remarqué pour empêcher un toit de s'effondrer.</p>
+                        <h4>Après</h4>
+                        <p>La Vigie du Seuil lui a ouvert ses portes. Nozomi les a refermées sans le moindre regret. Elle n'a jamais supporté les ordres, ni les chaînes invisibles qu'imposent les hiérarchies. Recevoir des directives, attendre une autorisation, suivre un itinéraire déjà tracé… tout cela lui donne l'impression d'étouffer. Sa place n'est pas derrière un chef. Sa place est devant les autres, là où personne n'a encore posé le pied. Alors les Arpenteur du vide lui ont donné une voie à suivre. Explorer est devenu sa vocation. Cartographier les terres inconnues, découvrir des passages oubliés, défricher des sentiers que d'autres emprunteront un jour en toute sécurité. Là où beaucoup voient des ruines, elle cherche des raccourcis. Là où les monstres rôdent, elle cherche une issue. Chaque cicatrice gravée sur son corps est le prix d'un chemin qu'elle a rendu un peu moins dangereux pour ceux qui viendront après elle.</p>
+                        <h4>Ce qui la définit</h4>
+                        <p>Elle prétend aimer la solitude. En réalité, elle s'en est accommodée. Car Nozomi porte une blessure qu'aucun combat ne pourra jamais refermer. Elle a vu sa petite sœur mourir avec une brutalité qui ne lui a laissé ni le temps de réagir, ni celui de lui dire adieu. Ce jour-là, elle a compris qu'il existait une chose contre laquelle sa force ne servirait jamais : l'injustice du destin. Depuis, elle refuse obstinément le rôle de protectrice. Non parce qu'elle manque de courage, mais parce qu'elle ne croit plus être capable de préserver ceux auxquels elle s'attache. Alors elle choisit une autre mission. Préparer le terrain. Ouvrir la voie. Éliminer les obstacles avant que d'autres ne s'y heurtent. C'est sa manière de demander pardon à une sœur qu'elle n'a pas su sauver, un pèlerinage silencieux où chaque kilomètre parcouru ressemble à un acte de repentance. Ses Pokémon reflètent cette philosophie. Aucun n'a été choisi pour sa beauté ou son prestige. Ils sont des compagnons de terrain, des survivants, des bâtisseurs. Des créatures capables de franchir les reliefs les plus hostiles, de déplacer des blocs, de résister aux intempéries et de tenir bon lorsque tout menace de s'effondrer. Là où certains recherchent la puissance pour vaincre, Nozomi recherche avant tout des épaules solides sur lesquelles le monde peut encore s'appuyer.</p>
+                        <div class="team"><small>Team</small><span>Monthracite · Bourrinos · Minotaupe · Corvaillus · Hachécateur · Gigansel</span></div>
+                    </div>
+                </div>
+                </div>
+                 
             </div>
         </div>
 
