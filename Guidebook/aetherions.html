@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pokémons Aetherions — Guide Aetherion</title>
+<link href="aetherion-unifie.css" rel="stylesheet" />
+</head>
+<body>
+<!-- MODE D'EMPLOI
+     · AJOUTER UN ONGLET (un nouveau Pokémon Aetherion) — 2 étapes :
+         1) dans la barre « LES ONGLETS » plus bas, ajoute une ligne
+            <button class="dexa-onglet" data-onglet="monpokemon">Mon Pokémon</button>
+         2) copie ENTIÈREMENT un bloc de fiche existant (de son titre en
+            commentaire jusqu'à la ligne qui referme le panneau), colle-le
+            à la suite des autres, puis change dans la copie :
+              · id="onglet-monpokemon"   (le même mot que data-onglet)
+              · retire le mot  actif  de class="dexa-panneau actif"
+                (un seul panneau doit être « actif » : celui affiché au départ)
+              · le nom, les images, les types, les tableaux
+              · --dexa: #COULEUR  = la couleur d'accent de la fiche
+ -->
+<div class="guide" data-page="aetherions">
+
+    <div class="guide-corps">
+        <div class="guide-page actif" id="aetherions">
+
+            <!-- BANNIÈRE -->
+            <div class="guide-hero">
+                <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                <div class="guide-hero-titre"><small>— 06. Pokémons</small><b>Pokémons Aetherions</b></div>
+                <span class="guide-hero-num">06</span>
+            </div>
+
+            <!-- ▼ PARTIE EXPLICATIVE ▼ -->
+            <div class="guide-section">
+                <h2 class="guide-titre">Qu'est-ce qu'un <em>Pokémon Aetherion</em> ?</h2>
+
+                <div class="guide-bloc">
+                    <p>Les Pokémon Aetherions sont des entités anormales, directement issues du code source du monde dans lequel les joueurs sont enfermés. Ce ne sont pas des Pokémon "classiques" au sens propre : ce sont des fragments de données corrompues, des reliquats de programmation ayant pris une forme différente.</p>
+                    <p>Visuellement, un Aetherion peut évoquer - parfois de façon troublante, comme un pokémon normal. Même silhouette, mêmes proportions, parfois les mêmes attitudes. Mais c'est une illusion : leur typage n'a strictement rien à voir avec celui de l'espèce dont ils semblent issus. Un Aetherion à l'apparence d'un Pokémon Feu pourra tout aussi bien être Spectre/Acier, ou Psy/Glace - sans aucune cohérence apparente avec son apparence.</p>
+                    <p>Cette dissonance entre la forme et la nature profonde du Pokémon est volontaire : elle traduit la corruption du code qui les a fait naître. Rien chez eux n'est stable, rien n'est garanti.</p>
+                </div>
+
+                <div class="guide-bloc">
+                    <b>Origine</b>
+                    <p>On ignore encore si les Aetherions sont :</p>
+                    <ul>
+                        <li>des résidus d'anciennes données du monde/prison, mal recompilées,</li>
+                        <li>des créations volontaires du système lui-même, à des fins inconnues,</li>
+                        <li>ou des anomalies spontanées, nées de la dégradation progressive du code.</li>
+                    </ul>
+                    <p>Cette zone d'ombre est intentionnelle et pourra être exploitée narrativement au fil des évènements.</p>
+                </div>
+
+                <div class="guide-bloc alerte">
+                    <b>Capture et disponibilité</b>
+                    <p>Les Pokémon Aetherions ne sont pas capturables en exploration libre. Leur apparition est strictement conditionnée à la mise en place d'un évènement dédié par le Staff ou lors du changement de la horde.</p>
+                    <p>Ils n'apparaissent jamais naturellement dans les zones classiques du jeu. En dehors de ces évènements, aucune capture, dressage ou obtention d'un Aetherion ne sera validée par la modération, quelle qu'en soit la justification en fiche ou en RP.</p>
+                </div>
+            </div>
+
+            <!-- ▼ LES FICHES, EN ONGLETS ▼ -->
+            <div class="guide-section">
+                <h2 class="guide-titre">Les <em>formes connues</em></h2>
+
+                <!-- LES ONGLETS : une ligne par onglet.
+                     data-onglet doit reprendre le mot qui suit « onglet- »
+                     dans l'id du panneau correspondant. -->
+                <div class="dexa-onglets">
+                    <button class="dexa-onglet actif" data-onglet="medhyena">medhyena d'aetherion</button>
+                    <button class="dexa-onglet" data-onglet="wattouat">wattouat d'aetherion</button>
+                    <button class="dexa-onglet" data-onglet="lixy">lixy d'aetherion</button>
+                </div>
+
+                <!-- ═══ FICHE : medhyena ═══ -->
+                <div class="dexa-panneau actif" id="onglet-medhyena">
+                    <div class="dexa" style="--dexa: #a07160;">
+
+                        <div class="dexa-nom">medhyena <span>et son évolution</span></div>
+
+                        <div class="dexa-haut">
+                            <!-- SPRITES : un <img> par forme -->
+                            <div class="dexa-sprites">
+                                <img src="https://2img.net/i.imgur.com/uNVOkwy.png" alt="">
+                                <img src="https://2img.net/i.imgur.com/IT8GHQW.png" alt="">
+                                <img src="https://2img.net/i.imgur.com/TzflT2N.png" alt="">
+                            </div>
+                            <div class="dexa-cote">
+                                <!-- TYPES : un <img> par type -->
+                                <div class="dexa-types">
+                                    <img src="https://www.pokepedia.fr/images/d/d6/Miniature_Type_Sol_EB.png" alt="Sol">
+                                    <img src="https://www.pokepedia.fr/images/d/d3/Miniature_Type_Roche_EB.png" alt="Roche">
+                                </div>
+                                <div class="dexa-info"><span>evolue</span>Grahyena au niv.30</div>
+                                <div class="dexa-info"><span>talent</span>Intimidation ou Baigne Sable</div>
+                            </div>
+                        </div>
+
+                        <!-- CARACTÉRISTIQUES -->
+                        <div class="dexa-carac">
+                            <div><span>taille (M)</span>0,7 / 1,2</div>
+                            <div><span>poids (KG)</span>20 / 45</div>
+                            <div><span>groupe oeuf</span>Terrestre</div>
+                            <div><span>taux sexe</span>50 / 50</div>
+                        </div>
+
+                        <!-- DESCRIPTION -->
+                        <div class="dexa-desc">
+                            <p>Petit charognard des terres arides, Médhyèna erre dans les canyons poussiéreux et les plaines rocheuses à la recherche de restes abandonnés. Son pelage rêche est mêlé de fragments minéraux naturellement incrustés dans sa peau, formant une sorte d’armure primitive. Les os et pierres qu’il porte autour du cou ne sont pas décoratifs : ils servent à intimider ses rivaux et à affirmer sa place dans la meute.</p>
+                            <p>Très territorial malgré sa petite taille, il creuse des terriers dans les falaises friables où il stocke nourriture et objets brillants déterrés dans le sable. Lorsqu’il se sent menacé, il frappe le sol de ses pattes pour provoquer de petites secousses et soulever un nuage de poussière avant d’attaquer.</p>
+                        </div>
+
+                        <!-- TABLEAUX D'ATTAQUES -->
+                        <div class="dexa-tables">
+                        <div class="dexa-table">
+                            <div class="dexa-th">attaques par niveaux</div>
+                            <div class="dexa-l"><b>charge</b><i class="t-normal">normal</i><u>40 PUI</u><s>départ</s></div>
+                            <div class="dexa-l"><b>groz'yeux</b><i class="t-normal">normal</i><u>100% PREC</u><s>départ</s></div>
+                            <div class="dexa-l"><b>arrogance</b><i class="t-tenebres">ténèbres</i><u>20 PUI</u><s>niv.05</s></div>
+                            <div class="dexa-l"><b>Vive-Attaque</b><i class="t-normal">normal</i><u>40 PUI</u><s>niv. 09</s></div>
+                            <div class="dexa-l"><b>jet pierre</b><i class="t-roche">roche</i><u>40 PUI</u><s>niv.13</s></div>
+                            <div class="dexa-l"><b>morsure</b><i class="t-tenebres">ténèbres</i><u>60 PUI</u><s>niv.17</s></div>
+                            <div class="dexa-l"><b>grincement</b><i class="t-normal">normal</i><u>85% PREC</u><s>niv.21</s></div>
+                            <div class="dexa-l"><b>tunnel</b><i class="t-sol">sol</i><u>80 PUI</u><s>niv.25</s></div>
+                            <div class="dexa-l"><b>tombroche</b><i class="t-roche">roche</i><u>60 PUI</u><s>niv.29</s></div>
+                            <div class="dexa-l"><b>roulade</b><i class="t-roche">roche</i><u>30 PUI</u><s>niv.33</s></div>
+                            <div class="dexa-l"><b>mâchouille</b><i class="t-tenebres">ténèbres</i><u>80 PUI</u><s>niv.37</s></div>
+                            <div class="dexa-l"><b>hurlement</b><i class="t-normal">normal</i><u>-- PREC</u><s>niv. 41</s></div>
+                            <div class="dexa-l"><b>tempête de sable</b><i class="t-roche">roche</i><u>-- PREC</u><s>niv.45</s></div>
+                            <div class="dexa-l"><b>piège de roc</b><i class="t-roche">roche</i><u>40 PUI</u><s>niv.49</s></div>
+                            <div class="dexa-l"><b>séisme</b><i class="t-sol">sol</i><u>100 PUI</u><s>niv.53</s></div>
+                            <div class="dexa-l"><b>lame de roc</b><i class="t-roche">roche</i><u>100 PUI</u><s>niv.57</s></div>
+                            <div class="dexa-l"><b>damoclès</b><i class="t-normal">normal</i><u>120 PUI</u><s>niv. 61</s></div>
+                        </div>
+                        <div class="dexa-table">
+                            <div class="dexa-th">attaques par CT</div>
+                            <div class="dexa-l"><b>BELIER</b><i class="t-normal">normal</i><u>90 PUI</u><s>CT001</s></div>
+                            <div class="dexa-l"><b>COUDBOUE</b><i class="t-sol">sol</i><u>20 PUI</u><s>CT005</s></div>
+                            <div class="dexa-l"><b>CROCS FEU</b><i class="t-feu">feu</i><u>65 PUI</u><s>CT008</s></div>
+                            <div class="dexa-l"><b>CROCS ECLAIR</b><i class="t-electrik">electrik</i><u>65 PUI</u><s>CT009</s></div>
+                            <div class="dexa-l"><b>ABOIEMENT</b><i class="t-tenebres">ténèbres</i><u>55 PUI</u><s>CT030</s></div>
+                            <div class="dexa-l"><b>METEORES</b><i class="t-normal">normal</i><u>60 PUI</u><s>CT032</s></div>
+                            <div class="dexa-l"><b>ZÉNITH</b><i class="t-feu">feu</i><u>-- PREC</u><s>CT049</s></div>
+                            <div class="dexa-l"><b>DANSE PLUIE</b><i class="t-eau">eau</i><u>-- PREC</u><s>CT050</s></div>
+                            <div class="dexa-l"><b>CASSE BRIQUES</b><i class="t-combat">combat</i><u>75 PUI</u><s>CT058</s></div>
+                            <div class="dexa-l"><b>PSYCHO CROC</b><i class="t-psy">psy</i><u>85 PUI</u><s>CT063</s></div>
+                            <div class="dexa-l"><b>BOULE ROC</b><i class="t-roche">roche</i><u>25 PUI</u><s>CT076</s></div>
+                            <div class="dexa-l"><b>TETE DE FER</b><i class="t-acier">acier</i><u>80 PUI</u><s>CT099</s></div>
+                            <div class="dexa-l"><b>ANTI-AIR</b><i class="t-roche">roche</i><u>50 PUI</u><s>CT179</s></div>
+                            <div class="dexa-l"><b>CALINERIE</b><i class="t-fee">fee</i><u>90 PUI</u><s>CT127</s></div>
+                            <div class="dexa-l"><b>LASER MÉTÉORE</b><i class="t-roche">roche</i><u>120 PUI</u><s>CT220</s></div>
+                        </div>
+                        <div class="dexa-table">
+                            <div class="dexa-th">attaques par reproduction</div>
+                            <div class="dexa-l"><b>mania</b><i class="t-normal">normal</i><u>120 PUI</u></div>
+                            <div class="dexa-l"><b>megaphone</b><i class="t-normal">normal</i><u>90 PUI</u></div>
+                            <div class="dexa-l"><b>psykoudboul</b><i class="t-psy">psy</i><u>80 PUI</u></div>
+                            <div class="dexa-l"><b>Crocs Givre</b><i class="t-glace">glace</i><u>65 PUI</u></div>
+                            <div class="dexa-l"><b>Bâillement</b><i class="t-normal">normal</i><u>-- PREC</u></div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ═══ FICHE : wattouat ═══ -->
+                <div class="dexa-panneau" id="onglet-wattouat">
+                    <div class="dexa" style="--dexa: #7AAD6D;">
+
+                        <div class="dexa-nom">wattouat <span>et ses évolutions</span></div>
+
+                        <div class="dexa-haut">
+                            <!-- SPRITES : un <img> par forme -->
+                            <div class="dexa-sprites">
+                                <img src="https://2img.net/i.imgur.com/LxLK8li.png" alt="">
+                                <img src="https://2img.net/i.imgur.com/gTKR2nF.png" alt="">
+                                <img src="https://2img.net/i.imgur.com/Bg8o5L4.png" alt="">
+                            </div>
+                            <div class="dexa-cote">
+                                <!-- TYPES : un <img> par type -->
+                                <div class="dexa-types">
+                                    <img src="https://www.pokepedia.fr/images/thumb/3/35/Miniature_Type_Plante_EB.png/70px-Miniature_Type_Plante_EB.png" alt="Plante">
+                                    <img src="https://www.pokepedia.fr/images/thumb/3/3e/Miniature_Type_F%C3%A9e_EB.png/70px-Miniature_Type_F%C3%A9e_EB.png" alt="Fée">
+                                </div>
+                                <div class="dexa-info"><span>evolue</span>Lainergie au niv.15 <br>Pharamp au niv. 35</div>
+                                <div class="dexa-info"><span>talent</span>Herbivore ou Récolte</div>
+                            </div>
+                        </div>
+
+                        <!-- CARACTÉRISTIQUES -->
+                        <div class="dexa-carac">
+                            <div><span>taille (M)</span>0,6 / 0,8 / 1,4</div>
+                            <div><span>poids (KG)</span>8 / 14 / 68</div>
+                            <div><span>groupe oeuf</span>Terrestre</div>
+                            <div><span>taux sexe</span>50 / 50</div>
+                        </div>
+
+                        <!-- DESCRIPTION -->
+                        <div class="dexa-desc">
+                            <p>Paisible habitant des prairies fleuries et des clairières baignées de lumière, ce Wattouat régional passe ses journées à brouter de jeunes pousses tout en dispersant un pollen féerique porté par sa laine. Son épais pelage est parsemé de mousses, de fleurs sauvages et de petites feuilles qui y poussent naturellement, faisant de lui un véritable refuge pour de nombreux Pokémon Insecte.</p>
+                            <p>D'un tempérament calme et bienveillant, il protège instinctivement les plantes qui l'entourent. Lorsqu'il perçoit un danger, il secoue sa toison pour libérer une pluie de spores lumineuses qui désorientent les intrus, offrant aux plus petits Pokémon le temps de s'enfuir ou de se cacher parmi la végétation.</p>
+                        </div>
+
+                        <!-- TABLEAUX D'ATTAQUES -->
+                        <div class="dexa-tables">
+                        <div class="dexa-table">
+                            <div class="dexa-th">attaques par niveaux</div>
+                            <div class="dexa-l"><b>charge</b><i class="t-normal">normal</i><u>40 PUI</u><s>départ</s></div>
+                            <div class="dexa-l"><b>Rugissement</b><i class="t-normal">normal</i><u>100% PREC</u><s>départ</s></div>
+                            <div class="dexa-l"><b>Vol-Vie</b><i class="t-plante">plante</i><u>30 PUI</u><s>niv.04</s></div>
+                            <div class="dexa-l"><b>Doux Parfum</b><i class="t-normal">normal</i><u>100% PREC</u><s>niv.08</s></div>
+                            <div class="dexa-l"><b>Vampi-Graine</b><i class="t-plante">plante</i><u>15 PUI</u><s>niv.11</s></div>
+                            <div class="dexa-l"><b>Croissance</b><i class="t-plante">plante</i><u>-- PREC</u><s>niv.15</s></div>
+                            <div class="dexa-l"><b>Charme</b><i class="t-fee">Fée</i><u>100% PREC</u><s>niv.19</s></div>
+                            <div class="dexa-l"><b>Méga-Sangsue</b><i class="t-plante">plante</i><u>40 PUI</u><s>niv.23</s></div>
+                            <div class="dexa-l"><b>Vent Féérique</b><i class="t-fee">Fée</i><u>40 PUI</u><s>niv.27</s></div>
+                            <div class="dexa-l"><b>Cotogarde</b><i class="t-plante">plante</i><u>-- PREC</u><s>niv.31</s></div>
+                            <div class="dexa-l"><b>Glas de Soin</b><i class="t-normal">normal</i><u>-- PREC</u><s>niv.35</s></div>
+                            <div class="dexa-l"><b>Éco-Sphère</b><i class="t-plante">plante</i><u>90 PUI</u><s>niv.39</s></div>
+                            <div class="dexa-l"><b>Voix Enjôleuses</b><i class="t-fee">Fée</i><u>40 PUI</u><s>niv.43</s></div>
+                            <div class="dexa-l"><b>Champ Herbu</b><i class="t-plante">plante</i><u>-- PREC</u><s>niv.47</s></div>
+                            <div class="dexa-l"><b>Pouvoir Lunaire</b><i class="t-fee">Fée</i><u>95 PUI</u><s>niv.51</s></div>
+                            <div class="dexa-l"><b>Giga-Sansgue</b><i class="t-plante">plante</i><u>75 PUI</u><s>niv.55</s></div>
+                            <div class="dexa-l"><b>Rayon Lune</b><i class="t-fee">Fée</i><u>-- PREC</u><s>niv.59</s></div>
+                        </div>
+                        <div class="dexa-table">
+                            <div class="dexa-th">attaques par CT</div>
+                            <div class="dexa-l"><b>ABRI</b><i class="t-normal">normal</i><u>-- PREC</u><s>CT007</s></div>
+                            <div class="dexa-l"><b>Désherbaffe</b><i class="t-plante">plante</i><u>50 PUI</u><s>CT020</s></div>
+                            <div class="dexa-l"><b>METEORES</b><i class="t-normal">normal</i><u>60 PUI</u><s>CT032</s></div>
+                            <div class="dexa-l"><b>FEUILLE MAGIK</b><i class="t-plante">plante</i><u>60 PUI</u><s>CT033</s></div>
+                            <div class="dexa-l"><b>VAMPIBAISER</b><i class="t-fee">Fée</i><u>50 PUI</u><s>CT037</s></div>
+                            <div class="dexa-l"><b>ZÉNITH</b><i class="t-feu">feu</i><u>-- PREC</u><s>CT049</s></div>
+                            <div class="dexa-l"><b>DANSE PLUIE</b><i class="t-eau">eau</i><u>-- PREC</u><s>CT050</s></div>
+                            <div class="dexa-l"><b>FAUX CHAGE</b><i class="t-normal">normal</i><u>40 PUI</u><s>CT057</s></div>
+                            <div class="dexa-l"><b>BLABLA DODO</b><i class="t-normal">normal</i><u>-- PREC</u><s>CT070</s></div>
+                            <div class="dexa-l"><b>Canon Graine</b><i class="t-plante">plante</i><u>80 PUI</u><s>CT071</s></div>
+                            <div class="dexa-l"><b>ÉCLAT MAGIQUE</b><i class="t-fee">Fée</i><u>80 PUI</u><s>CT079</s></div>
+                            <div class="dexa-l"><b>AMNÉSIE</b><i class="t-psy">psy</i><u>-- PREC</u><s>CT128</s></div>
+                            <div class="dexa-l"><b>RELAIS</b><i class="t-normal">normal</i><u>-- PREC</u><s>CT132</s></div>
+                            <div class="dexa-l"><b>CHAMP BRUMEUX</b><i class="t-fee">Fée</i><u>-- PREC</u><s>CT139</s></div>
+                            <div class="dexa-l"><b>TEMPÊTE VERTE</b><i class="t-plante">plante</i><u>130 PUI</u><s>CT159</s></div>
+                            <div class="dexa-l"><b>TEMPÊTE FLORALE</b><i class="t-plante">plante</i><u>90 PUI</u><s>CT206</s></div>
+                        </div>
+                        <div class="dexa-table">
+                            <div class="dexa-th">attaques par reproduction</div>
+                            <div class="dexa-l"><b>Aromathérapie</b><i class="t-plante">plante</i><u>-- PREC</u></div>
+                            <div class="dexa-l"><b>Pouvoir Antique</b><i class="t-roche">roche</i><u>60 pui</u></div>
+                            <div class="dexa-l"><b>Synthèse</b><i class="t-plante">plante</i><u>-- PREC</u></div>
+                            <div class="dexa-l"><b>Voeu</b><i class="t-normal">normal</i><u>100% PREC</u></div>
+                            <div class="dexa-l"><b>Regard Touchant</b><i class="t-fee">Fée</i><u>100% PREC</u></div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ═══ FICHE : lixy ═══ -->
+                <div class="dexa-panneau" id="onglet-lixy">
+                    <div class="dexa" style="--dexa: #94BFC5;">
+
+                        <div class="dexa-nom">lixy <span>et ses évolutions</span></div>
+
+                        <div class="dexa-haut">
+                            <!-- SPRITES : un <img> par forme -->
+                            <div class="dexa-sprites">
+                                <img src="https://2img.net/i.imgur.com/HeUA4er.png" alt="">
+                                <img src="https://2img.net/i.imgur.com/XlinK97.png" alt="">
+                                <img src="https://2img.net/i.imgur.com/LffIIoW.png" alt="">
+                            </div>
+                            <div class="dexa-cote">
+                                <!-- TYPES : un <img> par type -->
+                                <div class="dexa-types">
+                                    <img src="https://www.pokepedia.fr/images/thumb/7/7e/Miniature_Type_Glace_EB.png/70px-Miniature_Type_Glace_EB.png" alt="Glace">
+                                    <img src="https://www.pokepedia.fr/images/thumb/f/f4/Miniature_Type_T%C3%A9n%C3%A8bres_EB.png/70px-Miniature_Type_T%C3%A9n%C3%A8bres_EB.png" alt="Ténèbres">
+                                </div>
+                                <div class="dexa-info"><span>evolue</span>Luxio au niv.15 <br>Luxray au niv. 30</div>
+                                <div class="dexa-info"><span>talent</span>Intimidation ou Rivalité</div>
+                            </div>
+                        </div>
+
+                        <!-- CARACTÉRISTIQUES -->
+                        <div class="dexa-carac">
+                            <div><span>taille (M)</span>0,6 / 1,0 / 1,5</div>
+                            <div><span>poids (KG)</span>9,5 / 34 / 49</div>
+                            <div><span>groupe oeuf</span>Terrestre</div>
+                            <div><span>taux sexe</span>50 / 50</div>
+                        </div>
+
+                        <!-- DESCRIPTION -->
+                        <div class="dexa-desc">
+                            <p>Petit prédateur des toundras et forêts givrées, Lixy erre dans l'obscurité des sous-bois enneigés à la recherche de proies endormies. Son pelage sombre, parsemé de reflets bleutés, lui permet de se fondre dans les ombres des nuits polaires. Les motifs qui zèbrent son corps ne sont pas de simples marques : ils luisent faiblement au clair de lune, un phénomène encore mal compris qui semble lié à sa capacité à emmagasiner le froid.</p>
+                            <p>Discret et méfiant, il évite les confrontations directes tant qu'il n'a pas atteint sa maturité. Lorsqu'il se sent traqué, Lixy peut figer l'air autour de lui en une fraction de seconde, recouvrant le sol de givre pour ralentir ses poursuivants. On raconte que dans les meutes les plus organisées, les Lixy les plus jeunes sont chargés de repérer les proies la nuit, avant de laisser les adultes s'en charger à l'aube.</p>
+                        </div>
+
+                        <!-- TABLEAUX D'ATTAQUES -->
+                        <div class="dexa-tables">
+                        <div class="dexa-table">
+                            <div class="dexa-th">attaques par niveaux</div>
+                            <div class="dexa-l"><b>charge</b><i class="t-normal">normal</i><u>40 PUI</u><s>départ</s></div>
+                            <div class="dexa-l"><b>rugissement</b><i class="t-normal">normal</i><u>100% PREC</u><s>départ</s></div>
+                            <div class="dexa-l"><b>poudreuse</b><i class="t-glace">glace</i><u>40 PUI</u><s>niv.05</s></div>
+                            <div class="dexa-l"><b>grimace</b><i class="t-normal">normal</i><u>100% PREC</u><s>niv.08</s></div>
+                            <div class="dexa-l"><b>morsure</b><i class="t-tenebres">ténèbres</i><u>60 PUI</u><s>niv.12</s></div>
+                            <div class="dexa-l"><b>éclats glace</b><i class="t-glace">glace</i><u>40 PUI</u><s>niv.16</s></div>
+                            <div class="dexa-l"><b>provoc</b><i class="t-tenebres">ténèbres</i><u>100% PREC</u><s>niv.20</s></div>
+                            <div class="dexa-l"><b>coup bas</b><i class="t-tenebres">ténèbres</i><u>70 PUI</u><s>niv.24</s></div>
+                            <div class="dexa-l"><b>vent glace</b><i class="t-glace">glace</i><u>55 PUI</u><s>niv.28</s></div>
+                            <div class="dexa-l"><b>crocs givre</b><i class="t-glace">glace</i><u>65 PUI</u><s>niv.32</s></div>
+                            <div class="dexa-l"><b>regard noir</b><i class="t-normal">normal</i><u>-- PREC</u><s>niv.36</s></div>
+                            <div class="dexa-l"><b>mâchouille</b><i class="t-tenebres">ténèbres</i><u>80 PUI</u><s>niv.40</s></div>
+                            <div class="dexa-l"><b>onde boréale</b><i class="t-glace">glace</i><u>65 PUI</u><s>niv.44</s></div>
+                            <div class="dexa-l"><b>hurlement</b><i class="t-normal">normal</i><u>-- PREC</u><s>niv. 48</s></div>
+                            <div class="dexa-l"><b>avalanche</b><i class="t-glace">glace</i><u>60 PUI</u><s>niv.52</s></div>
+                            <div class="dexa-l"><b>assurance</b><i class="t-tenebres">ténèbres</i><u>60 PUI</u><s>niv.56</s></div>
+                            <div class="dexa-l"><b>blizzard</b><i class="t-glace">glace</i><u>110 PUI</u><s>niv.60</s></div>
+                        </div>
+                        <div class="dexa-table">
+                            <div class="dexa-th">attaques par CT</div>
+                            <div class="dexa-l"><b>BELIER</b><i class="t-normal">normal</i><u>90 PUI</u><s>CT001</s></div>
+                            <div class="dexa-l"><b>CROCS FEU</b><i class="t-feu">feu</i><u>65 PUI</u><s>CT008</s></div>
+                            <div class="dexa-l"><b>CROCS ECLAIR</b><i class="t-electrik">electrik</i><u>65 PUI</u><s>CT009</s></div>
+                            <div class="dexa-l"><b>ABOIEMENT</b><i class="t-tenebres">ténèbres</i><u>55 PUI</u><s>CT030</s></div>
+                            <div class="dexa-l"><b>GRIFFE ACIER</b><i class="t-acier">acier</i><u>50 PUI</u><s>CT031</s></div>
+                            <div class="dexa-l"><b>TÉNACITÉ</b><i class="t-normal">normal</i><u>-- PREC</u><s>CT047</s></div>
+                            <div class="dexa-l"><b>DANSE PLUIE</b><i class="t-eau">eau</i><u>-- PREC</u><s>CT050</s></div>
+                            <div class="dexa-l"><b>CHUTE DE NEIGE</b><i class="t-glace">glace</i><u>-- PREC</u><s>CT052</s></div>
+                            <div class="dexa-l"><b>TRICHERIE</b><i class="t-tenebres">ténèbres</i><u>95 PUI</u><s>CT062</s></div>
+                            <div class="dexa-l"><b>CRYO-PIROUETTE</b><i class="t-glace">glace</i><u>80 PUI</u><s>CT124</s></div>
+                            <div class="dexa-l"><b>LASER GLACE</b><i class="t-glace">glace</i><u>90 PUI</u><s>CT135</s></div>
+                            <div class="dexa-l"><b>MACHINATION</b><i class="t-tenebres">ténèbres</i><u>100% PREC</u><s>CT140</s></div>
+                            <div class="dexa-l"><b>DAMOCLÈS</b><i class="t-normal">normal</i><u>120 PUI</u><s>CT204</s></div>
+                            <div class="dexa-l"><b>TRIPLE AXEL</b><i class="t-glace">glace</i><u>20 PUI</u><s>CT1212</s></div>
+                            <div class="dexa-l"><b>EXÉCU-SON</b><i class="t-tenebres">ténèbres</i><u>80 PUI</u><s>CT221</s></div>
+                        </div>
+                        <div class="dexa-table">
+                            <div class="dexa-th">attaques par reproduction</div>
+                            <div class="dexa-l"><b>griffe ombre</b><i class="t-spectre">spectre</i><u>70 PUI</u></div>
+                            <div class="dexa-l"><b>tranche-nuit</b><i class="t-tenebres">ténèbres</i><u>70 PUI</u></div>
+                            <div class="dexa-l"><b>stalactite</b><i class="t-glace">glace</i><u>85 PUI</u></div>
+                            <div class="dexa-l"><b>vive-attaque</b><i class="t-normal">normal</i><u>40 PUI</u></div>
+                            <div class="dexa-l"><b>double pied</b><i class="t-combat">combat</i><u>30 PUI</u></div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="menu.js"></script>
+<script>
+/* Les onglets des fiches : au clic, on affiche le panneau correspondant.
+   Rien à modifier ici quand tu ajoutes un onglet. */
+document.querySelectorAll('.dexa-onglet').forEach(function (bouton) {
+  bouton.addEventListener('click', function () {
+    document.querySelectorAll('.dexa-onglet').forEach(function (b) { b.classList.remove('actif'); });
+    document.querySelectorAll('.dexa-panneau').forEach(function (p) { p.classList.remove('actif'); });
+    bouton.classList.add('actif');
+    var cible = document.getElementById('onglet-' + bouton.dataset.onglet);
+    if (cible) cible.classList.add('actif');
+  });
+});
+</script>
+</body>
+</html>
