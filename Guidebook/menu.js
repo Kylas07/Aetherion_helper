@@ -1,17 +1,3 @@
-/* ╔═══════════════════════════════════════════════════════════════════════╗
-   ║  SOMMAIRE GLOBAL DU GUIDE  —  LE SEUL FICHIER À MODIFIER POUR LE MENU  ║
-   ╠═══════════════════════════════════════════════════════════════════════╣
-   ║  Le menu de gauche de TOUTES les pages est écrit ici, une seule fois.  ║
-   ║                                                                       ║
-   ║  • RENOMMER un onglet   : change le texte entre les 'guillemets'.      ║
-   ║  • AJOUTER un onglet    : copie une ligne { id: …, label: … } et       ║
-   ║    crée le fichier « id.html » (copie une page existante).             ║
-   ║  • SUPPRIMER un onglet  : efface sa ligne (et son fichier .html).      ║
-   ║  • CHANGER LA COULEUR   : la valeur « couleur » des groupes.           ║
-   ║                                                                       ║
-   ║  Le « id » doit être exactement le nom du fichier, sans .html.         ║
-   ╚═══════════════════════════════════════════════════════════════════════╝ */
-
 var GUIDE_SOMMAIRE = [
 
   { categorie: 'Accueil', pages: [
@@ -25,7 +11,8 @@ var GUIDE_SOMMAIRE = [
     { id: 'chrono-reelle',    label: 'Chronologie réelle' },
     { id: 'chrono-jeu',       label: 'Chronologie du jeu' },
     { id: 'vivre',            label: 'Vivre à Aetherion' },
-    { id: 'specificite',      label: 'Spécificité du jeu' }
+    { id: 'specificite',      label: 'Spécificité du jeu' },
+    { id: 'feat',             label: 'Changement de feat' }
   ]},
 
   { categorie: 'Cartes', pages: [
@@ -54,6 +41,7 @@ var GUIDE_SOMMAIRE = [
 
   { categorie: 'Pokémons', pages: [
     { id: 'generalite',       label: 'Généralité' },
+    { id: 'aetherions',       label: 'Pokémons Aetherions' },
     { id: 'pkmn-progression', label: 'Progression' },
     { id: 'attaques',         label: 'Attaques' },
     { id: 'pkmn-talents',     label: 'Talents' },
@@ -67,13 +55,8 @@ var GUIDE_SOMMAIRE = [
 var GUIDE_TITRE      = 'Guide <em>Aetherion</em>';
 var GUIDE_SOUS_TITRE = 'les annexes du forum';
 var GUIDE_PIED       = 'Guide — équipe Aetherion';
-var GUIDE_LIEN_FORUM = '/forum';          /* adresse du bouton « Revenir sur le forum » */
+var GUIDE_LIEN_FORUM = '/forum';  
 
-/* ───────────────────────────────────────────────────────────────────────
-   À partir d'ici, c'est la mécanique : normalement rien à modifier.
-   Elle construit le menu, puis change de page SANS RECHARGEMENT
-   (le contenu est remplacé en fondu, le menu ne bouge pas).
-   ─────────────────────────────────────────────────────────────────────── */
 (function () {
   var guide = document.querySelector('.guide');
   if (!guide) return;
