@@ -1147,3 +1147,203 @@ textarea {
 .cbt-poison { --q: #9285D1; }
 .cbt-plante { --q: #5CA35E; }
 .cbt-psy    { --q: #C96A8E; }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   19. Fiches Pokémon Aetherion (page « aetherions » du guide)
+   La colonne du guide est CLAIRE : on reprend donc les mêmes couleurs
+   que les encadrés .guide-bloc (beige, bordure, texte encre).
+   Une fiche = <div class="dexa" style="--dexa: #COULEUR;">
+   --dexa colore les étiquettes, les en-têtes de tableaux et l'onglet actif.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* — 19a. Barre d'onglets — */
+.dexa-onglets { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.dexa-onglet {
+  appearance: none; cursor: pointer;
+  background: var(--beige, #F4F0EA);
+  border: 1px solid var(--bordure, #E7E0D9);
+  border-radius: 9px;
+  padding: 9px 15px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--titre, #26221F);
+  transition: border-color .15s, color .15s, background .15s;
+}
+.dexa-onglet:hover { border-color: var(--accent, #BE5735); color: var(--accent, #BE5735); }
+.dexa-onglet.actif {
+  background: var(--accent, #BE5735);
+  border-color: var(--accent, #BE5735);
+  color: #FFFFFF;
+}
+.dexa-panneau { display: none; }
+.dexa-panneau.actif { display: block; animation: dexaFondu .22s ease both; }
+@keyframes dexaFondu { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* — 19b. Cadre de la fiche — */
+.dexa {
+  --dexa: #a07160;
+  background: var(--beige, #F4F0EA);
+  border: 1px solid var(--bordure, #E7E0D9);
+  border-radius: 14px;
+  padding: 22px 24px 24px;
+}
+.dexa-nom {
+  font-weight: 900; font-size: 22px;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--titre, #26221F);
+  padding-bottom: 12px; margin-bottom: 18px;
+  border-bottom: 1px solid var(--bordure, #E7E0D9);
+}
+.dexa-nom span { color: var(--dexa); font-weight: 700; text-transform: none; letter-spacing: 0; }
+
+/* — 19c. Haut : sprites à gauche, types + infos à droite — */
+.dexa-haut { display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start; }
+.dexa-sprites { display: flex; flex-wrap: wrap; gap: 8px; }
+.dexa-sprites img {
+  width: 92px; height: 92px; object-fit: contain;
+  background: var(--carte, #FFFFFF);
+  border: 1px solid var(--bordure, #E7E0D9);
+  border-radius: 11px;
+  padding: 4px;
+}
+.dexa-cote { flex: 1; min-width: 220px; display: flex; flex-direction: column; gap: 8px; }
+.dexa-types { display: flex; flex-wrap: wrap; gap: 8px; }
+.dexa-types img { width: 88px; height: auto; }
+
+/* — 19d. Étiquette + valeur (évolue, talent, caractéristiques) — */
+.dexa-info, .dexa-carac > div {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--carte, #FFFFFF);
+  border: 1px solid var(--bordure, #E7E0D9);
+  border-radius: 9px;
+  padding: 8px 12px;
+  font-weight: 500; font-size: 13px;
+  color: var(--texte, #3C3733);
+}
+.dexa-info span, .dexa-carac span {
+  flex: 0 0 auto;
+  background: var(--dexa);
+  border-radius: 5px;
+  padding: 3px 9px;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--encre, #1D1B19);
+}
+.dexa-carac {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px; margin-top: 16px;
+}
+.dexa-carac > div { flex-direction: column; align-items: flex-start; gap: 6px; }
+
+/* — 19e. Description — */
+.dexa-desc { border-left: 2px solid var(--dexa); padding: 2px 0 2px 16px; margin-top: 16px; }
+.dexa-desc p {
+  margin: 0 0 11px;
+  font-weight: 500; font-size: 13px; line-height: 1.7;
+  color: var(--texte, #3C3733);
+  text-wrap: pretty;
+}
+.dexa-desc p:last-child { margin-bottom: 0; }
+
+/* — 19f. Comparaison de sprites (Pokémon chromatiques) — */
+.dexa-compare { display: flex; flex-wrap: wrap; gap: 12px; }
+.dexa-compare figure {
+  margin: 0; flex: 1; min-width: 150px;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  background: var(--carte, #FFFFFF);
+  border: 1px solid var(--bordure, #E7E0D9);
+  border-radius: 11px;
+  padding: 14px;
+}
+.dexa-compare img { width: 96px; height: 96px; object-fit: contain; }
+.dexa-compare figcaption {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muet, #8A857C);
+}
+
+/* — 19g. Tableaux d'attaques — */
+.dexa-tables {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px; margin-top: 20px;
+}
+.dexa-table {
+  background: var(--carte, #FFFFFF);
+  border: 1px solid var(--bordure, #E7E0D9);
+  border-radius: 11px;
+  overflow: hidden;
+  align-self: start;
+}
+.dexa-th {
+  background: var(--dexa);
+  padding: 9px 14px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--encre, #1D1B19);
+}
+.dexa-l {
+  display: grid; grid-template-columns: 1fr auto auto auto; gap: 9px; align-items: center;
+  padding: 7px 13px;
+  border-top: 1px solid var(--bordure, #E7E0D9);
+  font-size: 12px;
+}
+.dexa-l:nth-of-type(2) { border-top: none; }
+.dexa-l b { font-weight: 700; color: var(--titre, #26221F); }
+.dexa-l i {
+  font-style: normal;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px; letter-spacing: .06em; text-transform: uppercase;
+}
+.dexa-l u, .dexa-l s {
+  text-decoration: none;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px; color: var(--muet, #8A857C); white-space: nowrap;
+}
+
+/* — 19h. Couleurs de types (assombries pour rester lisibles sur fond clair) — */
+.t-normal   { color: #7D776C; }
+.t-feu      { color: #C04A4A; }
+.t-eau      { color: #1F6DC9; }
+.t-electrik { color: #A8862B; }
+.t-plante   { color: #4F8A3F; }
+.t-glace    { color: #3E8A94; }
+.t-combat   { color: #C25A2E; }
+.t-poison   { color: #8B52A0; }
+.t-sol      { color: #A07A34; }
+.t-vol      { color: #5A7FA8; }
+.t-psy      { color: #C43478; }
+.t-insecte  { color: #78862B; }
+.t-roche    { color: #7A6440; }
+.t-spectre  { color: #6B5A94; }
+.t-dragon   { color: #4A57B0; }
+.t-tenebres { color: #4E4842; }
+.t-acier    { color: #4F7B84; }
+.t-fee      { color: #C4638A; }
+
+@media (max-width: 700px) {
+  .dexa { padding: 18px; }
+}
+
+
+/* bouton-lien dans un encadré du guide (ex : « Consulter le bottin des feats ») */
+.guide-lien-bouton {
+  display: inline-block;
+  background: var(--accent, #BE5735);
+  border-radius: 9px;
+  padding: 10px 18px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: #FFFFFF; text-decoration: none;
+  transition: background .15s;
+}
+.guide-lien-bouton:hover { background: var(--accent-clair, #E07A54); color: #FFFFFF; }
+
+
+/* lien dont l'adresse n'a pas encore été remplie : grisé et non cliquable */
+.guide-lien-bouton[href^="ADRESSE-"], .guide-lien-bouton[href="#"] {
+  background: var(--bordure, #E7E0D9);
+  color: var(--muet, #8A857C);
+  pointer-events: none;
+}
+
