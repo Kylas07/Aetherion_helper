@@ -576,7 +576,7 @@ textarea {
 }
 .grp-figure .portrait { position: relative; min-height: 260px; background: rgba(255,255,255,.04); }
 .grp-figure .portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.grp-figure .fiche { padding: 20px 24px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.grp-figure .fiche { padding: 20px 24px; display: flex; flex-direction: column; gap: 12px; min-width: 0; height: 700px; overflow: auto; }
 .grp-figure .fiche header { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
 .grp-figure .fiche header b {
   font-weight: 900; font-size: 26px;
