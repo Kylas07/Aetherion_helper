@@ -43,7 +43,6 @@ var GUIDE_SOMMAIRE = [
     { id: 'generalite',       label: 'Généralité' },
     { id: 'aetherions',       label: 'Pokémons Aetherions' },
     { id: 'pkmn-progression', label: 'Progression' },
-    { id: 'attaques',         label: 'Attaques' },
     { id: 'pkmn-talents',     label: 'Talents' },
     { id: 'capture',          label: 'Pokédex' },
     { id: 'obtention',        label: 'Obtention spéciales' },
