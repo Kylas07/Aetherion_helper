@@ -6,7 +6,7 @@
 <title>Guide du nouveau — Guide Aetherion</title>
 <link href="aetherion-unifie.css" rel="stylesheet" />
 </head>
-<body>
+<body style="--g:#E07A54">
 <!-- MODE D'EMPLOI (pas besoin de savoir coder) :
      • Changer un TEXTE  : récris-le entre les balises, ex <p>ton texte</p>.
        Ne touche pas aux < >, aux "guillemets", ni aux mots anglais.
@@ -14,25 +14,195 @@
      • Changer un LIEN   : remplace le lien après  href="  par ton adresse.
      • LE MENU DE GAUCHE N'EST PAS DANS CE FICHIER : il est écrit une seule fois
        dans « menu.js ». Modifie-le là-bas, il change sur toutes les pages. -->
+<!-- ⚠️ LIENS À COMPLÉTER : cherche les commentaires "LIEN À REMPLACER" ci-dessous
+     et remplace-les par les vraies adresses de tes sujets (présentation, T-card,
+     recensement) une fois le forum sorti de maintenance. -->
 <!-- data-page="guide-nouveau" indique au menu quel onglet surligner. -->
 <div class="guide" data-page="guide-nouveau">
-
     <!-- ▼▼▼  CONTENU DE CETTE PAGE  ▼▼▼ -->
     <div class="guide-corps">
-
         <div class="guide-page actif" id="guide-nouveau">
             <!-- IMAGE DE BANNIÈRE : remplace le lien après src=". Petit texte et grand titre se changent entre les balises. -->
             <div class="guide-hero">
                 <img src="avatar-npc/pa.png" alt="">
-                <div class="guide-hero-titre"><small>— 01. Accueil</small><b>Guide du nouveau</b></div>
+                <div class="guide-hero-titre"><small>— 01. Bienvenue</small><b>Guide du nouveau</b></div>
                 <span class="guide-hero-num">01</span>
             </div>
+
             <div class="guide-section">
-                <h2 class="guide-titre">Premiers <em>pas</em></h2>
-            <div class="guide-bloc"><b>Section</b><p>Les premiers pas : inscription, fiche de personnage, premier RP. À compléter.</p></div>
+                <h2 class="guide-titre">Bienvenue à <em>Aetherion</em></h2>
+                <div class="guide-bloc">
+                    <p>Bienvenue parmi les survivants. Tu viens d'intégrer <b>Aetherion</b>, un forum RPG mêlant Pokémon et l'univers de Sword Art Online : ici, la mort dans le jeu est définitive, vingt étages séparent les joueurs de la sortie, et seuls trois ont pour l'instant été franchis.</p>
+                    <br>
+                    <p>Pas de panique : ce guide est là pour t'accompagner pas à pas, de ta toute première connexion jusqu'à ton premier RP. Prends ton temps, une chose après l'autre, et n'hésite jamais à demander de l'aide au staff si un point te semble flou.</p>
+                </div>
+            </div>
+
+            <div class="guide-section">
+                <h2 class="guide-titre">Sommaire <em>rapide</em></h2>
+                <div class="guide-bloc">
+                    <a class="guide-cta" href="#etapes">1. Les étapes pour bien démarrer →</a><br><br>
+                    <a class="guide-cta" href="#liens">2. Liens utiles →</a><br><br>
+                    <a class="guide-cta" href="#rangs">3. Comprendre les rangs →</a><br><br>
+                    <a class="guide-cta" href="#xp">4. Gagner de l'expérience →</a><br><br>
+                    <a class="guide-cta" href="#reflexes">5. Les bons réflexes →</a><br><br>
+                    <a class="guide-cta" href="#contact">6. Une question ? →</a>
+                </div>
+            </div>
+
+            <div class="guide-section" id="etapes">
+                <h2 class="guide-titre">Les <em>étapes</em> pour bien démarrer</h2>
+                <div class="guide-bloc">
+                    <p><b>― Étape 1 : lire le règlement ›</b><br>
+                    Avant toute chose, prends connaissance des règles du forum : respect entre membres, restriction d'âge (PEGI-18), fonctionnement du RP, etc. C'est la base pour profiter sereinement de ton aventure.</p>
+                    <br>
+                    <p><b>― Étape 2 : découvrir le contexte ›</b><br>
+                    Plonge-toi dans l'histoire d'Aetherion : comment le jeu est devenu un piège, ce que signifie vraiment y vivre, et ce qui t'attend derrière les portes de Lumina Core.</p>
+                    <br>
+                    <p><b>― Étape 3 : créer ton personnage ›</b><br>
+                    Choisis un pseudo au format Prénom Nom, un avatar (250x350, pas de photographie ni de contenu explicite), et détermine l'apparence de ton personnage dans le jeu — qui peut être bien différente de la sienne dans la vraie vie !</p>
+                    <br>
+                    <p><b>― Étape 4 : choisir ton starter ›</b><br>
+                    Sélectionne le tout premier Pokémon de ton aventure, en respectant les quelques règles en vigueur (limite d'utilisation, premier stade d'évolution, espèces indisponibles). Tu démarres avec ton starter au niveau 5, 500 P$ et 5 Pokéballs.</p>
+                    <br>
+                    <p><b>― Étape 5 : poster ta présentation ›</b><br>
+                    Une fois inscrit, tu disposes de 3 semaines pour rédiger et compléter ta présentation. N'oublie pas d'y mentionner tes éventuels TW (Trigger Warning) en tout début de texte.</p>
+                    <br>
+                    <p><b>― Étape 6 : poster ta T-card ›</b><br>
+                    La T-card est ta fiche technique de dresseur. Elle complète ta présentation et sert de référence rapide pour le staff comme pour les autres membres.</p>
+                    <br>
+                    <p><b>― Étape 7 : te recenser ›</b><br>
+                    Inscris ton personnage dans les différents bottins du forum (starters pris, membres actifs, etc.). C'est aussi ce qui permet à la communauté de savoir qui est disponible pour RP !</p>
+                    <br>
+                    <p><b>― Étape 8 : rejoindre le Discord ›</b><br>
+                    Non obligatoire, mais fortement recommandé : les annonces importantes restent sur le forum, mais les sondages, les petites informations et l'ambiance générale de la communauté se vivent aussi sur Discord.</p>
+                </div>
+            </div>
+
+            <div class="guide-section" id="liens">
+                <h2 class="guide-titre">Liens <em>utiles</em> pour démarrer</h2>
+                <div class="guide-bloc">
+                    <a class="guide-cta" href="reglement.html">Lire le règlement du forum →</a><br><br>
+                    <a class="guide-cta" href="contexte.html">Découvrir le contexte d'Aetherion →</a><br><br>
+                    <a class="guide-cta" href="starter.html">Choisir ton starter →</a><br><br>
+                    <a class="guide-cta" href="argent.html">Comprendre l'économie du forum →</a><br><br>
+                    <a class="guide-cta" href="specificite.html">Voir les spécificités du jeu →</a><br><br>
+                    <a class="guide-cta" href="vivre-a-aetherion.html">Découvrir le quotidien à Aetherion →</a><br><br>
+                    <!-- LIEN À REMPLACER : sujet de présentation -->
+                    <a class="guide-cta" href="#" target="_blank">Poster ta présentation →</a><br><br>
+                    <!-- LIEN À REMPLACER : sujet de T-card -->
+                    <a class="guide-cta" href="#" target="_blank">Poster ta T-card →</a><br><br>
+                    <!-- LIEN À REMPLACER : sujet de recensement -->
+                    <a class="guide-cta" href="#" target="_blank">Te recenser →</a><br><br>
+                    <a class="guide-cta" href="https://discord.gg/hYvtNwUBc" target="_blank">Rejoindre le Discord →</a>
+                </div>
+            </div>
+
+            <div class="guide-section" id="rangs">
+                <h2 class="guide-titre">Comprendre les <em>rangs</em></h2>
+                <div class="guide-bloc">
+                    <p>Ton personnage progresse en gagnant de l'expérience, ce qui te fait avancer de rang en rang. Plus ton rang est élevé, plus tes Pokémon peuvent eux aussi progresser (rappel : un Pokémon ne peut jamais dépasser le rang de son dresseur).</p>
+                </div>
+
+                <div class="grp-grade">
+                    <span class="num">D</span>
+                    <span class="titre-grade"><b>Rang D</b><small>0 XP</small></span>
+                    <p>Le rang de départ, attribué à tous les nouveaux personnages.</p>
+                </div>
+                <div class="grp-grade">
+                    <span class="num">C</span>
+                    <span class="titre-grade"><b>Rang C</b><small>150 XP</small></span>
+                    <p>Atteint en jouant régulièrement.</p>
+                </div>
+                <div class="grp-grade">
+                    <span class="num">B</span>
+                    <span class="titre-grade"><b>Rang B</b><small>500 XP</small></span>
+                    <p>Un personnage confirmé.</p>
+                </div>
+                <div class="grp-grade">
+                    <span class="num">A</span>
+                    <span class="titre-grade"><b>Rang A</b><small>1 000 XP</small></span>
+                    <p>Parmi les dresseurs les plus aguerris.</p>
+                </div>
+                <div class="grp-grade">
+                    <span class="num">S</span>
+                    <span class="titre-grade"><b>Rang S</b><small>1 500 XP</small></span>
+                    <p>Le sommet de la tour.</p>
+                </div>
+            </div>
+
+            <div class="guide-section" id="xp">
+                <h2 class="guide-titre">Comment gagner de l'<em>expérience</em></h2>
+                <div class="guide-bloc">
+                    <p>Voici toutes les actions qui te permettent de faire progresser ton personnage :</p>
+                </div>
+
+                <div class="grp-grade">
+                    <span class="num">1</span>
+                    <span class="titre-grade"><b>Poster sa présentation</b><small>+10 points</small></span>
+                    <p>Accordés à la validation de ta présentation.</p>
+                </div>
+                <div class="grp-grade">
+                    <span class="num">2</span>
+                    <span class="titre-grade"><b>Poster sa T-card</b><small>+10 points</small></span>
+                    <p>Accordés en postant le premier message de ta T-card.</p>
+                </div>
+                <div class="grp-grade">
+                    <span class="num">3</span>
+                    <span class="titre-grade"><b>Se recenser</b><small>+5 points</small></span>
+                    <p>Par bottin complété.</p>
+                </div>
+                <div class="grp-grade">
+                    <span class="num">4</span>
+                    <span class="titre-grade"><b>Ouvrir un RP</b><small>+10 points</small></span>
+                    <p>Un petit bonus est accordé pour l'ouverture d'un nouveau RP.</p>
+                </div>
+                <div class="grp-grade">
+                    <span class="num">5</span>
+                    <span class="titre-grade"><b>Répondre à un RP</b><small>+5 points</small></span>
+                    <p>Par post RP posté.</p>
+                </div>
+                <div class="grp-grade">
+                    <span class="num">6</span>
+                    <span class="titre-grade"><b>Clôturer un RP</b><small>5 à 15 points</small></span>
+                    <p>Le montant varie selon la longueur du RP.</p>
+                </div>
+                <div class="grp-grade">
+                    <span class="num">7</span>
+                    <span class="titre-grade"><b>Participer à un event</b><small>Variable</small></span>
+                    <p>Le gain dépend de l'événement en question.</p>
+                </div>
+            </div>
+
+            <div class="guide-section" id="reflexes">
+                <h2 class="guide-titre">Les <em>bons réflexes</em> à avoir</h2>
+                <div class="guide-bloc">
+                    <p><b>― Poste régulièrement ›</b><br>
+                    Pas besoin d'écrire des romans tous les jours : viser un post de temps en temps suffit largement à faire vivre ton personnage et à progresser tranquillement.</p>
+                    <br>
+                    <p><b>― Respecte le minimum de mots ›</b><br>
+                    200 mots minimum par post RP, histoire de laisser suffisamment de matière à ton partenaire pour te répondre.</p>
+                    <br>
+                    <p><b>― N'oublie pas d'archiver tes RP terminés ›</b><br>
+                    Une fois un RP fini (ou si ton partenaire a quitté le forum), pense à l'envoyer dans le sujet d'archivage prévu à cet effet.</p>
+                    <br>
+                    <p><b>― Signale les contenus sensibles ›</b><br>
+                    Un TW doit être mentionné en début de post s'il concerne un sujet sensible, pour respecter le confort de lecture de chacun.</p>
+                    <br>
+                    <p><b>― Communique avec tes partenaires ›</b><br>
+                    En cas de doute, de désaccord, ou simplement pour caler une scène, le dialogue reste toujours la meilleure option — que ce soit entre joueurs ou avec le staff.</p>
+                </div>
+            </div>
+
+            <div class="guide-section" id="contact">
+                <h2 class="guide-titre">Une question, un doute ?</h2>
+                <div class="guide-bloc">
+                    <p>Le staff est bénévole, mais toujours disponible pour t'aider ! N'hésite jamais à poser tes questions, que ce soit sur le forum ou sur le Discord — il n'existe pas de question bête quand on débute.</p>
+                    <br>
+                    <p>Encore une fois, bienvenue à Aetherion. On a hâte de lire les aventures de ton personnage !</p>
+                </div>
             </div>
         </div>
-
     </div>
 </div>
 <script src="menu.js"></script>
