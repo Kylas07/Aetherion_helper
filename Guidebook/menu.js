@@ -36,7 +36,7 @@ var GUIDE_SOMMAIRE = [
     { id: 'progression',      label: 'Progression' },
     { id: 'talents',          label: 'Talents' },
     { id: 'argent',           label: 'Argent' },
-    { id: 'pvp',              label: 'PVP & combat' }
+    { id: 'pvp',              label: 'PVP' }
   ]},
 
   { categorie: 'Pokémons', pages: [
@@ -45,7 +45,7 @@ var GUIDE_SOMMAIRE = [
     { id: 'pkmn-progression', label: 'Progression' },
     { id: 'attaques',         label: 'Attaques' },
     { id: 'pkmn-talents',     label: 'Talents' },
-    { id: 'capture',          label: 'Capture' },
+    { id: 'capture',          label: 'Pokédex' },
     { id: 'obtention',        label: 'Obtention spéciales' },
     { id: 'combat',           label: 'Système de Combat' }
   ]}
