@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Progression — Guide Aetherion</title>
+<title>Progression et leveling — Guide Aetherion</title>
 <link href="aetherion-unifie.css" rel="stylesheet" />
 </head>
 <body>
@@ -14,25 +14,94 @@
      • Changer un LIEN   : remplace le lien après  href="  par ton adresse.
      • LE MENU DE GAUCHE N'EST PAS DANS CE FICHIER : il est écrit une seule fois
        dans « menu.js ». Modifie-le là-bas, il change sur toutes les pages. -->
-<!-- data-page="pkmn-progression" indique au menu quel onglet surligner. -->
-<div class="guide" data-page="pkmn-progression">
-
+<!-- data-page="progression" indique au menu quel onglet surligner. -->
+<div class="guide" data-page="progression">
     <!-- ▼▼▼  CONTENU DE CETTE PAGE  ▼▼▼ -->
     <div class="guide-corps">
-
-        <div class="guide-page actif" id="pkmn-progression">
+        <div class="guide-page actif" id="progression">
             <!-- IMAGE DE BANNIÈRE : remplace le lien après src=". Petit texte et grand titre se changent entre les balises. -->
             <div class="guide-hero">
                 <img src="avatar-npc/pa.png" alt="">
-                <div class="guide-hero-titre"><small>— 06. Pokémons</small><b>Progression</b></div>
-                <span class="guide-hero-num">06</span>
+                <div class="guide-hero-titre"><small>— 04. Mécaniques</small><b>Progression et leveling</b></div>
+                <span class="guide-hero-num">04</span>
             </div>
+
             <div class="guide-section">
-                <h2 class="guide-titre">Niveaux &amp; <em>évolutions</em></h2>
-            <div class="guide-bloc"><b>Section</b><p>Comment un Pokémon gagne des niveaux et évolue. À compléter.</p></div>
+                <h2 class="guide-titre">Le système de <em>rangs</em></h2>
+                <div class="guide-bloc">
+                    <p>Sur Aetherion, le niveau des Pokémon est exprimé sous la forme de rangs. Ces derniers sont liés à celui de votre dresseur : un Pokémon ne peut donc pas dépasser votre propre rang. Ainsi, l'ensemble de vos Pokémon progresse en même temps que vous. Toutefois, si vous le souhaitez, vous pouvez aussi choisir de les faire évoluer de manière progressive, selon votre préférence.</p>
+                    <br>
+                    <p>Les rangs ne servent pas seulement à indiquer qu'un Pokémon est plus puissant qu'un autre. Ils ont surtout une importance dans sa progression, puisqu'ils permettent d'apprendre de nouvelles attaques ainsi que d'accéder à l'évolution.</p>
+                </div>
+            </div>
+
+            <div class="guide-section">
+                <h2 class="guide-titre">Les rangs de dresseur</h2>
+                <div class="guide-bloc">
+                    <!-- ▼▼▼ Remplace les XP et les phrases par tes vraies valeurs ▼▼▼ -->
+                    <div class="grp-grade">
+                        <span class="num">D</span>
+                        <span class="titre-grade"><b>Rang D</b><small>0 XP</small></span>
+                        <p>Rang de départ, attribué dès la validation de votre fiche.</p>
+                    </div>
+                    <div class="grp-grade">
+                        <span class="num">C</span>
+                        <span class="titre-grade"><b>Rang C</b><small>150 XP</small></span>
+                        <p>Atteint en jouant régulièrement.</p>
+                    </div>
+                    <div class="grp-grade">
+                        <span class="num">B</span>
+                        <span class="titre-grade"><b>Rang B</b><small>XXX XP</small></span>
+                        <p>À compléter.</p>
+                    </div>
+                    <div class="grp-grade">
+                        <span class="num">A</span>
+                        <span class="titre-grade"><b>Rang A</b><small>XXX XP</small></span>
+                        <p>À compléter.</p>
+                    </div>
+                    <div class="grp-grade">
+                        <span class="num">S</span>
+                        <span class="titre-grade"><b>Rang S</b><small>XXX XP</small></span>
+                        <p>À compléter.</p>
+                    </div>
+                    <!-- ▲▲▲ Fin des valeurs à remplacer ▲▲▲ -->
+                </div>
+            </div>
+
+            <div class="guide-section">
+                <h2 class="guide-titre">Correspondance rangs / niveaux</h2>
+                <div class="guide-bloc">
+                    <p>Pour assurer cette mécanique, nous utilisons la correspondance suivante entre les rangs et les niveaux d'origine des jeux :</p>
+                </div>
+                <div class="item-row header">
+                    <div class="item-img">Rang D</div>
+                    <div class="item-desc">du niveau 0 à 15</div>
+                </div>
+                <div class="item-row header">
+                    <div class="item-img">Rang C</div>
+                    <div class="item-desc">du niveau 16 à 30</div>
+                </div>
+                <div class="item-row header">
+                    <div class="item-img">Rang B</div>
+                    <div class="item-desc">du niveau 31 à 50</div>
+                </div>
+                <div class="item-row header">
+                    <div class="item-img">Rang A</div>
+                    <div class="item-desc">du niveau 51 à 80</div>
+                </div>
+                <div class="item-row header">
+                    <div class="item-img">Rang S</div>
+                    <div class="item-desc">du niveau 81 à 100</div>
+                </div>
+            </div>
+
+            <div class="guide-section">
+                <h2 class="guide-titre">Attribution libre</h2>
+                <div class="guide-bloc">
+                    <p>Comme les rangs de vos Pokémon dépendent directement du vôtre, vous êtes libre de les attribuer et de les ajuster comme vous le souhaitez, à condition qu'ils ne dépassent jamais votre rang de dresseur.</p>
+                </div>
             </div>
         </div>
-
     </div>
 </div>
 <script src="menu.js"></script>
