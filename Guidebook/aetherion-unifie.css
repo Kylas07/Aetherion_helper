@@ -1348,3 +1348,57 @@ textarea {
   pointer-events: none;
 }
 
+/* — Page Crédits & staff — */
+.crd-equipe { display: flex; flex-direction: column; gap: 16px; }
+.crd-membre {
+  background: var(--carte, #FFFFFF);
+  border: 1px solid var(--bordure, #E7E0D9);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(30,25,20,.04), 0 12px 28px -14px rgba(30,25,20,.14);
+  display: grid;
+  grid-template-columns: 190px 1fr;
+}
+.crd-membre .portrait { position: relative; min-height: 200px; background: var(--beige, #F4F0EA); }
+.crd-membre .portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.crd-membre .fiche { padding: 20px 24px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.crd-membre .fiche header { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.crd-membre .fiche header b {
+  font-weight: 900; font-size: 24px;
+  letter-spacing: .04em; text-transform: uppercase;
+  color: var(--accent, #BE5735);
+}
+.crd-membre .fiche p { margin: 0; font-weight: 500; font-size: 13px; line-height: 1.7; color: var(--texte, #3C3733); text-wrap: pretty; }
+
+/* pastille « Pokémon totem » */
+.crd-totem {
+  display: inline-flex; align-items: center; gap: 7px; align-self: flex-start;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--accent, #BE5735);
+  background: var(--accent-pale, #F7E9E2);
+  border: 1px solid #EBD2C6;
+  border-radius: 99px;
+  padding: 5px 12px;
+}
+
+/* bloc crédits sombre */
+.crd-liste {
+  background: var(--encre, #1D1B19);
+  border-radius: 14px;
+  padding: 22px 26px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.crd-ligne { display: grid; grid-template-columns: 150px 1fr; gap: 16px; align-items: baseline; }
+.crd-ligne b {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700; font-size: 9px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--accent-clair, #E07A54);
+}
+.crd-ligne span { font-weight: 500; font-size: 13px; line-height: 1.65; color: #C9C0B7; }
+
+@media (max-width: 760px) {
+  .crd-membre { grid-template-columns: 1fr; }
+  .crd-membre .portrait { min-height: 220px; }
+  .crd-ligne { grid-template-columns: 1fr; gap: 4px; }
+}
