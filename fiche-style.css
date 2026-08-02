@@ -141,7 +141,7 @@
   display:flex;align-items:center;justify-content:center;overflow:hidden;
   background:rgba(255,255,255,.06);border:1px solid var(--acc);
 }
-.aeth-fiche.aeth-fiche .af-pkmn-sprite img{max-width:100%;max-height:100%;object-fit:contain;image-rendering:pixelated}
+.aeth-fiche.aeth-fiche .af-pkmn-sprite img{max-width:100%;max-height:100%;object-fit:contain;}
 .aeth-fiche.aeth-fiche .af-pkmn-sprite .ph{font-size:9px;color:#8B837A}
 .aeth-fiche.aeth-fiche .af-pkmn-body{position:relative;flex:1;min-width:0}
 .aeth-fiche.aeth-fiche .af-pkmn-kick{
