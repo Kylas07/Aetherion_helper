@@ -51,9 +51,9 @@ var GUIDE_SOMMAIRE = [
 ];
 
 /* Titre du menu et bas de menu — modifiables aussi. */
-var GUIDE_TITRE      = 'Guide <em>Aetherion</em>';
+var GUIDE_TITRE      = 'Guide <em>Etherium</em>';
 var GUIDE_SOUS_TITRE = 'les annexes du forum';
-var GUIDE_PIED       = 'Guide — équipe Aetherion';
+var GUIDE_PIED       = 'Guide — équipe Etherium';
 var GUIDE_LIEN_FORUM = 'https://aetherion-pokemon.forumactif.com';  
 
 (function () {
