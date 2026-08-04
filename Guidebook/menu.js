@@ -41,7 +41,7 @@ var GUIDE_SOMMAIRE = [
 
   { categorie: 'Pokémons', pages: [
     { id: 'generalite',       label: 'Généralité' },
-    { id: 'aetherions',       label: 'Pokémons Aetherions' },
+    { id: 'aetherions',       label: 'Pokémons Etherium' },
     { id: 'pkmn-progression', label: 'Progression' },
     { id: 'pkmn-talents',     label: 'Talents' },
     { id: 'capture',          label: 'Pokédex' },
