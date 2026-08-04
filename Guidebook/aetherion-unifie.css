@@ -318,6 +318,8 @@ textarea {
 }
 .guide-bloc p { margin: 0; font-weight: 500; font-size: 13px; line-height: 1.65; color: var(--texte, #3C3733); }
 .guide-section { display: flex; flex-direction: column; gap: 12px; }
+.guide-bloc li { font-weight: 500; font-size: 13px; line-height: 1.5; color: var(--texte, #3C3733); }
+.guide-bloc li::marker { color: var(--g); }
 
 /* tableau */
 .guide-table { border: 1px solid var(--bordure, #E7E0D9); border-radius: 12px; overflow: hidden; }
