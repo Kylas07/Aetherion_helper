@@ -317,6 +317,8 @@ textarea {
   color: var(--accent, #BE5735);
 }
 .guide-bloc p { margin: 0; font-weight: 500; font-size: 13px; line-height: 1.65; color: var(--texte, #3C3733); }
+.guide-bloc li { font-weight: 500; font-size: 13px; line-height: 1.5; color: var(--texte, #3C3733); }
+.guide-bloc li::marker { color: var(--g); }
 .guide-section { display: flex; flex-direction: column; gap: 12px; }
 
 /* tableau */
