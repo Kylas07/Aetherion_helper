@@ -10,7 +10,7 @@ var GUIDE_SOMMAIRE = [
     { id: 'contexte',         label: 'Contexte' },
     { id: 'chrono-reelle',    label: 'Chronologie réelle' },
     { id: 'chrono-jeu',       label: 'Chronologie du jeu' },
-    { id: 'vivre',            label: 'Vivre à Aetherion' },
+    { id: 'vivre',            label: 'Vivre à Etherium' },
     { id: 'specificite',      label: 'Spécificité du jeu' },
     { id: 'feat',             label: 'Changement de feat' }
   ]},
