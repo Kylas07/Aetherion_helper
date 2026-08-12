@@ -3,8 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vestiges — Guide Etherium</title>
+<title>Vestiges — Guide Aetherion</title>
 <link href="aetherion-unifie.css" rel="stylesheet" />
+<style>
+.vg-rangs{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:16px;}
+.vg-rang-carte{border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:18px 16px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.vg-rang-entete{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;border-bottom:1px solid rgba(0,0,0,.06);padding-bottom:10px;}
+.vg-rang-lettre{font-size:1.8rem;font-weight:800;color:var(--g,#E07A54);line-height:1;}
+.vg-rang-xp{font-size:.78rem;color:#8a8a8a;font-weight:600;}
+.vg-rang-lots{display:flex;flex-direction:column;gap:8px;}
+.vg-pill{display:flex;justify-content:space-between;align-items:center;border-radius:10px;padding:6px 12px;font-size:.82rem;font-weight:600;}
+.vg-pill span:first-child{opacity:.75;font-weight:500;}
+.vg-pill.bronze{background:#fbe6d4;color:#9a5b23;}
+.vg-pill.argent{background:#e7e9ef;color:#4b5568;}
+.vg-pill.or{background:#fdf1c7;color:#8a6d1f;}
+</style>
 </head>
 <body>
 <!-- MODE D'EMPLOI (pas besoin de savoir coder) :
@@ -53,33 +66,48 @@ L'essence absorbée par les personnages ne semble jamais s'épuiser : il n'y a d
             <div class="guide-section">
                 <h2 class="guide-titre">Progression <em>par rang</em></h2>
                 <div class="guide-bloc"><b>La règle</b><p style="text-align:justify;">Les Vestiges s'obtiennent toujours en montant en Rang, et le système de qualité — Bronze, Argent, Or — reste inchangé dans son principe. Le nombre de Vestiges accessibles augmente à chaque palier : choisissez bien, il n'y a pas de retour en arrière !</p></div>
-                <!-- QUOTAS : une ligne par rang, une pastille = un <span> (garde tal-bronze/argent/or). -->
-                <div class="prog-quotas">
-                    <div class="prog-quota"><span class="rang">D</span><small>0 XP</small><div class="lots">
-                        <span class="tal-bronze">5 bronze</span>
-                        <span class="tal-argent">3 argent</span>
-                        <span class="tal-or">1 or</span>
-                    </div></div>
-                    <div class="prog-quota"><span class="rang">C</span><small>150 XP</small><div class="lots">
-                        <span class="tal-bronze">7 bronze</span>
-                        <span class="tal-argent">5 argent</span>
-                        <span class="tal-or">2 or</span>
-                    </div></div>
-                    <div class="prog-quota"><span class="rang">B</span><small>500 XP</small><div class="lots">
-                        <span class="tal-bronze">9 bronze</span>
-                        <span class="tal-argent">7 argent</span>
-                        <span class="tal-or">3 or</span>
-                    </div></div>
-                    <div class="prog-quota"><span class="rang">A</span><small>1'000 XP</small><div class="lots">
-                        <span class="tal-bronze">11 bronze</span>
-                        <span class="tal-argent">9 argent</span>
-                        <span class="tal-or">5 or</span>
-                    </div></div>
-                    <div class="prog-quota"><span class="rang">S</span><small>1'500 XP</small><div class="lots">
-                        <span class="tal-bronze">15 bronze</span>
-                        <span class="tal-argent">12 argent</span>
-                        <span class="tal-or">8 or</span>
-                    </div></div>
+                <!-- QUOTAS PAR RANG : une carte = un vg-rang-carte. Change juste les chiffres si besoin. -->
+                <div class="vg-rangs">
+                    <div class="vg-rang-carte">
+                        <div class="vg-rang-entete"><span class="vg-rang-lettre">D</span><span class="vg-rang-xp">0 XP</span></div>
+                        <div class="vg-rang-lots">
+                            <div class="vg-pill bronze"><span>Bronze</span><span>5</span></div>
+                            <div class="vg-pill argent"><span>Argent</span><span>3</span></div>
+                            <div class="vg-pill or"><span>Or</span><span>1</span></div>
+                        </div>
+                    </div>
+                    <div class="vg-rang-carte">
+                        <div class="vg-rang-entete"><span class="vg-rang-lettre">C</span><span class="vg-rang-xp">150 XP</span></div>
+                        <div class="vg-rang-lots">
+                            <div class="vg-pill bronze"><span>Bronze</span><span>7</span></div>
+                            <div class="vg-pill argent"><span>Argent</span><span>5</span></div>
+                            <div class="vg-pill or"><span>Or</span><span>2</span></div>
+                        </div>
+                    </div>
+                    <div class="vg-rang-carte">
+                        <div class="vg-rang-entete"><span class="vg-rang-lettre">B</span><span class="vg-rang-xp">500 XP</span></div>
+                        <div class="vg-rang-lots">
+                            <div class="vg-pill bronze"><span>Bronze</span><span>9</span></div>
+                            <div class="vg-pill argent"><span>Argent</span><span>7</span></div>
+                            <div class="vg-pill or"><span>Or</span><span>3</span></div>
+                        </div>
+                    </div>
+                    <div class="vg-rang-carte">
+                        <div class="vg-rang-entete"><span class="vg-rang-lettre">A</span><span class="vg-rang-xp">1'000 XP</span></div>
+                        <div class="vg-rang-lots">
+                            <div class="vg-pill bronze"><span>Bronze</span><span>11</span></div>
+                            <div class="vg-pill argent"><span>Argent</span><span>9</span></div>
+                            <div class="vg-pill or"><span>Or</span><span>5</span></div>
+                        </div>
+                    </div>
+                    <div class="vg-rang-carte">
+                        <div class="vg-rang-entete"><span class="vg-rang-lettre">S</span><span class="vg-rang-xp">1'500 XP</span></div>
+                        <div class="vg-rang-lots">
+                            <div class="vg-pill bronze"><span>Bronze</span><span>15</span></div>
+                            <div class="vg-pill argent"><span>Argent</span><span>12</span></div>
+                            <div class="vg-pill or"><span>Or</span><span>8</span></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="guide-bloc"><b>Et la qualité Platine (EX) ?</b><p style="text-align:justify;">Une quatrième qualité s'ajoute désormais au système : la qualité Platine, aussi appelée EX. Contrairement aux autres, les Vestiges Platine ne s'obtiennent pas par la montée en Rang, mais uniquement en récompense d'un combat de Boss remporté.</p></div>
             </div><br>
