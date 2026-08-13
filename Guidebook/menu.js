@@ -16,10 +16,10 @@ var GUIDE_SOMMAIRE = [
   ]},
 
   { categorie: 'Cartes', pages: [
-    { id: 'etage00',          label: 'Étage 00 · Zone de départ' },
-    { id: 'etage01',          label: 'Étage 01 · Forêt Prismatique' },
-    { id: 'etage02',          label: 'Étage 02 · Montagne Rocheuse' },
-    { id: 'etage03',          label: 'Étage 03 · Îles Ouragan' }
+    { id: 'etage00',          label: 'Étage 00 · Elyvern' },
+    { id: 'etage01',          label: 'Étage 01 · Nodalis' },
+    { id: 'etage02',          label: 'Étage 02 · Pic Nörum' },
+    { id: 'etage03',          label: 'Étage 03 · Atoll Lyssandre' }
   ]},
 
   /* La catégorie Groupes s'affiche en pastilles colorées (styleGroupes: true). */
