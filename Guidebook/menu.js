@@ -55,7 +55,7 @@ var GUIDE_SOMMAIRE = [
 var GUIDE_TITRE      = 'Guide <em>Etherium</em>';
 var GUIDE_SOUS_TITRE = 'les annexes du forum';
 var GUIDE_PIED       = 'Guide — équipe Etherium';
-var GUIDE_LIEN_FORUM = 'https://aetherion-pokemon.forumactif.com';  
+var GUIDE_LIEN_FORUM = 'https://etherium.forumactif.com';  
 
 (function () {
   var guide = document.querySelector('.guide');
