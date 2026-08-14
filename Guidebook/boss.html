@@ -10,9 +10,11 @@
 <!-- MODE D'EMPLOI :
      • Changer un TEXTE  : récris-le entre les balises, ex <p>ton texte</p>.
      • Changer une IMAGE : remplace le lien après  src="  par l'adresse de ton image.
-     • AJOUTER UN BOSS   : copie un <button> du bloc « grp-figures-nav », puis
-       copie le panneau <div class="grp-figure-panneau"> qui va avec, et donne
-       le même numéro après data-figure=" et après id=".
+     • LIER LA ZONE RP   : remplace LIEN_ZONE_BOSS0_ICI (etc.) après  href="  par le lien
+       du sujet/de la zone RP du boss. Un clic sur l'icône ouvre ce lien dans un nouvel onglet,
+       tout en gardant le changement de fiche actif comme avant.
+     • AJOUTER UN BOSS   : copie un <a><button>...</button></a> du bloc « grp-figures-nav »,
+       et donne un numéro différent après data-figure=".
      • LE MENU DE GAUCHE est écrit une seule fois dans « menu.js ». -->
 <div class="guide" data-page="boss">
 
@@ -66,11 +68,12 @@
             <div class="guide-section"> 
                 <h2 class="guide-titre">Les <em>gardiens</em></h2>
                 <!-- BOSS : les ronds du haut changent de fiche (même numéro après data-figure=" et id="). -->
+                <!-- Chaque icône est maintenant enveloppée dans un lien : remplace LIEN_ZONE_BOSSx_ICI par le lien du sujet RP correspondant. -->
                 <div class="grp-figures-nav">
-                    <button type="button" data-figure="boss0" class="actif" title="Gardien de l'étage 00"><img src="https://zupimages.net/up/26/33/nbye.png" alt="TENGALICE VÉNÉRABLE"></button>
-                    <button type="button" data-figure="boss1" title="Gardien de l'étage 01"><img src="https://zupimages.net/up/26/33/4sao.png" alt="AL CORBOSS"></button>
-                    <button type="button" data-figure="boss2" title="Gardien de l'étage 02"><img src="https://zupimages.net/up/26/33/7y5j.png" alt="IGNABYSSE"></button>
-                    <button type="button" data-figure="boss3" title="Gardien de l'étage 03"><img src="https://zupimages.net/up/26/33/qpvi.png" alt="Ardenflore"></button>
+                    <a href="https://etherium.forumactif.com/t97-tengalice-venerable" target="_blank" rel="noopener"><button type="button" data-figure="boss0" class="actif" title="Gardien de l'étage 00"><img src="https://zupimages.net/up/26/33/nbye.png" alt="TENGALICE VÉNÉRABLE"></button></a>
+                    <a href="LIEN_ZONE_BOSS1_ICI" target="_blank" rel="noopener"><button type="button" data-figure="boss1" title="Gardien de l'étage 01"><img src="https://zupimages.net/up/26/33/4sao.png" alt="AL CORBOSS"></button></a>
+                    <a href="LIEN_ZONE_BOSS2_ICI" target="_blank" rel="noopener"><button type="button" data-figure="boss2" title="Gardien de l'étage 02"><img src="https://zupimages.net/up/26/33/7y5j.png" alt="IGNABYSSE"></button></a>
+                    <a href="LIEN_ZONE_BOSS3_ICI" target="_blank" rel="noopener"><button type="button" data-figure="boss3" title="Gardien de l'étage 03"><img src="https://zupimages.net/up/26/33/qpvi.png" alt="Ardenflore"></button></a>
                 </div>
                 <a class="guide-cta" href="etage00.html">Retour à la carte des étages →</a>
             </div>
