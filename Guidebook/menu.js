@@ -16,6 +16,7 @@ var GUIDE_SOMMAIRE = [
   ]},
 
   { categorie: 'Cartes', pages: [
+    { id: 'boss',             label: 'Les Boss' },
     { id: 'etage00',          label: 'Étage 00 · Elyvern' },
     { id: 'etage01',          label: 'Étage 01 · Nodalis' },
     { id: 'etage02',          label: 'Étage 02 · Pic Nörum' },
@@ -47,6 +48,7 @@ var GUIDE_SOMMAIRE = [
     { id: 'capture',          label: 'Pokédex' },
     { id: 'obtention',        label: 'Obtention spéciales' },
     { id: 'combat',           label: 'Système de Combat' }
+    { id: 'talents',          label: 'Talents' }
   ]}
 ];
 
