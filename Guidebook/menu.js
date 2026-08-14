@@ -36,7 +36,8 @@ var GUIDE_SOMMAIRE = [
   { categorie: 'Personnages', pages: [
     { id: 'progression',      label: 'Progression' },
     { id: 'argent',           label: 'Argent' },
-    { id: 'pvp',              label: 'PVP' }
+    { id: 'pvp',              label: 'PVP' },
+    { id: 'talents',         label: 'Vestiges' }
   ]},
 
   { categorie: 'Pokémons', pages: [
@@ -46,8 +47,7 @@ var GUIDE_SOMMAIRE = [
     { id: 'pkmn-talents',     label: 'Talents' },
     { id: 'capture',          label: 'Pokédex' },
     { id: 'obtention',        label: 'Obtention spéciales' },
-    { id: 'combat',           label: 'Système de Combat' },
-    { id: 'talents',         label: 'Vestiges' }
+    { id: 'combat',           label: 'Système de Combat' }
   ]}
 ];
 
