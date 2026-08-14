@@ -35,7 +35,6 @@ var GUIDE_SOMMAIRE = [
 
   { categorie: 'Personnages', pages: [
     { id: 'progression',      label: 'Progression' },
-    { id: 'talents',          label: 'Talents' },
     { id: 'argent',           label: 'Argent' },
     { id: 'pvp',              label: 'PVP' }
   ]},
@@ -48,7 +47,7 @@ var GUIDE_SOMMAIRE = [
     { id: 'capture',          label: 'Pokédex' },
     { id: 'obtention',        label: 'Obtention spéciales' },
     { id: 'combat',           label: 'Système de Combat' }
-    { id: 'talents',          label: 'Talents' }
+    { id: 'vestiges',         label: 'Vestiges' }
   ]}
 ];
 
