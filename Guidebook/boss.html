@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Les boss — Guide Etherium</title>
+<link href="aetherion-unifie.css" rel="stylesheet" />
+</head>
+<body style="--g:#BE5735">
+<!-- MODE D'EMPLOI :
+     • Changer un TEXTE  : récris-le entre les balises, ex <p>ton texte</p>.
+     • Changer une IMAGE : remplace le lien après  src="  par l'adresse de ton image.
+     • AJOUTER UN BOSS   : copie un <button> du bloc « grp-figures-nav », puis
+       copie le panneau <div class="grp-figure-panneau"> qui va avec, et donne
+       le même numéro après data-figure=" et après id=".
+     • LE MENU DE GAUCHE est écrit une seule fois dans « menu.js ». -->
+<div class="guide" data-page="boss">
+
+    <div class="guide-corps">
+
+        <div class="guide-page actif" id="boss">
+            <!-- BANNIÈRE -->
+            <div class="guide-hero">
+                <img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="">
+                <div class="guide-hero-titre"><small>— 03. Cartes</small><b>Les <em>boss</em></b></div>
+                <span class="guide-hero-num">03</span>
+            </div>
+
+            <div class="guide-section">
+                <h2 class="guide-titre">adadad <em>adadad</em></h2>
+                <div class="guide-bloc"><b>adadadad</b><p>À compléter</p></div>
+            </div>
+
+            <div class="guide-section">
+                <h2 class="guide-titre">adadad<em>adadadad</em></h2>
+                <!-- FICHE D'IDENTITÉ : une case = un <div>. -->
+                <div class="grp-meta">
+                    <div><b>adadadad</b><span>À compléter</span></div>
+                </div>
+                <div class="guide-bloc"><b>adaad</b><p>adadadad</p></div>
+            </div>
+
+            <div class="guide-section">
+                <h2 class="guide-titre">azdazd<em>adadad</em></h2>
+                <div class="grp-jauge-nom"><b>infos</b><small>blavla</small></div>
+                <div class="grp-jauge">
+                    <div class="grp-palier"><span class="pts">azdazdzad</span><p>À compléter</p></div>
+                </div>
+            </div>
+
+            <div class="guide-section">
+                <h2 class="guide-titre">Les <em>gardiens</em></h2>
+                <!-- BOSS : les ronds du haut changent de fiche (même numéro après data-figure=" et id="). -->
+                <div class="grp-figures-nav">
+                    <button type="button" data-figure="boss0" class="actif" title="Gardien de l'étage 01"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Gardien de l'étage 00"></button>
+                    <button type="button" data-figure="boss1" title="Gardien de l'étage 02"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Gardien de l'étage 01"></button>
+                    <button type="button" data-figure="boss2" title="Gardien de l'étage 03"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Gardien de l'étage 02"></button>
+                </div>
+
+                <div class="grp-figure-panneau" id="boss0">
+                <div class="grp-figure">
+                    <div class="portrait"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Portrait du gardien"></div>
+                    <div class="fiche">
+                        <header><b>Nom du boss</b><small>Étage 01 ·</small></header>
+                        <div class="meta"><span><b>blabla</b></span></div>
+                        <h4>blabla</h4>
+                        <p>À compléter.</p>
+                        <div class="team"><small>blabla</small><span>blabla</span></div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="grp-figure-panneau" id="boss1">
+                <div class="grp-figure">
+                    <div class="portrait"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Portrait du gardien"></div>
+                    <div class="fiche">
+                        <header><b>Nom du boss</b><small>Étage 02 ·</small></header>
+                        <div class="meta"><span><b>blabla</b></span></div>
+                        <h4>blabla</h4>
+                        <p>À compléter.</p>
+                        <div class="team"><small>blabla</small><span>blabla</span></div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="grp-figure-panneau" id="boss2">
+                <div class="grp-figure">
+                    <div class="portrait"><img src="https://2img.net/i.imgur.com/OgevXdJ.png" alt="Portrait du gardien"></div>
+                    <div class="fiche">
+                        <header><b>Nom du boss</b><small>Étage 03 ·</small></header>
+                        <div class="meta"><span><b>blabla</b></span></div>
+                        <h4>blabla</h4>
+                        <p>À compléter.</p>
+                        <div class="team"><small>blabla</small><span>blabla</span></div>
+                    </div>
+                </div>
+                </div>
+
+                <a class="guide-cta" href="etage00.html">Retour à la carte des étages →</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="menu.js"></script>
+</body>
+</html>
