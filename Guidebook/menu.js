@@ -46,7 +46,7 @@ var GUIDE_SOMMAIRE = [
     { id: 'pkmn-talents',     label: 'Talents' },
     { id: 'capture',          label: 'Pokédex' },
     { id: 'obtention',        label: 'Obtention spéciales' },
-    { id: 'combat',           label: 'Système de Combat' }
+    { id: 'combat',           label: 'Système de Combat' },
     { id: 'vestiges',         label: 'Vestiges' }
   ]}
 ];
