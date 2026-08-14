@@ -43,10 +43,11 @@ var GUIDE_SOMMAIRE = [
     { id: 'generalite',       label: 'Généralité' },
     { id: 'aetherions',       label: 'Pokémons Etherium' },
     { id: 'pkmn-progression', label: 'Progression' },
+    { id: 'pkmn-talents',     label: 'Talents' },
     { id: 'capture',          label: 'Pokédex' },
     { id: 'obtention',        label: 'Obtention spéciales' },
     { id: 'combat',           label: 'Système de Combat' },
-    { id: 'vestiges',         label: 'Vestiges' }
+    { id: 'talents',         label: 'Vestiges' }
   ]}
 ];
 
