@@ -797,7 +797,7 @@ textarea {
 .dex-tour-titre { display: none; }
 /* petit indice de défilement */
 .dex-tour::after {
-  content: "↕ 20 étages · faites défiler";
+  content: "↕ 18 étages · faites défiler";
   position: sticky; bottom: -76px; z-index: 3;
   align-self: center;
   font-family: 'Space Mono', monospace;
