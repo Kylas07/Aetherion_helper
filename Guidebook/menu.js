@@ -17,6 +17,7 @@ var GUIDE_SOMMAIRE = [
 
   { categorie: 'Cartes', pages: [
     { id: 'boss',             label: 'Les Boss' },
+    { id: 'donjons',          label: 'Les Donjons' },
     { id: 'etage00',          label: 'Étage 00 · Elyvern' },
     { id: 'etage01',          label: 'Étage 01 · Nodalis' },
     { id: 'etage02',          label: 'Étage 02 · Pic Nörum' },
