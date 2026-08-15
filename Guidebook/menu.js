@@ -99,7 +99,45 @@ var GUIDE_LIEN_FORUM = 'https://etherium.forumactif.com';
     }
   }
 
-  /* — interactions internes d'une page (ronds PNJ, tour du Pokédex) — */
+  /* — onglets .dexa-onglet —
+         le clic est délégué à document : il est posé une seule fois et survit
+         donc aux changements de page, qui remplacent tout le .guide-corps. */
+  function groupeOnglets(el) {
+    return el.closest('.guide-section')
+        || el.closest('.guide-page')
+        || el.closest('.guide-corps')
+        || document;
+  }
+
+  function activerOnglet(bouton) {
+    var groupe = groupeOnglets(bouton);
+    var nom = bouton.getAttribute('data-onglet');
+
+    groupe.querySelectorAll('.dexa-onglet').forEach(function (b) { b.classList.remove('actif'); });
+    groupe.querySelectorAll('.dexa-panneau').forEach(function (p) { p.classList.remove('actif'); });
+
+    bouton.classList.add('actif');
+    var cible = groupe.querySelector('#onglet-' + nom)
+             || groupe.querySelector('.dexa-panneau[data-onglet="' + nom + '"]');
+    if (cible) cible.classList.add('actif');
+  }
+
+  document.addEventListener('click', function (e) {
+    var bouton = e.target.closest ? e.target.closest('.dexa-onglet') : null;
+    if (bouton) activerOnglet(bouton);
+  });
+
+  /* Ouvre le premier onglet de chaque barre si aucun panneau n'est encore visible. */
+  function reveillerOnglets() {
+    document.querySelectorAll('.dexa-onglets').forEach(function (barre) {
+      var groupe = groupeOnglets(barre);
+      if (groupe.querySelector('.dexa-panneau.actif')) return;
+      var premier = barre.querySelector('.dexa-onglet.actif') || barre.querySelector('.dexa-onglet');
+      if (premier) activerOnglet(premier);
+    });
+  }
+
+  /* — interactions internes d'une page (ronds PNJ, tour du Pokédex, onglets) — */
   function activerPage() {
     document.querySelectorAll('.grp-figures-nav').forEach(function (nav) {
       var btns = nav.querySelectorAll('[data-figure]');
@@ -130,6 +168,8 @@ var GUIDE_LIEN_FORUM = 'https://etherium.forumactif.com';
         });
       });
     }
+
+    reveillerOnglets();
   }
 
   /* — changement de page sans rechargement — */
