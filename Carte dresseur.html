@@ -261,7 +261,7 @@
 
           normalize(d) {
             d = d || {};
-            const talents = (Array.isArray(d.talents) ? d.talents : []).slice(0, 18).map(t => ({
+            const talents = (Array.isArray(d.talents) ? d.talents : []).slice(0, 35).map(t => ({
               name: (t && t.name) || '', tier: (t && [1, 2, 3].indexOf(+t.tier) >= 0) ? +t.tier : 1
             }));
             const moves = (Array.isArray(d.moves) ? d.moves : []).map(m => ({
