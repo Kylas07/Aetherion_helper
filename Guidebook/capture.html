@@ -167,7 +167,7 @@
                 </button>
             </div>
 
-             <style>
+<style>
 .dex-recherche { position: relative; margin: 0 0 14px; }
 .dex-recherche[hidden] { display: none; }
 
@@ -297,6 +297,7 @@
 
 <script>
 (function () {
+  function demarrer() {
     /* Réservé au messenger : hors de l'iframe (?embed=dex), on retire le bloc. */
     var enMessenger = new URLSearchParams(location.search).get('embed') === 'dex';
 
@@ -328,6 +329,7 @@
             .replace(/[^a-z0-9]/g, '');
     }
 
+    /* ---- construction de l'index à partir des title="" ---- */
     (function construire() {
         var zones = document.querySelectorAll('.dex-zone'),
             parNom = {};
@@ -524,8 +526,18 @@
     document.addEventListener('click', function (e) {
         if (!e.target.closest('.dex-recherche')) listeSug.hidden = true;
     });
+  }
+
+  /* Le bloc est placé AVANT les .dex-zone : il faut attendre que la page
+     soit entièrement lue, sinon l'index est vide et tout paraît absent. */
+  if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', demarrer);
+  } else {
+      demarrer();
+  }
 })();
 </script>
+
              
             <div class="dex-chips">
                 <button type="button" data-zone="zone00" class="actif">Étage 00</button>
