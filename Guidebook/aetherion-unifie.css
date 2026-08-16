@@ -1421,6 +1421,7 @@ textarea {
 /* contrôle d'affichage via iframe */
 .embed-dex body { background: transparent; margin: 0; }
 .embed-dex .guide-menu,
+.embed-dex .guide-sommaire,
 .embed-dex .guide-hero,
 .embed-dex .guide-staff,
 .embed-dex .dex-tour,
