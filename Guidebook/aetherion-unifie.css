@@ -1417,3 +1417,14 @@ textarea {
 .vg-pill.bronze { background:#fbe6d4;color:#9a5b23; }
 .vg-pill.argent { background:#e7e9ef;color:#4b5568; }
 .vg-pill.or { background:#fdf1c7;color:#8a6d1f; }
+
+/* contrôle d'affichage via iframe */
+.embed-dex body { background: transparent; margin: 0; }
+.embed-dex .guide-menu,
+.embed-dex .guide-hero,
+.embed-dex .guide-staff,
+.embed-dex .dex-tour,
+.embed-dex .dex-hordes { display: none; }
+.embed-dex .guide,
+.embed-dex .guide-corps,
+.embed-dex .guide-page { display: block; padding: 16px; margin: 0; max-width: none; }
