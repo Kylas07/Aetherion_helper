@@ -166,6 +166,367 @@
                     <span class="nom"><b>Étage 00</b><small>Elyvern</small></span>
                 </button>
             </div>
+
+             <style>
+.dex-recherche { position: relative; margin: 0 0 14px; }
+.dex-recherche[hidden] { display: none; }
+
+.dex-recherche-champ {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border: 1px solid rgba(0, 0, 0, .12);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, .75);
+}
+.dex-recherche-champ:focus-within { border-color: currentColor; }
+.dex-recherche input {
+    flex: 1 1 auto;
+    min-width: 0;
+    border: none;
+    background: none;
+    outline: 0;
+    font: inherit;
+    font-size: 14px;
+    color: inherit;
+}
+.dex-recherche-vider {
+    border: none;
+    background: none;
+    padding: 0 2px;
+    font: inherit;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    opacity: .45;
+}
+.dex-recherche-vider:hover { opacity: 1; }
+.dex-recherche-vider[hidden] { display: none; }
+
+.dex-suggestions {
+    position: absolute;
+    z-index: 20;
+    left: 0;
+    right: 0;
+    top: calc(100% + 5px);
+    margin: 0;
+    padding: 6px;
+    list-style: none;
+    border: 1px solid rgba(0, 0, 0, .12);
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 16px 34px -18px rgba(0, 0, 0, .45);
+    max-height: 260px;
+    overflow-y: auto;
+}
+.dex-suggestions[hidden] { display: none; }
+.dex-suggestions li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+}
+.dex-suggestions li[aria-selected="true"],
+.dex-suggestions li:hover { background: rgba(0, 0, 0, .06); }
+.dex-suggestions img { width: 32px; height: 32px; object-fit: contain; image-rendering: pixelated; }
+.dex-suggestions small { margin-left: auto; opacity: .55; font-size: 11px; }
+
+.dex-resultat { margin: 0 0 16px; }
+.dex-resultat[hidden] { display: none; }
+
+.dex-resultat-carte {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 16px;
+    border: 1px solid rgba(0, 0, 0, .12);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, .75);
+}
+.dex-resultat-carte > img {
+    width: 76px;
+    height: 76px;
+    flex: none;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+.dex-resultat-info { min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.dex-resultat-nom { font-size: 18px; font-weight: 800; }
+.dex-resultat-zones { display: flex; flex-wrap: wrap; gap: 6px; }
+.dex-resultat-zones button {
+    border: 1px solid rgba(0, 0, 0, .14);
+    border-radius: 999px;
+    background: none;
+    padding: 4px 12px;
+    font: inherit;
+    font-size: 11.5px;
+    cursor: pointer;
+}
+.dex-resultat-zones button:hover { background: rgba(0, 0, 0, .06); }
+
+.dex-absent {
+    padding: 12px 16px;
+    border: 1px dashed rgba(0, 0, 0, .25);
+    border-radius: 12px;
+    font-size: 13.5px;
+    font-weight: 700;
+}
+
+.dex-grille img.dex-trouve {
+    outline: 3px solid currentColor;
+    outline-offset: 2px;
+    border-radius: 6px;
+}
+</style>
+
+<div class="dex-recherche" hidden>
+    <div class="dex-recherche-champ">
+        <span aria-hidden="true">⌕</span>
+        <input type="text" id="dex-q" placeholder="Rechercher un Pokémon…" autocomplete="off"
+               role="combobox" aria-expanded="false" aria-controls="dex-suggestions" aria-autocomplete="list">
+        <button type="button" class="dex-recherche-vider" id="dex-vider" hidden aria-label="Effacer">✕</button>
+    </div>
+    <ul class="dex-suggestions" id="dex-suggestions" role="listbox" hidden></ul>
+</div>
+
+<div class="dex-resultat" id="dex-resultat" aria-live="polite" hidden></div>
+
+<script>
+(function () {
+    /* Réservé au messenger : hors de l'iframe (?embed=dex), on retire le bloc. */
+    var enMessenger = new URLSearchParams(location.search).get('embed') === 'dex';
+
+    if (!enMessenger) {
+        var aRetirer = document.querySelectorAll('.dex-recherche, #dex-resultat');
+        Array.prototype.forEach.call(aRetirer, function (el) {
+            el.parentNode.removeChild(el);
+        });
+        return;
+    }
+
+    var champ = document.getElementById('dex-q'),
+        listeSug = document.getElementById('dex-suggestions'),
+        boutonVider = document.getElementById('dex-vider'),
+        zoneResultat = document.getElementById('dex-resultat'),
+        index = [],
+        suggestions = [],
+        curseur = -1;
+
+    if (!champ) return;
+
+    document.querySelector('.dex-recherche').hidden = false;
+
+    function normaliser(t) {
+        return (t || '')
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^a-z0-9]/g, '');
+    }
+
+    (function construire() {
+        var zones = document.querySelectorAll('.dex-zone'),
+            parNom = {};
+
+        Array.prototype.forEach.call(zones, function (zone) {
+            Array.prototype.forEach.call(zone.querySelectorAll('.dex-grille'), function (grille) {
+                var titre = grille.previousElementSibling,
+                    libelle = titre && titre.classList.contains('dex-sous')
+                        ? titre.textContent.replace(/\s+/g, ' ').trim()
+                        : (zone.id || '');
+
+                Array.prototype.forEach.call(grille.querySelectorAll('img[title]'), function (img) {
+                    var nom = img.getAttribute('title').trim();
+                    if (!nom) return;
+
+                    var cle = normaliser(nom);
+
+                    if (!parNom[cle]) {
+                        parNom[cle] = { nom: nom, cle: cle, src: img.src, zones: [] };
+                        index.push(parNom[cle]);
+                    }
+
+                    // pas de doublon de libellé pour un même Pokémon
+                    if (!parNom[cle].zones.some(function (z) { return z.libelle === libelle; })) {
+                        parNom[cle].zones.push({ libelle: libelle, id: zone.id });
+                    }
+                });
+            });
+        });
+
+        index.sort(function (a, b) { return a.nom.localeCompare(b.nom, 'fr'); });
+    })();
+
+    /* ---- suggestions ---- */
+    function afficherSuggestions(q) {
+        var cle = normaliser(q);
+
+        suggestions = cle
+            ? index.filter(function (p) { return p.cle.indexOf(cle) !== -1; })
+                   .sort(function (a, b) { return a.cle.indexOf(cle) - b.cle.indexOf(cle); })
+                   .slice(0, 8)
+            : [];
+
+        curseur = -1;
+        listeSug.innerHTML = '';
+
+        if (!suggestions.length) {
+            listeSug.hidden = true;
+            champ.setAttribute('aria-expanded', 'false');
+            return;
+        }
+
+        suggestions.forEach(function (p, i) {
+            var li = document.createElement('li');
+            li.setAttribute('role', 'option');
+            li.dataset.i = i;
+            li.innerHTML = '<img src="' + p.src + '" alt=""><span></span><small>' +
+                p.zones.length + (p.zones.length > 1 ? ' zones' : ' zone') + '</small>';
+            li.querySelector('span').textContent = p.nom;
+            listeSug.appendChild(li);
+        });
+
+        listeSug.hidden = false;
+        champ.setAttribute('aria-expanded', 'true');
+    }
+
+    function surligner() {
+        Array.prototype.forEach.call(listeSug.children, function (li, i) {
+            li.setAttribute('aria-selected', i === curseur ? 'true' : 'false');
+        });
+    }
+
+    /* ---- affichage du résultat ---- */
+    function afficherAbsent(nom) {
+        zoneResultat.innerHTML = '';
+        var p = document.createElement('p');
+        p.className = 'dex-absent';
+        p.textContent = '« ' + nom + ' » n\u2019est pas disponible pour le moment !';
+        zoneResultat.appendChild(p);
+        zoneResultat.hidden = false;
+    }
+
+    function afficherPokemon(p) {
+        zoneResultat.innerHTML =
+            '<div class="dex-resultat-carte">' +
+                '<img src="' + p.src + '" alt="">' +
+                '<div class="dex-resultat-info">' +
+                    '<span class="dex-resultat-nom"></span>' +
+                    '<div class="dex-resultat-zones"></div>' +
+                '</div>' +
+            '</div>';
+
+        zoneResultat.querySelector('.dex-resultat-nom').textContent = p.nom;
+
+        var conteneur = zoneResultat.querySelector('.dex-resultat-zones');
+
+        p.zones.forEach(function (z) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.textContent = z.libelle;
+            b.dataset.zone = z.id;
+            conteneur.appendChild(b);
+        });
+
+        zoneResultat.hidden = false;
+
+        // on ouvre la première zone où il apparaît et on l'y met en évidence
+        if (p.zones[0]) {
+            ouvrirZone(p.zones[0].id);
+        }
+        mettreEnEvidence(p.cle);
+    }
+
+    function ouvrirZone(id) {
+        if (!id) return;
+
+        Array.prototype.forEach.call(document.querySelectorAll('.dex-zone'), function (z) {
+            z.classList.toggle('actif', z.id === id);
+        });
+        Array.prototype.forEach.call(document.querySelectorAll('.dex-chips [data-zone], .dex-etage[data-zone]'), function (b) {
+            b.classList.toggle('actif', b.dataset.zone === id);
+        });
+    }
+
+    function mettreEnEvidence(cle) {
+        Array.prototype.forEach.call(document.querySelectorAll('.dex-grille img'), function (img) {
+            var correspond = cle && normaliser(img.getAttribute('title')) === cle;
+            img.classList.toggle('dex-trouve', !!correspond);
+        });
+    }
+
+    function valider(nom) {
+        var cle = normaliser(nom),
+            trouve = index.filter(function (p) { return p.cle === cle; })[0] ||
+                     index.filter(function (p) { return p.cle.indexOf(cle) === 0; })[0];
+
+        listeSug.hidden = true;
+        champ.setAttribute('aria-expanded', 'false');
+
+        if (!cle) {
+            reinitialiser();
+        } else if (trouve) {
+            champ.value = trouve.nom;
+            afficherPokemon(trouve);
+        } else {
+            mettreEnEvidence('');
+            afficherAbsent(nom);
+        }
+    }
+
+    function reinitialiser() {
+        champ.value = '';
+        listeSug.hidden = true;
+        zoneResultat.hidden = true;
+        zoneResultat.innerHTML = '';
+        boutonVider.hidden = true;
+        mettreEnEvidence('');
+    }
+
+    /* ---- évènements ---- */
+    champ.addEventListener('input', function () {
+        boutonVider.hidden = !champ.value;
+        afficherSuggestions(champ.value);
+    });
+
+    champ.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+            if (!suggestions.length) return;
+            e.preventDefault();
+            curseur += e.key === 'ArrowDown' ? 1 : -1;
+            if (curseur < 0) curseur = suggestions.length - 1;
+            if (curseur >= suggestions.length) curseur = 0;
+            surligner();
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            valider(curseur >= 0 ? suggestions[curseur].nom : champ.value);
+        } else if (e.key === 'Escape') {
+            listeSug.hidden = true;
+        }
+    });
+
+    listeSug.addEventListener('click', function (e) {
+        var li = e.target.closest('li');
+        if (li) valider(suggestions[li.dataset.i].nom);
+    });
+
+    boutonVider.addEventListener('click', reinitialiser);
+
+    zoneResultat.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-zone]');
+        if (b) ouvrirZone(b.dataset.zone);
+    });
+
+    document.addEventListener('click', function (e) {
+        if (!e.target.closest('.dex-recherche')) listeSug.hidden = true;
+    });
+})();
+</script>
+             
             <div class="dex-chips">
                 <button type="button" data-zone="zone00" class="actif">Étage 00</button>
                 <button type="button" data-zone="zone01">Étage 01</button>
