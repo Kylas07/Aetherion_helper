@@ -89,7 +89,10 @@ var GUIDE_LIEN_FORUM = 'https://etherium.forumactif.com';
       a.classList.toggle('actif', a.getAttribute('href') === id + '.html');
     });
   }
-
+  /* — contrôle d'accès par iframe — */
+  if (new URLSearchParams(location.search).get('embed') === 'dex') {
+    document.documentElement.classList.add('embed-dex');
+  }
   /* — bouton « revenir sur le forum » — */
   function ajouterRetour() {
     var corps = guide.querySelector('.guide-corps');
