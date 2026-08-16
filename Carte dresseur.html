@@ -295,7 +295,7 @@
           }
           addTalent = () => {
             this.setState(s => {
-              if (s.data.talents.length >= 18) return {};
+              if (s.data.talents.length >= 35) return {};
               return { data: Object.assign({}, s.data, { talents: s.data.talents.concat([{ name: '', tier: 1 }]) }) };
             });
           };
