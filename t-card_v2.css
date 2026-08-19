@@ -1,0 +1,355 @@
+/* ==========================================================================
+   CARTE DE DRESSEUR — feuille de style
+   À coller dans : Panneau d'admin → Affichage → Couleurs → Feuille CSS
+   Le code posté ne contient que des classes : messages courts, style pilotable
+   depuis ici pour tout le forum d'un coup.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+.drs {
+    /* Reprend les variables du forum quand elles existent. */
+    --drs-card: var(--carte, #FFFFFF);
+    --drs-cream: var(--fond, #EFE8DF);
+    --drs-inset: var(--beige, #F6F0E9);
+    --drs-band: var(--beige-band, #FCF9F4);
+    --drs-line: var(--beige-bordure, #ECE3D8);
+    --drs-dark: var(--fondPa, #201E1D);
+    --drs-ink: #1B1918;
+    --drs-body: #4A443E;
+    --drs-muted: #8C837A;
+    --drs-accent: #E8402A;
+
+    --drs-mono: 'Space Mono', ui-monospace, 'Courier New', monospace;
+    --drs-radius: 14px;
+
+    --drs-bronze: #C08A4A;
+    --drs-silver: #9AA3AE;
+    --drs-gold: #D8AE33;
+
+    box-sizing: border-box;
+    width: 650px;
+    max-width: 100%;
+    margin: 0 auto;
+    background: var(--drs-card);
+    border-radius: var(--drs-radius);
+    overflow: hidden;
+    font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+    color: var(--drs-body);
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: left;
+    box-shadow: 0 18px 40px -26px rgba(30, 24, 20, .45);
+}
+
+.drs *,
+.drs *::before,
+.drs *::after { box-sizing: border-box; }
+
+/* ---------- bandeau sombre ---------- */
+.drs-hd {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: linear-gradient(180deg, #262322 0%, #161413 100%);
+    border-bottom: 2px solid var(--drs-accent);
+}
+
+.drs-htx {
+    flex: 1;
+    min-width: 0;
+}
+
+.drs-kick {
+    display: block;
+    font-family: var(--drs-mono);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: var(--drs-accent);
+}
+
+.drs-nm {
+    margin: 6px 0 0;
+    font-family: 'Archivo', Arial, sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -.01em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    overflow-wrap: anywhere;
+}
+
+.drs-rk {
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    padding: 7px 13px 8px;
+    background: rgba(255, 255, 255, .07);
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: 9px;
+}
+
+.drs-rk span {
+    font-family: var(--drs-mono);
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #B9AFA5;
+}
+
+.drs-rk b {
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1;
+    color: #FFFFFF;
+}
+
+/* ---------- corps : portrait + contenu ---------- */
+.drs-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding: 18px 20px 20px;
+}
+
+.drs-por {
+    position: relative;
+    flex: 1 1 224px;
+    max-width: 100%;
+    align-self: flex-start;
+}
+
+.drs-por img,
+.drs-ph {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border-radius: 10px;
+    background: var(--drs-inset);
+    border: 1px solid var(--drs-line);
+}
+
+.drs-por img {
+    object-fit: cover;
+    object-position: center top;
+}
+
+.drs-ph {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--drs-mono);
+    font-size: 10px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--drs-muted);
+    background: repeating-linear-gradient(45deg, var(--drs-inset) 0 8px, var(--drs-band) 8px 16px);
+}
+
+/* flex-grow élevé : le contenu prend tout l'espace libre, le portrait garde
+   sa largeur ; sous ~500px de conteneur, le contenu passe sous le portrait. */
+.drs-main {
+    flex: 999 1 320px;
+    min-width: 0;
+}
+
+/* ---------- faits ---------- */
+.drs-facts {
+    margin: 0 0 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+}
+
+.drs-f {
+    flex: 1 1 40%;
+    min-width: 0;
+}
+
+.drs-f dt {
+    font-family: var(--drs-mono);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--drs-muted);
+    overflow-wrap: anywhere;
+}
+
+.drs-f dd {
+    margin: 4px 0 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--drs-ink);
+    overflow-wrap: anywhere;
+}
+
+/* ---------- sections ---------- */
+.drs-sec {
+    margin-top: 14px;
+    padding-top: 13px;
+    border-top: 1px solid var(--drs-line);
+}
+
+.drs-sec > h4 {
+    margin: 0 0 9px;
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+    font-family: var(--drs-mono);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--drs-ink);
+}
+
+.drs-sec > h4 span {
+    font-size: 8.5px;
+    letter-spacing: .14em;
+    color: var(--drs-muted);
+}
+
+/* ---------- listes longues : zone de défilement interne ---------- */
+.drs-scroll {
+    max-height: 158px;
+    overflow-y: auto;
+    padding: 2px 8px 2px 2px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--drs-line) transparent;
+    overscroll-behavior: contain;
+}
+
+.drs-scroll::-webkit-scrollbar { width: 6px; }
+.drs-scroll::-webkit-scrollbar-track { background: transparent; }
+.drs-scroll::-webkit-scrollbar-thumb { background: var(--drs-line); border-radius: 6px; }
+.drs-scroll:hover::-webkit-scrollbar-thumb { background: #D9CEC0; }
+
+.drs-mv.drs-scroll { max-height: 124px; }
+
+/* ---------- vestiges ---------- */
+.drs-vs {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.drs-v {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 6px 5px 10px;
+    background: var(--drs-inset);
+    border: 1px solid var(--drs-line);
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--drs-ink);
+}
+
+.drs-v i {
+    font-style: normal;
+    padding: 2px 6px;
+    border-radius: 5px;
+    background: var(--drs-silver);
+    color: #1B1918;
+    font-family: var(--drs-mono);
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.drs-v-b i { background: var(--drs-bronze); }
+.drs-v-o i { background: var(--drs-gold); }
+
+/* ---------- CT / CS ---------- */
+.drs-mv {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.drs-mv li {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 10px 5px 6px;
+    background: var(--drs-inset);
+    border: 1px solid var(--drs-line);
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--drs-ink);
+}
+
+.drs-mv li b {
+    padding: 2px 6px;
+    border-radius: 5px;
+    background: var(--drs-ink);
+    color: #FFFFFF;
+    font-family: var(--drs-mono);
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: .08em;
+}
+
+.drs-mv li.drs-cs b { background: var(--drs-accent); }
+
+/* ---------- inventaire ---------- */
+.drs-inv {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    columns: 150px 2;
+    column-gap: 22px;
+}
+
+.drs-inv li {
+    padding: 3px 0;
+    font-size: 12.5px;
+    break-inside: avoid;
+}
+
+.drs-inv li::before {
+    content: "•";
+    margin-right: 8px;
+    color: var(--drs-accent);
+    font-weight: 700;
+}
+
+/* ---------- biographie ---------- */
+.drs-bio {
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.65;
+    font-style: italic;
+    color: var(--drs-body);
+}
+
+.drs-empty {
+    margin: 0;
+    font-size: 12px;
+    color: var(--drs-muted);
+}
+
+/* ---------- mobile ---------- */
+@media (max-width: 520px) {
+    .drs-hd { flex-wrap: wrap; }
+    .drs-por { flex-basis: 100%; }
+    .drs-por img, .drs-ph { max-height: 420px; }
+    .drs-f { flex-basis: 100%; }
+}
