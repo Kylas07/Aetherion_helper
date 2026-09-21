@@ -1,0 +1,2633 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calculateur de dégâts · Etherium</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EDEAE3; --surface:#FFFFFF; --surface-2:#F5F1EA; --line:#E7E2DA;
+  --text:#26221D; --muted:#5A5349; --accent:#C25C3A; --accent-ink:#FFFFFF;
+  --gold:#C25C3A; --pos:#2F7D4F; --neg:#B4283C; --glow:rgba(194,92,58,.16); --focus:#C25C3A;
+  --shadow:0 18px 40px -20px rgba(45,38,30,.35);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font:16px/1.5 'Barlow',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  -webkit-text-size-adjust:100%;
+}
+.page{
+  max-width:1080px; margin:0 auto;
+  padding:30px max(18px,env(safe-area-inset-right,0px)) 56px max(18px,env(safe-area-inset-left,0px));
+}
+h1,h2,h3,.big,summary,.kicker,.mini-n{font-family:'Oswald','Arial Narrow',Arial,sans-serif}
+h2,h3,summary{font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+h1{font-size:clamp(2rem,5.4vw,3rem);line-height:1.05;margin:4px 0 12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:linear-gradient(92deg,#E58A5E,#C25C3A 55%,#9C9488);-webkit-background-clip:text;background-clip:text;color:transparent}
+.kicker{margin:0;font-size:.8rem;letter-spacing:5px;text-transform:uppercase;color:#8A8276;font-weight:500}
+.back{display:inline-block;margin:0 0 22px;color:var(--muted);font-weight:600;text-decoration:none;font-family:'Oswald',sans-serif;letter-spacing:1px;text-transform:uppercase;font-size:.85rem}
+.back:hover{color:var(--accent)}
+.back:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.lead{margin:0 0 26px;color:var(--muted);max-width:56ch}
+h2{font-size:1.2rem;margin:0 0 4px}
+h3{font-size:1rem;margin:0 0 6px}
+
+.grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;align-items:start}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:0 14px 34px -22px rgba(45,38,30,.28)}
+.block{padding:22px 24px 24px}
+.block+.block{border-top:1px solid var(--line)}
+.field{margin:14px 0 0;padding:0;border:0;min-width:0}
+label,legend{display:block;padding:0;margin:0 0 6px;font-weight:600;font-size:.93rem}
+.hint{margin:6px 0 0;color:var(--muted);font-size:.88rem}
+.note{margin:12px 0 0;color:var(--muted);font-size:.9rem}
+
+.txt,.sel,.num{
+  width:100%; height:46px; padding:0 14px; color:var(--text);
+  background:var(--surface-2); border:1px solid var(--line); border-radius:12px; font:inherit;
+}
+.sel{padding-right:8px}
+.txt:focus-visible,.sel:focus-visible,.num:focus-visible,.btn:focus-visible,.link:focus-visible,.st-btn:focus-visible,summary:focus-visible{
+  outline:2px solid var(--focus); outline-offset:2px;
+}
+.combo{position:relative}
+.opts{
+  position:absolute; z-index:20; left:0; right:0; top:calc(100% + 4px);
+  max-height:300px; overflow:auto; margin:0; padding:6px; list-style:none;
+  background:var(--surface); border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow);
+}
+.opt{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 10px;border-radius:8px;cursor:pointer}
+.opt:hover{background:var(--surface-2)}
+.opt.on{background:var(--surface-2);outline:2px solid var(--accent);outline-offset:-2px}
+.o-name{font-weight:500}
+.none{padding:10px;color:var(--muted);font-size:.9rem}
+.types{display:flex;align-items:center;gap:5px;flex-shrink:0}
+.pw{color:var(--muted);font-size:.85rem;min-width:2.2ch;text-align:right;font-variant-numeric:tabular-nums}
+
+.tb{display:inline-block;padding:1px 10px;border-radius:999px;font-size:.78rem;font-weight:700;line-height:1.6;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.t-acier{background:#5E7086;color:#fff}
+.t-combat{background:#B8352D;color:#fff}
+.t-dragon{background:#5545C7;color:#fff}
+.t-eau{background:#2F6FBF;color:#fff}
+.t-feu{background:#C9581A;color:#fff}
+.t-electrik{background:#F0C22B;color:#2B2100}
+.t-fee{background:#F0A0D2;color:#3A1030}
+.t-glace{background:#8AD6E6;color:#06303B}
+.t-insecte{background:#A6C23A;color:#1F2A03}
+.t-normal{background:#B5B3A0;color:#262518}
+.t-plante{background:#2F8F46;color:#fff}
+.t-poison{background:#8E3FB0;color:#fff}
+.t-psy{background:#C93B7E;color:#fff}
+.t-roche{background:#7F6A2F;color:#fff}
+.t-sol{background:#D2B074;color:#33240A}
+.t-spectre{background:#5A4B92;color:#fff}
+.t-tenebres{background:#4A3F3A;color:#fff}
+.t-vol{background:#8FA4E8;color:#101A44}
+
+.pick-info{min-height:1.6em;margin:8px 0 0;display:flex;flex-wrap:wrap;gap:6px;align-items:center;color:var(--muted);font-size:.9rem}
+.link{background:none;border:0;padding:8px 0 0;color:var(--accent);font:inherit;font-size:.9rem;text-decoration:underline;cursor:pointer}
+.manual{display:grid;gap:12px;margin-top:4px;padding:14px;border:1px dashed var(--line);border-radius:12px}
+.manual label{margin-bottom:4px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+.seg{display:flex;gap:6px;position:relative}
+.seg-in{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.seg-lb{
+  flex:1; margin:0; padding:10px 0; text-align:center; font-weight:700; cursor:pointer;
+  background:var(--surface-2); border:1px solid var(--line); border-radius:10px;
+}
+.seg-in:checked+.seg-lb{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.seg-in:focus-visible+.seg-lb{outline:2px solid var(--focus);outline-offset:2px}
+
+details>summary{cursor:pointer;font-size:1.05rem;list-style-position:inside}
+details[open]>summary{margin-bottom:8px}
+.mods-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:14px}
+.st{display:grid;grid-template-columns:1fr auto;gap:0 10px;align-items:center;padding:9px 0;border-top:1px solid var(--line)}
+.st-name{font-weight:600}
+.st-pts{grid-column:1;color:var(--muted);font-size:.84rem}
+.st-ctl{grid-column:2;grid-row:1 / span 2;display:flex;align-items:center;gap:6px}
+.st-btn{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--surface-2);color:var(--text);font:inherit;font-size:1.25rem;line-height:1;cursor:pointer}
+.st-btn:disabled{opacity:.4;cursor:default}
+.st-val{min-width:2.6ch;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+.pos{color:var(--pos)}
+.neg{color:var(--neg)}
+
+.result{padding:26px 24px 22px;position:sticky;top:16px}
+.result h2{color:var(--muted);font-size:.95rem;margin:0}
+.big-wrap{text-align:center;padding:22px 8px 14px;margin:4px 0 8px;background:radial-gradient(closest-side,var(--glow),transparent)}
+.big{margin:0;font-size:clamp(4.2rem,11vw,6.6rem);font-weight:700;line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
+.big.idle{color:var(--muted)}
+.big-sub{margin:10px 0 0;color:var(--muted);min-height:1.5em}
+.lrow{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:10px 0;border-top:1px solid var(--line)}
+.l-lab small{display:block;color:var(--muted);font-size:.85rem;line-height:1.35;margin-top:1px}
+.l-val{font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+.lrow.dim{color:var(--muted)}
+.lrow.total{font-size:1.1rem}
+.lrow.total .l-val{color:var(--gold);font-size:1.3rem}
+.sub-h{margin:20px 0 2px}
+.sum{margin:18px 0 0;padding:12px 14px;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;font-size:.93rem;user-select:text}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.btn{height:44px;padding:0 18px;border-radius:10px;font-family:'Oswald',sans-serif;letter-spacing:.8px;text-transform:uppercase;font-size:.9rem;border:1px solid var(--line);background:var(--surface-2);color:var(--text);font:inherit;font-weight:600;cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:hover:not(:disabled){border-color:var(--accent)}
+.btn:disabled{opacity:.45;cursor:default}
+.how{margin-top:20px;padding-top:14px;border-top:1px solid var(--line)}
+.how summary{font-size:.95rem}
+.how ul{margin:8px 0 0;padding-left:1.2em;color:var(--muted);font-size:.9rem}
+.how p{margin:8px 0 0;font-size:.93rem}
+.foot{margin:22px 2px 0;color:var(--muted);font-size:.86rem;max-width:64ch}
+
+.mini{display:none}
+@media (max-width:899px){
+  .grid{grid-template-columns:1fr}
+  .result{position:static}
+  .page{padding-bottom:104px}
+  .mini{
+    display:flex; position:fixed; left:0; right:0; bottom:0; z-index:30;
+    justify-content:space-between; align-items:center; gap:12px;
+    padding:10px max(18px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px));
+    background:var(--surface); border-top:1px solid var(--line);
+  }
+  .mini-l{color:var(--muted);font-weight:600}
+  .mini-n{font-size:2rem;font-weight:700;color:var(--gold);line-height:1}
+}
+@media (max-width:560px){
+  .block{padding:20px 16px 22px}
+  .mods-cols{grid-template-columns:1fr}
+  .two{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:no-preference){
+  .btn,.st-btn,.seg-lb{transition:background-color .15s,border-color .15s}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <a class="back" href="index.html">← Mes outils</a>
+    <p class="kicker">ETHERIUM · Pokémon RPG</p>
+    <h1>Calculateur de dégâts</h1>
+    <p class="lead">Choisis qui attaque, avec quelle attaque et qui encaisse. Le calcul se fait tout seul, tu n'as rien d'autre à remplir.</p>
+    <noscript><p class="note">Cette page a besoin de JavaScript pour calculer les dégâts.</p></noscript>
+  </header>
+
+  <main class="grid">
+    <div class="panel">
+      <section class="block" aria-labelledby="h-att">
+        <h2 id="h-att">Qui attaque ?</h2>
+        <div id="attMount"></div>
+        <fieldset class="field">
+          <legend>Rang de l'attaquant</legend>
+          <div id="attRankMount"></div>
+          <p class="hint" id="attRankHint"></p>
+        </fieldset>
+      </section>
+
+      <section class="block" aria-labelledby="h-move">
+        <h2 id="h-move">Avec quelle attaque ?</h2>
+        <div id="moveMount"></div>
+      </section>
+
+      <section class="block" aria-labelledby="h-def">
+        <h2 id="h-def">Qui encaisse ?</h2>
+        <div id="defMount"></div>
+        <div class="field">
+          <label for="defHp">PV actuels du défenseur (facultatif)</label>
+          <input id="defHp" class="num" type="number" inputmode="numeric" min="0" step="1" placeholder="Pour voir ses PV restants">
+        </div>
+      </section>
+
+      <section class="block">
+        <details id="mods">
+          <summary>Paliers de stats (facultatif)</summary>
+          <p class="hint">Coche ce que le combat a changé : chaque palier vaut 5 × la valeur du rang du Pokémon concerné, de −6 à +6.</p>
+          <div class="mods-cols">
+            <div>
+              <h3>Attaquant</h3>
+              <div id="modsAtt"></div>
+            </div>
+            <div>
+              <h3>Défenseur</h3>
+              <fieldset class="field" style="margin-top:0">
+                <legend>Rang du défenseur</legend>
+                <div id="defRankMount"></div>
+                <p class="hint">Sert seulement à convertir ses paliers en points.</p>
+              </fieldset>
+              <div id="modsDef"></div>
+            </div>
+          </div>
+        </details>
+      </section>
+    </div>
+
+    <aside class="panel result" id="result" aria-label="Résultat">
+      <h2>Dégâts infligés</h2>
+      <div class="big-wrap" role="status">
+        <p class="big idle" id="big">—</p>
+        <p class="big-sub" id="bigSub"></p>
+      </div>
+      <div id="ledger"></div>
+      <p class="sum" id="sumText" hidden></p>
+      <div class="actions">
+        <button type="button" class="btn primary" id="copyBtn" disabled>Copier le résumé</button>
+        <button type="button" class="btn" id="resetBtn">Nouveau calcul</button>
+      </div>
+      <details class="how">
+        <summary>Comment c'est calculé ?</summary>
+        <p>Dégâts infligés = puissance × efficacité + STAB + (rang × 10) + palier d'attaque.</p>
+        <ul>
+          <li>Efficacité : tableau des types de l'équipe. Si le défenseur a deux types, on fait la moyenne des deux valeurs.</li>
+          <li>STAB : quand l'attaque est du même type que l'attaquant, le bonus est de +5 au rang D, +10 au C, +20 au B, +40 au A et +80 au S.</li>
+          <li>Rang : D vaut 1, C vaut 2, B vaut 3, A vaut 4, S vaut 5.</li>
+          <li>Palier : 5 × la valeur du rang, par palier gagné ou perdu.</li>
+          <li>Pas de puissance ou type immunisé : 0 dégât. Le total ne descend jamais sous 0.</li>
+        </ul>
+      </details>
+    </aside>
+  </main>
+
+  <p class="foot">Toutes les espèces et les attaques sont dans les listes, avec les formes d'Alola, de Galar, de Hisui et de Paldea. Une forme absente (Méga, Primo, Gigamax…) ? Sous chaque champ, « Saisir à la main » te laisse remplir les types et la puissance toi-même.</p>
+</div>
+
+<div class="mini" id="mini" aria-hidden="true">
+  <span class="mini-l">Dégâts infligés</span>
+  <span class="mini-n" id="miniN">—</span>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+/* ---------- Données (issues du gsheet de la team) ---------- */
+const TYPES=['Acier','Combat','Dragon','Eau','Feu','Électrik','Fée','Glace','Insecte','Normal','Plante','Poison','Psy','Roche','Sol','Spectre','Ténèbres','Vol'];
+const CHART_ROWS=[
+ [0.5,1,1,0.5,0.5,0.5,2,2,1,1,1,1,1,2,1,1,1,1],
+ [2,1,1,1,1,1,0.5,2,0.5,2,1,0.5,0.5,2,1,0,2,0.5],
+ [0.5,1,2,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1],
+ [1,1,0.5,0.5,2,1,1,1,1,1,0.5,1,1,2,2,1,1,1],
+ [2,1,0.5,0.5,0.5,1,1,2,2,1,2,1,1,0.5,1,1,1,1],
+ [1,1,0.5,2,1,0.5,1,1,1,1,0.5,1,1,1,0,1,1,2],
+ [0.5,2,2,1,0.5,1,1,1,1,1,1,0.5,1,1,1,1,2,1],
+ [0.5,1,2,0.5,0.5,1,1,0.5,1,1,2,1,1,1,2,1,1,2],
+ [0.5,0.5,1,1,0.5,1,0.5,1,1,1,2,0.5,2,1,1,0.5,2,0.5],
+ [0.5,1,1,1,1,1,1,1,1,1,1,1,1,0.5,1,0,1,1],
+ [0.5,1,0.5,2,0.5,1,1,1,0.5,1,0.5,0.5,1,2,2,1,1,0.5],
+ [0,1,1,1,1,1,2,1,1,1,2,0.5,1,0.5,0.5,0.5,1,1],
+ [0.5,2,1,1,1,1,1,1,1,1,1,2,0.5,1,1,1,0,1],
+ [0.5,0.5,1,1,2,1,1,2,2,1,1,1,1,1,0.5,1,1,2],
+ [2,1,1,1,2,2,1,1,0.5,1,0.5,2,1,2,1,1,1,0],
+ [1,1,1,1,1,1,1,1,1,0,1,1,2,1,1,2,0.5,1],
+ [1,0.5,1,1,1,1,0.5,1,1,1,1,1,2,1,1,2,0.5,1],
+ [0.5,2,1,1,1,0.5,1,1,2,1,2,1,1,0.5,1,1,1,1]
+];
+const CHART={};
+TYPES.forEach((a,i)=>{CHART[a]={};TYPES.forEach((d,j)=>{CHART[a][d]=CHART_ROWS[i][j];});});
+const RANKS={D:{m:1,stab:5},C:{m:2,stab:10},B:{m:3,stab:20},A:{m:4,stab:40},S:{m:5,stab:80}};
+
+const POKE_RAW=`Bulbizarre|Plante|Poison|45
+Herbizarre|Plante|Poison|60
+Florizarre|Plante|Poison|80
+Salamèche|Feu||39
+Reptincel|Feu||58
+Dracaufeu|Feu|Vol|78
+Carapuce|Eau||44
+Carabaffe|Eau||59
+Tortank|Eau||79
+Chenipan|Insecte||45
+Chrysacier|Insecte||50
+Papilusion|Insecte|Vol|60
+Aspicot|Insecte|Poison|40
+Coconfort|Insecte|Poison|45
+Dardargnan|Insecte|Poison|65
+Roucool|Normal|Vol|40
+Roucoups|Normal|Vol|63
+Roucarnage|Normal|Vol|83
+Rattata|Normal||30
+Rattata d’Alola|Ténèbres|Normal|30
+Rattatac|Normal||55
+Rattatac d’Alola|Ténèbres|Normal|75
+Piafabec|Normal|Vol|40
+Rapasdepic|Normal|Vol|65
+Abo|Poison||35
+Arbok|Poison||60
+Pikachu|Électrik||35
+Raichu|Électrik||60
+Raichu d’Alola|Électrik|Psy|60
+Sabelette|Sol||50
+Sabelette d’Alola|Glace|Acier|50
+Sablaireau|Sol||75
+Sablaireau d’Alola|Glace|Acier|75
+Nidoran♀|Poison||55
+Nidorina|Poison||70
+Nidoqueen|Poison|Sol|90
+Nidoran♂|Poison||46
+Nidorino|Poison||61
+Nidoking|Poison|Sol|81
+Mélofée|Fée||70
+Mélodelfe|Fée||95
+Goupix|Feu||38
+Goupix d’Alola|Glace||38
+Feunard|Feu||73
+Feunard d’Alola|Glace|Fée|73
+Rondoudou|Normal|Fée|115
+Grodoudou|Normal|Fée|140
+Nosferapti|Poison|Vol|40
+Nosferalto|Poison|Vol|75
+Mystherbe|Plante|Poison|45
+Ortide|Plante|Poison|60
+Rafflesia|Plante|Poison|75
+Paras|Insecte|Plante|35
+Parasect|Insecte|Plante|60
+Mimitoss|Insecte|Poison|60
+Aéromite|Insecte|Poison|70
+Taupiqueur|Sol||10
+Taupiqueur d’Alola|Sol|Acier|10
+Triopikeur|Sol||35
+Triopikeur d’Alola|Sol|Acier|35
+Miaouss|Normal||40
+Miaouss d’Alola|Ténèbres||40
+Miaouss de Galar|Acier||50
+Persian|Normal||65
+Persian d’Alola|Ténèbres||65
+Psykokwak|Eau||50
+Akwakwak|Eau||80
+Férosinge|Combat||40
+Colossinge|Combat||65
+Caninos|Feu||55
+Caninos de Hisui|Feu|Roche|60
+Arcanin|Feu||90
+Arcanin de Hisui|Feu|Roche|95
+Ptitard|Eau||40
+Têtarte|Eau||65
+Tartard|Eau|Combat|90
+Abra|Psy||25
+Kadabra|Psy||40
+Alakazam|Psy||55
+Machoc|Combat||70
+Machopeur|Combat||80
+Mackogneur|Combat||90
+Chétiflor|Plante|Poison|50
+Boustiflor|Plante|Poison|65
+Empiflor|Plante|Poison|80
+Tentacool|Eau|Poison|40
+Tentacruel|Eau|Poison|80
+Racaillou|Roche|Sol|40
+Racaillou d’Alola|Roche|Électrik|40
+Gravalanch|Roche|Sol|55
+Gravalanch d’Alola|Roche|Électrik|55
+Grolem|Roche|Sol|80
+Grolem d’Alola|Roche|Électrik|80
+Ponyta|Feu||50
+Ponyta de Galar|Psy||50
+Galopa|Feu||65
+Galopa de Galar|Psy|Fée|65
+Ramoloss|Eau|Psy|90
+Ramoloss de Galar|Psy||90
+Flagadoss|Eau|Psy|95
+Flagadoss de Galar|Poison|Psy|95
+Magnéti|Électrik|Acier|25
+Magnéton|Électrik|Acier|50
+Canarticho|Normal|Vol|52
+Canarticho de Galar|Combat||52
+Doduo|Normal|Vol|35
+Dodrio|Normal|Vol|60
+Otaria|Eau||65
+Lamantine|Eau|Glace|90
+Tadmorv|Poison||80
+Tadmorv d’Alola|Poison|Ténèbres|80
+Grotadmorv|Poison||105
+Grotadmorv d’Alola|Poison|Ténèbres|105
+Kokiyas|Eau||30
+Crustabri|Eau|Glace|50
+Fantominus|Spectre|Poison|30
+Spectrum|Spectre|Poison|45
+Ectoplasma|Spectre|Poison|60
+Onix|Roche|Sol|35
+Soporifik|Psy||60
+Hypnomade|Psy||85
+Krabby|Eau||30
+Krabboss|Eau||55
+Voltorbe|Électrik||40
+Voltorbe de Hisui|Électrik|Plante|40
+Électrode|Électrik||60
+Électrode de Hisui|Électrik|Plante|60
+Noeunoeuf|Plante|Psy|60
+Noadkoko|Plante|Psy|95
+Noadkoko d’Alola|Plante|Dragon|95
+Osselait|Sol||50
+Ossatueur|Sol||60
+Ossatueur d’Alola|Feu|Spectre|60
+Kicklee|Combat||50
+Tygnon|Combat||50
+Excelangue|Normal||90
+Smogo|Poison||40
+Smogogo|Poison||65
+Smogogo de Galar|Poison|Fée|65
+Rhinocorne|Sol|Roche|80
+Rhinoféros|Sol|Roche|105
+Leveinard|Normal||250
+Saquedeneu|Plante||65
+Kangourex|Normal||105
+Hypotrempe|Eau||30
+Hypocéan|Eau||55
+Poissirène|Eau||45
+Poissoroy|Eau||80
+Stari|Eau||30
+Staross|Eau|Psy|60
+M. Mime|Psy|Fée|40
+M. Mime de Galar|Glace|Psy|50
+Insécateur|Insecte|Vol|70
+Lippoutou|Glace|Psy|65
+Élektek|Électrik||65
+Magmar|Feu||65
+Scarabrute|Insecte||65
+Tauros|Normal||75
+Tauros de Paldea (Race Combative)|Combat||75
+Tauros de Paldea (Race Flamboyante)|Combat|Feu|75
+Tauros de Paldea (Race Aquatique)|Combat|Eau|75
+Magicarpe|Eau||20
+Léviator|Eau|Vol|95
+Lokhlass|Eau|Glace|130
+Métamorph|Normal||48
+Évoli|Normal||55
+Aquali|Eau||130
+Voltali|Électrik||65
+Pyroli|Feu||65
+Porygon|Normal||65
+Amonita|Roche|Eau|35
+Amonistar|Roche|Eau|70
+Kabuto|Roche|Eau|30
+Kabutops|Roche|Eau|60
+Ptéra|Roche|Vol|80
+Ronflex|Normal||160
+Artikodin|Glace|Vol|90
+Artikodin de Galar|Psy|Vol|90
+Électhor|Électrik|Vol|90
+Électhor de Galar|Combat|Vol|90
+Sulfura|Feu|Vol|90
+Sulfura de Galar|Ténèbres|Vol|90
+Minidraco|Dragon||41
+Draco|Dragon||61
+Dracolosse|Dragon|Vol|91
+Mewtwo|Psy||106
+Mew|Psy||100
+Germignon|Plante||45
+Macronium|Plante||60
+Méganium|Plante||80
+Héricendre|Feu||39
+Feurisson|Feu||58
+Typhlosion|Feu||78
+Typhlosion de Hisui|Feu|Spectre|73
+Kaiminus|Eau||50
+Crocrodil|Eau||65
+Aligatueur|Eau||85
+Fouinette|Normal||35
+Fouinar|Normal||85
+Hoothoot|Normal|Vol|60
+Noarfang|Normal|Vol|100
+Coxy|Insecte|Vol|40
+Coxyclaque|Insecte|Vol|55
+Mimigal|Insecte|Poison|40
+Migalos|Insecte|Poison|70
+Nostenfer|Poison|Vol|85
+Loupio|Eau|Électrik|75
+Lanturn|Eau|Électrik|125
+Pichu|Électrik||20
+Mélo|Fée||50
+Toudoudou|Normal|Fée|90
+Togepi|Fée||35
+Togetic|Fée|Vol|55
+Natu|Psy|Vol|40
+Xatu|Psy|Vol|65
+Wattouat|Électrik||55
+Lainergie|Électrik||70
+Pharamp|Électrik||90
+Joliflor|Plante||75
+Marill|Eau|Fée|70
+Azumarill|Eau|Fée|100
+Simularbre|Roche||70
+Tarpaud|Eau||90
+Granivol|Plante|Vol|35
+Floravol|Plante|Vol|55
+Cotovol|Plante|Vol|75
+Capumain|Normal||55
+Tournegrin|Plante||30
+Héliatronc|Plante||75
+Yanma|Insecte|Vol|65
+Axoloto|Eau|Sol|55
+Axoloto de Paldea|Poison|Sol|55
+Maraiste|Eau|Sol|95
+Mentali|Psy||65
+Noctali|Ténèbres||95
+Cornèbre|Ténèbres|Vol|60
+Roigada|Eau|Psy|95
+Roigada de Galar|Poison|Psy|95
+Feuforêve|Spectre||60
+Zarbi|Psy||48
+Qulbutoké|Psy||190
+Girafarig|Normal|Psy|70
+Pomdepik|Insecte||50
+Foretress|Insecte|Acier|75
+Insolourdo|Normal||100
+Scorplane|Sol|Vol|65
+Steelix|Acier|Sol|75
+Snubbull|Fée||60
+Granbull|Fée||90
+Qwilfish|Eau|Poison|65
+Qwilfish de Hisui|Ténèbres|Poison|65
+Cizayox|Insecte|Acier|70
+Caratroc|Insecte|Roche|20
+Scarhino|Insecte|Combat|80
+Farfuret|Ténèbres|Glace|55
+Farfuret de Hisui|Combat|Poison|55
+Teddiursa|Normal||60
+Ursaring|Normal||90
+Limagma|Feu||40
+Volcaropod|Feu|Roche|60
+Marcacrin|Glace|Sol|50
+Cochignon|Glace|Sol|100
+Corayon|Eau|Roche|65
+Corayon de Galar|Spectre||60
+Rémoraid|Eau||35
+Octillery|Eau||75
+Cadoizo|Glace|Vol|45
+Démanta|Eau|Vol|85
+Airmure|Acier|Vol|65
+Malosse|Ténèbres|Feu|45
+Démolosse|Ténèbres|Feu|75
+Hyporoi|Eau|Dragon|75
+Phanpy|Sol||90
+Donphan|Sol||90
+Porygon2|Normal||85
+Cerfrousse|Normal||73
+Queulorior|Normal||55
+Debugant|Combat||35
+Kapoera|Combat||50
+Lippouti|Glace|Psy|45
+Élekid|Électrik||45
+Magby|Feu||45
+Écrémeuh|Normal||95
+Leuphorie|Normal||255
+Raikou|Électrik||90
+Entei|Feu||115
+Suicune|Eau||100
+Embrylex|Roche|Sol|50
+Ymphect|Roche|Sol|70
+Tyranocif|Roche|Ténèbres|100
+Lugia|Psy|Vol|106
+Ho-Oh|Feu|Vol|106
+Celebi|Psy|Plante|100
+Arcko|Plante||40
+Massko|Plante||50
+Jungko|Plante||70
+Poussifeu|Feu||45
+Galifeu|Feu|Combat|60
+Braségali|Feu|Combat|80
+Gobou|Eau||50
+Flobio|Eau|Sol|70
+Laggron|Eau|Sol|100
+Medhyèna|Ténèbres||35
+Grahyèna|Ténèbres||70
+Zigzaton|Normal||38
+Zigzaton de Galar|Ténèbres|Normal|38
+Linéon|Normal||78
+Linéon de Galar|Ténèbres|Normal|78
+Chenipotte|Insecte||45
+Armulys|Insecte||50
+Charmillon|Insecte|Vol|60
+Blindalys|Insecte||50
+Papinox|Insecte|Poison|60
+Nénupiot|Eau|Plante|40
+Lombre|Eau|Plante|60
+Ludicolo|Eau|Plante|80
+Grainipiot|Plante||40
+Pifeuil|Plante|Ténèbres|70
+Tengalice|Plante|Ténèbres|90
+Nirondelle|Normal|Vol|40
+Hélédelle|Normal|Vol|60
+Goélise|Eau|Vol|40
+Bekipan|Eau|Vol|60
+Tarsal|Psy|Fée|28
+Kirlia|Psy|Fée|38
+Gardevoir|Psy|Fée|68
+Arakdo|Insecte|Eau|40
+Maskadra|Insecte|Vol|70
+Balignon|Plante||60
+Chapignon|Plante|Combat|60
+Parecool|Normal||60
+Vigoroth|Normal||80
+Monaflèmit|Normal||150
+Ningale|Insecte|Sol|31
+Ninjask|Insecte|Vol|61
+Munja|Insecte|Spectre|1
+Chuchmur|Normal||64
+Ramboum|Normal||84
+Brouhabam|Normal||104
+Makuhita|Combat||72
+Hariyama|Combat||144
+Azurill|Normal|Fée|50
+Tarinor|Roche||30
+Skitty|Normal||50
+Delcatty|Normal||70
+Ténéfix|Ténèbres|Spectre|50
+Mysdibule|Acier|Fée|50
+Galekid|Acier|Roche|50
+Galegon|Acier|Roche|60
+Galeking|Acier|Roche|70
+Méditikka|Combat|Psy|30
+Charmina|Combat|Psy|60
+Dynavolt|Électrik||40
+Élecsprint|Électrik||70
+Posipi|Électrik||60
+Négapi|Électrik||60
+Muciole|Insecte||65
+Lumivole|Insecte||65
+Rosélia|Plante|Poison|50
+Gloupti|Poison||70
+Avaltout|Poison||100
+Carvanha|Eau|Ténèbres|45
+Sharpedo|Eau|Ténèbres|70
+Wailmer|Eau||130
+Wailord|Eau||170
+Chamallot|Feu|Sol|60
+Camérupt|Feu|Sol|70
+Chartor|Feu||70
+Spoink|Psy||60
+Groret|Psy||80
+Spinda|Normal||60
+Kraknoix|Sol||45
+Vibraninf|Sol|Dragon|50
+Libégon|Sol|Dragon|80
+Cacnea|Plante||50
+Cacturne|Plante|Ténèbres|70
+Tylton|Normal|Vol|45
+Altaria|Dragon|Vol|75
+Mangriff|Normal||73
+Séviper|Poison||73
+Séléroc|Roche|Psy|90
+Solaroc|Roche|Psy|90
+Barloche|Eau|Sol|50
+Barbicha|Eau|Sol|110
+Écrapince|Eau||43
+Colhomard|Eau|Ténèbres|63
+Balbuto|Sol|Psy|40
+Kaorine|Sol|Psy|60
+Lilia|Roche|Plante|66
+Vacilys|Roche|Plante|86
+Anorith|Roche|Insecte|45
+Armaldo|Roche|Insecte|75
+Barpau|Eau||20
+Milobellus|Eau||95
+Morphéo|Normal||70
+Kecleon|Normal||60
+Polichombr|Spectre||44
+Branette|Spectre||64
+Skelénox|Spectre||20
+Téraclope|Spectre||40
+Tropius|Plante|Vol|99
+Éoko|Psy||75
+Absol|Ténèbres||65
+Okéoké|Psy||95
+Stalgamin|Glace||50
+Oniglali|Glace||80
+Obalie|Glace|Eau|70
+Phogleur|Glace|Eau|90
+Kaimorse|Glace|Eau|110
+Coquiperl|Eau||35
+Serpang|Eau||55
+Rosabyss|Eau||55
+Relicanth|Eau|Roche|100
+Lovdisc|Eau||43
+Draby|Dragon||45
+Drackhaus|Dragon||65
+Drattak|Dragon|Vol|95
+Terhal|Acier|Psy|40
+Métang|Acier|Psy|60
+Métalosse|Acier|Psy|80
+Regirock|Roche||80
+Regice|Glace||80
+Registeel|Acier||80
+Latias|Dragon|Psy|80
+Latios|Dragon|Psy|80
+Kyogre|Eau||100
+Groudon|Sol||100
+Rayquaza|Dragon|Vol|105
+Jirachi|Acier|Psy|100
+Deoxys|Psy||50
+Tortipouss|Plante||55
+Boskara|Plante||75
+Torterra|Plante|Sol|95
+Ouisticram|Feu||44
+Chimpenfeu|Feu|Combat|64
+Simiabraz|Feu|Combat|76
+Tiplouf|Eau||53
+Prinplouf|Eau||64
+Pingoléon|Eau|Acier|84
+Étourmi|Normal|Vol|40
+Étourvol|Normal|Vol|55
+Étouraptor|Normal|Vol|85
+Keunotor|Normal||59
+Castorno|Normal|Eau|79
+Crikzik|Insecte||37
+Mélokrik|Insecte||77
+Lixy|Électrik||45
+Luxio|Électrik||60
+Luxray|Électrik||80
+Rozbouton|Plante|Poison|40
+Roserade|Plante|Poison|60
+Kranidos|Roche||67
+Charkos|Roche||97
+Dinoclier|Roche|Acier|30
+Bastiodon|Roche|Acier|60
+Cheniti|Insecte||40
+Cheniselle|Insecte|Plante|60
+Cheniselle Sable|Insecte|Sol|60
+Cheniselle Déchet|Insecte|Acier|60
+Papilord|Insecte|Vol|70
+Apitrini|Insecte|Vol|30
+Apireine|Insecte|Vol|70
+Pachirisu|Électrik||60
+Mustébouée|Eau||55
+Mustéflott|Eau||85
+Ceribou|Plante||45
+Ceriflor|Plante||70
+Sancoki|Eau||76
+Tritosor|Eau|Sol|111
+Capidextre|Normal||75
+Baudrive|Spectre|Vol|90
+Grodrive|Spectre|Vol|150
+Laporeille|Normal||55
+Lockpin|Normal||65
+Magirêve|Spectre||60
+Corboss|Ténèbres|Vol|100
+Chaglam|Normal||49
+Chaffreux|Normal||71
+Korillon|Psy||45
+Moufouette|Poison|Ténèbres|63
+Moufflair|Poison|Ténèbres|103
+Archéomire|Acier|Psy|57
+Archéodong|Acier|Psy|67
+Manzaï|Roche||50
+Mime Jr.|Psy|Fée|20
+Ptiravi|Normal||100
+Pijako|Normal|Vol|76
+Spiritomb|Spectre|Ténèbres|50
+Griknot|Dragon|Sol|58
+Carmache|Dragon|Sol|68
+Carchacrok|Dragon|Sol|108
+Goinfrex|Normal||135
+Riolu|Combat||40
+Lucario|Combat|Acier|70
+Hippopotas|Sol||68
+Hippodocus|Sol||108
+Rapion|Poison|Insecte|40
+Drascore|Poison|Ténèbres|70
+Cradopaud|Poison|Combat|48
+Coatox|Poison|Combat|83
+Vortente|Plante||74
+Écayon|Eau||49
+Luminéon|Eau||69
+Babimanta|Eau|Vol|45
+Blizzi|Plante|Glace|60
+Blizzaroi|Plante|Glace|90
+Dimoret|Ténèbres|Glace|70
+Magnézone|Électrik|Acier|70
+Coudlangue|Normal||110
+Rhinastoc|Sol|Roche|115
+Bouldeneu|Plante||100
+Élekable|Électrik||75
+Maganon|Feu||75
+Togekiss|Fée|Vol|85
+Yanmega|Insecte|Vol|86
+Phyllali|Plante||65
+Givrali|Glace||65
+Scorvol|Sol|Vol|75
+Mammochon|Glace|Sol|110
+Porygon-Z|Normal||85
+Gallame|Psy|Combat|68
+Tarinorme|Roche|Acier|60
+Noctunoir|Spectre||45
+Momartik|Glace|Spectre|70
+Motisma|Électrik|Spectre|50
+Motisma Chaleur|Électrik|Feu|50
+Motisma Lavage|Électrik|Eau|50
+Motisma Froid|Électrik|Glace|50
+Motisma Hélice|Électrik|Vol|50
+Motisma Tonte|Électrik|Plante|50
+Créhelf|Psy||75
+Créfollet|Psy||80
+Créfadet|Psy||75
+Dialga|Acier|Dragon|100
+Palkia|Eau|Dragon|90
+Heatran|Feu|Acier|91
+Regigigas|Normal||110
+Giratina|Spectre|Dragon|150
+Cresselia|Psy||120
+Phione|Eau||80
+Manaphy|Eau||100
+Darkrai|Ténèbres||70
+Shaymin|Plante||100
+Shaymin Céleste|Plante|Vol|100
+Arceus|Normal||120
+Victini|Psy|Feu|100
+Vipélierre|Plante||45
+Lianaja|Plante||60
+Majaspic|Plante||75
+Gruikui|Feu||65
+Grotichon|Feu|Combat|90
+Roitiflam|Feu|Combat|110
+Moustillon|Eau||55
+Mateloutre|Eau||75
+Clamiral|Eau||95
+Clamiral de Hisui|Eau|Ténèbres|90
+Ratentif|Normal||45
+Miradar|Normal||60
+Ponchiot|Normal||45
+Ponchien|Normal||65
+Mastouffe|Normal||85
+Chacripan|Ténèbres||41
+Léopardus|Ténèbres||64
+Feuillajou|Plante||50
+Feuiloutan|Plante||75
+Flamajou|Feu||50
+Flamoutan|Feu||75
+Flotajou|Eau||50
+Flotoutan|Eau||75
+Munna|Psy||76
+Mushana|Psy||116
+Poichigeon|Normal|Vol|50
+Colombeau|Normal|Vol|62
+Déflaisan|Normal|Vol|80
+Zébibron|Électrik||45
+Zéblitz|Électrik||75
+Nodulithe|Roche||55
+Géolithe|Roche||70
+Gigalithe|Roche||85
+Chovsourir|Psy|Vol|65
+Rhinolove|Psy|Vol|67
+Rototaupe|Sol||60
+Minotaupe|Sol|Acier|110
+Nanméouïe|Normal||103
+Charpenti|Combat||75
+Ouvrifier|Combat||85
+Bétochef|Combat||105
+Tritonde|Eau||50
+Batracné|Eau|Sol|75
+Crapustule|Eau|Sol|105
+Judokrak|Combat||120
+Karaclée|Combat||75
+Larveyette|Insecte|Plante|45
+Couverdure|Insecte|Plante|55
+Manternel|Insecte|Plante|75
+Venipatte|Insecte|Poison|30
+Scobolide|Insecte|Poison|40
+Brutapode|Insecte|Poison|60
+Doudouvet|Plante|Fée|40
+Farfaduvet|Plante|Fée|60
+Chlorobule|Plante||45
+Fragilady|Plante||70
+Fragilady de Hisui|Plante|Combat|70
+Bargantua|Eau||70
+Mascaïman|Sol|Ténèbres|50
+Escroco|Sol|Ténèbres|60
+Crocorible|Sol|Ténèbres|95
+Darumarond|Feu||70
+Darumarond de Galar|Glace||70
+Darumacho|Feu||105
+Darumacho de Galar|Glace||105
+Maracachi|Plante||75
+Crabicoque|Insecte|Roche|50
+Crabaraque|Insecte|Roche|70
+Baggiguane|Ténèbres|Combat|50
+Baggaïd|Ténèbres|Combat|65
+Cryptéro|Psy|Vol|72
+Tutafeh|Spectre||38
+Tutafeh de Galar|Sol|Spectre|38
+Tutankafer|Spectre||58
+Carapagos|Eau|Roche|54
+Mégapagos|Eau|Roche|74
+Arkéapti|Roche|Vol|55
+Aéroptéryx|Roche|Vol|75
+Miamiasme|Poison||50
+Miasmax|Poison||80
+Zorua|Ténèbres||40
+Zorua de Hisui|Normal|Spectre|35
+Zoroark|Ténèbres||60
+Zoroark de Hisui|Normal|Spectre|55
+Chinchidou|Normal||55
+Pashmilla|Normal||75
+Scrutella|Psy||45
+Mesmérella|Psy||60
+Sidérella|Psy||70
+Nucléos|Psy||45
+Méios|Psy||65
+Symbios|Psy||110
+Couaneton|Eau|Vol|62
+Lakmécygne|Eau|Vol|75
+Sorbébé|Glace||36
+Sorboul|Glace||51
+Sorbouboul|Glace||71
+Vivaldaim|Normal|Plante|60
+Haydaim|Normal|Plante|80
+Emolga|Électrik|Vol|55
+Carabing|Insecte||50
+Lançargot|Insecte|Acier|70
+Trompignon|Plante|Poison|69
+Gaulet|Plante|Poison|114
+Viskuse|Eau|Spectre|55
+Moyade|Eau|Spectre|100
+Mamanbo|Eau||165
+Statitik|Insecte|Électrik|50
+Mygavolt|Insecte|Électrik|70
+Grindur|Plante|Acier|44
+Noacier|Plante|Acier|74
+Tic|Acier||40
+Clic|Acier||60
+Cliticlic|Acier||60
+Anchwatt|Électrik||35
+Lampéroie|Électrik||65
+Ohmassacre|Électrik||85
+Lewsor|Psy||55
+Neitram|Psy||75
+Funécire|Spectre|Feu|50
+Mélancolux|Spectre|Feu|60
+Lugulabre|Spectre|Feu|60
+Coupenotte|Dragon||46
+Incisache|Dragon||66
+Tranchodon|Dragon||76
+Polarhume|Glace||55
+Polagriffe|Glace||95
+Hexagel|Glace||80
+Escargaume|Insecte||50
+Limaspeed|Insecte||80
+Limonde|Sol|Électrik|109
+Limonde de Galar|Sol|Acier|109
+Kungfouine|Combat||45
+Shaofouine|Combat||65
+Drakkarmin|Dragon||77
+Gringolem|Sol|Spectre|59
+Golemastoc|Sol|Spectre|89
+Scalpion|Ténèbres|Acier|45
+Scalproie|Ténèbres|Acier|65
+Frison|Normal||95
+Furaiglon|Normal|Vol|70
+Gueriaigle|Normal|Vol|100
+Gueriaigle de Hisui|Psy|Vol|110
+Vostourno|Ténèbres|Vol|70
+Vaututrice|Ténèbres|Vol|110
+Aflamanoir|Feu||85
+Fermite|Insecte|Acier|58
+Solochi|Ténèbres|Dragon|52
+Diamat|Ténèbres|Dragon|72
+Trioxhydre|Ténèbres|Dragon|92
+Pyronille|Insecte|Feu|55
+Pyrax|Insecte|Feu|85
+Cobaltium|Acier|Combat|91
+Terrakium|Roche|Combat|91
+Viridium|Plante|Combat|91
+Boréas|Vol||79
+Fulguris|Électrik|Vol|79
+Reshiram|Dragon|Feu|100
+Zekrom|Dragon|Électrik|100
+Démétéros|Sol|Vol|89
+Kyurem|Dragon|Glace|125
+Keldeo|Eau|Combat|91
+Meloetta|Normal|Psy|100
+Meloetta Danse|Normal|Combat|100
+Genesect|Insecte|Acier|71
+Marisson|Plante||56
+Boguérisse|Plante||61
+Blindépique|Plante|Combat|88
+Feunnec|Feu||40
+Roussil|Feu||59
+Goupelin|Feu|Psy|75
+Grenousse|Eau||41
+Croâporal|Eau||54
+Amphinobi|Eau|Ténèbres|72
+Sapereau|Normal||38
+Excavarenne|Normal|Sol|85
+Passerouge|Normal|Vol|45
+Braisillon|Feu|Vol|62
+Flambusard|Feu|Vol|78
+Lépidonille|Insecte||38
+Pérégrain|Insecte||45
+Prismillon|Insecte|Vol|80
+Hélionceau|Feu|Normal|62
+Némélios|Feu|Normal|86
+Flabébé|Fée||44
+Floette|Fée||54
+Florges|Fée||78
+Cabriolaine|Plante||66
+Chevroum|Plante||123
+Pandespiègle|Combat||67
+Pandarbare|Combat|Ténèbres|95
+Couafarel|Normal||75
+Psystigri|Psy||62
+Mistigrix|Psy||74
+Monorpale|Acier|Spectre|45
+Dimoclès|Acier|Spectre|59
+Exagide|Acier|Spectre|60
+Fluvetin|Fée||78
+Cocotine|Fée||101
+Sucroquin|Fée||62
+Cupcanaille|Fée||82
+Sepiatop|Ténèbres|Psy|53
+Sepiatroce|Ténèbres|Psy|86
+Opermine|Roche|Eau|42
+Golgopathe|Roche|Eau|72
+Venalgue|Poison|Eau|50
+Kravarech|Poison|Dragon|65
+Flingouste|Eau||50
+Gamblast|Eau||71
+Galvaran|Électrik|Normal|44
+Iguolta|Électrik|Normal|62
+Ptyranidur|Roche|Dragon|58
+Rexillius|Roche|Dragon|82
+Amagara|Roche|Glace|77
+Dragmara|Roche|Glace|123
+Nymphali|Fée||95
+Brutalibré|Combat|Vol|78
+Dedenne|Électrik|Fée|67
+Strassie|Roche|Fée|50
+Mucuscule|Dragon||45
+Colimucus|Dragon||68
+Colimucus de Hisui|Acier|Dragon|58
+Muplodocus|Dragon||90
+Muplodocus de Hisui|Acier|Dragon|80
+Trousselin|Acier|Fée|57
+Brocélôme|Spectre|Plante|43
+Desséliande|Spectre|Plante|85
+Pitrouille|Spectre|Plante|49
+Banshitrouye|Spectre|Plante|65
+Grelaçon|Glace||55
+Séracrawl|Glace||95
+Séracrawl de Hisui|Glace|Roche|95
+Sonistrelle|Vol|Dragon|40
+Bruyverne|Vol|Dragon|85
+Xerneas|Fée||126
+Yveltal|Ténèbres|Vol|126
+Zygarde|Dragon|Sol|108
+Diancie|Roche|Fée|50
+Hoopa|Psy|Spectre|80
+Hoopa Déchaîné|Psy|Ténèbres|80
+Volcanion|Feu|Eau|80
+Brindibou|Plante|Vol|68
+Efflèche|Plante|Vol|78
+Archéduc|Plante|Spectre|78
+Archéduc de Hisui|Plante|Combat|88
+Flamiaou|Feu||45
+Matoufeu|Feu||65
+Félinferno|Feu|Ténèbres|95
+Otaquin|Eau||50
+Otarlette|Eau||60
+Oratoria|Eau|Fée|80
+Picassaut|Normal|Vol|35
+Piclairon|Normal|Vol|55
+Bazoucan|Normal|Vol|80
+Manglouton|Normal||48
+Argouste|Normal||88
+Larvibule|Insecte||47
+Chrysapile|Insecte|Électrik|57
+Lucanon|Insecte|Électrik|77
+Crabagarre|Combat||47
+Crabominable|Combat|Glace|97
+Plumeline|Feu|Vol|75
+Plumeline Style Pom-Pom|Électrik|Vol|75
+Plumeline Style Hula|Psy|Vol|75
+Plumeline Style Buyō|Spectre|Vol|75
+Bombydou|Insecte|Fée|40
+Rubombelle|Insecte|Fée|60
+Rocabot|Roche||45
+Lougaroc|Roche||75
+Froussardine|Eau||45
+Vorastérie|Poison|Eau|50
+Prédastérie|Poison|Eau|50
+Tiboudet|Sol||70
+Bourrinos|Sol||100
+Araqua|Eau|Insecte|38
+Tarenbulle|Eau|Insecte|68
+Mimantis|Plante||40
+Floramantis|Plante||70
+Spododo|Plante|Fée|40
+Lampignon|Plante|Fée|60
+Tritox|Poison|Feu|48
+Malamandre|Poison|Feu|68
+Nounourson|Normal|Combat|70
+Chelours|Normal|Combat|120
+Croquine|Plante||42
+Candine|Plante||52
+Sucreine|Plante||72
+Guérilande|Fée||51
+Gouroutan|Normal|Psy|90
+Quartermac|Combat||100
+Sovkipou|Insecte|Eau|25
+Sarmuraï|Insecte|Eau|75
+Bacabouh|Spectre|Sol|55
+Trépassable|Spectre|Sol|85
+Concombaffe|Eau||55
+Type:0|Normal||95
+Silvallié|Normal||95
+Météno|Roche|Vol|60
+Dodoala|Normal||65
+Boumata|Feu|Dragon|60
+Togedemaru|Électrik|Acier|65
+Mimiqui|Spectre|Fée|55
+Denticrisse|Eau|Psy|68
+Draïeul|Normal|Dragon|78
+Sinistrail|Spectre|Plante|70
+Bébécaille|Dragon||45
+Écaïd|Dragon|Combat|55
+Ékaïser|Dragon|Combat|75
+Tokorico|Électrik|Fée|70
+Tokopiyon|Psy|Fée|70
+Tokotoro|Plante|Fée|70
+Tokopisco|Eau|Fée|70
+Cosmog|Psy||43
+Cosmovum|Psy||43
+Solgaleo|Psy|Acier|137
+Lunala|Psy|Spectre|137
+Zéroïd|Roche|Poison|109
+Mouscoto|Insecte|Combat|107
+Cancrelove|Insecte|Combat|71
+Câblifère|Électrik||83
+Bamboiselle|Acier|Vol|97
+Katagami|Plante|Acier|59
+Engloutyran|Ténèbres|Dragon|223
+Necrozma|Psy||97
+Necrozma Crinière du Couchant|Psy|Acier|97
+Necrozma Ailes de l’Aurore|Psy|Spectre|97
+Magearna|Acier|Fée|80
+Marshadow|Combat|Spectre|90
+Vémini|Poison||67
+Mandrillon|Poison|Dragon|73
+Ama-Ama|Roche|Acier|61
+Pierroteknik|Feu|Spectre|53
+Zeraora|Électrik||88
+Meltan|Acier||46
+Melmetal|Acier||135
+Ouistempo|Plante||50
+Badabouin|Plante||70
+Gorythmic|Plante||100
+Flambino|Feu||50
+Lapyro|Feu||65
+Pyrobut|Feu||80
+Larméléon|Eau||50
+Arrozard|Eau||65
+Lézargus|Eau||70
+Rongourmand|Normal||70
+Rongrigou|Normal||120
+Minisange|Vol||38
+Bleuseille|Vol||68
+Corvaillus|Vol|Acier|98
+Larvadar|Insecte||25
+Coléodôme|Insecte|Psy|50
+Astronelle|Insecte|Psy|60
+Goupilou|Ténèbres||40
+Roublenard|Ténèbres||70
+Tournicoton|Plante||40
+Blancoton|Plante||60
+Moumouton|Normal||42
+Moumouflon|Normal||72
+Khélocrok|Eau||50
+Torgamord|Eau|Roche|90
+Voltoutou|Électrik||59
+Fulgudog|Électrik||69
+Charbi|Roche||30
+Wagomine|Roche|Feu|80
+Monthracite|Roche|Feu|110
+Verpom|Plante|Dragon|40
+Pomdrapi|Plante|Dragon|70
+Dratatin|Plante|Dragon|110
+Dunaja|Sol||52
+Dunaconda|Sol||72
+Nigosier|Vol|Eau|70
+Embrochet|Eau||41
+Hastacuda|Eau||61
+Toxizap|Électrik|Poison|40
+Salarsen|Électrik|Poison|75
+Grillepattes|Feu|Insecte|50
+Scolocendre|Feu|Insecte|100
+Poulpaf|Combat||50
+Krakos|Combat||80
+Théffroi|Spectre||40
+Polthégeist|Spectre||60
+Bibichut|Psy||42
+Chapotus|Psy||57
+Sorcilence|Psy|Fée|57
+Grimalin|Ténèbres|Fée|45
+Fourbelin|Ténèbres|Fée|65
+Angoliath|Ténèbres|Fée|95
+Ixon|Ténèbres|Normal|93
+Berserkatt|Acier||70
+Corayôme|Spectre||60
+Palarticho|Combat||62
+M. Glaquette|Glace|Psy|80
+Tutétékri|Sol|Spectre|58
+Crèmy|Fée||45
+Charmilly|Fée||65
+Hexadron|Combat||65
+Wattapik|Électrik||48
+Frissonille|Glace|Insecte|30
+Beldeneige|Glace|Insecte|70
+Dolman|Roche||100
+Bekaglaçon|Glace||75
+Wimessir|Psy|Normal|60
+Morpeko|Électrik|Ténèbres|58
+Charibari|Acier||72
+Pachyradjah|Acier||122
+Galvagon|Électrik|Dragon|90
+Galvagla|Électrik|Glace|90
+Hydragon|Eau|Dragon|90
+Hydragla|Eau|Glace|90
+Duralugon|Acier|Dragon|70
+Fantyrm|Dragon|Spectre|28
+Dispareptil|Dragon|Spectre|68
+Lanssorien|Dragon|Spectre|88
+Zacian|Fée||92
+Zacian Épée Suprême|Fée|Acier|92
+Zamazenta|Combat||92
+Zamazenta Bouclier Suprême|Combat|Acier|92
+Éthernatos|Poison|Dragon|140
+Wushours|Combat||60
+Shifours|Combat|Ténèbres|100
+Shifours Style Mille Poings|Combat|Eau|100
+Zarude|Ténèbres|Plante|105
+Regieleki|Électrik||80
+Regidrago|Dragon||200
+Blizzeval|Glace||100
+Spectreval|Spectre||100
+Sylveroy|Psy|Plante|100
+Calyrex Cavalier du Froid|Psy|Glace|100
+Calyrex Cavalier d’Effroi|Psy|Spectre|100
+Cerbyllin|Normal|Psy|103
+Hachécateur|Insecte|Roche|70
+Ursaking|Sol|Normal|130
+Ursaking Lune Vermeille|Sol|Normal|113
+Paragruel|Eau|Spectre|120
+Farfurex|Combat|Poison|80
+Qwilpik|Ténèbres|Poison|85
+Amovénus|Fée|Vol|74
+Poussacha|Plante||40
+Matourgeon|Plante||61
+Miascarade|Plante|Ténèbres|76
+Chochodile|Feu||67
+Crocogril|Feu||81
+Flâmigator|Feu|Spectre|104
+Coiffeton|Eau||55
+Canarbello|Eau||70
+Palmaval|Eau|Combat|85
+Gourmelet|Normal||54
+Fragroin|Normal||110
+Tissenboule|Insecte||35
+Filentrappe|Insecte||60
+Lilliterelle|Insecte||33
+Gambex|Insecte|Ténèbres|71
+Pohm|Électrik||45
+Pohmotte|Électrik|Combat|60
+Pohmarmotte|Électrik|Combat|70
+Compagnol|Normal||50
+Famignol|Normal||74
+Pâtachiot|Fée||37
+Briochien|Fée||57
+Olivini|Plante|Normal|41
+Olivado|Plante|Normal|52
+Arboliva|Plante|Normal|78
+Tapatoès|Normal|Vol|82
+Selutin|Roche||55
+Amassel|Roche||60
+Gigansel|Roche||100
+Charbambin|Feu||40
+Carmadura|Feu|Psy|85
+Malvalame|Feu|Spectre|75
+Têtampoule|Électrik||61
+Ampibidou|Électrik||109
+Zapétrel|Électrik|Vol|40
+Fulgulairo|Électrik|Vol|70
+Grondogue|Ténèbres||60
+Dogrino|Ténèbres||80
+Gribouraigne|Poison|Normal|40
+Tag-Tag|Poison|Normal|63
+Virovent|Plante|Spectre|40
+Virevorreur|Plante|Spectre|55
+Terracool|Sol|Plante|40
+Terracruel|Sol|Plante|80
+Craparoi|Roche||70
+Pimito|Plante||50
+Scovilain|Plante|Feu|65
+Léboulérou|Insecte||41
+Bérasca|Insecte|Psy|75
+Flotillon|Psy||30
+Cléopsytra|Psy||95
+Forgerette|Fée|Acier|50
+Forgella|Fée|Acier|65
+Forgelina|Fée|Acier|85
+Taupikeau|Eau||10
+Triopikeau|Eau||35
+Lestombaile|Vol|Ténèbres|70
+Dofin|Eau||70
+Superdofin|Eau||100
+Vrombi|Acier|Poison|45
+Vrombotor|Acier|Poison|80
+Motorizard|Dragon|Normal|70
+Ferdeter|Acier||70
+Germéclat|Roche|Poison|48
+Floréclat|Roche|Poison|83
+Toutombe|Spectre||50
+Tomberro|Spectre||72
+Flamenroule|Vol|Combat|82
+Piétacé|Glace||108
+Balbalèze|Glace||170
+Délestin|Eau|Psy|90
+Oyacata|Eau||150
+Nigirigon|Dragon|Eau|68
+Courrousinge|Combat|Spectre|110
+Terraiste|Poison|Sol|130
+Farigiraf|Normal|Psy|120
+Deusolourdo|Normal||125
+Scalpereur|Ténèbres|Acier|100
+Fort-Ivoire|Sol|Combat|115
+Hurle-Queue|Fée|Psy|115
+Fongus-Furie|Plante|Ténèbres|111
+Flotte-Mèche|Spectre|Fée|55
+Rampe-Ailes|Insecte|Combat|85
+Pelage-Sablé|Électrik|Sol|85
+Roue-de-Fer|Sol|Acier|90
+Hotte-de-Fer|Glace|Eau|56
+Paume-de-Fer|Combat|Électrik|154
+Têtes-de-Fer|Ténèbres|Vol|94
+Mite-de-Fer|Feu|Poison|80
+Épine-de-Fer|Roche|Électrik|100
+Frigodo|Dragon|Glace|65
+Cryodo|Dragon|Glace|90
+Glaivodo|Dragon|Glace|115
+Mordudor|Spectre||45
+Gromago|Acier|Spectre|87
+Chongjian|Ténèbres|Plante|85
+Baojian|Ténèbres|Glace|80
+Dinglu|Ténèbres|Sol|155
+Yuyu|Ténèbres|Feu|55
+Rugit-Lune|Dragon|Ténèbres|105
+Garde-de-Fer|Fée|Combat|74
+Koraidon|Combat|Dragon|100
+Miraidon|Électrik|Dragon|100
+Serpente-Eau|Eau|Dragon|99
+Vert-de-Fer|Plante|Psy|90
+Pomdramour|Plante|Dragon|80
+Poltchageist|Plante|Spectre|40
+Théffroyable|Plante|Spectre|71
+Félicanis|Poison|Combat|88
+Fortusimia|Poison|Psy|88
+Favianos|Poison|Fée|88
+Ogerpon|Plante||80
+Ogerpon du Puits|Plante|Eau|80
+Ogerpon du Fourneau|Plante|Feu|80
+Ogerpon de la Pierre|Plante|Roche|80
+Pondralugon|Acier|Dragon|90
+Pomdorochi|Plante|Dragon|106
+Feu-Perçant|Feu|Dragon|105
+Ire-Foudre|Électrik|Dragon|125
+Roc-de-Fer|Roche|Psy|90
+Chef-de-Fer|Acier|Psy|90
+Terapagos|Normal||90
+Pêchaminus|Poison|Spectre|88`;
+const MOVE_RAW=`À la Queue|Ténèbres|-|100
+Abattage|Dragon|60|100
+Abîme|Sol|-|30
+Aboiement|Ténèbres|55|95
+Abri|Normal|-|-
+Acidarmure|Poison|-|-
+Acide|Poison|40|100
+Acide Malique|Plante|80|100
+Acrobatie|Vol|55|100
+Acupression|Normal|-|-
+Aegis Maxima|Acier|100|100
+Aéroblast|Vol|100|95
+Aéromax|Vol|10|-
+Aéropique|Vol|60|-
+Affilage|Normal|-|-
+Affûtage|Normal|-|-
+Aiguisage|Ténèbres|-|-
+Ailes d’Acier|Acier|70|90
+Ailes Psycho|Psy|80|100
+Air Veinard|Normal|-|-
+Aire de Feu|Feu|80|100
+Aire d’Eau|Eau|80|100
+Aire d’Herbe|Plante|80|100
+Allègement|Acier|-|-
+Amass’Sable|Sol|-|-
+Amnésie|Psy|-|-
+Ampleur|Sol|-|100
+Ancrage|Acier|80|100
+Anneau Hydro|Eau|-|-
+Anti-Air|Roche|50|100
+Anti-Brume|Vol|-|-
+Anti-Soin|Psy|-|100
+Apocalypse Gigalithique|Roche|-|-
+Apocalypsis Luminis|Psy|200|-
+Appel Attaque|Insecte|90|100
+Appel Défense|Insecte|-|-
+Appel des Ombres Éternelles|Spectre|-|-
+Appel Soins|Insecte|-|-
+Après Vous|Normal|-|-
+Aqua-Brèche|Eau|85|100
+Aqua-Jet|Eau|40|100
+Aquatacle|Eau|120|100
+Aria de l’Écume|Eau|90|100
+Armure|Normal|-|-
+Aromathérapie|Plante|-|-
+Arrogance|Ténèbres|20|100
+Assaut Frontal|Sol|120|100
+Assistance|Normal|-|-
+Assurance|Ténèbres|60|100
+Astuce Force|Psy|-|-
+Atout|Normal|-|-
+Atterrissage|Vol|-|-
+Attraction|Normal|-|100
+Attrition|Normal|70|100
+Aurasphère|Combat|80|-
+Aurore|Normal|-|-
+Avalanche|Glace|60|100
+Avale|Normal|-|-
+Babil|Vol|65|100
+Bâillement|Normal|-|-
+Bain de Smog|Poison|50|-
+Balance|Normal|-|-
+Balayage|Combat|-|100
+Balayette|Combat|65|100
+Ball’Brume|Psy|95|100
+Balle Graine|Plante|25|100
+Ball’Glace|Glace|30|90
+Ball’Météo|Normal|50|100
+Ball’Ombre|Spectre|80|100
+Ballon Brûlant|Feu|120|90
+Bang Sonique|Normal|140|100
+Barrage|Normal|-|-
+Baston|Ténèbres|-|100
+Bec Vrille|Vol|80|100
+Bec-Canon|Vol|100|100
+Bélier|Normal|90|85
+Berceuse|Normal|-|55
+Big Splash|Combat|80|100
+Bise Glaciaire|Glace|100|85
+Blabla Dodo|Normal|-|-
+Blizzard|Glace|110|70
+Blocage|Ténèbres|-|100
+Blockhaus|Poison|-|-
+Bluff|Normal|40|100
+Bombe Acide|Poison|40|100
+Bombe Aimant|Acier|60|-
+Bombe au Sirop|Plante|60|85
+Bombe Beurk|Poison|90|100
+Bombe Œuf|Normal|100|75
+Bond|Insecte|50|100
+Boost|Normal|-|-
+Botte Sucrette|Plante|70|100
+Bouclier|Psy|-|-
+Bouclier Royal|Acier|-|-
+Boue-Bombe|Sol|65|85
+Boul’Armure|Normal|-|-
+Boule Élek|Électrik|-|100
+Boule Pollen|Insecte|90|100
+Boule Roc|Roche|25|90
+Bourdon|Insecte|90|100
+Boutefeu|Feu|120|100
+Branchicrok|Eau|85|100
+Brouhaha|Normal|90|100
+Brouillard|Normal|-|100
+Brume|Glace|-|-
+Brume Capiteuse|Fée|-|-
+Buée Noire|Glace|-|-
+Bulldoboule|Insecte|65|100
+Bulles d’O|Eau|65|100
+Caboche-Kaboum|Feu|150|100
+Cadeau|Normal|-|90
+Cage Éclair|Électrik|-|90
+Calcination|Feu|60|100
+Câlinerie|Fée|90|90
+Camaraderie|Normal|-|-
+Camouflage|Normal|-|-
+Canicule|Feu|95|90
+Canon Blindé|Feu|120|100
+Canon Dynamax|Dragon|100|100
+Canon Floral|Fée|130|90
+Canon Graine|Plante|80|100
+Carapiège|Feu|150|100
+Cascade|Eau|80|100
+Casse-Brique|Combat|75|100
+Cataclysme|Ténèbres|1|90
+Cauchemar|Spectre|-|100
+Cavalerie Lourde|Sol|95|95
+Célébration|Normal|-|-
+Cent Rancunes|Ténèbres|75|100
+Centrifugifle|Ténèbres|60|100
+Chaîne Malsaine|Poison|100|100
+Champ Brumeux|Fée|-|-
+Champ Électrifié|Électrik|-|-
+Champ Herbu|Plante|-|-
+Champ Psychique|Psy|-|-
+Champlification|Normal|50|100
+Change Éclair|Électrik|70|100
+Change-Côté|Normal|-|100
+Chant Antique|Normal|75|100
+Chant Canon|Normal|60|100
+Chant Flamboyant|Feu|80|100
+Chaos Draconique|Dragon|-|-
+Charge|Normal|40|100
+Charge Foudre|Électrik|130|85
+Charge Glaive|Dragon|120|100
+Charge Os|Sol|25|90
+Chargeur|Électrik|-|-
+Charme|Fée|-|100
+Châtiment|Spectre|65|100
+Chatouille|Normal|-|100
+Chgt Vitesse|Acier|-|-
+Choc Émotionnel|Fée|75|100
+Choc Mental|Psy|50|100
+Choc Météore|Acier|100|100
+Choc Psy|Psy|80|100
+Choc Venin|Poison|65|100
+Chute de Neige|Glace|0|-
+Chute Glace|Glace|85|90
+Chute Libre|Vol|60|100
+Clairvoyance|Normal|-|-
+Claquoir|Eau|35|85
+Clepto-Mânes|Spectre|90|100
+Clonage|Normal|-|-
+Close Combat|Combat|120|100
+Coaching|Combat|-|-
+Cocon Fatal|Insecte|-|-
+Cogne|Combat|15|100
+Cognobidon|Normal|-|-
+Colère|Dragon|120|100
+Colère du Gardien d’Alola|Fée|-|-
+Combo Hyper-Furie|Combat|-|-
+Combo-Griffe|Normal|18|80
+Confidence|Normal|-|-
+Constriction|Normal|10|100
+Contre|Combat|-|100
+Conversion|Normal|-|-
+Conversion 2|Normal|-|-
+Copie|Normal|-|-
+Copie-Type|Normal|-|-
+Coqui-Lame|Eau|75|95
+Corps Perdu|Combat|70|-
+Cortège Funèbre|Spectre|60|100
+Cotogarde|Plante|-|-
+Coud’Boue|Sol|20|100
+Coud’Krâne|Normal|130|100
+Coup Bas|Ténèbres|70|100
+Coup Croix|Combat|100|80
+Coup d’Boule|Normal|70|100
+Coup d’Jus|Électrik|80|100
+Coup d’Main|Normal|-|-
+Coup Double|Normal|35|90
+Coup Fulgurant|Combat|90|100
+Coup Varia-Type|Normal|120|100
+Coup Victoire|Feu|180|95
+Coupe|Normal|50|95
+Coupe Psycho|Psy|70|100
+Coupe-Vent|Normal|80|100
+Cradovague|Poison|95|100
+Crash Brûlant|Feu|80|100
+Crash Magique|Fée|100|100
+Crash Musclé|Combat|100|100
+Crash Obscur|Ténèbres|80|100
+Crash Toxique|Poison|100|100
+Crève-Cœur|Psy|60|100
+Cri Draconique|Dragon|0|0
+Croc de Mort|Normal|80|90
+Croc Fatal|Normal|-|90
+Crochet Venin|Poison|50|100
+Croco Larme|Ténèbres|-|100
+Crocs Éclair|Électrik|65|95
+Crocs Feu|Feu|65|95
+Crocs Givre|Glace|65|95
+Croissance|Normal|-|-
+Croque Fort|Ténèbres|80|100
+Cru-Ailes|Vol|60|100
+Cryo-Pirouette|Glace|80|100
+Cryomax|Glace|10|-
+Cœur de Rancœur|Spectre|75|100
+Cyclone|Normal|-|-
+Damoclès|Normal|120|100
+Danse Aquatique|Eau|80|100
+Danse Draco|Dragon|-|-
+Danse du Feu|Feu|80|100
+Danse Éveil|Normal|90|100
+Danse Flammes|Feu|35|85
+Danse Fleurs|Plante|120|100
+Danse Folle|Normal|-|100
+Danse Lames|Normal|-|-
+Danse Lune|Psy|-|-
+Danse Pluie|Eau|-|-
+Danse Plumes|Vol|-|100
+Danse Victoire|Combat|0|-
+Dard Mortel|Insecte|50|100
+Dard-Nuée|Insecte|25|95
+Dard-Venin|Poison|15|100
+Dark Body Press|Ténèbres|180|-
+Dark Lariat|Ténèbres|85|100
+Décalquage|Normal|0|100
+Décharnement|Normal|0|-
+Déflagration|Feu|110|85
+Dégommage|Ténèbres|-|100
+Déluge Causti-Toxique|Poison|-|-
+Déluge Plasmique|Électrik|-|-
+Demi-Tour|Insecte|70|100
+Dépit|Spectre|-|100
+Dérapage|Acier|100|100
+Dernier Mot|Ténèbres|-|100
+Dernier Recours|Normal|140|100
+Désherbaffe|Plante|50|100
+Destruction|Normal|200|100
+Détection|Combat|-|-
+Détrempage|Eau|-|100
+Détricanon|Poison|120|80
+Détritus|Poison|65|100
+Dévorêve|Psy|100|100
+Direct Toxik|Poison|80|100
+Dissonance Psy|Psy|75|100
+Distorsion|Psy|-|-
+Don Naturel|Normal|-|100
+Double Baffe|Dragon|40|90
+Double Dard|Insecte|25|100
+Double Décharge|Électrik|120|100
+Double Laser|Psy|40|100
+Double Pied|Combat|30|100
+Double Volée|Vol|40|90
+Douche Froide|Eau|50|100
+Doux Baiser|Fée|-|75
+Doux Parfum|Normal|-|100
+Dracacophonie|Dragon|-|100
+Dracacophonie Flamboyante|Dragon|185|-
+Draco-Ascension|Vol|120|100
+Draco-Charge|Dragon|100|75
+Draco-Choc|Dragon|85|100
+Draco-Énergie|Dragon|150|100
+Draco-Flèches|Dragon|50|100
+Draco-Griffe|Dragon|80|100
+Draco-Marteau|Dragon|90|100
+Draco-Météore|Dragon|130|90
+Draco-Queue|Dragon|60|90
+Draco-Rage|Dragon|-|100
+Draco-Souffle|Dragon|60|100
+Dracomax|Dragon|10|-
+Dynamo-Poing|Combat|100|50
+E-Coque|Normal|-|-
+Eau Revoir|Eau|60|100
+Éboulement|Roche|75|90
+Ébullilave|Feu|80|100
+Ébullition|Eau|80|100
+Échange|Psy|-|-
+Échange Force|Normal|0|-
+Échange Psy|Psy|-|100
+Écho|Normal|40|100
+Éclair|Électrik|40|100
+Éclair Croix|Électrik|100|100
+Éclair Fou|Électrik|90|100
+Éclair Gelé|Glace|140|90
+Éclat Magique|Fée|80|100
+Éclat Spectral|Spectre|120|100
+Éclate Griffe|Normal|75|95
+Éclate-Roc|Combat|40|100
+Éclats Glace|Glace|40|100
+Éco-Sphère|Plante|90|100
+Écrasement|Normal|65|100
+Écras’Face|Normal|40|100
+Écrous d’Poing|Acier|60|100
+Écume|Eau|40|100
+Effort|Normal|-|100
+Élecanon|Électrik|120|50
+Électacle|Électrik|120|100
+Électrikipik|Électrik|80|100
+Électrisation|Électrik|-|-
+Électro-Surf Survolté|Électrik|175|-
+Embargo|Ténèbres|-|100
+Empal’Korne|Normal|-|30
+Enchantomax|Fée|10|-
+Encore|Normal|-|100
+Encornebois|Plante|75|100
+Engrenage|Acier|-|-
+Enroulement|Poison|-|-
+Entrave|Normal|-|100
+Ère Glaciaire|Glace|65|95
+Éructation|Poison|120|90
+Éruption|Feu|150|100
+Éruption Géo-Sismique|Sol|-|-
+Escalade|Normal|90|85
+Escarmouche|Insecte|90|100
+Esprit Frappeur|Spectre|110|90
+Essorage|Normal|-|100
+Estocorne|Acier|70|-
+Étincelle|Électrik|65|100
+Étonnement|Spectre|30|100
+Étreinte|Normal|15|85
+Étrennes|Normal|-|-
+Évo-Chardasso|Normal|-|-
+Évo-Congélo|Glace|100|90
+Évo-Dynamo|Électrik|60|100
+Évo-Écolo|Plante|100|90
+Évo-Fabulo|Fée|120|85
+Évo-Flambo|Feu|60|100
+Évo-Psycho|Psy|80|95
+Évo-Ténébro|Ténèbres|80|95
+Évo-Thalasso|Eau|60|100
+Exécu-Son|Ténèbres|80|100
+Explo-Brume|Fée|100|100
+Exploforce|Combat|120|70
+Explonuit|Ténèbres|85|95
+Explosion|Normal|250|100
+Extrasenseur|Psy|80|100
+Extravaillance|Psy|0|-
+Exuviation|Normal|-|-
+Façade|Normal|70|100
+Fatal-Foudre|Électrik|110|70
+Fauche-Âme des Sept Étoiles|Spectre|195|-
+Faux-Chage|Normal|40|100
+Feinte|Ténèbres|60|-
+Fertilisation|Sol|-|-
+Feu d’Enfer|Feu|100|50
+Feu Ensorcelé|Feu|75|100
+Feu Envieux|Feu|70|100
+Feu Follet|Feu|-|85
+Feu Glacé|Glace|140|90
+Feu Sacré|Feu|100|95
+Feuillage|Plante|40|100
+Feuille Magik|Plante|60|-
+Fil Toxique|Poison|-|100
+Flair|Normal|-|-
+Flamme Bleue|Feu|130|85
+Flamme Croix|Feu|100|100
+Flamme Ultime|Feu|130|100
+Flammèche|Feu|40|100
+Flash|Normal|-|100
+Flatterie|Ténèbres|-|100
+Flying Press|Combat|100|95
+Fontaine de Vie|Eau|-|-
+Force|Normal|80|100
+Force Ajoutée|Psy|20|100
+Force Cachée|Normal|70|100
+Force Chtonienne|Sol|90|100
+Force Cosmique|Psy|-|-
+Force G|Plante|80|100
+Force Mystique|Psy|70|90
+Force Nature|Normal|-|-
+Force Poigne|Normal|55|100
+Forte-Paume|Combat|60|100
+Fouet de Feu|Feu|80|100
+Fouet Lianes|Plante|45|100
+Fourbette|Ténèbres|80|-
+Fracass’Tête|Roche|150|80
+Frappe Atlas|Combat|-|100
+Frappe Psy|Psy|100|100
+Frénésie|Normal|20|100
+Frotte-Frimousse|Électrik|20|100
+Frustration|Normal|-|100
+Fulgurayon|Électrik|130|100
+Fulguro-Lance Gigavolt|Électrik|-|-
+Fulguromax|Électrik|10|-
+Fulmifer|Acier|-|100
+Fulmigraine|Plante|120|85
+Fureur Ardente|Ténèbres|90|100
+Fureur des Plumes Spectrales|Spectre|180|-
+Furie|Normal|15|85
+Furie Dimension|Ténèbres|100|-
+Furie-Bond|Insecte|80|100
+Garde Florale|Fée|-|-
+Garde Large|Roche|-|-
+Garde-à-Joues|Normal|-|-
+Gardomax|Normal|-|-
+Gare au Ronflex|Normal|210|-
+Gaz Corrosif|Poison|-|100
+Gaz Toxik|Poison|-|90
+Génusection|Ténèbres|85|-
+Géo-Contrôle|Fée|-|-
+Giclédo|Eau|150|100
+Giga Impact|Normal|150|90
+Giga-Sangsue|Plante|75|100
+Giga-Tonnerre|Électrik|195|-
+Gigotage|Normal|-|100
+Glaciation|Glace|-|30
+Gladius Maximus|Acier|100|100
+Glas de Soin|Normal|-|-
+Gliss’Herbe|Plante|55|100
+Gonflette|Combat|-|-
+Goudronnage|Roche|-|100
+Grand Courroux|Feu|120|100
+Grand Nettoyage|Normal|0|-
+Gravité|Psy|-|-
+Grêle|Glace|-|-
+Gribouille|Normal|-|-
+Griffe|Normal|40|100
+Griffe Acier|Acier|50|95
+Griffe Ombre|Spectre|70|100
+Griffes Funestes|Poison|80|100
+Grimace|Normal|-|100
+Grincement|Normal|-|85
+Grobisou|Normal|-|75
+Grondement|Normal|-|-
+Groz’Yeux|Normal|-|100
+Guillotine|Normal|-|30
+Gyroballe|Acier|-|100
+Habanerage|Plante|0|-
+Hache de Pierre|Roche|65|90
+Halloween|Spectre|-|100
+Hantise|Spectre|90|100
+Harcèlement|Insecte|20|100
+Hâte|Psy|-|-
+Hélio-Choc Dévastateur|Acier|200|-
+Herblast|Plante|150|95
+Hommage Posthume|Spectre|50|100
+Hurle-Temps|Dragon|150|90
+Hurlement|Normal|-|-
+Hurlement des Roches-Lames|Roche|190|-
+Hydro-Queue|Eau|90|90
+Hydroblast|Eau|150|90
+Hydrocanon|Eau|110|80
+Hydromax|Eau|10|-
+Hydrovapeur|Eau|80|100
+Hyperceuse|Normal|100|100
+Hypnose|Psy|-|60
+Œil Miracle|Psy|-|-
+Imitation|Psy|-|-
+Impact Choupinova|Fée|-|-
+Implore|Normal|60|100
+Incendie|Feu|100|100
+Indignition|Feu|75|100
+Insectomax|Insecte|10|-
+Interversion|Psy|-|-
+Ire de la Nature|Fée|-|90
+Jackpot|Normal|40|100
+Jet de Sable|Sol|-|100
+Jet de Vapeur|Eau|110|95
+Jet-Pierres|Roche|50|90
+Joute Astrale|Combat|150|100
+Jugement|Normal|100|100
+Kokiyarme|Poison|90|100
+Koud’Korne|Normal|65|100
+Lait à Boire|Normal|-|-
+Lame d’Air|Vol|75|95
+Lame de Roc|Roche|100|80
+Lame en Peine|Feu|90|100
+Lame Feuille|Plante|90|100
+Lame Ointe|Combat|85|100
+Lame Pangéenne|Sol|120|85
+Lame Psychique|Psy|80|100
+Lame Puissante|Roche|95|100
+Lame Sainte|Combat|90|100
+Lame Solaire|Plante|125|100
+Lame Tachyonique|Acier|50|0
+Lance de Glace|Glace|120|100
+Lance-Boue|Sol|-|-
+Lance-Flammes|Feu|90|100
+Lance-Soleil|Plante|120|100
+Lancécrou|Acier|50|85
+Larcin|Ténèbres|60|100
+Larme à l’Œil|Normal|-|-
+Laser Cryogénique|Glace|-|-
+Laser Glace|Glace|90|100
+Laser Hasard|Dragon|80|100
+Laser Infinimax|Dragon|160|90
+Laser Météore|Roche|120|90
+Laser Prisme|Psy|160|100
+Léchouille|Spectre|30|100
+Lévikinésie|Psy|-|-
+Lien du Destin|Spectre|-|-
+Ligotage|Normal|15|90
+Lilliput|Normal|-|-
+Lire-Esprit|Normal|-|-
+Lithomax|Roche|10|-
+Lumi-Éclat|Psy|95|100
+Lumi-Queue|Insecte|-|-
+Lumière du Néant|Fée|140|90
+Lumino-Impact|Psy|80|100
+Luminocanon|Acier|80|100
+Lune Rouge|Normal|140|100
+Lutte|Normal|50|-
+Lyophilisation|Glace|70|100
+Mach Punch|Combat|40|100
+Machination|Ténèbres|-|-
+Mâchouille|Ténèbres|80|100
+Magie Florale|Plante|70|-
+Magné-Contrôle|Électrik|-|-
+Mains Jointes|Normal|-|-
+Malédiction|Spectre|-|-
+Maléfice Sylvain|Plante|-|100
+Mania|Normal|120|100
+Marteau de Glace|Glace|100|90
+Marteau Mastoc|Acier|160|100
+Marto-Poing|Combat|100|90
+Martobois|Plante|120|100
+Massd’Os|Sol|65|85
+Massue Liane|Plante|100|100
+Mawashi Geri|Combat|60|85
+Méga-Sangsue|Plante|40|100
+Mégacorne|Insecte|120|85
+Mégafouet|Plante|120|85
+Mégaphone|Normal|90|100
+Métalaser|Acier|140|95
+Métalliroue|Acier|130|100
+Métallomax|Acier|10|-
+Météores|Normal|60|-
+Métronome|Normal|-|-
+Mimi-Queue|Normal|-|100
+Mimique|Vol|-|-
+Miroi-Tir|Acier|65|85
+Mitra-Poing|Combat|150|100
+Moi d’Abord|Normal|-|-
+Monte-Tension|Électrik|70|100
+Morphing|Normal|-|-
+Morsure|Ténèbres|60|100
+Mort’Ailes|Vol|80|100
+Mortier Matcha|Plante|80|90
+Multitoxik|Poison|60|100
+Mur de Fer|Acier|-|-
+Mur Fumigène|Acier|0|-
+Mur Lumière|Psy|-|-
+Myria-Flèches|Sol|90|100
+Myria-Vagues|Sol|90|100
+Nappage|Fée|-|-
+Neigeux de Mots|Glace|0|-
+Neuf pour Un|Normal|-|-
+Nitro Crash|Combat|100|100
+Nitrocharge|Feu|50|100
+Normalomax|Normal|10|-
+Nœud Herbe|Plante|-|100
+Nuée de Poudre|Insecte|-|100
+Ocroupi|Eau|90|85
+Octazooka|Eau|65|85
+Octoprise|Combat|-|100
+Ombre Nocturne|Spectre|-|100
+Ombre Portée|Spectre|40|100
+Onde Boréale|Glace|65|100
+Onde de Choc|Électrik|60|-
+Onde Folie|Spectre|-|100
+Onde Originelle|Eau|110|85
+Onde Vide|Combat|40|100
+Ondes Étranges|Électrik|-|100
+Orage Adamantin|Roche|100|95
+Os Ombre|Spectre|85|100
+Osmerang|Sol|50|90
+Ouragan|Dragon|40|100
+Overdrive|Électrik|80|100
+Papillodanse|Insecte|-|-
+Par Ici|Normal|-|-
+Para-Spore|Plante|-|75
+Parabocharge|Électrik|65|100
+Paresse|Normal|-|-
+Partage Force|Psy|-|-
+Partage Garde|Psy|-|-
+Passe-Cadeau|Normal|-|-
+Passe-Passe|Ténèbres|-|100
+Patati-Patattrape|Fée|190|-
+Patience|Normal|-|-
+Peignée|Normal|120|100
+Permucœur|Psy|-|-
+Permuforce|Psy|-|-
+Permugarde|Psy|-|-
+Permuvitesse|Psy|-|-
+Pétalexplosion Éblouissante|Plante|-|-
+Photo-Geyser|Psy|100|100
+Photocopie|Normal|-|-
+Phytomax|Plante|10|-
+Phytomixeur|Plante|65|90
+Picanon|Normal|20|100
+Pico-Défense|Plante|-|-
+Picore|Vol|60|100
+Picots|Sol|-|-
+Picpic|Vol|35|100
+Pics Toxik|Poison|-|-
+Pied Brûleur|Feu|85|90
+Pied Sauté|Combat|100|95
+Pied Voltige|Combat|130|90
+Piège de Fil|Insecte|0|-
+Piège de Roc|Roche|-|-
+Piège de Venin|Poison|-|100
+Piétisol|Sol|60|100
+Pika-Fracas|Électrik|-|-
+Pika-Piqué|Vol|90|95
+Pika-Splash|Eau|90|100
+Pika-Sprint|Électrik|80|100
+Pikachute Foudroyante|Électrik|210|-
+Pilonnage|Normal|15|85
+Pince-Masse|Eau|100|90
+Piqué|Vol|140|90
+Piqué Supersonique|Vol|-|-
+Piqûre|Insecte|60|100
+Pisto-Poing|Acier|40|100
+Pistolet à O|Eau|40|100
+Plaie Croix|Insecte|80|100
+Plaquage|Normal|85|100
+Plasma Punch|Électrik|100|100
+Plat du Jour|Dragon|80|100
+Plénitude|Psy|-|-
+Plongée|Eau|80|100
+Pluie Térastrale|Normal|120|100
+Plumo-Queue|Normal|25|85
+Poing Boost|Combat|40|100
+Poing Comète|Normal|18|85
+Poing Dard|Plante|60|100
+Poing de Colère|Spectre|50|100
+Poing Éclair|Électrik|75|100
+Poing Feu|Feu|75|100
+Poing Glace|Glace|75|100
+Poing Karaté|Combat|50|100
+Poing Météore|Acier|90|90
+Poing Obscur|Ténèbres|75|100
+Poing Ombre|Spectre|60|-
+Poing Sonique|Eau|60|100
+Poison Croix|Poison|70|100
+Poliroche|Roche|-|-
+Possessif|Psy|-|-
+Poudre Dodo|Plante|-|75
+Poudre Fureur|Insecte|-|-
+Poudre Magique|Psy|-|100
+Poudre Toxik|Poison|-|75
+Poudreuse|Glace|40|100
+Poursuite|Ténèbres|40|100
+Pouvoir Antique|Roche|60|100
+Pouvoir Lunaire|Fée|95|100
+Prescience|Psy|120|100
+Presse|Normal|-|100
+Pression Extrême|Acier|0|100
+Prévention|Combat|-|-
+Prière Lunaire|Psy|0|-
+Prio-Parade|Combat|65|100
+Prise de Bec|Électrik|85|100
+Projecteur|Normal|-|-
+Projection|Combat|60|90
+Prolifération|Normal|20|90
+Protection|Psy|-|-
+Provoc|Ténèbres|-|100
+Psycho-Boost|Psy|140|90
+Psycho-Croc|Psy|85|100
+Psycho-Pulvérisation EX|Psy|-|-
+Psychomax|Psy|10|-
+Psyko|Psy|90|100
+Psykoud’Boul|Psy|80|90
+Pugilomax|Combat|10|-
+Puissance|Normal|-|-
+Puissance Cachée|Normal|60|100
+Punition|Ténèbres|-|100
+Purédpois|Poison|30|70
+Purification|Poison|-|-
+Pyro-Explosion Cataclysmique|Feu|-|-
+Pyromax|Feu|100|-
+Queue de Fer|Acier|100|75
+Queue-Poison|Poison|50|100
+Queulonage|Normal|0|-
+Racines|Plante|-|-
+Rafale Écailles|Dragon|25|90
+Rafale Feu|Feu|150|90
+Rafale Psy|Psy|65|100
+Râle Mâle|Normal|-|100
+Rancune|Spectre|-|-
+Rapace|Vol|120|100
+Ravage Rampant|Insecte|70|90
+Rayon Chargé|Électrik|50|90
+Rayon Gemme|Roche|80|100
+Rayon Lune|Fée|-|-
+Rayon Signal|Insecte|75|100
+Rayon Simple|Normal|-|100
+Rayon Spectral|Spectre|100|100
+Rayons Séléno-Explosifs|Spectre|200|-
+Rebond|Vol|85|85
+Rebondifeu|Feu|70|100
+Recyclage|Normal|-|-
+Reflet|Normal|-|-
+Reflet Magik|Psy|-|-
+Regard Glaçant|Psy|90|100
+Regard Médusant|Normal|-|100
+Regard Noir|Normal|-|-
+Regard Touchant|Fée|-|100
+Régénération|Normal|-|-
+Relâche|Normal|-|100
+Relais|Normal|-|-
+Rempart Brûlant|Feu|0|0
+Rengorgement|Normal|-|-
+Renversement|Ténèbres|-|-
+Repli|Eau|-|-
+Repos|Psy|-|-
+Représailles|Ténèbres|50|100
+Requiem|Normal|-|-
+Retenue|Normal|40|100
+Retour|Normal|-|100
+Réveil Forcé|Combat|70|100
+Revenant|Spectre|120|100
+Riposte|Combat|-|100
+Roc-Boulet|Roche|150|90
+Ronflement|Normal|50|100
+Roue de Feu|Feu|60|100
+Roue Libre|Électrik|110|100
+Roulade|Roche|30|90
+Ruée d'Or|Acier|120|100
+Rugissement|Normal|-|100
+Rune Protect|Normal|-|-
+Ruse|Normal|30|100
+Sable Ardent|Sol|70|100
+Sabotage|Ténèbres|65|100
+Sacrifice|Combat|80|80
+Saisie|Ténèbres|-|-
+Salaison|Roche|40|100
+Sanction Suprême|Dragon|100|100
+Saumure|Eau|65|100
+Second Souffle|Normal|0|-
+Sécrétion|Insecte|-|95
+Séduction|Normal|-|100
+Séisme|Sol|100|100
+Selve Salvatrice|Plante|-|-
+Sheauriken|Eau|15|100
+Siffl’Herbe|Plante|-|55
+Sinistromax|Ténèbres|10|-
+Siphon|Eau|35|85
+Sismomax|Sol|10|-
+Soin|Normal|-|-
+Soin Floral|Fée|-|-
+Sommation|Psy|-|-
+Sonic Boom|Normal|-|90
+Sort Sinistre|Psy|80|100
+Soucigraine|Plante|-|100
+Souffle Glacé|Glace|60|90
+Souplesse|Normal|80|75
+Souvenir|Ténèbres|-|100
+Spatio-Rift|Dragon|100|95
+Spectromax|Spectre|10|-
+Spore|Plante|-|100
+Spore Coton|Plante|-|100
+Sprint Bouclier|Psy|70|90
+Stalactite|Glace|25|100
+Stimulant|Normal|70|100
+Stockage|Normal|-|-
+Stratopercut|Combat|85|90
+Strido-Son|Acier|-|85
+Suc Digestif|Poison|-|100
+Super Tourbillon Abyssal|Eau|-|-
+Supernova Originelle|Psy|185|-
+Surchauffe|Feu|130|90
+Surf|Eau|90|100
+Surpuissance|Combat|120|100
+Survinsecte|Insecte|50|100
+Symphonie des Ondines|Eau|195|-
+Synchropeine|Psy|120|100
+Synthèse|Plante|-|-
+Tacle Feu|Feu|-|100
+Tacle Lourd|Acier|-|100
+Taillade|Insecte|40|95
+Talon-Marteau|Combat|120|90
+Tambour Battant|Plante|80|100
+Tapotige|Plante|40|100
+Tatamigaeshi|Combat|-|-
+Taurogne|Normal|90|100
+Techno-Buster|Normal|120|100
+Télékinésie|Psy|-|80
+Téléport|Psy|-|-
+Telluriforce|Sol|90|100
+Tempête de Sable|Roche|-|-
+Tempête Florale|Plante|90|100
+Tempête Verte|Plante|130|90
+Ten-Danse|Normal|-|100
+Ténacité|Normal|-|-
+Téra Explosion|Normal|80|100
+Tête de Fer|Acier|80|100
+Thérémonie|Normal|-|-
+Tir de Boue|Sol|55|95
+Tir de Précision|Eau|80|100
+Tisse Ombre|Spectre|80|100
+Toile|Insecte|-|-
+Toile Élek|Électrik|55|95
+Toile Gluante|Insecte|-|-
+Tomberoche|Roche|60|95
+Tonnerre|Électrik|90|100
+Torgnoles|Normal|15|85
+Tornade|Vol|40|100
+Torrent de Coups|Eau|25|100
+Toupie Éclat|Poison|30|100
+Tour de Magie|Psy|-|100
+Tour Rapide|Normal|50|100
+Tourbi-Sable|Sol|35|85
+Tourmente|Ténèbres|-|100
+Tourniquet|Eau|-|-
+Tout ou Rien|Combat|-|100
+Toxik|Poison|-|90
+Toxinomax|Poison|10|-
+Tranch'Aqua|Eau|70|100
+Tranch’Air|Vol|60|95
+Tranche|Normal|70|100
+Tranche-Nuit|Ténèbres|70|100
+Tranch’Herbe|Plante|55|95
+Trempette|Normal|-|-
+Trépignement|Sol|75|100
+Tricherie|Ténèbres|95|100
+Triplattaque|Normal|80|100
+Triple Axel|Glace|20|90
+Triple Flèche|Combat|90|100
+Triple Pied|Combat|10|90
+Triple Plongeon|Eau|30|95
+Troquenard|Plante|35|100
+Trou Noir|Ténèbres|-|50
+Trou Noir des Ombres|Ténèbres|-|-
+TrouDimensionnel|Psy|80|-
+Tunnel|Sol|80|100
+Tunnelier|Sol|80|95
+Turbo Volt|Électrik|100|100
+Turbo-Charge Bulldozer|Normal|-|-
+Typhon Fulgurant|Électrik|100|80
+Typhon Hivernal|Vol|100|80
+Typhon Passionné|Fée|100|80
+Typhon Pyrosable|Sol|100|80
+Ultimapoing|Normal|80|85
+Ultimawashi|Normal|120|75
+Ultime Bastion|Combat|-|-
+Ultralaser|Normal|150|90
+Ultrason|Normal|-|55
+Uppercut|Normal|70|100
+Vague Psy|Psy|-|100
+Vagues à Lames|Ténèbres|65|90
+Vampi-Poing|Combat|75|100
+Vampibaiser|Fée|50|100
+Vampigraine|Plante|-|90
+Vampirisme|Insecte|80|100
+Vantardise|Normal|-|85
+Vapeur Féérique|Fée|90|95
+Vaste Pouvoir|Psy|80|100
+Végé-Attaque|Plante|150|90
+Vendetta|Combat|60|100
+Vengeance|Normal|70|100
+Vent Argenté|Insecte|60|100
+Vent Arrière|Vol|-|-
+Vent Féérique|Fée|40|100
+Vent Glace|Glace|55|95
+Vent Mauvais|Spectre|60|100
+Vent Violent|Vol|110|70
+Verrou Enchanté|Fée|-|-
+Verrouillage|Normal|-|-
+Vibra Soin|Psy|-|-
+Vibraqua|Eau|60|100
+Vibrécaille|Dragon|110|100
+Vibrobscur|Ténèbres|80|100
+Vif Éclair|Électrik|70|100
+Vif Roc|Roche|40|100
+Vigilance|Fée|-|-
+Vindicte|Ténèbres|1|100
+Vitesse Extrême|Normal|80|100
+Vive-Attaque|Normal|40|100
+Voile Aurore|Glace|-|-
+Voile Miroir|Psy|-|100
+Voix Enjôleuse|Fée|40|-
+Voix Envoûtante|Fée|80|100
+Vol|Vol|90|95
+Vol Magnétik|Électrik|-|-
+Vole-Force|Plante|-|100
+Vole-Vie|Plante|20|100
+Volt Assaut|Électrik|100|95
+Voltageôle|Électrik|80|90
+Vortex Magma|Feu|100|75
+Vrille Maximum|Acier|-|-
+Vœu|Normal|-|-
+Vœu Destructeur|Acier|140|100
+Vœu Soin|Psy|-|-
+Yama Arashi|Combat|60|100
+Yoga|Psy|-|-
+Zénith|Feu|-|-
+Zone Étrange|Psy|-|-
+Zone Magique|Psy|-|-`;
+const POKEMON=POKE_RAW.trim().split('\n').map(l=>{const p=l.split('|');return {name:p[0],t1:p[1],t2:p[2]||'',hp:Number(p[3])};});
+const MOVES=MOVE_RAW.trim().split('\n').map(l=>{const p=l.split('|');return {name:p[0],type:p[1],power:p[2]==='-'?null:Number(p[2]),acc:p[3]==='-'?null:Number(p[3])};});
+
+/* ---------- Petits outils ---------- */
+const $=(s,r)=>(r||document).querySelector(s);
+function el(tag,attrs,...kids){
+  const e=document.createElement(tag);
+  Object.entries(attrs||{}).forEach(([k,v])=>{
+    if(v===false||v==null)return;
+    if(k==='class')e.className=v;
+    else if(k.startsWith('on'))e.addEventListener(k.slice(2),v);
+    else if(v===true)e.setAttribute(k,'');
+    else e.setAttribute(k,v);
+  });
+  kids.flat().forEach(k=>{if(k==null)return;e.append(k.nodeType?k:document.createTextNode(String(k)));});
+  return e;
+}
+const norm=s=>String(s).toLowerCase().replace(/œ/g,'oe').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[’']/g,"'").replace(/-/g,' ').replace(/\s+/g,' ').trim();
+const nf=new Intl.NumberFormat('fr-FR',{maximumFractionDigits:2});
+const fmt=n=>nf.format(n);
+const sgn=n=>n===0?'0':(n>0?'+':'−')+fmt(Math.abs(n));
+const dg=n=>`${fmt(n)} dégât${n>=2?'s':''}`;
+const joinFr=a=>a.length<2?a.join(''):a.slice(0,-1).join(', ')+' et '+a[a.length-1];
+const badge=t=>el('span',{class:'tb t-'+norm(t)},t);
+const typeSelect=(id,ph)=>el('select',{id,class:'sel'},el('option',{value:''},ph),TYPES.map(t=>el('option',{value:t},t)));
+
+/* ---------- État ---------- */
+const S={att:null,attRank:null,move:null,def:null,defRank:null,defHp:'',mods:{atk:0,prec:0,vitA:0,def:0,esq:0,vitD:0}};
+
+/* ---------- Champ de recherche avec liste ---------- */
+function combo(o){
+  const listId=o.id+'List';
+  const input=el('input',{id:o.id,type:'text',class:'txt',role:'combobox','aria-expanded':'false','aria-controls':listId,'aria-autocomplete':'list',autocomplete:'off',autocapitalize:'off',spellcheck:'false',placeholder:o.placeholder});
+  const list=el('ul',{id:listId,class:'opts',role:'listbox',hidden:true});
+  const wrap=el('div',{class:'combo'},input,list);
+  const prep=o.items.map(it=>({it,n:norm(it.name)}));
+  let shown=[],active=-1,picked=null;
+  const isOpen=()=>!list.hidden;
+  function open(){list.hidden=false;input.setAttribute('aria-expanded','true');}
+  function close(){list.hidden=true;input.setAttribute('aria-expanded','false');input.removeAttribute('aria-activedescendant');active=-1;}
+  function setActive(i){
+    const opts=list.querySelectorAll('.opt');
+    opts.forEach((x,k)=>{x.classList.toggle('on',k===i);x.setAttribute('aria-selected',k===i?'true':'false');});
+    active=i;
+    if(opts[i]){input.setAttribute('aria-activedescendant',opts[i].id);if(opts[i].scrollIntoView)opts[i].scrollIntoView({block:'nearest'});}
+  }
+  function build(){
+    const q=norm(input.value);
+    const res=q?prep.filter(p=>p.n.includes(q)).sort((a,b)=>((b.n.startsWith(q)?1:0)-(a.n.startsWith(q)?1:0))||a.n.localeCompare(b.n,'fr')):prep;
+    shown=res.slice(0,80);
+    list.textContent='';
+    if(!shown.length)list.append(el('li',{class:'none',role:'presentation'},'Rien trouvé. Tu peux saisir à la main juste en dessous.'));
+    shown.forEach((p,i)=>{
+      const li=el('li',{role:'option',id:listId+'-'+i,class:'opt','aria-selected':'false'},o.view(p.it));
+      li.addEventListener('mousedown',e=>e.preventDefault());
+      li.addEventListener('click',()=>pick(p.it));
+      list.append(li);
+    });
+    active=-1;
+  }
+  function pick(it){picked=it;input.value=it.name;close();o.onPick(it);}
+  input.addEventListener('input',()=>{if(picked){picked=null;o.onClear();}build();open();});
+  input.addEventListener('focus',()=>{if(picked)input.select();build();open();});
+  input.addEventListener('click',()=>{if(!isOpen()){build();open();}});
+  input.addEventListener('keydown',e=>{
+    if(e.key==='ArrowDown'){e.preventDefault();if(!isOpen()){build();open();}setActive(Math.min(shown.length-1,active+1));}
+    else if(e.key==='ArrowUp'){e.preventDefault();setActive(Math.max(0,active-1));}
+    else if(e.key==='Enter'){
+      if(isOpen()&&active>=0&&shown[active]){e.preventDefault();pick(shown[active].it);}
+      else if(isOpen()&&shown.length===1){e.preventDefault();pick(shown[0].it);}
+    }
+    else if(e.key==='Escape'){close();}
+  });
+  input.addEventListener('blur',()=>{setTimeout(()=>{
+    close();
+    if(!picked&&input.value.trim()){const ex=prep.find(p=>p.n===norm(input.value));if(ex)pick(ex.it);}
+  },120);});
+  return {wrap,input,clear(){input.value='';picked=null;close();}};
+}
+
+/* ---------- Sélecteur de Pokémon ---------- */
+function pokePicker(o){
+  const info=el('div',{class:'pick-info'});
+  const c=combo({
+    id:o.prefix+'Input',items:POKEMON,placeholder:'Tape un nom, par exemple Arcanin',
+    view:p=>[el('span',{class:'o-name'},p.name),el('span',{class:'types'},badge(p.t1),p.t2?badge(p.t2):null)],
+    onPick:p=>{info.textContent='';info.append(badge(p.t1));if(p.t2)info.append(badge(p.t2));o.onChange({name:p.name,t1:p.t1,t2:p.t2});},
+    onClear:()=>{info.textContent='';o.onChange(null);}
+  });
+  const nameIn=el('input',{id:o.prefix+'MName',class:'txt',type:'text',placeholder:'Son nom'});
+  const t1=typeSelect(o.prefix+'MT1','Choisis un type');
+  const t2=typeSelect(o.prefix+'MT2','Aucun deuxième type');
+  const upd=()=>{if(!t1.value){o.onChange(null);return;}o.onChange({name:nameIn.value.trim()||'Ce Pokémon',t1:t1.value,t2:t2.value});};
+  [nameIn,t1,t2].forEach(x=>x.addEventListener('input',upd));
+  const listMode=el('div',{},el('label',{for:o.prefix+'Input'},o.label),c.wrap,info,
+    el('button',{type:'button',class:'link',onclick:()=>toManual()},'Il n\'est pas dans la liste ? Saisir à la main'));
+  const manual=el('div',{class:'manual',hidden:true},
+    el('div',{},el('label',{for:o.prefix+'MName'},o.label+' (nom)'),nameIn),
+    el('div',{class:'two'},el('div',{},el('label',{for:o.prefix+'MT1'},'Type 1'),t1),el('div',{},el('label',{for:o.prefix+'MT2'},'Type 2'),t2)),
+    el('button',{type:'button',class:'link',style:'padding-top:0',onclick:()=>toList()},'Revenir à la liste'));
+  function clearManual(){nameIn.value='';t1.value='';t2.value='';}
+  function toManual(){listMode.hidden=true;manual.hidden=false;c.clear();info.textContent='';clearManual();o.onChange(null);nameIn.focus();}
+  function toList(){manual.hidden=true;listMode.hidden=false;clearManual();o.onChange(null);c.input.focus();}
+  o.mount.append(listMode,manual);
+  return {reset(){c.clear();info.textContent='';clearManual();manual.hidden=true;listMode.hidden=false;o.onChange(null);}};
+}
+
+/* ---------- Sélecteur d'attaque ---------- */
+function movePicker(o){
+  const info=el('div',{class:'pick-info'});
+  const showInfo=m=>{
+    info.textContent='';info.append(badge(m.type));
+    info.append(m.power>0?`Puissance ${m.power}`+(m.acc!=null?`, précision ${m.acc}`:''):'Sans puissance dans le tableau : 0 dégât');
+  };
+  const c=combo({
+    id:'moveInput',items:MOVES,placeholder:'Tape une attaque, par exemple Lance-Flammes',
+    view:m=>[el('span',{class:'o-name'},m.name),el('span',{class:'types'},badge(m.type),el('span',{class:'pw'},m.power==null?'—':String(m.power)))],
+    onPick:m=>{showInfo(m);o.onChange({name:m.name,type:m.type,power:m.power,acc:m.acc});},
+    onClear:()=>{info.textContent='';o.onChange(null);}
+  });
+  const nameIn=el('input',{id:'moveMName',class:'txt',type:'text',placeholder:'Son nom'});
+  const type=typeSelect('moveMType','Choisis un type');
+  const power=el('input',{id:'moveMPower',class:'num',type:'number',inputmode:'numeric',min:'0',step:'1',placeholder:'0 si aucune'});
+  const acc=el('input',{id:'moveMAcc',class:'num',type:'number',inputmode:'numeric',min:'0',max:'100',step:'1',placeholder:'Facultatif'});
+  const upd=()=>{
+    if(!type.value||power.value===''){o.onChange(null);return;}
+    o.onChange({name:nameIn.value.trim()||'Cette attaque',type:type.value,power:Number(power.value),acc:acc.value===''?null:Number(acc.value)});
+  };
+  [nameIn,type,power,acc].forEach(x=>x.addEventListener('input',upd));
+  const listMode=el('div',{},el('label',{for:'moveInput'},'Attaque utilisée'),c.wrap,info,
+    el('button',{type:'button',class:'link',onclick:()=>toManual()},'Elle n\'est pas dans la liste ? Saisir à la main'));
+  const manual=el('div',{class:'manual',hidden:true},
+    el('div',{},el('label',{for:'moveMName'},'Nom de l\'attaque'),nameIn),
+    el('div',{class:'two'},el('div',{},el('label',{for:'moveMType'},'Type'),type),el('div',{},el('label',{for:'moveMPower'},'Puissance'),power)),
+    el('div',{},el('label',{for:'moveMAcc'},'Précision'),acc),
+    el('button',{type:'button',class:'link',style:'padding-top:0',onclick:()=>toList()},'Revenir à la liste'));
+  function clearManual(){nameIn.value='';type.value='';power.value='';acc.value='';}
+  function toManual(){listMode.hidden=true;manual.hidden=false;c.clear();info.textContent='';clearManual();o.onChange(null);nameIn.focus();}
+  function toList(){manual.hidden=true;listMode.hidden=false;clearManual();o.onChange(null);c.input.focus();}
+  o.mount.append(listMode,manual);
+  return {reset(){c.clear();info.textContent='';clearManual();manual.hidden=true;listMode.hidden=false;o.onChange(null);}};
+}
+
+/* ---------- Rang ---------- */
+function rankSeg(o){
+  const wrap=el('div',{class:'seg',role:'radiogroup','aria-label':o.label});
+  const inputs=Object.keys(RANKS).map(r=>{
+    const id=o.name+'-'+r;
+    const inp=el('input',{type:'radio',name:o.name,id,value:r,class:'seg-in','aria-label':'Rang '+r});
+    inp.addEventListener('change',()=>o.onChange(r));
+    wrap.append(inp,el('label',{for:id,class:'seg-lb'},r));
+    return inp;
+  });
+  o.mount.append(wrap);
+  return {reset(){inputs.forEach(i=>{i.checked=false;});}};
+}
+
+/* ---------- Paliers ---------- */
+const STEPPERS=[
+  {key:'atk',label:'Attaque',side:'att',mount:'#modsAtt'},
+  {key:'prec',label:'Précision',side:'att',mount:'#modsAtt'},
+  {key:'vitA',label:'Vitesse',side:'att',mount:'#modsAtt'},
+  {key:'def',label:'Défense',side:'def',mount:'#modsDef'},
+  {key:'esq',label:'Esquive',side:'def',mount:'#modsDef'},
+  {key:'vitD',label:'Vitesse',side:'def',mount:'#modsDef'}
+];
+STEPPERS.forEach(s=>{
+  s.val=el('output',{class:'st-val'},'0');
+  s.pts=el('span',{class:'st-pts'});
+  const who=s.side==='att'?'de l\'attaquant':'du défenseur';
+  s.minus=el('button',{type:'button',class:'st-btn','aria-label':`Baisser ${s.label} ${who}`},'−');
+  s.plus=el('button',{type:'button',class:'st-btn','aria-label':`Monter ${s.label} ${who}`},'+');
+  s.minus.addEventListener('click',()=>{S.mods[s.key]=Math.max(-6,S.mods[s.key]-1);render();});
+  s.plus.addEventListener('click',()=>{S.mods[s.key]=Math.min(6,S.mods[s.key]+1);render();});
+  $(s.mount).append(el('div',{class:'st'},el('span',{class:'st-name'},s.label),s.pts,el('div',{class:'st-ctl'},s.minus,s.val,s.plus)));
+});
+function refreshSteppers(){
+  STEPPERS.forEach(s=>{
+    const n=S.mods[s.key];
+    s.val.textContent=n===0?'0':(n>0?'+':'−')+Math.abs(n);
+    s.val.className='st-val'+(n>0?' pos':n<0?' neg':'');
+    const rk=S[s.side+'Rank'];
+    s.pts.textContent=n===0?'Aucun palier':rk?`${sgn(n*5*RANKS[rk].m)} points`:'Choisis le rang pour voir les points';
+    s.minus.disabled=n<=-6;s.plus.disabled=n>=6;
+  });
+}
+
+/* ---------- Calcul ---------- */
+function calc(){
+  const miss=[];
+  if(!S.att)miss.push('le Pokémon attaquant');
+  if(!S.attRank)miss.push('son rang');
+  if(!S.move)miss.push('l\'attaque');
+  if(!S.def)miss.push('le Pokémon défenseur');
+  if(miss.length)return {miss};
+  const rk=RANKS[S.attRank],mv=S.move;
+  const effs=[S.def.t1,S.def.t2].filter(Boolean).map(t=>({t,v:CHART[mv.type][t]}));
+  const eff=effs.reduce((a,x)=>a+x.v,0)/effs.length;
+  const hasPower=typeof mv.power==='number'&&mv.power>0;
+  const stab=(S.att.t1===mv.type||S.att.t2===mv.type)?rk.stab:0;
+  const bonus=rk.m*10;
+  const atkNet=S.mods.atk,atkMod=atkNet*5*rk.m;
+  let dmg=0,reason=null,raw=0;
+  if(!hasPower)reason='nopower';
+  else if(eff===0)reason='immune';
+  else{raw=mv.power*eff+stab+bonus+atkMod;dmg=Math.max(0,raw);}
+  const dRk=S.defRank?RANKS[S.defRank]:null;
+  const defNet=S.mods.def;
+  let defMod=null,received=dmg;
+  if(defNet!==0&&dRk){defMod=defNet*5*dRk.m;received=dmg>0?Math.max(0,dmg-defMod):0;}
+  const hp=S.defHp===''||!isFinite(Number(S.defHp))?null:Number(S.defHp);
+  const left=hp==null?null:Math.max(0,hp-received);
+  return {rk,mv,effs,eff,hasPower,stab,bonus,atkNet,atkMod,dmg,reason,raw,dRk,defNet,defMod,received,hp,left};
+}
+
+/* ---------- Affichage ---------- */
+function row(label,val,o){
+  o=o||{};
+  return el('div',{class:'lrow'+(o.total?' total':'')+(o.dim?' dim':'')},
+    el('div',{class:'l-lab'},el('span',{},label),o.sub?el('small',{},o.sub):null),
+    el('div',{class:'l-val'},val));
+}
+const note=t=>el('p',{class:'note'},t);
+const effLabel=e=>e===0?'Aucun effet':e>1?'Super efficace':e<1?'Peu efficace':'Efficacité normale';
+
+let lastSummary='';
+function render(){
+  refreshSteppers();
+  const big=$('#big'),sub=$('#bigSub'),led=$('#ledger'),copyBtn=$('#copyBtn'),sumEl=$('#sumText');
+  led.textContent='';
+  const r=calc();
+  if(r.miss){
+    big.textContent='—';big.className='big idle';
+    sub.textContent=`Il manque encore : ${joinFr(r.miss)}.`;
+    $('#miniN').textContent='—';
+    copyBtn.disabled=true;sumEl.hidden=true;sumEl.textContent='';lastSummary='';
+    return;
+  }
+  const S_=S,mv=r.mv;
+  big.textContent=fmt(r.dmg);big.className='big';
+  $('#miniN').textContent=fmt(r.dmg);
+  sub.textContent=r.reason==='nopower'?'Cette attaque n\'a pas de puissance dans le tableau : elle ne fait aucun dégât.'
+    :r.reason==='immune'?`${S_.def.name} est immunisé contre le type ${mv.type} : aucun effet.`
+    :effLabel(r.eff);
+
+  if(r.reason!=='nopower'){
+    const e0=r.effs[0],e1=r.effs[1];
+    const effSub=e1?`${mv.type} contre ${e0.t} ×${fmt(e0.v)} et contre ${e1.t} ×${fmt(e1.v)} : on fait la moyenne`:`${mv.type} contre ${e0.t} ×${fmt(e0.v)}`;
+    led.append(row(`Puissance ${fmt(mv.power)} × efficacité ×${fmt(r.eff)}`,fmt(mv.power*r.eff),{sub:effSub}));
+    if(r.reason!=='immune'){
+      led.append(row('STAB',r.stab?'+'+fmt(r.stab):'0',{dim:!r.stab,sub:r.stab?`le type de l'attaque est aussi celui de l'attaquant (rang ${S_.attRank})`:`le type de l'attaque n'est pas celui de l'attaquant`}));
+      led.append(row(`Bonus de rang ${S_.attRank}`,'+'+fmt(r.bonus),{sub:`${r.rk.m} × 10`}));
+      if(r.atkNet)led.append(row(`Palier d'attaque ${sgn(r.atkNet)}`,sgn(r.atkMod),{sub:`${Math.abs(r.atkNet)} × 5 × ${r.rk.m}`}));
+      if(r.raw<0)led.append(note('Le total ne peut pas descendre sous 0.'));
+    }
+  }
+
+  if(r.defNet!==0){
+    if(r.defMod!==null){
+      led.append(row(`Palier de Défense du défenseur ${sgn(r.defNet)}`,sgn(-r.defMod),{sub:`${Math.abs(r.defNet)} × 5 × ${r.dRk.m}, à soustraire des dégâts reçus`}));
+      led.append(row('Dégâts reçus',fmt(r.received),{total:true}));
+    }else{
+      led.append(note('Choisis le rang du défenseur dans « Paliers de stats » pour appliquer sa Défense.'));
+    }
+  }
+  if(r.hp!=null){
+    led.append(row('PV restants du défenseur',`${fmt(r.left)} / ${fmt(r.hp)}`,{total:true,sub:r.left===0?'K.O. !':null}));
+  }
+
+  const rolls=[];
+  if(S.mods.prec)rolls.push(row('Précision de l\'attaquant',sgn(S.mods.prec*5*r.rk.m),{sub:'à appliquer au jet de précision'}));
+  if(S.mods.vitA)rolls.push(row('Vitesse de l\'attaquant',sgn(S.mods.vitA*5*r.rk.m),{sub:'à appliquer aux jets d\'esquive et de précision'}));
+  let needDefRank=false;
+  if(S.mods.esq){if(r.dRk)rolls.push(row('Esquive du défenseur',sgn(S.mods.esq*5*r.dRk.m),{sub:'à appliquer au jet d\'esquive'}));else needDefRank=true;}
+  if(S.mods.vitD){if(r.dRk)rolls.push(row('Vitesse du défenseur',sgn(S.mods.vitD*5*r.dRk.m),{sub:'à appliquer aux jets d\'esquive et de précision'}));else needDefRank=true;}
+  if(rolls.length||needDefRank){
+    led.append(el('h3',{class:'sub-h'},'Modificateurs pour les jets'));
+    rolls.forEach(x=>led.append(x));
+    if(needDefRank)led.append(note('Choisis le rang du défenseur pour convertir son Esquive et sa Vitesse.'));
+  }
+
+  let t=`${S_.att.name} (rang ${S_.attRank}) utilise ${mv.name} sur ${S_.def.name} : ${dg(r.dmg)} infligé${r.dmg>=2?'s':''}.`;
+  if(r.reason==='nopower')t+=' Cette attaque n\'a pas de puissance.';
+  else if(r.reason==='immune')t+=` ${S_.def.name} est immunisé.`;
+  else t+=` Détail : ${fmt(mv.power)} × ${fmt(r.eff)}${r.stab?` + ${fmt(r.stab)} (STAB)`:''} + ${fmt(r.bonus)} (rang)${r.atkMod?` ${r.atkMod>0?'+':'−'} ${fmt(Math.abs(r.atkMod))} (palier d'attaque)`:''} = ${fmt(r.dmg)}.`;
+  if(r.defMod!==null)t+=` Après la Défense du défenseur (${sgn(-r.defMod)}) : ${dg(r.received)} reçu${r.received>=2?'s':''}.`;
+  if(r.hp!=null)t+=` PV restants du défenseur : ${fmt(r.left)}${r.left===0?' (K.O.)':''}.`;
+  lastSummary=t;sumEl.textContent=t;sumEl.hidden=false;copyBtn.disabled=false;
+}
+
+/* ---------- Montage ---------- */
+const attP=pokePicker({mount:$('#attMount'),prefix:'att',label:'Pokémon attaquant',onChange:v=>{S.att=v;render();}});
+const mvP=movePicker({mount:$('#moveMount'),onChange:v=>{S.move=v;render();}});
+const defP=pokePicker({mount:$('#defMount'),prefix:'def',label:'Pokémon défenseur',onChange:v=>{S.def=v;render();}});
+const attR=rankSeg({mount:$('#attRankMount'),name:'attRank',label:'Rang de l\'attaquant',onChange:r=>{
+  S.attRank=r;
+  $('#attRankHint').textContent=`Rang ${r} : STAB +${RANKS[r].stab}, bonus de rang +${RANKS[r].m*10}, un palier de stat vaut ${5*RANKS[r].m} points.`;
+  render();
+}});
+const defR=rankSeg({mount:$('#defRankMount'),name:'defRank',label:'Rang du défenseur',onChange:r=>{S.defRank=r;render();}});
+$('#defHp').addEventListener('input',e=>{S.defHp=e.target.value;render();});
+
+$('#copyBtn').addEventListener('click',async()=>{
+  if(!lastSummary)return;
+  const b=$('#copyBtn');
+  let ok=false;
+  try{await navigator.clipboard.writeText(lastSummary);ok=true;}
+  catch(e){
+    try{
+      const ta=el('textarea',{style:'position:fixed;opacity:0;top:0'});
+      ta.value=lastSummary;document.body.append(ta);ta.select();
+      ok=document.execCommand('copy');ta.remove();
+    }catch(e2){ok=false;}
+  }
+  b.textContent=ok?'Copié !':'Copie impossible, sélectionne le texte';
+  setTimeout(()=>{b.textContent='Copier le résumé';},1800);
+});
+
+$('#resetBtn').addEventListener('click',()=>{
+  S.att=null;S.attRank=null;S.move=null;S.def=null;S.defRank=null;S.defHp='';
+  Object.keys(S.mods).forEach(k=>{S.mods[k]=0;});
+  attP.reset();mvP.reset();defP.reset();attR.reset();defR.reset();
+  $('#defHp').value='';$('#attRankHint').textContent='';
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+render();
+})();
+</script>
+</body>
+</html>
