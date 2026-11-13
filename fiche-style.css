@@ -1,207 +1,29 @@
-/* ================================================================
-   Aetherion · fiche de présentation — habillage v3 (refonte)
-   ----------------------------------------------------------------
-   Écrit en spécificité doublée (.aeth-fiche.aeth-fiche) : cette
-   feuille prend le dessus sur le CSS injecté par fiche-data.js,
-   donc AUCUNE modification du script n'est nécessaire.
-   • à héberger une fois (CSS du forum, ou <link> global)
-   • structure et noms de classes inchangés → les anciennes fiches
-     et la récupération (scanFiche) continuent de fonctionner
-   ================================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap');
-
-.aeth-fiche.aeth-fiche{
-  --enc:#1D1B19; --pap:#FFFFFF; --sable:#F8F5F0; --filet:#ECE6DD; --bord:#E7E2DA;
-  --enk:#26221D; --txt:#3C3733; --doux:#6B645E; --muet:#948B7F;
-  --disp:'Archivo',system-ui,sans-serif; --mono:'Space Mono',ui-monospace,monospace;
-  width:650px; max-width:100%; margin:0 auto;
-  font-family:var(--disp); color:var(--txt);
-  background:var(--pap); border:1px solid var(--bord); border-radius:16px; overflow:hidden;
-  box-shadow:0 1px 2px rgba(30,25,20,.05), 0 20px 46px -22px rgba(30,25,20,.34);
-}
-.aeth-fiche.aeth-fiche *{box-sizing:border-box}
-.aeth-fiche.aeth-fiche .ph{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muet)}
-
-/* ─── bannière ─── */
-.aeth-fiche.aeth-fiche .af-banner{
-  position:relative;height:240px;overflow:hidden;
-  background:var(--enc);
-}
-.aeth-fiche.aeth-fiche .af-banner-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.92) contrast(1.04)}
-.aeth-fiche.aeth-fiche .af-banner-ph{
-  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#8B837A;
-}
-.aeth-fiche.aeth-fiche .af-banner-grad{
-  position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(29,27,25,.55) 0%,rgba(29,27,25,.08) 32%,rgba(29,27,25,.92) 100%);
-}
-.aeth-fiche.aeth-fiche .af-kick{
-  position:absolute;left:28px;top:20px;display:flex;align-items:center;gap:9px;
-  font-family:var(--mono);font-weight:700;font-size:10px;letter-spacing:.24em;text-transform:uppercase;
-  color:#EDE6DD;opacity:.9;
-}
-.aeth-fiche.aeth-fiche .af-kick::before{
-  content:"";width:8px;height:8px;border-radius:50%;background:var(--acc);flex:none;
-  box-shadow:0 0 0 3px rgba(255,255,255,.14);
-}
-.aeth-fiche.aeth-fiche .af-groupchip{
-  position:absolute;right:28px;top:17px;background:var(--gc);border-radius:8px;padding:7px 15px;color:#fff;
-  box-shadow:0 6px 18px -8px rgba(0,0,0,.6);
-}
-.aeth-fiche.aeth-fiche .af-groupname{
-  font-family:var(--mono);font-weight:700;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
-}
-.aeth-fiche.aeth-fiche .af-headline{position:absolute;left:28px;right:28px;bottom:20px}
-.aeth-fiche.aeth-fiche .af-name{
-  font-family:var(--disp);font-weight:900;font-size:42px;line-height:.94;letter-spacing:.055em;
-  text-transform:uppercase;color:#FFFFFF;text-shadow:0 3px 18px rgba(0,0,0,.55);
-}
-.aeth-fiche.aeth-fiche .af-alias{
-  margin-top:9px;font-size:13px;line-height:1.45;color:#EDE6DD;font-style:normal;opacity:.94;
-}
-.aeth-fiche.aeth-fiche .af-aliastxt{font-style:italic}
-.aeth-fiche.aeth-fiche .af-grouptag{
-  font-family:var(--mono);font-style:normal;font-weight:700;font-size:10.5px;
-  letter-spacing:.14em;text-transform:uppercase;color:#fff;
-}
-.aeth-fiche.aeth-fiche .af-accentbar{
-  height:5px;
-  background:linear-gradient(90deg,var(--acc) 0 250px,var(--gc) 250px);
-}
-
-/* ─── corps : colonne portrait + textes ─── */
-.aeth-fiche.aeth-fiche .af-body{display:flex;align-items:stretch}
-.aeth-fiche.aeth-fiche .af-side{
-  width:250px;flex:none;background:var(--sable);border-right:1px solid var(--filet);
-  display:flex;flex-direction:column;
-}
-.aeth-fiche.aeth-fiche .af-portrait{
-  width:250px;height:350px;overflow:hidden;border-bottom:1px solid var(--filet);
-  background:var(--enc);display:flex;align-items:center;justify-content:center;
-}
-.aeth-fiche.aeth-fiche .af-portrait img{width:100%;height:100%;object-fit:cover;display:block}
-.aeth-fiche.aeth-fiche .af-idlist{padding:18px 20px 8px;display:grid;gap:2px}
-.aeth-fiche.aeth-fiche .af-idlist > div{
-  padding:9px 12px;background:var(--pap);border-left:3px solid var(--acc);
-}
-.aeth-fiche.aeth-fiche .af-idlist > div:nth-child(even){background:#FCFAF7}
-.aeth-fiche.aeth-fiche .af-idlabel{
-  font-family:var(--mono);font-weight:700;font-size:9px;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--acc);
-}
-.aeth-fiche.aeth-fiche .af-idval{font-size:13.5px;font-weight:700;color:var(--enk);margin-top:3px}
-.aeth-fiche.aeth-fiche .af-sidetraits{padding:16px 20px 22px;margin-top:auto}
-.aeth-fiche.aeth-fiche .af-sidetraits .af-idlabel{margin-bottom:9px;color:var(--muet)}
-.aeth-fiche.aeth-fiche .af-traits{display:flex;flex-wrap:wrap;gap:6px}
-.aeth-fiche.aeth-fiche .af-trait{
-  background:var(--enc);border:none;border-radius:6px;padding:5px 11px;
-  font-family:var(--mono);font-weight:700;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#EDE6DD;
-}
-.aeth-fiche.aeth-fiche .af-main{flex:1;min-width:0;padding:24px 26px;display:grid;gap:24px;align-content:start}
-
-/* ─── titres de section ─── */
-.aeth-fiche.aeth-fiche .af-sech{
-  display:flex;align-items:center;gap:12px;margin-bottom:12px;
-  font-family:var(--disp);font-weight:900;font-size:12.5px;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--acc);
-}
-.aeth-fiche.aeth-fiche .af-sech::before{
-  content:"";width:20px;height:4px;border-radius:2px;background:var(--acc);flex:none;
-}
-.aeth-fiche.aeth-fiche .af-sech::after{content:"";flex:1;height:1px;background:var(--filet);border-radius:2px;opacity:1}
-.aeth-fiche.aeth-fiche .af-scroll{max-height:300px;overflow-y:auto;padding-right:10px}
-.aeth-fiche.aeth-fiche .af-scroll::-webkit-scrollbar{width:6px}
-.aeth-fiche.aeth-fiche .af-scroll::-webkit-scrollbar-track{background:var(--filet);border-radius:3px}
-.aeth-fiche.aeth-fiche .af-scroll::-webkit-scrollbar-thumb{background:var(--acc);border-radius:3px}
-.aeth-fiche.aeth-fiche .af-txt p{margin:0 0 12px;font-size:13.5px;line-height:1.75;text-align:justify;text-wrap:pretty}
-.aeth-fiche.aeth-fiche .af-txt p:last-child{margin-bottom:0}
-
-/* ─── histoire ─── */
-.aeth-fiche.aeth-fiche .af-histsec{padding:24px 26px;border-top:1px solid var(--bord);background:#FCFAF7}
-.aeth-fiche.aeth-fiche .af-histrow{display:flex;gap:20px;align-items:flex-start}
-.aeth-fiche.aeth-fiche .af-photo{
-  width:220px;height:220px;flex:none;border-radius:12px;overflow:hidden;border:none;
-  background:var(--enc);display:flex;align-items:center;justify-content:center;
-  box-shadow:0 14px 30px -18px rgba(30,25,20,.55);
-}
-.aeth-fiche.aeth-fiche .af-photo img{width:100%;height:100%;object-fit:cover;display:block}
-.aeth-fiche.aeth-fiche .af-histtxt{flex:1;min-width:0}
-
-/* ─── pokémon fétiche ─── */
-.aeth-fiche.aeth-fiche .af-pkmn{
-  position:relative;background:var(--enc);padding:22px 26px;display:flex;gap:20px;align-items:center;overflow:hidden;
-}
-.aeth-fiche.aeth-fiche .af-pkmn::after{
-  content:"";position:absolute;right:-70px;top:-70px;width:220px;height:220px;border-radius:50%;
-  background:radial-gradient(circle,var(--acc) 0%,transparent 68%);opacity:.22;pointer-events:none;
-}
-.aeth-fiche.aeth-fiche .af-pkmn-sprite{
-  position:relative;width:104px;height:104px;flex:none;border-radius:12px;
-  display:flex;align-items:center;justify-content:center;overflow:hidden;
-  background:rgba(255,255,255,.06);border:1px solid var(--acc);
-}
-.aeth-fiche.aeth-fiche .af-pkmn-sprite img{max-width:100%;max-height:100%;object-fit:contain;}
-.aeth-fiche.aeth-fiche .af-pkmn-sprite .ph{font-size:9px;color:#8B837A}
-.aeth-fiche.aeth-fiche .af-pkmn-body{position:relative;flex:1;min-width:0}
-.aeth-fiche.aeth-fiche .af-pkmn-kick{
-  font-family:var(--mono);font-weight:700;font-size:9.5px;letter-spacing:.24em;
-  text-transform:uppercase;color:var(--muet);margin-bottom:6px;
-}
-.aeth-fiche.aeth-fiche .af-pkmn-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.aeth-fiche.aeth-fiche .af-pkmn-name{
-  font-family:var(--disp);font-weight:900;font-size:24px;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);
-}
-.aeth-fiche.aeth-fiche .af-pkmn-meta{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:#C7BFB5}
-.aeth-fiche.aeth-fiche .af-pkmn-meta b,
-.aeth-fiche.aeth-fiche .af-pkmn-species,
-.aeth-fiche.aeth-fiche .af-pkmn-level,
-.aeth-fiche.aeth-fiche .af-pkmn-nature{color:#EDE6DD;font-weight:700}
-.aeth-fiche.aeth-fiche .af-pkmn-type{
-  color:#fff;font-family:var(--mono);font-size:9.5px;font-weight:700;
-  padding:4px 10px;border-radius:6px;letter-spacing:.14em;text-transform:uppercase;
-}
-.aeth-fiche.aeth-fiche .af-pkmn-desc{
-  margin:10px 0 0;padding-left:14px;border-left:2px solid rgba(255,255,255,.16);
-  font-size:12.5px;line-height:1.65;color:#C7BFB5;font-style:italic;
-}
-
-/* ─── derrière l'écran ─── */
-.aeth-fiche.aeth-fiche .af-player{
-  background:var(--sable);border-top:1px solid var(--filet);padding:18px 26px;
-  display:flex;gap:10px 26px;align-items:baseline;flex-wrap:wrap;
-}
-.aeth-fiche.aeth-fiche .af-player-kick{
-  font-family:var(--mono);font-weight:700;font-size:9.5px;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--acc);
-}
-.aeth-fiche.aeth-fiche .af-plc{font-size:13px;color:var(--enk)}
-.aeth-fiche.aeth-fiche .af-plc .l{
-  font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--muet);font-weight:700;margin-right:6px;
-}
-.aeth-fiche.aeth-fiche .af-player-note{
-  margin:4px 0 0;width:100%;font-size:12px;line-height:1.65;color:var(--doux);font-style:italic;
-}
-.aeth-fiche.aeth-fiche .af-empty{font-family:var(--mono);font-size:11px;color:var(--muet);font-style:normal}
-
-/* ─── mode nuit du forum ─── */
-[data-color-scheme="dark"] .aeth-fiche.aeth-fiche{
-  --pap:#211E1B; --sable:#262220; --filet:#2E2925; --bord:#363029;
-  --enk:#EFEAE4; --txt:#D6CFC7; --doux:#A79E95; --muet:#8A8279;
-  box-shadow:0 1px 2px rgba(0,0,0,.25), 0 20px 46px -22px rgba(0,0,0,.6);
-}
-[data-color-scheme="dark"] .aeth-fiche.aeth-fiche .af-idlist > div{background:#241F1C}
-[data-color-scheme="dark"] .aeth-fiche.aeth-fiche .af-idlist > div:nth-child(even){background:#282320}
-[data-color-scheme="dark"] .aeth-fiche.aeth-fiche .af-histsec{background:#232019}
-[data-color-scheme="dark"] .aeth-fiche.aeth-fiche .af-trait{background:#121110;color:#D6CFC7}
-
-/* ─── petits écrans ─── */
-@media (max-width:700px){
-  .aeth-fiche.aeth-fiche .af-body{flex-direction:column}
-  .aeth-fiche.aeth-fiche .af-side{width:100%;border-right:none;border-bottom:1px solid var(--filet)}
-  .aeth-fiche.aeth-fiche .af-portrait{width:100%;height:320px}
-  .aeth-fiche.aeth-fiche .af-histrow{flex-direction:column}
-  .aeth-fiche.aeth-fiche .af-photo{width:100%;height:240px}
-  .aeth-fiche.aeth-fiche .af-name{font-size:32px}
-}
+/* ═════ FICHE DE PRÉSENTATION (.aeth-fiche) — Etherium V2 ═════
+   À coller dans la feuille de style du forum, À LA PLACE de l'habillage v3.
+   Spécificité doublée (.aeth-fiche.aeth-fiche) : passe devant le <style> intégré
+   des anciennes fiches. Structure et classes inchangées → scanFiche fonctionne. */
+.aeth-fiche.aeth-fiche{--f-encre:#161D2A;--f-encre2:#1F2838;--f-carte:#FFFFFF;--f-beige:#F1F4FA;--f-bord:#D3DBE6;--f-filet:#E8ECF3;--f-titre:#18222E;--f-texte:#435063;--f-muet:#7F8EA0;--f-clair:#AFC4E8;width:650px;max-width:100%;margin:0 auto;font-family:'Karla','Helvetica Neue',Arial,sans-serif;background:var(--f-carte);border:1px solid var(--f-bord);border-radius:20px;overflow:hidden;box-shadow:0 26px 54px -30px rgba(10,16,30,.55);color:var(--f-texte);text-align:left}.aeth-fiche.aeth-fiche *{box-sizing:border-box}.aeth-fiche.aeth-fiche .ph{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--f-muet)}
+/* — bannière — */
+.aeth-fiche.aeth-fiche .af-banner{position:relative;height:240px;overflow:hidden;background-color:var(--f-encre);background-image:radial-gradient(ellipse 70% 120% at 80% 30%,color-mix(in srgb,var(--acc) 40%,transparent),transparent 70%)}.aeth-fiche.aeth-fiche .af-banner::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:repeating-linear-gradient(64deg,rgba(255,255,255,.05) 0 2px,transparent 2px 14px)}.aeth-fiche.aeth-fiche .af-banner-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.aeth-fiche.aeth-fiche .af-banner-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(232,238,247,.35)}.aeth-fiche.aeth-fiche .af-banner-grad{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(22,29,42,.35) 0%,rgba(22,29,42,0) 30%,rgba(22,29,42,.92) 100%)}.aeth-fiche.aeth-fiche .af-kick{position:absolute;z-index:2;left:24px;top:20px;display:flex;align-items:center;gap:10px;font-size:9.5px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:rgba(232,238,247,.8)}.aeth-fiche.aeth-fiche .af-kick::before{content:"";width:7px;height:7px;transform:rotate(45deg);background:var(--acc);box-shadow:0 0 10px var(--acc)}.aeth-fiche.aeth-fiche .af-groupchip{position:absolute;z-index:2;right:24px;top:15px;display:flex;align-items:center;gap:8px;padding:6px 14px;border-radius:99px;background:rgba(22,29,42,.55);border:1px solid var(--gc);backdrop-filter:blur(6px);color:#fff}.aeth-fiche.aeth-fiche .af-groupchip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gc);box-shadow:0 0 8px var(--gc)}.aeth-fiche.aeth-fiche .af-groupname{font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}.aeth-fiche.aeth-fiche .af-headline{position:absolute;z-index:2;left:274px;right:24px;bottom:20px}.aeth-fiche.aeth-fiche .af-name{font-size:34px;font-weight:800;line-height:1;letter-spacing:.06em;text-transform:uppercase;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.45)}.aeth-fiche.aeth-fiche .af-alias{margin-top:8px;font-size:12.5px;font-style:italic;line-height:1.5;color:rgba(232,238,247,.8)}.aeth-fiche.aeth-fiche .af-aliastxt{font-style:normal;font-weight:800;letter-spacing:.08em;color:var(--f-clair)}.aeth-fiche.aeth-fiche .af-grouptag{font-style:normal;font-weight:700;color:#fff}.aeth-fiche.aeth-fiche .af-accentbar{height:3px;background:linear-gradient(90deg,var(--gc) 0 250px,var(--acc) 250px)}
+/* — corps : colonne sombre + contenu — */
+.aeth-fiche.aeth-fiche .af-body{display:flex;align-items:stretch}.aeth-fiche.aeth-fiche .af-side{position:relative;width:250px;flex:none;display:flex;flex-direction:column;background-color:var(--f-encre);background-image:radial-gradient(ellipse 90% 40% at 50% 0%,color-mix(in srgb,var(--gc) 30%,transparent),transparent 70%)}.aeth-fiche.aeth-fiche .af-portrait{position:relative;z-index:3;width:226px;height:316px;margin:-130px 12px 0;border-radius:16px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--f-encre2);border:3px solid var(--f-encre);box-shadow:0 0 0 1px color-mix(in srgb,var(--gc) 60%,transparent),0 24px 40px -20px rgba(0,0,0,.8)}.aeth-fiche.aeth-fiche .af-portrait img{width:100%;height:100%;object-fit:cover;display:block}.aeth-fiche.aeth-fiche .af-portrait .ph{color:rgba(232,238,247,.35)}.aeth-fiche.aeth-fiche .af-idlist{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:14px 12px 0}.aeth-fiche.aeth-fiche .af-idlist>div{padding:10px 12px;border-radius:11px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);min-width:0}.aeth-fiche.aeth-fiche .af-idlist>div:nth-child(2){order:2;grid-column:1/-1}.aeth-fiche.aeth-fiche .af-idlist>div:nth-child(3){order:1}.aeth-fiche.aeth-fiche .af-idlist>div:nth-child(4){order:3;grid-column:1/-1}.aeth-fiche.aeth-fiche .af-idlabel{font-size:8px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--f-clair)}.aeth-fiche.aeth-fiche .af-idval{margin-top:3px;font-size:13px;font-weight:800;color:#fff;overflow-wrap:anywhere}.aeth-fiche.aeth-fiche .af-sidetraits{padding:16px 12px 18px}.aeth-fiche.aeth-fiche .af-sidetraits .af-idlabel{display:flex;align-items:center;gap:8px;margin-bottom:9px}.aeth-fiche.aeth-fiche .af-sidetraits .af-idlabel::after{content:"";flex:1;height:1px;background:rgba(255,255,255,.1)}.aeth-fiche.aeth-fiche .af-traits{display:flex;flex-wrap:wrap;gap:5px}.aeth-fiche.aeth-fiche .af-trait{padding:5px 11px;border-radius:99px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);font-size:11px;font-weight:700;color:#E8EEF7}.aeth-fiche.aeth-fiche .af-trait:nth-child(odd){border-color:color-mix(in srgb,var(--acc) 55%,transparent)}.aeth-fiche.aeth-fiche .af-main{flex:1;min-width:0;padding:24px 24px 22px;display:grid;gap:24px;align-content:start;background:var(--f-carte)}
+/* — titres de section — */
+.aeth-fiche.aeth-fiche .af-sech{display:flex;align-items:center;gap:11px;margin-bottom:12px;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--f-titre)}.aeth-fiche.aeth-fiche .af-sech::before{content:"";flex:none;width:8px;height:8px;transform:rotate(45deg);background:var(--acc)}.aeth-fiche.aeth-fiche .af-sech::after{content:"";flex:1;height:1px;background:var(--f-filet)}.aeth-fiche.aeth-fiche .af-scroll{max-height:290px;overflow-y:auto;padding-right:10px;scrollbar-width:thin;scrollbar-color:var(--acc) transparent}.aeth-fiche.aeth-fiche .af-scroll::-webkit-scrollbar{width:5px}.aeth-fiche.aeth-fiche .af-scroll::-webkit-scrollbar-thumb{background:var(--acc);border-radius:3px}.aeth-fiche.aeth-fiche .af-txt p{margin:0 0 12px;font-size:13px;line-height:1.75;text-align:justify;color:var(--f-texte)}.aeth-fiche.aeth-fiche .af-txt p:last-child{margin-bottom:0}
+/* — histoire — */
+.aeth-fiche.aeth-fiche .af-histsec{padding:24px;border-top:1px solid var(--f-filet);background:var(--f-beige)}.aeth-fiche.aeth-fiche .af-histrow{display:flex;gap:22px;align-items:flex-start}.aeth-fiche.aeth-fiche .af-photo{position:relative;width:220px;height:220px;flex:none;border-radius:16px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--f-carte);border:1px solid var(--f-bord);box-shadow:8px 8px 0 -1px color-mix(in srgb,var(--acc) 22%,transparent)}.aeth-fiche.aeth-fiche .af-photo img{width:100%;height:100%;object-fit:cover;display:block}.aeth-fiche.aeth-fiche .af-histtxt{flex:1;min-width:0;max-height:220px}
+/* — pokémon fétiche — */
+.aeth-fiche.aeth-fiche .af-pkmn{position:relative;display:flex;gap:20px;align-items:center;padding:22px 24px;overflow:hidden;background-color:var(--f-encre);background-image:radial-gradient(ellipse 50% 120% at 12% 50%,color-mix(in srgb,var(--acc) 35%,transparent),transparent 70%)}.aeth-fiche.aeth-fiche .af-pkmn::before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(64deg,rgba(255,255,255,.035) 0 2px,transparent 2px 14px)}.aeth-fiche.aeth-fiche .af-pkmn-sprite{position:relative;width:96px;height:96px;flex:none;margin:6px;display:flex;align-items:center;justify-content:center;border-radius:22px;transform:rotate(45deg);background:rgba(255,255,255,.05);border:1px solid color-mix(in srgb,var(--acc) 60%,transparent)}.aeth-fiche.aeth-fiche .af-pkmn-sprite img,.aeth-fiche.aeth-fiche .af-pkmn-sprite .ph{transform:rotate(-45deg)}.aeth-fiche.aeth-fiche .af-pkmn-sprite img{max-width:118%;max-height:118%;object-fit:contain;image-rendering:pixelated}.aeth-fiche.aeth-fiche .af-pkmn-sprite .ph{color:rgba(232,238,247,.35)}.aeth-fiche.aeth-fiche .af-pkmn-body{position:relative;flex:1;min-width:0}.aeth-fiche.aeth-fiche .af-pkmn-kick{margin-bottom:6px;font-size:9px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--f-clair)}.aeth-fiche.aeth-fiche .af-pkmn-top{display:flex;align-items:center;gap:6px 10px;flex-wrap:wrap}.aeth-fiche.aeth-fiche .af-pkmn-name{font-size:22px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#fff}.aeth-fiche.aeth-fiche .af-pkmn-meta{font-size:11.5px;font-weight:700;color:rgba(232,238,247,.6)}.aeth-fiche.aeth-fiche .af-pkmn-meta span{color:#E8EEF7}.aeth-fiche.aeth-fiche .af-pkmn-type{padding:3px 10px;border-radius:99px;font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff}.aeth-fiche.aeth-fiche .af-pkmn-desc{margin:10px 0 0;padding-left:12px;border-left:2px solid var(--acc);font-size:12.5px;line-height:1.65;font-style:italic;color:rgba(232,238,247,.78);max-height:150px;overflow-y:auto}
+/* — derrière l'écran — */
+.aeth-fiche.aeth-fiche .af-player{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;padding:16px 24px;background:var(--f-carte);border-top:3px solid var(--acc)}.aeth-fiche.aeth-fiche .af-player-kick{margin-right:6px;display:flex;align-items:center;gap:8px;font-size:9.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--f-titre)}.aeth-fiche.aeth-fiche .af-player-kick::before{content:"";width:6px;height:6px;transform:rotate(45deg);border:1.5px solid var(--acc)}.aeth-fiche.aeth-fiche .af-plc{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:99px;background:var(--f-beige);border:1px solid var(--f-bord);font-size:12px;color:var(--f-titre)}.aeth-fiche.aeth-fiche .af-plc .l{font-size:8px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--f-muet)}.aeth-fiche.aeth-fiche .af-player-note{width:100%;margin:4px 0 0;font-size:12px;line-height:1.6;font-style:italic;color:var(--f-texte)}.aeth-fiche.aeth-fiche .af-empty{font-size:12px;font-style:italic;color:var(--f-muet)}
+@media (max-width:660px){.aeth-fiche.aeth-fiche .af-body,.aeth-fiche.aeth-fiche .af-histrow{flex-direction:column}.aeth-fiche.aeth-fiche .af-side{width:100%}.aeth-fiche.aeth-fiche .af-portrait{margin:-110px auto 0}.aeth-fiche.aeth-fiche .af-headline{left:24px;bottom:120px}.aeth-fiche.aeth-fiche .af-photo{width:100%;height:200px}.aeth-fiche.aeth-fiche .af-histtxt{max-height:none}}
+/* neutralise le style intégré des anciennes fiches (déjà postées) */
+.aeth-fiche.aeth-fiche [class]{font-family:inherit}
+.aeth-fiche.aeth-fiche .af-side{border:0}
+.aeth-fiche.aeth-fiche :is(.af-kick,.af-alias){opacity:1}
+.aeth-fiche.aeth-fiche .af-sech::after{opacity:1;border-radius:0}
+.aeth-fiche.aeth-fiche .af-sidetraits{margin-top:0}
+.aeth-fiche.aeth-fiche .af-pkmn-sprite{overflow:visible}
+.aeth-fiche.aeth-fiche .af-plc .l{margin-right:0}
+/* — mode nuit du forum — */
+[data-color-scheme="dark"] .aeth-fiche.aeth-fiche{--f-carte:#121824;--f-beige:#182030;--f-bord:#222C3C;--f-filet:#18202D;--f-titre:#E8EEF7;--f-texte:#B4C0D2;--f-muet:#76849A;--f-encre2:#101622;box-shadow:0 26px 54px -26px rgba(0,0,0,.7)}
+[data-color-scheme="dark"] .aeth-fiche.aeth-fiche .af-photo{box-shadow:8px 8px 0 -1px color-mix(in srgb,var(--acc) 35%,transparent)}
