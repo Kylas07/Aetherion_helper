@@ -11,8 +11,7 @@
    CARTE DE DRESSEUR (.drs)
    ========================================================================== */
 
-.drs {
-    /* Reprend les variables du forum quand elles existent. */
+/* .drs {
     --drs-card: var(--carte, #FFFFFF);
     --drs-inset: var(--beige, #F5F1EA);
     --drs-band: var(--beige-band, #FCF9F4);
@@ -43,6 +42,37 @@
     line-height: 1.5;
     text-align: left;
     box-shadow: 0 18px 44px -22px rgba(45, 38, 30, .38);
+} */
+
+.drs {
+    --drs-card: var(--carte, #FFFFFF);
+    --drs-inset: var(--beige, #EEF2F8);
+    --drs-band: var(--beige-band, #F5F7FB);
+    --drs-line: var(--bordure, #D3DBE6);
+    --drs-header: var(--encre, #161D2A);
+    --drs-ink: var(--titre, #18222E);
+    --drs-body: var(--texte, #435063);
+    --drs-muted: var(--muet, #7F8EA0);
+    --drs-accent: var(--accent, #4C6CAD);
+    --drs-t1: #B9875A;   /* bronze */
+    --drs-t2: #8E9BAE;   /* argent */
+    --drs-t3: #D4A63A;   /* or */
+    --drs-ct: #3F8FD8;   /* CT : bleu ciel, distinct de l'accent */
+    --drs-cs: #8B6CD1;   /* CS : violet */
+    box-sizing: border-box;
+    width: 650px;
+    max-width: 100%;
+    margin: 0 auto;
+    background: var(--drs-card);
+    border: 1px solid var(--drs-line);
+    border-radius: 16px;
+    overflow: hidden;
+    font-family: var(--font, 'Karla'), 'Helvetica Neue', Arial, sans-serif;
+    color: var(--drs-body);
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: left;
+    box-shadow: 0 18px 44px -22px rgba(10, 16, 30, .4);
 }
 
 .drs *,
