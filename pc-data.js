@@ -1,11 +1,39 @@
 /* Boîte de PC Pokémon — données, encodage compact, génération du HTML forum.
-   window.PC */
+   window.PC
+   Les tables (types, Balls, genres) sont reprises de window.EQUIPE si ce script
+   est chargé avant ; sinon on utilise les tables complètes ci-dessous.
+   (Avant : si EQUIPE n'était pas encore chargé, seul « Normal » restait dispo.) */
 (function () {
   var E = window.EQUIPE || {};
-  var TYPE = E.TYPE || { 'Normal': '#9FA39B' };
-  var TYPE_LIST = E.TYPE_LIST || Object.keys(TYPE);
-  var BALLS = E.BALLS || { 'Poké Ball': { top: '#EE1515', band: '#1A1A1A' } };
-  var BALL_LIST = E.BALL_LIST || Object.keys(BALLS);
+
+  var TYPE_LOCAL = {
+    'Normal': '#9FA39B', 'Feu': '#E84C3D', 'Eau': '#3C8FE0', 'Plante': '#4BAE4F',
+    'Électrik': '#F2C94C', 'Glace': '#56CCE0', 'Combat': '#E0762B', 'Poison': '#A052C8',
+    'Sol': '#C08A3E', 'Vol': '#88AEE8', 'Psy': '#EC5C8E', 'Insecte': '#9AAB2A',
+    'Roche': '#BBA968', 'Spectre': '#6E5A9B', 'Dragon': '#5763E0', 'Ténèbres': '#4E4A57',
+    'Acier': '#6BA7B8', 'Fée': '#EE8FCB'
+  };
+  var BALLS_LOCAL = {
+    'Poké Ball': { top: '#EE1515', band: '#1A1A1A' },
+    'Super Ball': { top: '#3B82F6', band: '#1A1A1A' },
+    'Hyper Ball': { top: '#F2B600', band: '#1A1A1A' },
+    'Luxe Ball': { top: '#23272F', band: '#D4AF37' },
+    'Faiblo Ball': { top: '#F4F4F4', band: '#D11A1A' },
+    'Filet Ball': { top: '#0EA5A5', band: '#1A1A1A' },
+    'Scuba Ball': { top: '#3FA9F5', band: '#1A1A1A' },
+    'Soin Ball': { top: '#F472B6', band: '#1A1A1A' },
+    'Rapide Ball': { top: '#F7C600', band: '#2360A8' },
+    'Sombre Ball': { top: '#2E5339', band: '#1A1A1A' },
+    'Chrono Ball': { top: '#E25822', band: '#1A1A1A' },
+    'Honneur Ball': { top: '#8C6239', band: '#D4AF37' }
+  };
+
+  /* on ne garde la table d'EQUIPE que si elle est vraiment remplie */
+  function pick(ext, local) { return ext && Object.keys(ext).length > 1 ? ext : local; }
+  var TYPE = pick(E.TYPE, TYPE_LOCAL);
+  var TYPE_LIST = (E.TYPE_LIST && E.TYPE_LIST.length > 1) ? E.TYPE_LIST : Object.keys(TYPE);
+  var BALLS = pick(E.BALLS, BALLS_LOCAL);
+  var BALL_LIST = (E.BALL_LIST && E.BALL_LIST.length > 1) ? E.BALL_LIST : Object.keys(BALLS);
   var GENDERS = E.GENDERS || [
     { v: '♂', label: '♂ Mâle', cls: 'm' },
     { v: '♀', label: '♀ Femelle', cls: 'f' },
@@ -93,58 +121,10 @@
   /* ---------- import des anciennes boîtes (code PCBOX1: en base64) ---------- */
   var TYPE_BY_KEY = {};
   TYPE_LIST.forEach(function (t) {
-    TYPE_BY_KEY[t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')] = t;
+    TYPE_BY_KEY[t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')] = t;
   });
   function normType(t) {
-    var k = String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
-    return TYPE_BY_KEY[k] || 'Normal';
-  }
-
-  function legacy(str) {
-    var raw = String(str || '');
-    var code = '';
-    try {
-      var el = new DOMParser().parseFromString(raw, 'text/html').querySelector('[data-pc]');
-      if (el) code = el.getAttribute('data-pc') || '';
-    } catch (e) {}
-    if (code.indexOf('PCBOX1:') !== 0) {
-      var m = raw.match(/PCBOX1:[A-Za-z0-9+/=]+/);
-      if (!m) throw new Error('pas une ancienne boîte');
-      code = m[0];
-    }
-    var o = JSON.parse(decodeURIComponent(escape(atob(code.slice(7)))));
-    if (!o || !Array.isArray(o.mons)) throw new Error('format');
-
-    var mons = [];
-    for (var i = 0; i < SIZE; i++) {
-      var p = o.mons[i];
-      if (!p) { mons.push(null); continue; }
-      var types = (Array.isArray(p.types) ? p.types : ['Normal']).filter(Boolean).slice(0, 2).map(normType);
-      mons.push({
-        sprite: p.sprite || '',
-        nickname: p.nickname || '',
-        species: p.species || '',
-        types: types.length ? types : ['Normal'],
-        level: p.level == null ? '' : String(p.level),
-        gender: p.gender || '♂',
-        ball: p.ballName || p.ball || 'Poké Ball'
-      });
-    }
-    return {
-      owner: o.owner || 'Dresseur',
-      boxName: o.boxName || 'Boîte 1',
-      motisma: o.motisma || '',
-      mons: mons
-    };
-  }
-
-  /* ---------- ancien modèle : code PCBOX1: en base64 ---------- */
-  var TYPE_BY_KEY = {};
-  TYPE_LIST.forEach(function (t) {
-    TYPE_BY_KEY[t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')] = t;
-  });
-  function normType(t) {
-    var k = String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+    var k = String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
     return TYPE_BY_KEY[k] || 'Normal';
   }
 
@@ -190,7 +170,6 @@
   function scanPC(html) {
     try { return decode(html); } catch (e) {}
     try { return legacy(html); } catch (e) {}
-    try { return legacy(html); } catch (e) {}
     var doc = new DOMParser().parseFromString(String(html || ''), 'text/html');
     var root = doc.querySelector('.pc');
     if (!root) throw new Error('aucune boîte trouvée');
@@ -205,7 +184,7 @@
         sprite: img ? img.getAttribute('src') || '' : '',
         nickname: txt(s.querySelector('.pc-nick')),
         species: (meta[0] || '').trim(),
-        types: Array.prototype.map.call(s.querySelectorAll('.pc-t'), function (t) { return txt(t); }),
+        types: Array.prototype.map.call(s.querySelectorAll('.pc-t'), function (t) { return normType(txt(t)); }),
         level: (meta[1] || '').replace(/[^\d]/g, ''),
         gender: txt(s.querySelector('.pc-g')) || '♂',
         ball: txt(s.querySelector('.pc-cap b')) || 'Poké Ball'
