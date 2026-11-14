@@ -3,218 +3,280 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<script src="https://kylas07.github.io/aetherion-V2/etherium_card/support.js"></script>
 </head>
 <body>
 <x-dc>
+
 <helmet>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="tcard-forum.css">
-    <script src="vestiges-data.js"></script>
-    <script src="dresseur-data.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <link href="https://kylas07.github.io/aetherion-V2/t-card_v2.css" rel="stylesheet" />
+    <script src="https://kylas07.github.io/aetherion-V2/etherium_card/vestiges-data.js"></script>
+    <script src="https://kylas07.github.io/aetherion-V2/dresseur-data_V2.js"></script>
     <style>
+        /* ═════ GÉNÉRATEUR — thème Etherium V2 (seule l'apparence change) ═════ */
+        :root {
+            --font: 'Karla';
+            --fond: #E4E9F1; --carte: #FFFFFF; --beige: #EEF2F8; --beige-band: #F5F7FB;
+            --encre: #161D2A; --titre: #18222E; --texte: #435063; --muet: #7F8EA0;
+            --bordure: #D3DBE6; --filet: #E8ECF3;
+            --accent: #4C6CAD; --accent-clair: #AFC4E8; --accent-fonce: #3A5590;
+            --danger: #C9524A;
+            --rayures: repeating-linear-gradient(64deg, rgba(255,255,255,.045) 0 2px, transparent 2px 14px);
+            --glow: radial-gradient(ellipse 60% 140% at 15% 50%, rgba(76,108,173,.4), transparent 70%);
+        }
         * { box-sizing: border-box; }
         body {
             margin: 0;
-            background: #EFE8DF;
-            background-image: radial-gradient(rgba(120, 104, 88, .16) 1px, transparent 1px);
-            background-size: 5px 5px;
+            background-color: var(--fond);
+            background-image: radial-gradient(rgba(76, 108, 173, .12) 1px, transparent 1px);
+            background-size: 22px 22px;
         }
-        a { color: #C7301C; }
-        a:hover { color: #93200F; }
-        input, select, textarea, button { font-family: 'Archivo', Arial, sans-serif; }
-        input, select, textarea { outline: none; color: #1B1918; }
-        input:focus, textarea:focus { border-color: #E8402A !important; box-shadow: 0 0 0 3px rgba(232, 64, 42, .16); }
-        ::placeholder { color: #A69C90; opacity: 1; }
+        a { color: var(--accent); }
+        a:hover { color: var(--accent-fonce); }
+        input, select, textarea, button { font-family: 'Karla', Arial, sans-serif; }
+        input, select, textarea { outline: none; color: var(--titre); }
+        input:focus, textarea:focus { border-color: var(--accent) !important; box-shadow: 0 0 0 3px rgba(76, 108, 173, .16); }
+        ::placeholder { color: #A3AEBD; opacity: 1; }
+
+        .ed-page { font-family: 'Karla', Arial, sans-serif; color: var(--titre); min-height: 100vh; padding: 26px 26px 90px; }
+
+        /* — bandeau — */
+        .ed-top {
+            max-width: 1320px; margin: 0 auto 22px; padding: 24px 28px; border-radius: 20px;
+            display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+            background-color: var(--encre); background-image: var(--rayures), var(--glow);
+            box-shadow: 0 24px 48px -30px rgba(10, 16, 30, .7);
+        }
+        .ed-kick { display: flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 800; letter-spacing: .24em; text-transform: uppercase; color: var(--accent-clair); }
+        .ed-kick::before { content: ""; width: 7px; height: 7px; transform: rotate(45deg); background: currentColor; box-shadow: 0 0 10px currentColor; }
+        .ed-title { margin-top: 8px; font-size: 32px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; line-height: 1; color: #FFFFFF; }
+        .ed-note { max-width: 300px; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; line-height: 1.8; color: #8E9BAE; }
+
+        .ed-grid { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 430px) minmax(0, 1fr); gap: 24px; align-items: start; }
+        .ed-col { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+
+        /* — cartes du formulaire — */
+        .ed-card { background: var(--carte); border: 1px solid var(--bordure); border-radius: 18px; padding: 18px; box-shadow: 0 16px 34px -26px rgba(10, 16, 30, .45); }
+        .ed-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+        .ed-h { display: flex; align-items: center; gap: 9px; font-size: 10px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--titre); }
+        .ed-h::before { content: ""; flex: none; width: 7px; height: 7px; transform: rotate(45deg); background: var(--accent); }
+        .ed-count { font-size: 9.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muet); }
+        .ed-help { margin: 0 0 10px; font-size: 12px; color: var(--muet); line-height: 1.55; }
+        .ed-help b { color: var(--titre); }
+
+        .ed-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; margin-bottom: 12px; }
+        .ed-field { margin-bottom: 12px; }
+        .ed-field:last-child { margin-bottom: 0; }
+        .ed-lab { display: block; margin-bottom: 6px; font-size: 9px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+        .ed-in { width: 100%; padding: 10px 12px; border: 1px solid var(--bordure); border-radius: 10px; background: var(--beige-band); font-size: 13px; transition: border-color .15s, box-shadow .15s; }
+        .ed-in.sm { padding: 9px 11px; font-size: 12.5px; }
+        .ed-ta { width: 100%; resize: vertical; padding: 10px 12px; border: 1px solid var(--bordure); border-radius: 10px; background: var(--beige-band); font-size: 12.5px; line-height: 1.6; color: var(--texte); }
+        .ed-ta.code { height: 56px; font-family: ui-monospace, Consolas, monospace; font-size: 11px; line-height: 1.45; }
+
+        /* — boutons — */
+        .ed-btns { display: flex; gap: 8px; margin-top: 10px; }
+        .ed-btn { padding: 11px 16px; border-radius: 99px; font-size: 10.5px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; cursor: pointer; transition: filter .15s, background .15s, border-color .15s, color .15s; }
+        .ed-btn.main { flex: 1; border: 0; background: var(--accent); color: #FFFFFF; box-shadow: 0 10px 22px -14px var(--accent); }
+        .ed-btn.main:hover { filter: brightness(1.08); }
+        .ed-btn.alt { border: 1px solid var(--bordure); background: var(--carte); color: var(--titre); }
+        .ed-btn.alt:hover { border-color: var(--accent); color: var(--accent); }
+        .ed-ranks { display: flex; gap: 6px; }
+        .ed-rank { flex: 1; padding: 10px 0; border-radius: 12px; font-size: 15px; font-weight: 800; cursor: pointer; transition: border-color .15s, background .15s; }
+        .ed-rank:hover { border-color: var(--accent) !important; }
+
+        /* — listes (vestiges, CT/CS, inventaire) — */
+        .ed-list { display: flex; flex-direction: column; gap: 7px; }
+        .ed-list.scroll { max-height: 420px; overflow-y: auto; padding-right: 4px; scrollbar-width: thin; scrollbar-color: var(--accent) transparent; }
+        .ed-line { display: grid; gap: 7px; }
+        .ed-line.v { grid-template-columns: 1fr 92px 34px; }
+        .ed-line.m { grid-template-columns: 1fr 78px 34px; }
+        .ed-line.i { grid-template-columns: 1fr 34px; }
+        .ed-tier { border: 0; border-radius: 99px; color: #0A0D14; font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; }
+        .ed-kind { border: 0; border-radius: 99px; color: #FFFFFF; font-size: 10.5px; font-weight: 800; letter-spacing: .12em; cursor: pointer; }
+        .ed-del { border: 1px solid #F1D6D4; border-radius: 10px; background: #FBEFEE; color: var(--danger); font-size: 15px; line-height: 1; cursor: pointer; transition: background .15s; }
+        .ed-del:hover { background: #F6DEDC; }
+        .ed-add { width: 100%; margin-top: 10px; padding: 11px 14px; border: 1.5px dashed var(--bordure); border-radius: 12px; background: var(--beige-band); color: var(--texte); font-size: 10px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; text-align: left; cursor: pointer; transition: border-color .15s, color .15s; }
+        .ed-add:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* — export (carte sombre) — */
+        .ed-export { border-radius: 18px; padding: 20px; color: #E8EEF7; background-color: var(--encre); background-image: var(--rayures), var(--glow); box-shadow: 0 24px 48px -30px rgba(10, 16, 30, .7); }
+        .ed-export .ed-h { color: #FFFFFF; margin-bottom: 14px; }
+        .ed-export .ed-h::before { background: var(--accent-clair); box-shadow: 0 0 10px var(--accent-clair); }
+        .ed-xrow { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+        .ed-xrow + .ed-xrow, .ed-code + .ed-xrow { margin-top: 16px; }
+        .ed-xlab { font-size: 9px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: #8E9BAE; }
+        .ed-xbtn { padding: 7px 14px; border-radius: 99px; font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; cursor: pointer; }
+        .ed-xbtn.main { border: 0; background: var(--accent); color: #FFFFFF; }
+        .ed-xbtn.alt { border: 1px solid rgba(255,255,255,.25); background: transparent; color: #E8EEF7; }
+        .ed-xbtn:hover { filter: brightness(1.12); }
+        .ed-code { width: 100%; height: 76px; resize: vertical; padding: 10px 12px; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; background: rgba(0,0,0,.28); color: #B4C0D2; font-family: ui-monospace, Consolas, monospace; font-size: 10.5px; line-height: 1.45; }
+        .ed-xnote { margin: 0; font-size: 11.5px; color: #8E9BAE; line-height: 1.6; }
+
+        /* — aperçu — */
+        .ed-prev { position: sticky; top: 24px; min-width: 0; }
+        .ed-prev-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; padding: 0 2px; }
+        .ed-prev-note { font-size: 9.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muet); }
+        .ed-prev-wrap { width: 100%; overflow-x: auto; padding-bottom: 10px; }
+
+        .ed-toast { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); padding: 12px 22px; border-radius: 99px; color: #fff; font-size: 13px; font-weight: 800; letter-spacing: .02em; box-shadow: 0 16px 34px -16px rgba(10,16,30,.6); z-index: 50; }
+
         @media (max-width: 1180px) {
             .ed-grid { grid-template-columns: minmax(0, 1fr) !important; }
             .ed-prev { position: static !important; }
         }
     </style>
 </helmet>
+<div class="ed-page">
 
-<div style="font-family:'Archivo',Arial,sans-serif; color:#1B1918; min-height:100vh; padding:26px 26px 90px;">
-
-    <div style="max-width:1320px; margin:0 auto 20px; background:linear-gradient(180deg,#262322,#161413); border-radius:14px; padding:22px 26px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+    <div class="ed-top">
         <div>
-            <div style="font-family:'Space Mono',monospace; font-size:9.5px; font-weight:700; letter-spacing:.24em; text-transform:uppercase; color:#E8402A;">Outil · générateur</div>
-            <div style="font-size:32px; font-weight:800; letter-spacing:-.02em; text-transform:uppercase; line-height:1; margin-top:8px; color:#FFFFFF;">Carte de dresseur</div>
+            <div class="ed-kick">Outil · générateur</div>
+            <div class="ed-title">Carte de dresseur</div>
         </div>
+        <div class="ed-note">Le style vit dans la feuille CSS du forum · le message ne contient que des classes</div>
     </div>
 
-    <div class="ed-grid" style="max-width:1320px; margin:0 auto; display:grid; grid-template-columns:minmax(0,430px) minmax(0,1fr); gap:24px; align-items:start;">
+    <div class="ed-grid">
 
-        <div style="display:flex; flex-direction:column; gap:16px; min-width:0;">
+        <div class="ed-col">
 
-            <div style="background:#FFFFFF; border-radius:12px; padding:16px; box-shadow:0 12px 28px -22px rgba(30,24,20,.4);">
-                <div style="font-family:'Space Mono',monospace; font-size:9px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:#1B1918; margin-bottom:8px;">Récupérer une carte</div>
-                <p style="margin:0 0 10px; font-size:11.5px; color:#8C837A; line-height:1.55;">Colle le code d'une carte déjà postée : ses données sont dans l'attribut <b>data-dr</b>.</p>
-                <textarea onInput="{{ onLoadInput }}" value="{{ loadInput }}" placeholder="Colle ici le HTML de la carte…" style="width:100%; height:56px; resize:vertical; padding:9px 11px; border:1px solid #E4DBD0; border-radius:9px; background:#FAF7F2; font-family:ui-monospace,monospace; font-size:11px; color:#4A443E; line-height:1.45;"></textarea>
-                <div style="display:flex; gap:8px; margin-top:9px;">
-                    <button onClick="{{ loadCard }}" style="flex:1; padding:10px 14px; border:none; border-radius:8px; background:#E8402A; color:#fff; font-family:'Space Mono',monospace; font-weight:700; font-size:11px; letter-spacing:.14em; text-transform:uppercase; text-align:left; cursor:pointer;">Charger</button>
-                    <button onClick="{{ resetCard }}" style="padding:10px 14px; border:1px solid #1B1918; border-radius:8px; background:#FFFFFF; color:#1B1918; font-family:'Space Mono',monospace; font-weight:700; font-size:11px; letter-spacing:.14em; text-transform:uppercase; cursor:pointer;">Exemple</button>
+            <div class="ed-card">
+                <div class="ed-head"><span class="ed-h">Récupérer une carte</span></div>
+                <p class="ed-help">Colle le code d'une carte déjà postée : ses données sont dans l'attribut <b>data-dr</b>.</p>
+                <textarea class="ed-ta code" onInput="{{ onLoadInput }}" value="{{ loadInput }}" placeholder="Colle ici le HTML de la carte…"></textarea>
+                <div class="ed-btns">
+                    <button class="ed-btn main" onClick="{{ loadCard }}">Charger</button>
+                    <button class="ed-btn alt" onClick="{{ resetCard }}">Exemple</button>
                 </div>
             </div>
 
-            <div style="background:#FFFFFF; border-radius:12px; padding:16px; box-shadow:0 12px 28px -22px rgba(30,24,20,.4);">
-                <div style="font-family:'Space Mono',monospace; font-size:9px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; margin-bottom:14px;">Identité</div>
+            <div class="ed-card">
+                <div class="ed-head"><span class="ed-h">Identité</span></div>
 
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:11px; margin-bottom:12px;">
+                <div class="ed-row2">
                     <div>
-                        <label style="display:block; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:#8C837A; font-weight:700; margin-bottom:6px;">Prénom</label>
-                        <input value="{{ firstName }}" onChange="{{ on.firstName }}" style="width:100%; padding:9px 11px; border:1px solid #E4DBD0; border-radius:9px; background:#FAF7F2; font-size:13px;">
+                        <label class="ed-lab">Prénom</label>
+                        <input class="ed-in" value="{{ firstName }}" onChange="{{ on.firstName }}">
                     </div>
                     <div>
-                        <label style="display:block; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:#8C837A; font-weight:700; margin-bottom:6px;">Nom</label>
-                        <input value="{{ lastName }}" onChange="{{ on.lastName }}" style="width:100%; padding:9px 11px; border:1px solid #E4DBD0; border-radius:9px; background:#FAF7F2; font-size:13px;">
+                        <label class="ed-lab">Nom</label>
+                        <input class="ed-in" value="{{ lastName }}" onChange="{{ on.lastName }}">
                     </div>
                 </div>
 
-                <div style="margin-bottom:12px;">
-                    <label style="display:block; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:#8C837A; font-weight:700; margin-bottom:6px;">Rang</label>
-                    <div style="display:flex; gap:6px;">
+                <div class="ed-field">
+                    <label class="ed-lab">Rang</label>
+                    <div class="ed-ranks">
                         <sc-for list="{{ rankOptions }}" as="r" hint-placeholder-count="5">
-                            <button onClick="{{ r.set }}" style="flex:1; padding:10px 0; border:1px solid {{ r.border }}; border-radius:8px; background:{{ r.bg }}; color:{{ r.color }}; font-weight:800; font-size:14px; cursor:pointer;">{{ r.label }}</button>
+                            <button class="ed-rank" onClick="{{ r.set }}" style="border:1px solid {{ r.border }}; background:{{ r.bg }}; color:{{ r.color }};">{{ r.label }}</button>
                         </sc-for>
                     </div>
                 </div>
 
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:11px; margin-bottom:12px;">
+                <div class="ed-row2">
                     <div>
-                        <label style="display:block; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:#8C837A; font-weight:700; margin-bottom:6px;">Âge</label>
-                        <input value="{{ age }}" onChange="{{ on.age }}" placeholder="24 ans" style="width:100%; padding:9px 11px; border:1px solid #E4DBD0; border-radius:9px; background:#FAF7F2; font-size:13px;">
+                        <label class="ed-lab">Âge</label>
+                        <input class="ed-in" value="{{ age }}" onChange="{{ on.age }}" placeholder="24 ans">
                     </div>
                     <div>
-                        <label style="display:block; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:#8C837A; font-weight:700; margin-bottom:6px;">Argent (₽)</label>
-                        <input value="{{ money }}" onChange="{{ on.money }}" placeholder="999999" style="width:100%; padding:9px 11px; border:1px solid #E4DBD0; border-radius:9px; background:#FAF7F2; font-size:13px;">
-                    </div>
-                </div>
-
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:11px; margin-bottom:12px;">
-                    <div>
-                        <label style="display:block; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:#8C837A; font-weight:700; margin-bottom:6px;">Groupe</label>
-                        <input value="{{ group }}" onChange="{{ on.group }}" style="width:100%; padding:9px 11px; border:1px solid #E4DBD0; border-radius:9px; background:#FAF7F2; font-size:13px;">
-                    </div>
-                    <div>
-                        <label style="display:block; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:#8C837A; font-weight:700; margin-bottom:6px;">Occupation</label>
-                        <input value="{{ occupation }}" onChange="{{ on.occupation }}" style="width:100%; padding:9px 11px; border:1px solid #E4DBD0; border-radius:9px; background:#FAF7F2; font-size:13px;">
+                        <label class="ed-lab">Argent (₽)</label>
+                        <input class="ed-in" value="{{ money }}" onChange="{{ on.money }}" placeholder="999999">
                     </div>
                 </div>
 
-                <div>
-                    <label style="display:block; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:#8C837A; font-weight:700; margin-bottom:6px;">Portrait — URL de l'image</label>
-                    <input value="{{ avatar }}" onChange="{{ on.avatar }}" placeholder="https://…" style="width:100%; padding:9px 11px; border:1px solid #E4DBD0; border-radius:9px; background:#FAF7F2; font-size:12px; color:#4A443E;">
+                <div class="ed-row2">
+                    <div>
+                        <label class="ed-lab">Groupe</label>
+                        <input class="ed-in" value="{{ group }}" onChange="{{ on.group }}">
+                    </div>
+                    <div>
+                        <label class="ed-lab">Occupation</label>
+                        <input class="ed-in" value="{{ occupation }}" onChange="{{ on.occupation }}">
+                    </div>
+                </div>
+
+                <div class="ed-field">
+                    <label class="ed-lab">Portrait — URL de l'image</label>
+                    <input class="ed-in sm" value="{{ avatar }}" onChange="{{ on.avatar }}" placeholder="https://…">
                 </div>
             </div>
 
-            <div style="background:#FFFFFF; border-radius:12px; padding:16px; box-shadow:0 12px 28px -22px rgba(30,24,20,.4);">
-                <div style="display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:12px;">
-                    <span style="font-family:'Space Mono',monospace; font-size:9px; font-weight:700; letter-spacing:.2em; text-transform:uppercase;">Vestiges</span>
-                    <span style="font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:#8C837A;">Rang {{ rank }} · quotas cumulables</span>
+            <div class="ed-card">
+                <div class="ed-head">
+                    <span class="ed-h">Vestiges</span>
+                    <span class="ed-count">{{ vestCount }}</span>
                 </div>
-
-                <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:13px;">
-                    <sc-for list="{{ quotaBars }}" as="q" hint-placeholder-count="3">
-                        <div style="border:1px solid #EDE4D9; border-radius:9px; padding:9px 11px; background:#FAF7F2;">
-                            <div style="display:flex; align-items:baseline; justify-content:space-between; gap:6px;">
-                                <span style="font-family:'Space Mono',monospace; font-size:8.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#8C837A;">{{ q.label }}</span>
-                                <span style="font-size:12.5px; font-weight:800; color:{{ q.color }};">{{ q.text }}</span>
-                            </div>
-                            <div style="margin-top:7px; height:4px; border-radius:4px; background:#E9E0D5;">
-                                <div style="height:4px; border-radius:4px; width:{{ q.pct }}; background:{{ q.color }};"></div>
-                            </div>
+                <div class="ed-list scroll">
+                    <sc-for list="{{ vestRows }}" as="v" hint-placeholder-count="3">
+                        <div class="ed-line v">
+                            <input class="ed-in sm" value="{{ v.name }}" onChange="{{ v.onName }}" placeholder="Nom du vestige">
+                            <button class="ed-tier" onClick="{{ v.cycle }}" title="Changer le palier" style="background:{{ v.color }};">{{ v.tier }}</button>
+                            <button class="ed-del" onClick="{{ v.remove }}" title="Supprimer">×</button>
                         </div>
                     </sc-for>
                 </div>
-
-                <input value="{{ query }}" onInput="{{ onQuery }}" placeholder="Rechercher un vestige…" style="width:100%; margin-bottom:10px; padding:9px 11px; border:1px solid #E4DBD0; border-radius:9px; background:#FAF7F2; font-size:12.5px;">
-
-                <div style="display:flex; flex-wrap:wrap; gap:5px; margin-bottom:14px;">
-                    <sc-for list="{{ catTabs }}" as="c" hint-placeholder-count="7">
-                        <button onClick="{{ c.set }}" style="padding:6px 11px; border:1px solid {{ c.border }}; border-radius:7px; background:{{ c.bg }}; color:{{ c.color }}; font-family:'Space Mono',monospace; font-size:9.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; cursor:pointer;">{{ c.label }}{{ c.badge }}</button>
-                    </sc-for>
-                </div>
-
-                <div style="display:flex; flex-direction:column; gap:14px; max-height:520px; overflow-y:auto;">
-                    <sc-for list="{{ chipGroups }}" as="g" hint-placeholder-count="3">
-                        <div>
-                            <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
-                                <span style="width:8px; height:8px; border-radius:2px; background:{{ g.color }};"></span>
-                                <span style="font-family:'Space Mono',monospace; font-size:8.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:#8C837A;">{{ g.label }} · {{ g.count }}</span>
-                            </div>
-                            <div style="display:flex; flex-wrap:wrap; gap:5px;">
-                                <sc-for list="{{ g.items }}" as="v" hint-placeholder-count="6">
-                                    <button onClick="{{ v.click }}" title="{{ v.title }}" style="display:inline-flex; align-items:center; gap:6px; padding:5px 10px; border:1px solid {{ v.border }}; border-radius:8px; background:{{ v.bg }}; color:{{ v.color }}; opacity:{{ v.opacity }}; font-size:11.5px; font-weight:600; text-align:left; cursor:{{ v.cursor }};">{{ v.name }}</button>
-                                </sc-for>
-                            </div>
-                        </div>
-                    </sc-for>
-                </div>
-
-                <sc-if value="{{ hasSelection }}" hint-placeholder-val="{{ true }}">
-                    <div style="margin-top:14px; padding-top:13px; border-top:1px solid #EDE4D9;">
-                        <div style="font-family:'Space Mono',monospace; font-size:8.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:#8C837A; margin-bottom:8px;">Sélection · {{ selCount }}</div>
-                        <div style="display:flex; flex-wrap:wrap; gap:5px;">
-                            <sc-for list="{{ selection }}" as="s" hint-placeholder-count="4">
-                                <button onClick="{{ s.remove }}" title="{{ s.title }}" style="display:inline-flex; align-items:center; gap:7px; padding:5px 9px; border:1px solid #EDE4D9; border-radius:8px; background:#FAF7F2; color:#1B1918; opacity:{{ s.opacity }}; font-size:11.5px; font-weight:600; cursor:pointer;"><span style="width:7px; height:7px; border-radius:2px; background:{{ s.color }};"></span>{{ s.name }}<span style="font-size:10px; color:#8C837A; font-weight:500;">{{ s.note }}</span> <span style="color:#C7301C; font-weight:800;">×</span></button>
-                            </sc-for>
-                        </div>
-                    </div>
-                </sc-if>
+                <button class="ed-add" onClick="{{ addVest }}">+ Ajouter un vestige</button>
             </div>
 
-            <div style="background:#FFFFFF; border-radius:12px; padding:16px; box-shadow:0 12px 28px -22px rgba(30,24,20,.4);">
-                <div style="font-family:'Space Mono',monospace; font-size:9px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; margin-bottom:12px;">CT / CS connues</div>
-                <div style="display:flex; flex-direction:column; gap:7px;">
+            <div class="ed-card">
+                <div class="ed-head"><span class="ed-h">CT / CS connues</span></div>
+                <div class="ed-list">
                     <sc-for list="{{ moveRows }}" as="m" hint-placeholder-count="3">
-                        <div style="display:grid; grid-template-columns:1fr 78px 34px; gap:7px;">
-                            <input value="{{ m.name }}" onChange="{{ m.onName }}" placeholder="Nom de la capacité" style="width:100%; padding:8px 10px; border:1px solid #E4DBD0; border-radius:8px; background:#FAF7F2; font-size:12.5px;">
-                            <button onClick="{{ m.toggleKind }}" style="border:none; border-radius:8px; background:{{ m.kindBg }}; color:#FFFFFF; font-family:'Space Mono',monospace; font-size:11px; font-weight:700; letter-spacing:.1em; cursor:pointer;">{{ m.kind }}</button>
-                            <button onClick="{{ m.remove }}" title="Supprimer" style="border:1px solid #F0D9D4; border-radius:8px; background:#FCF1EE; color:#C7301C; font-size:15px; line-height:1; cursor:pointer;">×</button>
+                        <div class="ed-line m">
+                            <input class="ed-in sm" value="{{ m.name }}" onChange="{{ m.onName }}" placeholder="Nom de la capacité">
+                            <button class="ed-kind" onClick="{{ m.toggleKind }}" style="background:{{ m.kindBg }};">{{ m.kind }}</button>
+                            <button class="ed-del" onClick="{{ m.remove }}" title="Supprimer">×</button>
                         </div>
                     </sc-for>
                 </div>
-                <button onClick="{{ addMove }}" style="width:100%; margin-top:9px; padding:10px 12px; border:1px dashed #D3C7B8; border-radius:9px; background:#FAF7F2; color:#4A443E; font-family:'Space Mono',monospace; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; text-align:left; cursor:pointer;">+ Ajouter une CT / CS</button>
+                <button class="ed-add" onClick="{{ addMove }}">+ Ajouter une CT / CS</button>
             </div>
 
-            <div style="background:#FFFFFF; border-radius:12px; padding:16px; box-shadow:0 12px 28px -22px rgba(30,24,20,.4);">
-                <div style="font-family:'Space Mono',monospace; font-size:9px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; margin-bottom:12px;">Inventaire</div>
-                <div style="display:flex; flex-direction:column; gap:7px;">
+            <div class="ed-card">
+                <div class="ed-head"><span class="ed-h">Inventaire</span></div>
+                <div class="ed-list">
                     <sc-for list="{{ invRows }}" as="i" hint-placeholder-count="4">
-                        <div style="display:grid; grid-template-columns:1fr 34px; gap:7px;">
-                            <input value="{{ i.value }}" onChange="{{ i.onChange }}" placeholder="Objet" style="width:100%; padding:8px 10px; border:1px solid #E4DBD0; border-radius:8px; background:#FAF7F2; font-size:12.5px;">
-                            <button onClick="{{ i.remove }}" title="Supprimer" style="border:1px solid #F0D9D4; border-radius:8px; background:#FCF1EE; color:#C7301C; font-size:15px; line-height:1; cursor:pointer;">×</button>
+                        <div class="ed-line i">
+                            <input class="ed-in sm" value="{{ i.value }}" onChange="{{ i.onChange }}" placeholder="Objet">
+                            <button class="ed-del" onClick="{{ i.remove }}" title="Supprimer">×</button>
                         </div>
                     </sc-for>
                 </div>
-                <button onClick="{{ addInv }}" style="width:100%; margin-top:9px; padding:10px 12px; border:1px dashed #D3C7B8; border-radius:9px; background:#FAF7F2; color:#4A443E; font-family:'Space Mono',monospace; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; text-align:left; cursor:pointer;">+ Ajouter un objet</button>
+                <button class="ed-add" onClick="{{ addInv }}">+ Ajouter un objet</button>
             </div>
 
-            <div style="background:#FFFFFF; border-radius:12px; padding:16px; box-shadow:0 12px 28px -22px rgba(30,24,20,.4);">
-                <div style="font-family:'Space Mono',monospace; font-size:9px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; margin-bottom:12px;">Biographie</div>
-                <textarea value="{{ bio }}" onChange="{{ on.bio }}" placeholder="Quelques lignes sur le personnage…" style="width:100%; height:96px; resize:vertical; padding:10px 11px; border:1px solid #E4DBD0; border-radius:9px; background:#FAF7F2; font-size:12.5px; line-height:1.6; color:#4A443E;"></textarea>
+            <div class="ed-card">
+                <div class="ed-head"><span class="ed-h">Biographie</span></div>
+                <textarea class="ed-ta" value="{{ bio }}" onChange="{{ on.bio }}" placeholder="Quelques lignes sur le personnage…" style="height:96px;"></textarea>
             </div>
 
-            <div style="background:linear-gradient(180deg,#262322,#161413); border-radius:12px; padding:18px; color:#EDE7E0;">
-                <div style="font-family:'Space Mono',monospace; font-size:9px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; margin-bottom:14px; color:#E8402A;">Exporter</div>
+            <div class="ed-export">
+                <div class="ed-h">Exporter</div>
 
-                <div style="display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin-bottom:7px;">
-                    <span style="font-family:'Space Mono',monospace; font-size:8.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:#9C9289;">1 · Code à poster — {{ codeLength }}</span>
-                    <button onClick="{{ copyCard }}" style="padding:6px 12px; border:none; border-radius:7px; background:#E8402A; color:#fff; font-family:'Space Mono',monospace; font-weight:700; font-size:10px; letter-spacing:.12em; text-transform:uppercase; cursor:pointer;">Copier</button>
+                <div class="ed-xrow">
+                    <span class="ed-xlab">1 · Code à poster — {{ codeLength }}</span>
+                    <button class="ed-xbtn main" onClick="{{ copyCard }}">Copier</button>
                 </div>
-                <textarea readOnly value="{{ cardCode }}" style="width:100%; height:76px; resize:vertical; padding:10px 11px; border:1px solid #38332F; border-radius:9px; background:#100F0E; color:#C9C1B8; font-family:ui-monospace,monospace; font-size:10.5px; line-height:1.45;"></textarea>
+                <textarea class="ed-code" readOnly value="{{ cardCode }}"></textarea>
+
+                <div class="ed-xrow">
+                    <span class="ed-xlab">2 · Feuille CSS du forum</span>
+                    <button class="ed-xbtn alt" onClick="{{ copyCss }}">Copier le CSS</button>
+                </div>
+                <p class="ed-xnote">Une seule fois : Panneau d'admin → Affichage → Couleurs → Feuille CSS. Ensuite les membres ne collent plus que le bloc 1.</p>
             </div>
 
         </div>
 
-        <div class="ed-prev" style="position:sticky; top:24px; min-width:0;">
-            <div style="display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:14px; padding:0 2px;">
-                <span style="font-family:'Space Mono',monospace; font-size:9px; font-weight:700; letter-spacing:.2em; text-transform:uppercase;">Aperçu</span>
-                <span style="font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:#8C837A;">rendu réel sur le forum</span>
+        <div class="ed-prev">
+            <div class="ed-prev-head">
+                <span class="ed-h">Aperçu</span>
+                <span class="ed-prev-note">rendu réel sur le forum</span>
             </div>
-            <div style="width:100%; overflow-x:auto; padding-bottom:10px;">
+            <div class="ed-prev-wrap">
                 <div style="width:650px; max-width:none;">{{ previewNode }}</div>
             </div>
         </div>
@@ -222,7 +284,7 @@
     </div>
 
     <sc-if value="{{ toast.show }}" hint-placeholder-val="{{ false }}">
-        <div style="position:fixed; left:50%; bottom:28px; transform:translateX(-50%); background:{{ toast.bg }}; color:#fff; padding:12px 20px; border-radius:9px; font-size:13px; font-weight:700; z-index:50;">{{ toast.msg }}</div>
+        <div class="ed-toast" style="background:{{ toast.bg }};">{{ toast.msg }}</div>
     </sc-if>
 
 </div>
@@ -243,12 +305,17 @@ class Component extends DCLogic {
   }
 
   componentDidMount() {
-    if (window.DRESSEUR && window.VESTIGES) this.pickup();
+    if (window.DRESSEUR && window.VESTIGES) {
+      this.setState(s => ({ data: Object.assign({}, s.data, { vestiges: this.manualVest(s.data.vestiges) }) }));
+      this.pickup();
+    }
     else {
       this._t = setInterval(() => {
         if (window.DRESSEUR && window.VESTIGES) {
           clearInterval(this._t);
-          this.setState({ data: window.DRESSEUR.clone(window.DRESSEUR.DEFAULT) });
+          const def = window.DRESSEUR.clone(window.DRESSEUR.DEFAULT);
+          def.vestiges = this.manualVest(def.vestiges);
+          this.setState({ data: def });
           this.pickup();
         }
       }, 60);
@@ -286,7 +353,7 @@ class Component extends DCLogic {
     const D = window.DRESSEUR, V = window.VESTIGES;
     try {
       const d = D.scanCard(html);
-      if (V) d.vestiges = V.sanitize(d.vestiges);
+      d.vestiges = this.manualVest(d.vestiges);
       this.setState({ data: d });
       this.toast(label, true);
       return true;
@@ -296,46 +363,41 @@ class Component extends DCLogic {
 
   toast(msg, ok) {
     clearTimeout(this._toastT);
-    this.setState({ toast: { show: true, msg, bg: ok ? '#2F6B45' : '#C7301C' } });
+    this.setState({ toast: { show: true, msg, bg: ok ? '#4C6CAD' : '#C9524A' } });
     this._toastT = setTimeout(() => this.setState({ toast: null }), 2400);
   }
 
   set(field, val) { this.setState(s => ({ data: Object.assign({}, s.data, { [field]: val }) })); }
 
-  setRank = (rank) => {
-    const V = window.VESTIGES;
-    this.setState(s => {
-      const data = Object.assign({}, s.data, { rank });
-      if (V) {
-        const q = V.quotas(rank);
-        const kept = [], c = { b: 0, a: 0, o: 0 };
-        let dropped = 0;
-        V.sanitize(data.vestiges).forEach(n => {
-          const v = V.get(n);
-          const rankOk = !(v.req && v.req.rank && V.RANK_ORDER[rank] < V.RANK_ORDER[v.req.rank]);
-          if (rankOk && c[v.tier] < q[v.tier]) { c[v.tier]++; kept.push(n); }
-          else dropped++;
-        });
-        data.vestiges = kept;
-        if (dropped) setTimeout(() => this.toast(dropped + ' vestige(s) retiré(s) : hors quota du rang ' + rank, false), 0);
-      }
-      return { data };
-    });
-  };
+  setRank = (rank) => this.set('rank', rank);
 
-  clickVestige(name) {
-    return () => {
-      const V = window.VESTIGES;
-      if (!V) return;
-      const res = V.toggle(this.state.data.vestiges || [], name, this.state.data.rank);
-      if (res.error) { this.toast(res.error, false); return; }
-      if (res.msg) this.toast(res.msg, true);
-      this.set('vestiges', res.sel);
-    };
+  /* saisie manuelle : chaque vestige est "Nom~b|a|o" */
+  manualVest(list) {
+    const V = window.VESTIGES;
+    list = list || [];
+    // déjà manuel (ou ligne vide en cours de saisie) : on ne touche à rien
+    if (list.every(n => String(n).indexOf('~') >= 0)) return list.slice();
+    const src = V ? V.visible(V.sanitize(list)) : list;
+    const seen = {};
+    return src.map(n => {
+      const i = String(n).lastIndexOf('~');
+      let name = n, tier = 'b';
+      if (i >= 0 && ['b', 'a', 'o'].indexOf(String(n).slice(i + 1)) >= 0) {
+        name = String(n).slice(0, i); tier = String(n).slice(i + 1);
+      } else if (V && V.get(n)) tier = V.get(n).tier;
+      return name + '~' + tier;
+    }).filter(e => (seen[e] ? false : (seen[e] = true)));
   }
 
-  removeVestige(name) {
-    return () => this.set('vestiges', (this.state.data.vestiges || []).filter(n => n !== name));
+  setVest(fn) {
+    this.setState(s => {
+      const list = this.manualVest(s.data.vestiges).map(e => {
+        const i = e.lastIndexOf('~');
+        return { name: e.slice(0, i), tier: e.slice(i + 1) };
+      });
+      const out = fn(list);
+      return { data: Object.assign({}, s.data, { vestiges: out.map(v => v.name + '~' + v.tier) }) };
+    });
   }
 
   addMove = () => this.set('moves', (this.state.data.moves || []).concat([{ name: '', kind: 'CT' }]));
@@ -355,7 +417,9 @@ class Component extends DCLogic {
   resetCard = () => {
     const D = window.DRESSEUR;
     if (!D) return;
-    this.setState({ data: D.clone(D.DEFAULT), loadInput: '' });
+    const def = D.clone(D.DEFAULT);
+    def.vestiges = this.manualVest(def.vestiges);
+    this.setState({ data: def, loadInput: '' });
     this.toast('Exemple chargé', true);
   };
 
@@ -375,7 +439,7 @@ class Component extends DCLogic {
   }
 
   norm(s) {
-    return String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
   }
 
   renderVals() {
@@ -383,86 +447,36 @@ class Component extends DCLogic {
     const V = window.VESTIGES;
     const d = this.state.data;
     const rank = d.rank || 'D';
-    const TIER_COLOR = { b: '#C08A4A', a: '#9AA3AE', o: '#D8AE33' };
+    /* couleurs V2 — identiques aux pastilles de la carte (t-card_v2.css) */
+    const TIER_COLOR = { b: '#B9875A', a: '#8E9BAE', o: '#D4A63A' };
 
     const rankOptions = (D.RANKS || ['D', 'C', 'B', 'A', 'S']).map(r => ({
       label: r,
       set: () => this.setRank(r),
-      bg: r === rank ? '#1B1918' : '#FFFFFF',
-      color: r === rank ? '#FFFFFF' : '#1B1918',
-      border: r === rank ? '#1B1918' : '#E4DBD0'
+      bg: r === rank ? '#161D2A' : '#FFFFFF',
+      color: r === rank ? '#FFFFFF' : '#18222E',
+      border: r === rank ? '#161D2A' : '#D3DBE6'
     }));
 
-    const sel = d.vestiges || [];
-    const ev = V ? V.evaluate(sel, rank) : { states: {}, counts: { b: 0, a: 0, o: 0 }, quotas: { b: 0, a: 0, o: 0 } };
-
-    const quotaBars = ['o', 'a', 'b'].map(t => ({
-      label: V ? V.tierLabel(t) : t,
-      text: ev.counts[t] + ' / ' + ev.quotas[t],
-      pct: Math.min(100, ev.quotas[t] ? (ev.counts[t] / ev.quotas[t]) * 100 : 0) + '%',
-      color: TIER_COLOR[t]
+    const TIER_NAME = { b: 'Bronze', a: 'Argent', o: 'Or' };
+    const NEXT = { b: 'a', a: 'o', o: 'b' };
+    const vestList = this.manualVest(d.vestiges).map(x => {
+      const i = x.lastIndexOf('~');
+      return { name: x.slice(0, i), tier: x.slice(i + 1) };
+    });
+    const vestRows = vestList.map((v, i) => ({
+      name: v.name,
+      tier: TIER_NAME[v.tier],
+      color: TIER_COLOR[v.tier],
+      onName: (ev) => { const val = ev.target.value; this.setVest(l => l.map((x, j) => j === i ? { name: val, tier: x.tier } : x)); },
+      cycle: () => this.setVest(l => l.map((x, j) => j === i ? { name: x.name, tier: NEXT[x.tier] } : x)),
+      remove: () => this.setVest(l => l.filter((_, j) => j !== i))
     }));
-
-    const q = this.norm(this.state.query);
-    const catTabs = ['Tous'].concat(V ? V.CATS : []).map(c => {
-      const n = c === 'Tous' ? sel.length
-        : sel.filter(x => V && V.get(x) && V.get(x).cat === c).length;
-      const on = c === this.state.cat;
-      return {
-        label: c,
-        badge: n ? ' · ' + n : '',
-        set: () => this.setState({ cat: c }),
-        bg: on ? '#E8402A' : '#FFFFFF',
-        color: on ? '#FFFFFF' : '#4A443E',
-        border: on ? '#E8402A' : '#E4DBD0'
-      };
-    });
-
-    const pool = !V ? [] : (this.state.cat === 'Tous' ? V.ALL : V.byCat(this.state.cat))
-      .filter(v => !q || this.norm(v.name).indexOf(q) >= 0 || this.norm(v.cat).indexOf(q) >= 0);
-
-    const chipGroups = ['o', 'a', 'b'].map(t => {
-      const items = pool.filter(v => v.tier === t);
-      return {
-        label: V ? V.tierLabel(t) : t,
-        color: TIER_COLOR[t],
-        count: items.length,
-        items: items.map(v => {
-          const st = ev.states[v.name] || {};
-          return {
-            name: v.name,
-            title: st.blocked ? st.reason : (v.cat + ' — ' + v.desc),
-            click: this.clickVestige(v.name),
-            bg: st.on ? '#1B1918' : (st.blocked ? '#F5F1EB' : '#FFFFFF'),
-            color: st.on ? '#FFFFFF' : (st.blocked ? '#A69C90' : '#1B1918'),
-            border: st.on ? '#1B1918' : (st.blocked ? '#EDE4D9' : TIER_COLOR[t]),
-            opacity: st.blocked ? 0.65 : 1,
-            cursor: st.blocked ? 'not-allowed' : 'pointer'
-          };
-        })
-      };
-    }).filter(g => g.items.length);
-
-    const shown = V ? V.visible(sel) : sel;
-    const selection = (V ? V.sanitize(sel) : sel).map(n => {
-      const p = V ? V.parse(n) : null;
-      const sup = shown.indexOf(n) < 0;
-      return {
-        name: p ? p.name : n,
-        color: p ? TIER_COLOR[p.tier] : '#9AA3AE',
-        opacity: sup ? 0.55 : 1,
-        note: p && p.custom ? ' (hors catalogue)' : (sup ? ' (palier inférieur, compté)' : ''),
-        title: p && p.custom
-          ? 'Vestige d’une ancienne carte, absent du catalogue actuel — compté dans le quota'
-          : (sup ? 'Conservé pour le prérequis et compté dans le quota, masqué sur la carte' : 'Retirer'),
-        remove: this.removeVestige(n)
-      };
-    });
 
     const moveRows = (d.moves || []).map((m, i) => ({
       name: m.name || '',
       kind: m.kind === 'CS' ? 'CS' : 'CT',
-      kindBg: m.kind === 'CS' ? '#E8402A' : '#1B1918',
+      kindBg: m.kind === 'CS' ? '#8B6CD1' : '#3F8FD8',
       onName: (e) => this.setMove(i, 'name', e.target.value),
       toggleKind: () => this.setMove(i, 'kind', m.kind === 'CS' ? 'CT' : 'CS'),
       remove: () => this.set('moves', d.moves.filter((_, j) => j !== i))
@@ -493,11 +507,9 @@ class Component extends DCLogic {
         avatar: (e) => this.set('avatar', e.target.value),
         bio: (e) => this.set('bio', e.target.value)
       },
-      rankOptions, quotaBars, catTabs, chipGroups, selection,
-      query: this.state.query,
-      onQuery: (e) => this.setState({ query: e.target.value }),
-      hasSelection: selection.length > 0,
-      selCount: selection.length + ' vestige' + (selection.length > 1 ? 's' : ''),
+      rankOptions, vestRows,
+      vestCount: vestRows.length + ' vestige' + (vestRows.length > 1 ? 's' : ''),
+      addVest: () => this.setVest(l => l.concat([{ name: '', tier: 'b' }])),
       moveRows, invRows,
       addMove: this.addMove, addInv: this.addInv,
       loadInput: this.state.loadInput,
@@ -513,7 +525,7 @@ class Component extends DCLogic {
           this.copy(css, 'Feuille CSS');
         }).catch(() => this.toast('Feuille CSS introuvable — ouvre tcard-forum.css', false));
       },
-      toast: this.state.toast || { show: false, msg: '', bg: '#2F6B45' }
+      toast: this.state.toast || { show: false, msg: '', bg: '#4C6CAD' }
     };
   }
 }
