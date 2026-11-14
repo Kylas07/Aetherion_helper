@@ -10,177 +10,289 @@
 <helmet>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="tcard-forum.css">
     <script src="equipe-data.js"></script>
     <style>
+        /* ═════ GÉNÉRATEUR — thème Etherium V2 (seule l'apparence change) ═════ */
+        :root {
+            --font: 'Karla';
+            --fond: #E4E9F1; --carte: #FFFFFF; --beige: #EEF2F8; --beige-band: #F5F7FB;
+            --encre: #161D2A; --titre: #18222E; --texte: #435063; --muet: #7F8EA0;
+            --bordure: #D3DBE6; --filet: #E8ECF3;
+            --accent: #4C6CAD; --accent-clair: #AFC4E8; --accent-fonce: #3A5590;
+            --danger: #C9524A;
+            --rayures: repeating-linear-gradient(64deg, rgba(255,255,255,.045) 0 2px, transparent 2px 14px);
+            --glow: radial-gradient(ellipse 60% 140% at 15% 50%, rgba(76,108,173,.4), transparent 70%);
+        }
         * { box-sizing: border-box; }
         body {
             margin: 0;
-            background: #EFE8DF;
-            background-image: radial-gradient(rgba(120, 104, 88, .16) 1px, transparent 1px);
-            background-size: 5px 5px;
+            background-color: var(--fond);
+            background-image: radial-gradient(rgba(76, 108, 173, .12) 1px, transparent 1px);
+            background-size: 22px 22px;
         }
-        a { color: #C7301C; }
-        a:hover { color: #93200F; }
-        input, select, textarea, button { font-family: 'Archivo', Arial, sans-serif; }
-        input, select, textarea { outline: none; color: #1B1918; }
-        input:focus, select:focus, textarea:focus { border-color: #E8402A !important; box-shadow: 0 0 0 3px rgba(232, 64, 42, .16); }
-        ::placeholder { color: #A69C90; opacity: 1; }
-        @media (max-width: 1180px) {
-            .ed-grid { grid-template-columns: minmax(0, 1fr) !important; }
-            .ed-prev { position: static !important; }
+        textarea, input, select, button { font-family: 'Karla', Arial, sans-serif; }
+        textarea, input, select { outline: none; color: var(--titre); }
+        ::placeholder { color: #A3AEBD; opacity: 1; }
+        input:focus, select:focus, textarea:focus { border-color: var(--accent) !important; box-shadow: 0 0 0 3px rgba(76, 108, 173, .16); }
+        a { color: var(--accent); }
+        a:hover { color: var(--accent-fonce); }
+
+        .ed-page { font-family: 'Karla', Arial, sans-serif; color: var(--titre); min-height: 100vh; padding: 26px 26px 80px; }
+
+        /* — bandeau — */
+        .ed-top {
+            max-width: 1180px; margin: 0 auto 22px; padding: 22px 26px; border-radius: 20px;
+            display: flex; align-items: center; gap: 16px;
+            background-color: var(--encre); background-image: var(--rayures), var(--glow);
+            box-shadow: 0 24px 48px -30px rgba(10, 16, 30, .7);
+        }
+        .ed-logo { flex: none; width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.16); }
+        .ed-logo i { width: 12px; height: 12px; transform: rotate(45deg); background: var(--accent-clair); box-shadow: 0 0 12px var(--accent-clair); }
+        .ed-kick { display: block; font-size: 10px; font-weight: 800; letter-spacing: .24em; text-transform: uppercase; color: var(--accent-clair); }
+        .ed-title { display: block; margin-top: 6px; font-size: 26px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; line-height: 1; color: #FFFFFF; }
+
+        .ed-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 440px) minmax(0, 1fr); gap: 26px; align-items: start; }
+        .ed-col { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+
+        /* — cartes du formulaire — */
+        .ed-card { background: var(--carte); border: 1px solid var(--bordure); border-radius: 18px; padding: 18px; box-shadow: 0 16px 34px -26px rgba(10, 16, 30, .45); }
+        .ed-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+        .ed-h { display: flex; align-items: center; gap: 9px; font-size: 10px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--titre); }
+        .ed-h::before { content: ""; flex: none; width: 7px; height: 7px; transform: rotate(45deg); background: var(--accent); }
+        .ed-count { font-size: 10px; font-weight: 800; letter-spacing: .12em; color: var(--accent); }
+        .ed-help { margin: 0 0 10px; font-size: 12px; color: var(--muet); line-height: 1.55; }
+
+        .ed-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .ed-row3 { display: grid; grid-template-columns: 80px 1fr 1.2fr; gap: 10px; }
+        .ed-lab { display: block; margin-bottom: 6px; font-size: 9px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+        .ed-in { width: 100%; padding: 9px 11px; border: 1px solid var(--bordure); border-radius: 10px; background: var(--beige-band); font-size: 13px; transition: border-color .15s, box-shadow .15s; }
+        .ed-in.white { background: var(--carte); }
+        .ed-in.sm { font-size: 12px; color: var(--texte); }
+        .ed-ta { width: 100%; resize: vertical; padding: 10px 12px; border: 1px solid var(--bordure); border-radius: 10px; background: var(--beige-band); font-family: ui-monospace, Consolas, monospace; font-size: 11px; line-height: 1.45; color: var(--texte); }
+
+        /* — boutons — */
+        .ed-btns { display: flex; gap: 8px; margin-top: 10px; }
+        .ed-btn { padding: 11px 16px; border-radius: 99px; font-size: 10.5px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; cursor: pointer; transition: filter .15s, border-color .15s, color .15s, background .15s; }
+        .ed-btn.main { flex: 1; border: 0; background: var(--accent); color: #FFFFFF; box-shadow: 0 10px 22px -14px var(--accent); }
+        .ed-btn.main:hover { filter: brightness(1.08); }
+        .ed-btn.alt { border: 1px solid var(--bordure); background: var(--carte); color: var(--titre); }
+        .ed-btn.alt:hover { border-color: var(--accent); color: var(--accent); }
+        .ed-btn.sm { flex: none; padding: 7px 13px; font-size: 9.5px; }
+        .ed-btn.danger { border: 1px solid #F1D6D4; background: #FBEFEE; color: var(--danger); }
+        .ed-btn.danger:hover { background: #F6DEDC; }
+
+        /* — la boîte (grille 6 × 5) — */
+        .ed-slots { display: grid; grid-template-columns: repeat(6, 1fr); gap: 7px; padding: 10px; border-radius: 14px; background: var(--beige-band); border: 1px solid var(--filet); }
+        .ed-slot { position: relative; aspect-ratio: 1; padding: 0; border-radius: 12px; overflow: hidden; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform .12s, border-color .12s; }
+        .ed-slot:hover { transform: translateY(-1px); border-color: var(--accent) !important; }
+        .ed-slot img { max-width: 100%; max-height: 100%; object-fit: contain; image-rendering: pixelated; }
+        .ed-ini { font-size: 15px; font-weight: 800; color: var(--muet); }
+        .ed-plus { font-size: 17px; font-weight: 400; color: #A3AEBD; }
+        .ed-ball { position: absolute; bottom: 3px; left: 3px; width: 12px; height: 12px; border-radius: 50%; border: 1.5px solid #0A0D14; }
+
+        /* — panneau d'édition — */
+        .ed-edit { margin-top: 14px; }
+        .ed-none { padding: 18px; border: 1.5px dashed var(--bordure); border-radius: 14px; text-align: center; font-size: 12.5px; color: var(--muet); }
+        .ed-emptybox { padding: 18px; border: 1.5px dashed var(--bordure); border-radius: 14px; background: var(--beige-band); text-align: center; }
+        .ed-emptybox div { margin-bottom: 11px; font-size: 12px; font-weight: 700; letter-spacing: .06em; color: var(--texte); }
+        .ed-emptybox .ed-btn { display: inline-block; }
+        .ed-mon { padding: 14px; border-radius: 14px; background: var(--beige); border: 1px solid var(--bordure); box-shadow: inset 3px 0 0 var(--accent); }
+        .ed-mon-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+        .ed-mon-num { font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+        .ed-stack { display: flex; flex-direction: column; gap: 11px; }
+
+        /* — export (carte sombre) — */
+        .ed-export { border-radius: 18px; padding: 20px; color: #E8EEF7; background-color: var(--encre); background-image: var(--rayures), var(--glow); box-shadow: 0 24px 48px -30px rgba(10, 16, 30, .7); }
+        .ed-export .ed-h { color: #FFFFFF; }
+        .ed-export .ed-h::before { background: var(--accent-clair); box-shadow: 0 0 10px var(--accent-clair); }
+        .ed-xrow { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 14px 0 8px; }
+        .ed-xlab { font-size: 9px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: #8E9BAE; }
+        .ed-xbtn { padding: 7px 14px; border: 0; border-radius: 99px; background: var(--accent); color: #FFFFFF; font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; cursor: pointer; }
+        .ed-xbtn:hover { filter: brightness(1.12); }
+        .ed-code { width: 100%; height: 76px; resize: vertical; padding: 10px 12px; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; background: rgba(0,0,0,.28); color: #B4C0D2; font-family: ui-monospace, Consolas, monospace; font-size: 10.5px; line-height: 1.45; }
+
+        /* — aperçu — */
+        .ed-prev { position: sticky; top: 20px; min-width: 0; }
+        .ed-prev .ed-h { margin: 0 2px 14px; }
+
+        .ed-toast { position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%); padding: 12px 22px; border-radius: 99px; color: #fff; font-size: 13px; font-weight: 800; box-shadow: 0 16px 34px -16px rgba(10,16,30,.6); z-index: 50; }
+
+        /* — liste de l'équipe (accordéon) — */
+        .ed-team { display: flex; flex-direction: column; gap: 9px; }
+        .ed-acc { border: 1px solid var(--bordure); border-radius: 14px; overflow: hidden; transition: border-color .15s; }
+        .ed-acc:hover { border-color: var(--accent-clair); }
+        .ed-acc-h { display: flex; align-items: center; gap: 11px; padding: 10px 12px; cursor: pointer; user-select: none; }
+        .ed-num { flex: none; width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--encre); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.45); }
+        .ed-acc-tx { flex: 1; min-width: 0; }
+        .ed-acc-t { font-weight: 800; font-size: 13.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--titre); }
+        .ed-acc-s { margin-top: 2px; font-size: 9.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muet); }
+        .ed-x { flex: none; width: 28px; height: 28px; border-radius: 50%; border: 1px solid #F1D6D4; background: #FBEFEE; color: var(--danger); font-size: 15px; line-height: 1; cursor: pointer; }
+        .ed-x:hover { background: #F6DEDC; }
+        .ed-chev { flex: none; font-size: 17px; color: var(--accent); transition: transform .2s; }
+        .ed-acc-b { padding: 12px 12px 14px; border-top: 1px solid var(--filet); display: flex; flex-direction: column; gap: 11px; }
+        .ed-in.white { background: var(--carte); }
+        .ed-check { display: flex; align-items: center; gap: 10px; margin-top: 13px; cursor: pointer; font-size: 13px; font-weight: 700; color: var(--texte); }
+        .ed-check input { width: 17px; height: 17px; accent-color: var(--accent); cursor: pointer; }
+        .ed-hidden { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border: 1px solid; border-radius: 99px; font-size: 12.5px; font-weight: 800; text-align: left; cursor: pointer; transition: background .15s; }
+        .ed-hidden span { flex: none; width: 14px; height: 14px; transform: rotate(45deg); border: 1.5px solid; border-radius: 2px; }
+        .ed-moves { display: flex; flex-direction: column; gap: 9px; max-height: 300px; overflow-y: auto; }
+        .ed-move { display: grid; grid-template-columns: 1fr 108px 32px; gap: 7px; align-items: start; padding-bottom: 9px; border-bottom: 1px dashed var(--filet); }
+        .ed-move .ed-x { width: 32px; height: 34px; border-radius: 10px; }
+        .ed-srcs { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 5px; }
+        .ed-src { padding: 4px 10px; border: 1px solid; border-radius: 99px; font-size: 9px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; }
+        .ed-add { width: 100%; padding: 10px 13px; border: 1.5px dashed var(--accent-clair); border-radius: 12px; background: var(--beige-band); color: var(--accent); font-size: 10px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; text-align: left; cursor: pointer; transition: background .15s, border-color .15s; }
+        .ed-add:hover { background: #E3E9F6; border-color: var(--accent); }
+        .ed-prev-h { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 0 2px 14px; }
+        .ed-prev-h .ed-h { margin: 0; }
+        .ed-prev-note { font-size: 9.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muet); }
+
+        @media (max-width: 1100px) {
+            .ed-grid { grid-template-columns: minmax(0, 1fr); }
+            .ed-prev { position: static; }
         }
     </style>
 </helmet>
 
-<div style="font-family:'Archivo',Arial,sans-serif; color:#1B1918; min-height:100vh; padding:26px 26px 90px;">
+<div class="ed-page">
 
-    <div style="max-width:1320px; margin:0 auto 20px; background:linear-gradient(180deg,#262322,#161413); border-radius:14px; padding:22px 26px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
-        <div>
-            <div style="font-family:'Space Mono',monospace; font-size:9.5px; font-weight:700; letter-spacing:.24em; text-transform:uppercase; color:#E8402A;">Outil · générateur</div>
-            <div style="font-size:32px; font-weight:800; letter-spacing:-.02em; text-transform:uppercase; line-height:1; margin-top:8px; color:#FFFFFF;">Carte d'équipe</div>
-        </div>
+    <div class="ed-top">
+        <span class="ed-logo"><i></i></span>
+        <span>
+            <span class="ed-kick">Outil · générateur</span>
+            <span class="ed-title">Carte d'équipe</span>
+        </span>
     </div>
 
-    <div class="ed-grid" style="max-width:1320px; margin:0 auto; display:grid; grid-template-columns:minmax(0,460px) minmax(0,1fr); gap:24px; align-items:start;">
+    <div class="ed-grid">
 
-        <div style="display:flex; flex-direction:column; gap:16px; min-width:0;">
+        <div class="ed-col">
 
-            <div style="background:#FFFFFF; border-radius:12px; padding:16px; box-shadow:0 12px 28px -22px rgba(30,24,20,.4);">
-                <div style="font-family:'Space Mono',monospace; font-size:9px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; margin-bottom:8px;">Récupérer une équipe</div>
-                <textarea onInput="{{ onLoadInput }}" value="{{ loadInput }}" placeholder="Colle ici le HTML de ta carte d'équipe…" style="width:100%; height:56px; resize:vertical; padding:9px 11px; border:1px solid #E4DBD0; border-radius:9px; background:#FAF7F2; font-family:ui-monospace,monospace; font-size:11px; color:#4A443E; line-height:1.45;"></textarea>
-                <div style="display:flex; gap:8px; margin-top:9px;">
-                    <button onClick="{{ loadTeam }}" style="flex:1; padding:10px 14px; border:none; border-radius:8px; background:#E8402A; color:#fff; font-family:'Space Mono',monospace; font-weight:700; font-size:11px; letter-spacing:.14em; text-transform:uppercase; text-align:left; cursor:pointer;">Charger</button>
-                    <button onClick="{{ resetTeam }}" style="padding:10px 14px; border:1px solid #1B1918; border-radius:8px; background:#FFFFFF; color:#1B1918; font-family:'Space Mono',monospace; font-weight:700; font-size:11px; letter-spacing:.14em; text-transform:uppercase; cursor:pointer;">Exemple</button>
+            <div class="ed-card">
+                <div class="ed-head"><span class="ed-h">Récupérer une équipe</span></div>
+                <textarea class="ed-ta" onInput="{{ onLoadInput }}" value="{{ loadInput }}" placeholder="Colle ici le HTML de ta carte d'équipe…" style="height:58px;"></textarea>
+                <div class="ed-btns">
+                    <button class="ed-btn main" onClick="{{ loadTeam }}">Charger</button>
+                    <button class="ed-btn alt" onClick="{{ resetTeam }}">Exemple</button>
                 </div>
             </div>
 
-            <div style="background:#FFFFFF; border-radius:12px; padding:16px; box-shadow:0 12px 28px -22px rgba(30,24,20,.4);">
-                <div style="font-family:'Space Mono',monospace; font-size:9px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; margin-bottom:14px;">Réglages</div>
-                <label style="display:block; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:#8C837A; font-weight:700; margin-bottom:6px;">Nom du dresseur</label>
-                <input value="{{ trainer }}" onChange="{{ onTrainer }}" style="width:100%; padding:9px 11px; border:1px solid #E4DBD0; border-radius:9px; background:#FAF7F2; font-size:13px;">
-                <label style="display:flex; align-items:center; gap:10px; margin-top:13px; cursor:pointer; font-size:12.5px; font-weight:600; color:#4A443E;">
-                    <input type="checkbox" checked="{{ showNick }}" onChange="{{ onShowNick }}" style="width:17px; height:17px; accent-color:#E8402A; cursor:pointer;">
+            <div class="ed-card">
+                <div class="ed-head"><span class="ed-h">Réglages</span></div>
+                <label class="ed-lab">Nom du dresseur</label>
+                <input class="ed-in" value="{{ trainer }}" onChange="{{ onTrainer }}">
+                <label class="ed-check">
+                    <input type="checkbox" checked="{{ showNick }}" onChange="{{ onShowNick }}">
                     Afficher les surnoms en titre
                 </label>
             </div>
 
-            <div style="background:#FFFFFF; border-radius:12px; padding:16px; box-shadow:0 12px 28px -22px rgba(30,24,20,.4);">
-                <div style="display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:12px;">
-                    <span style="font-family:'Space Mono',monospace; font-size:9px; font-weight:700; letter-spacing:.2em; text-transform:uppercase;">Pokémon</span>
-                    <span style="font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:#8C837A;">{{ count }}</span>
+            <div class="ed-card">
+                <div class="ed-head">
+                    <span class="ed-h">Pokémon</span>
+                    <span class="ed-count">{{ count }}</span>
                 </div>
 
-                <div style="display:flex; flex-direction:column; gap:9px;">
+                <div class="ed-team">
                     <sc-for list="{{ team }}" as="p" hint-placeholder-count="2">
-                        <div style="border:1px solid #EDE4D9; border-radius:11px; overflow:hidden; background:{{ p.bg }};">
+                        <div class="ed-acc" style="background:{{ p.bg }};">
 
-                            <div onClick="{{ p.toggle }}" style="display:flex; align-items:center; gap:11px; padding:10px 12px; cursor:pointer; user-select:none;">
-                                <span style="width:26px; height:26px; border-radius:50%; border:1.5px solid #1B1918; background:{{ p.ballTop }}; flex:none; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; color:#fff;">{{ p.slot }}</span>
-                                <div style="flex:1; min-width:0;">
-                                    <div style="font-weight:700; font-size:13.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ p.headTitle }}</div>
-                                    <div style="font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:#8C837A; margin-top:2px;">{{ p.headSub }}</div>
+                            <div class="ed-acc-h" onClick="{{ p.toggle }}">
+                                <span class="ed-num" style="background:{{ p.ballTop }};">{{ p.slot }}</span>
+                                <div class="ed-acc-tx">
+                                    <div class="ed-acc-t">{{ p.headTitle }}</div>
+                                    <div class="ed-acc-s">{{ p.headSub }}</div>
                                 </div>
-                                <button onClick="{{ p.remove }}" title="Supprimer" style="width:28px; height:28px; border-radius:8px; border:1px solid #F0D9D4; background:#FCF1EE; color:#C7301C; font-size:15px; line-height:1; cursor:pointer; flex:none;">×</button>
-                                <span style="font-size:17px; color:#A69C90; transform:{{ p.chevron }}; transition:transform .2s; flex:none;">›</span>
+                                <button class="ed-x" onClick="{{ p.remove }}" title="Supprimer">×</button>
+                                <span class="ed-chev" style="transform:{{ p.chevron }};">›</span>
                             </div>
 
                             <sc-if value="{{ p.open }}" hint-placeholder-val="{{ false }}">
-                                <div style="padding:2px 12px 14px; border-top:1px solid #EDE4D9; display:flex; flex-direction:column; gap:11px;">
+                                <div class="ed-acc-b">
 
-                                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px;">
+                                    <div class="ed-row2">
                                         <div>
-                                            <label style="display:block; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:#8C837A; font-weight:700; margin-bottom:5px;">Surnom</label>
-                                            <input value="{{ p.nickname }}" onChange="{{ p.on.nickname }}" style="width:100%; padding:8px 10px; border:1px solid #E4DBD0; border-radius:8px; background:#FAF7F2; font-size:12.5px;">
+                                            <label class="ed-lab">Surnom</label>
+                                            <input class="ed-in" value="{{ p.nickname }}" onChange="{{ p.on.nickname }}">
                                         </div>
                                         <div>
-                                            <label style="display:block; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:#8C837A; font-weight:700; margin-bottom:5px;">Espèce</label>
-                                            <input value="{{ p.species }}" onChange="{{ p.on.species }}" style="width:100%; padding:8px 10px; border:1px solid #E4DBD0; border-radius:8px; background:#FAF7F2; font-size:12.5px;">
+                                            <label class="ed-lab">Espèce</label>
+                                            <input class="ed-in" value="{{ p.species }}" onChange="{{ p.on.species }}">
                                         </div>
                                     </div>
 
-                                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px;">
+                                    <div class="ed-row2">
                                         <div>
-                                            <label style="display:block; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:#8C837A; font-weight:700; margin-bottom:5px;">Type 1</label>
-                                            <select value="{{ p.type0 }}" onChange="{{ p.on.type0 }}" style="width:100%; padding:8px 10px; border:1px solid #E4DBD0; border-radius:8px; background:#FAF7F2; font-size:12.5px;">
-                                                <sc-for list="{{ typeOptions }}" as="o" hint-placeholder-count="18"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
-                                            </select>
+                                            <label class="ed-lab">Type 1</label>
+                                            <select class="ed-in" value="{{ p.type0 }}" onChange="{{ p.on.type0 }}"><sc-for list="{{ typeOptions }}" as="o" hint-placeholder-count="18"><option value="{{ o.v }}">{{ o.label }}</option></sc-for></select>
                                         </div>
                                         <div>
-                                            <label style="display:block; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:#8C837A; font-weight:700; margin-bottom:5px;">Type 2</label>
-                                            <select value="{{ p.type1 }}" onChange="{{ p.on.type1 }}" style="width:100%; padding:8px 10px; border:1px solid #E4DBD0; border-radius:8px; background:#FAF7F2; font-size:12.5px;">
-                                                <sc-for list="{{ type2Options }}" as="o" hint-placeholder-count="19"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
-                                            </select>
+                                            <label class="ed-lab">Type 2</label>
+                                            <select class="ed-in" value="{{ p.type1 }}" onChange="{{ p.on.type1 }}"><sc-for list="{{ type2Options }}" as="o" hint-placeholder-count="19"><option value="{{ o.v }}">{{ o.label }}</option></sc-for></select>
                                         </div>
                                     </div>
 
-                                    <div style="display:grid; grid-template-columns:78px 1fr 1.2fr; gap:9px;">
+                                    <div class="ed-row3">
                                         <div>
-                                            <label style="display:block; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:#8C837A; font-weight:700; margin-bottom:5px;">Niveau</label>
-                                            <input value="{{ p.level }}" onChange="{{ p.on.level }}" style="width:100%; padding:8px 10px; border:1px solid #E4DBD0; border-radius:8px; background:#FAF7F2; font-size:12.5px;">
+                                            <label class="ed-lab">Niveau</label>
+                                            <input class="ed-in" value="{{ p.level }}" onChange="{{ p.on.level }}">
                                         </div>
                                         <div>
-                                            <label style="display:block; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:#8C837A; font-weight:700; margin-bottom:5px;">Genre</label>
-                                            <select value="{{ p.gender }}" onChange="{{ p.on.gender }}" style="width:100%; padding:8px 10px; border:1px solid #E4DBD0; border-radius:8px; background:#FAF7F2; font-size:12.5px;">
-                                                <sc-for list="{{ genderOptions }}" as="o" hint-placeholder-count="3"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
-                                            </select>
+                                            <label class="ed-lab">Genre</label>
+                                            <select class="ed-in" value="{{ p.gender }}" onChange="{{ p.on.gender }}"><sc-for list="{{ genderOptions }}" as="o" hint-placeholder-count="3"><option value="{{ o.v }}">{{ o.label }}</option></sc-for></select>
                                         </div>
                                         <div>
-                                            <label style="display:block; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:#8C837A; font-weight:700; margin-bottom:5px;">Poké Ball</label>
-                                            <select value="{{ p.ball }}" onChange="{{ p.on.ball }}" style="width:100%; padding:8px 10px; border:1px solid #E4DBD0; border-radius:8px; background:#FAF7F2; font-size:12.5px;">
-                                                <sc-for list="{{ ballOptions }}" as="o" hint-placeholder-count="14"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
-                                            </select>
+                                            <label class="ed-lab">Poké Ball</label>
+                                            <select class="ed-in" value="{{ p.ball }}" onChange="{{ p.on.ball }}"><sc-for list="{{ ballOptions }}" as="o" hint-placeholder-count="14"><option value="{{ o.v }}">{{ o.label }}</option></sc-for></select>
                                         </div>
                                     </div>
 
-                                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px;">
+                                    <div class="ed-row2">
                                         <div>
-                                            <label style="display:block; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:#8C837A; font-weight:700; margin-bottom:5px;">Talent</label>
-                                            <input value="{{ p.talent }}" onChange="{{ p.on.talent }}" style="width:100%; padding:8px 10px; border:1px solid #E4DBD0; border-radius:8px; background:#FAF7F2; font-size:12.5px;">
+                                            <label class="ed-lab">Talent</label>
+                                            <input class="ed-in" value="{{ p.talent }}" onChange="{{ p.on.talent }}">
                                         </div>
                                         <div>
-                                            <label style="display:block; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:#8C837A; font-weight:700; margin-bottom:5px;">Nature</label>
-                                            <select value="{{ p.nature }}" onChange="{{ p.on.nature }}" style="width:100%; padding:8px 10px; border:1px solid #E4DBD0; border-radius:8px; background:#FAF7F2; font-size:12.5px;">
-                                                <sc-for list="{{ natureOptions }}" as="o" hint-placeholder-count="23"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
-                                            </select>
+                                            <label class="ed-lab">Nature</label>
+                                            <select class="ed-in" value="{{ p.nature }}" onChange="{{ p.on.nature }}"><sc-for list="{{ natureOptions }}" as="o" hint-placeholder-count="23"><option value="{{ o.v }}">{{ o.label }}</option></sc-for></select>
                                         </div>
                                     </div>
 
-                                    <button onClick="{{ p.toggleHidden }}" style="display:flex; align-items:center; gap:10px; padding:9px 11px; border:1px solid {{ p.hiddenBorder }}; border-radius:9px; background:{{ p.hiddenBg }}; color:{{ p.hiddenColor }}; font-size:12.5px; font-weight:700; text-align:left; cursor:pointer;">
-                                        <span style="width:16px; height:16px; border-radius:4px; border:1.5px solid {{ p.hiddenColor }}; background:{{ p.hiddenMark }}; flex:none;"></span>
+                                    <button class="ed-hidden" onClick="{{ p.toggleHidden }}" style="border-color:{{ p.hiddenBorder }}; background:{{ p.hiddenBg }}; color:{{ p.hiddenColor }};">
+                                        <span style="border-color:{{ p.hiddenColor }}; background:{{ p.hiddenMark }};"></span>
                                         Talent caché
                                     </button>
 
                                     <div>
-                                        <label style="display:block; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:#8C837A; font-weight:700; margin-bottom:5px;">Sprite — URL de l'image</label>
-                                        <input value="{{ p.sprite }}" onChange="{{ p.on.sprite }}" placeholder="https://…" style="width:100%; padding:8px 10px; border:1px solid #E4DBD0; border-radius:8px; background:#FAF7F2; font-size:12px; color:#4A443E;">
+                                            <label class="ed-lab">Sprite — URL de l'image</label>
+                                        <input class="ed-in sm" value="{{ p.sprite }}" onChange="{{ p.on.sprite }}" placeholder="https://…">
                                     </div>
 
                                     <div>
-                                        <label style="display:block; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:#8C837A; font-weight:700; margin-bottom:7px;">Capacités</label>
-                                        <div style="display:flex; flex-direction:column; gap:8px; max-height:300px; overflow-y:auto;">
+                                            <label class="ed-lab">Capacités</label>
+                                        <div class="ed-moves">
                                             <sc-for list="{{ p.moveRows }}" as="mv" hint-placeholder-count="3">
-                                                <div style="display:grid; grid-template-columns:1fr 104px 32px; gap:7px; align-items:start;">
-                                                    <input value="{{ mv.name }}" onChange="{{ mv.on.name }}" placeholder="Capacité {{ mv.num }}" style="width:100%; padding:8px 10px; border:1px solid #E4DBD0; border-radius:8px; background:#FAF7F2; font-size:12.5px;">
-                                                    <select value="{{ mv.type }}" onChange="{{ mv.on.type }}" style="width:100%; padding:8px 6px; border:1px solid #E4DBD0; border-radius:8px; background:#FAF7F2; font-size:12px;">
+                                                <div class="ed-move">
+                                                    <input class="ed-in" value="{{ mv.name }}" onChange="{{ mv.on.name }}" placeholder="Capacité {{ mv.num }}">
+                                                    <select class="ed-in sm" value="{{ mv.type }}" onChange="{{ mv.on.type }}">
                                                         <sc-for list="{{ typeOptions }}" as="o" hint-placeholder-count="18"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
                                                     </select>
-                                                    <button onClick="{{ mv.remove }}" title="Supprimer" style="height:34px; border:1px solid #F0D9D4; border-radius:8px; background:#FCF1EE; color:#C7301C; font-size:15px; line-height:1; cursor:pointer;">×</button>
-                                                    <div style="grid-column:1 / -1; display:flex; flex-wrap:wrap; gap:5px;">
+                                                    <button class="ed-x" onClick="{{ mv.remove }}" title="Supprimer">×</button>
+                                                    <div class="ed-srcs">
                                                         <sc-for list="{{ mv.sources }}" as="s" hint-placeholder-count="5">
-                                                            <button onClick="{{ s.set }}" style="padding:4px 9px; border:1px solid {{ s.border }}; border-radius:6px; background:{{ s.bg }}; color:{{ s.color }}; font-family:'Space Mono',monospace; font-size:9px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; cursor:pointer;">{{ s.label }}</button>
+                                                            <button class="ed-src" onClick="{{ s.set }}" style="border-color:{{ s.border }}; background:{{ s.bg }}; color:{{ s.color }};">{{ s.label }}</button>
                                                         </sc-for>
                                                     </div>
                                                 </div>
                                             </sc-for>
                                         </div>
-                                        <button onClick="{{ p.addMove }}" style="width:100%; margin-top:9px; padding:9px 11px; border:1px dashed #D3C7B8; border-radius:9px; background:#FAF7F2; color:#4A443E; font-family:'Space Mono',monospace; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; text-align:left; cursor:pointer;">+ Ajouter une capacité</button>
+                                        <button class="ed-add" onClick="{{ p.addMove }}" style="margin-top:9px;">+ Ajouter une capacité</button>
                                     </div>
 
                                     <div>
-                                        <label style="display:block; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:#8C837A; font-weight:700; margin-bottom:5px;">Résumé RP</label>
-                                        <textarea value="{{ p.desc }}" onChange="{{ p.on.desc }}" placeholder="Caractère, histoire de capture…" style="width:100%; height:72px; resize:vertical; padding:9px 10px; border:1px solid #E4DBD0; border-radius:8px; background:#FAF7F2; font-size:12.5px; line-height:1.55; color:#4A443E;"></textarea>
+                                            <label class="ed-lab">Résumé RP</label>
+                                        <textarea class="ed-ta" value="{{ p.desc }}" onChange="{{ p.on.desc }}" placeholder="Caractère, histoire de capture…" style="height:74px; font-family:'Karla',Arial,sans-serif; font-size:12.5px; line-height:1.55;"></textarea>
                                     </div>
 
                                 </div>
@@ -189,24 +301,24 @@
                     </sc-for>
                 </div>
 
-                <button onClick="{{ addMon }}" style="width:100%; margin-top:11px; padding:11px 13px; border:1px dashed #D3C7B8; border-radius:10px; background:#FAF7F2; color:#4A443E; font-family:'Space Mono',monospace; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; text-align:left; cursor:pointer;">+ Ajouter un Pokémon</button>
+                <button class="ed-add" onClick="{{ addMon }}" style="margin-top:11px;">+ Ajouter un Pokémon</button>
             </div>
 
-            <div style="background:linear-gradient(180deg,#262322,#161413); border-radius:12px; padding:18px; color:#EDE7E0;">
-                <div style="font-family:'Space Mono',monospace; font-size:9px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; margin-bottom:14px; color:#E8402A;">Exporter</div>
-                <div style="display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin-bottom:7px;">
-                    <span style="font-family:'Space Mono',monospace; font-size:8.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:#9C9289;">Code à poster — {{ codeLength }}</span>
-                    <button onClick="{{ copyCard }}" style="padding:6px 12px; border:none; border-radius:7px; background:#E8402A; color:#fff; font-family:'Space Mono',monospace; font-weight:700; font-size:10px; letter-spacing:.12em; text-transform:uppercase; cursor:pointer;">Copier</button>
+            <div class="ed-export">
+                <span class="ed-h">Exporter</span>
+                <div class="ed-xrow">
+                    <span class="ed-xlab">Code à poster — {{ codeLength }}</span>
+                    <button class="ed-xbtn" onClick="{{ copyCard }}">Copier</button>
                 </div>
-                <textarea readOnly value="{{ cardCode }}" style="width:100%; height:76px; resize:vertical; padding:10px 11px; border:1px solid #38332F; border-radius:9px; background:#100F0E; color:#C9C1B8; font-family:ui-monospace,monospace; font-size:10.5px; line-height:1.45;"></textarea>
+                <textarea class="ed-code" readOnly value="{{ cardCode }}"></textarea>
             </div>
 
         </div>
 
-        <div class="ed-prev" style="position:sticky; top:24px; min-width:0;">
-            <div style="display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:14px; padding:0 2px;">
-                <span style="font-family:'Space Mono',monospace; font-size:9px; font-weight:700; letter-spacing:.2em; text-transform:uppercase;">Aperçu</span>
-                <span style="font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:#8C837A;">rendu réel sur le forum</span>
+        <div class="ed-prev">
+            <div class="ed-prev-h">
+                <span class="ed-h">Aperçu</span>
+                <span class="ed-prev-note">rendu réel sur le forum</span>
             </div>
             <div style="width:100%; overflow-x:auto; padding-bottom:10px;">
                 <div style="width:650px; max-width:none;">{{ previewNode }}</div>
@@ -216,7 +328,7 @@
     </div>
 
     <sc-if value="{{ toast.show }}" hint-placeholder-val="{{ false }}">
-        <div style="position:fixed; left:50%; bottom:28px; transform:translateX(-50%); background:{{ toast.bg }}; color:#fff; padding:12px 20px; border-radius:9px; font-size:13px; font-weight:700; z-index:50;">{{ toast.msg }}</div>
+        <div class="ed-toast" style="background:{{ toast.bg }};">{{ toast.msg }}</div>
     </sc-if>
 
 </div>
@@ -279,7 +391,7 @@ class Component extends DCLogic {
 
   toast(msg, ok) {
     clearTimeout(this._toastT);
-    this.setState({ toast: { show: true, msg, bg: ok ? '#2F6B45' : '#C7301C' } });
+    this.setState({ toast: { show: true, msg, bg: ok ? '#4C6CAD' : '#C9524A' } });
     this._toastT = setTimeout(() => this.setState({ toast: null }), 2400);
   }
 
@@ -372,15 +484,15 @@ class Component extends DCLogic {
         sprite: p.sprite || '',
         desc: p.desc || '',
         open,
-        bg: open ? '#FAF7F2' : '#FFFFFF',
+        bg: open ? '#F5F7FB' : '#FFFFFF',
         chevron: open ? 'rotate(90deg)' : 'rotate(0deg)',
         ballTop: bc.top,
         headTitle: (showNick ? (p.nickname || p.species) : p.species) || 'Nouveau Pokémon',
         headSub: (p.species ? p.species + ' · ' : '') + 'Niv. ' + (p.level || '?') +
           (p.hidden ? ' · talent caché' : ''),
-        hiddenBg: p.hidden ? '#6E4FA8' : '#FAF7F2',
-        hiddenColor: p.hidden ? '#FFFFFF' : '#4A443E',
-        hiddenBorder: p.hidden ? '#6E4FA8' : '#E4DBD0',
+        hiddenBg: p.hidden ? '#8B6CD1' : '#F5F7FB',
+        hiddenColor: p.hidden ? '#FFFFFF' : '#435063',
+        hiddenBorder: p.hidden ? '#8B6CD1' : '#D3DBE6',
         hiddenMark: p.hidden ? '#FFFFFF' : 'transparent',
         toggleHidden: () => this.setMon(i, 'hidden', !p.hidden),
         toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i })),
@@ -401,9 +513,9 @@ class Component extends DCLogic {
             return {
               label: s.short,
               set: () => this.setMove(i, j, 'src', s.v),
-              bg: on ? '#1B1918' : '#FFFFFF',
-              color: on ? '#FFFFFF' : '#8C837A',
-              border: on ? '#1B1918' : '#E4DBD0'
+              bg: on ? '#161D2A' : '#FFFFFF',
+              color: on ? '#FFFFFF' : '#7F8EA0',
+              border: on ? '#161D2A' : '#D3DBE6'
             };
           }),
           remove: () => this.setMon(i, 'moves', p.moves.filter((_, k) => k !== j)),
@@ -454,7 +566,7 @@ class Component extends DCLogic {
         fetch('tcard-forum.css').then(r => r.text()).then(css => this.copy(css, 'Feuille CSS'))
           .catch(() => this.toast('Feuille CSS introuvable — ouvre tcard-forum.css', false));
       },
-      toast: this.state.toast || { show: false, msg: '', bg: '#2F6B45' }
+      toast: this.state.toast || { show: false, msg: '', bg: '#4C6CAD' }
     };
   }
 }
