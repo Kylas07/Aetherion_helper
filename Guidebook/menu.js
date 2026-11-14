@@ -21,7 +21,8 @@ var GUIDE_SOMMAIRE = [
     { id: 'etage00',          label: 'Étage 00 · Elyvern' },
     { id: 'etage01',          label: 'Étage 01 · Nodalis' },
     { id: 'etage02',          label: 'Étage 02 · Pic Nörum' },
-    { id: 'etage03',          label: 'Étage 03 · Atoll Lyssandre' }
+    { id: 'etage03',          label: 'Étage 03 · Atoll Lyssandre' },
+    { id: 'etage04',          label: 'Étage 04 · Izdahar' }
   ]},
 
   /* La catégorie Groupes s'affiche en pastilles colorées (styleGroupes: true). */
