@@ -1,0 +1,191 @@
+.compendium-outil { min-width: 0; }
+
+.comp-commandes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, .34fr);
+  gap: 12px;
+}
+.comp-recherche,
+.comp-tri { display: flex; flex-direction: column; gap: 7px; }
+.comp-recherche label,
+.comp-tri label,
+.comp-legende {
+  color: var(--titre);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+.comp-recherche input,
+.comp-tri select {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--bordure);
+  border-radius: 10px;
+  background: var(--carte);
+  color: var(--texte);
+  font: 600 12px/1.4 'Karla', sans-serif;
+  outline: none;
+  padding: 11px 13px;
+  transition: border-color .15s, box-shadow .15s;
+}
+.comp-recherche input:focus,
+.comp-tri select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-pale);
+}
+
+.comp-filtres { display: flex; flex-direction: column; gap: 13px; }
+.comp-filtre-groupe { display: flex; flex-direction: column; gap: 7px; }
+.comp-filtre-groupe .dex-chips { margin: 0; }
+
+.comp-resultats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 30px;
+  color: var(--muet);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.comp-resultats button {
+  border: 0;
+  border-bottom: 1px solid var(--accent-clair);
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  font: 800 10px/1.2 'Karla', sans-serif;
+  letter-spacing: .12em;
+  padding: 4px 0;
+  text-transform: uppercase;
+}
+
+.comp-grille {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.comp-objet {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--bordure);
+  border-radius: 16px;
+  background: var(--carte);
+  box-shadow: 0 14px 30px -28px color-mix(in srgb, var(--titre) 70%, transparent);
+}
+.comp-objet::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--accent);
+}
+.comp-objet-haut {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 17px 18px 10px 20px;
+}
+.comp-sprite {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--beige-bordure);
+  border-radius: 12px;
+  background: var(--beige-band);
+}
+.comp-sprite img {
+  display: block;
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+.comp-sprite-vide { color: var(--muet-clair); font-weight: 800; }
+.comp-nom {
+  margin: 0;
+  color: var(--titre);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: .055em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+.comp-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 0 18px 12px 20px;
+}
+.comp-badge {
+  border: 1px solid var(--beige-bordure);
+  border-radius: 99px;
+  background: var(--beige-band);
+  color: var(--texte-doux);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .09em;
+  padding: 4px 8px;
+  text-transform: uppercase;
+}
+.comp-badge-source {
+  border-color: var(--accent-clair);
+  background: var(--accent-pale);
+  color: var(--accent-fonce);
+}
+.comp-description {
+  flex: 1;
+  margin: 0;
+  border-top: 1px solid var(--filet);
+  color: var(--texte);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.65;
+  padding: 14px 18px 16px 20px;
+}
+.comp-description strong { color: var(--titre); font-weight: 800; }
+.comp-pied {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--filet);
+  background: var(--beige-band);
+  padding: 11px 18px 12px 20px;
+}
+.comp-usage {
+  color: var(--muet);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.comp-prix {
+  flex: none;
+  color: var(--accent-fonce);
+  font-size: 12px;
+  font-weight: 800;
+  text-align: right;
+}
+.comp-prix-indefini {
+  flex: 1;
+  color: var(--g-killers);
+  font-size: 10px;
+  line-height: 1.3;
+  white-space: normal;
+}
+.comp-vide { display: none; text-align: center; }
+
+@media (max-width: 760px) {
+  .comp-commandes,
+  .comp-grille { grid-template-columns: 1fr; }
+  .comp-pied { align-items: flex-start; flex-direction: column; }
+  .comp-prix { text-align: left; }
+}
