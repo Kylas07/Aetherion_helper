@@ -39,7 +39,8 @@ var GUIDE_SOMMAIRE = [
     { id: 'progression',      label: 'Progression' },
     { id: 'argent',           label: 'Argent' },
     { id: 'pvp',              label: 'PVP' },
-    { id: 'talents',         label: 'Vestiges' }
+    { id: 'talents',         label: 'Vestiges' },
+    { id: 'compendium',         label: 'Compendium' }
   ]},
 
   { categorie: 'Pokémons', pages: [
