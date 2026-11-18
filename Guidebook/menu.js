@@ -217,6 +217,7 @@ var GUIDE_LIEN_FORUM = 'https://etherium.forumactif.com';
     if (!lien) return;
     var href = lien.getAttribute('href');
     if (!href || pagesConnues.indexOf(href) === -1) return;   /* liens externes : comportement normal */
+    if (href === 'compendium.html') return; /* chargement des items pour le compendium*/
     if (e.metaKey || e.ctrlKey || e.shiftKey || lien.target === '_blank') return;
     e.preventDefault();
     if (href === guide.getAttribute('data-page') + '.html') return;
