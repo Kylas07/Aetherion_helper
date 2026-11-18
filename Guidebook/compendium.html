@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compendium des objets — Guide Etherium</title>
+<link href="aetherion-unifie.css" rel="stylesheet">
+<link href="compendium.css" rel="stylesheet">
+</head>
+<body>
+<div class="guide" data-page="compendium">
+  <div class="guide-corps">
+    <div class="guide-page actif" id="compendium">
+
+      <div class="guide-hero">
+        <img src="avatar-npc/pa.png" alt="">
+        <div class="guide-hero-titre"><small>— 05. Personnages</small><b>Compendium des objets</b></div>
+        <span class="guide-hero-num">05</span>
+      </div>
+
+      <div class="guide-staff">
+        <div class="guide-staff-avatar">St</div>
+        <div class="guide-staff-texte">
+          <small>Le mot du staff</small>
+          <p>La majorité des objets sont des consommables : ils disparaissent après leur utilisation. Les exceptions sont les objets de <em>fouille</em>, qui sont échangeables contre d'autres objets. Ci-dessous, vous retrouverez tous les objets disponibles sur le forum, ainsi que leurs effets, leurs limites d'utilisations et de quelle manière il est possible de les obtenir.</b></p>
+        </div>
+      </div>
+
+      <div class="guide-bloc">
+        <b>Soins et altérations en RP</b>
+        <p>Les objets de soin et d’altération de statut peuvent être utilisés sur les humains comme sur les Pokémon. Leur utilisation n’est toutefois officialisée — et l’objet réellement consommé — que dans les sujets modérés par le staff : missions, captures, boss, événements et autres sujets encadrés.</p>
+      </div>
+
+      <div class="guide-section compendium-outil" data-compendium>
+        <h2 class="guide-titre">Trouver <em>un objet</em></h2>
+
+        <div class="guide-bloc comp-commandes">
+          <div class="comp-recherche">
+            <label for="comp-recherche">Recherche</label>
+            <input id="comp-recherche" type="search" placeholder="Nom, description ou effet…">
+          </div>
+          <div class="comp-tri">
+            <label for="comp-tri">Classement</label>
+            <select id="comp-tri">
+              <option value="nom">Nom · A à Z</option>
+              <option value="prix-asc">Prix · croissant</option>
+              <option value="prix-desc">Prix · décroissant</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="comp-filtres">
+          <div class="comp-filtre-groupe">
+            <span class="comp-legende">Provenance</span>
+            <div class="dex-chips" data-comp-filtres="source">
+              <button type="button" class="actif" data-valeur="tous">Tous</button>
+              <button type="button" data-valeur="boutique">Boutique</button>
+              <button type="button" data-valeur="luxe">Boutique de luxe</button>
+              <button type="button" data-valeur="vestiges">Vestiges</button>
+              <button type="button" data-valeur="fouilles">Fouilles</button>
+            </div>
+          </div>
+
+          <div class="comp-filtre-groupe">
+            <span class="comp-legende">Fonction</span>
+            <div class="dex-chips" data-comp-filtres="categorie">
+              <button type="button" class="actif" data-valeur="tous">Toutes</button>
+              <button type="button" data-valeur="medecine">Médecine</button>
+              <button type="button" data-valeur="capture">Capture</button>
+              <button type="button" data-valeur="progression">Progression</button>
+              <button type="button" data-valeur="exploration">Exploration</button>
+              <button type="button" data-valeur="argent">Argent</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="comp-resultats">
+          <span data-comp-compteur></span>
+          <button type="button" data-comp-reset>Réinitialiser</button>
+        </div>
+
+        <div class="comp-grille" data-comp-grille></div>
+        <div class="guide-bloc comp-vide" data-comp-vide>Aucun objet ne correspond à cette recherche.</div>
+      </div>
+
+      <script type="application/json" data-comp-sprites>
+{
+  "Potion": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/medicine/potion.png",
+  "Super Potion": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/medicine/super-potion.png",
+  "Hyper Potion": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/medicine/hyper-potion.png",
+  "Potion Max": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/medicine/max-potion.png",
+  "Rappel": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/medicine/revive.png",
+  "Anti-Brûle": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/medicine/burn-heal.png",
+  "Anti-Gel": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/medicine/ice-heal.png",
+  "Anti-Para": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/medicine/paralyze-heal.png",
+  "Antidote": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/medicine/antidote.png",
+  "Réveil": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/medicine/awakening.png",
+  "Total Soin": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/medicine/full-heal.png",
+  "Fléau-Brûle": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/battle-item/x-attack.png",
+  "Fléau-Gel": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/battle-item/x-speed.png",
+  "Fléau-Para": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/battle-item/x-sp-atk.png",
+  "Fléau-Poison": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/battle-item/x-accuracy.png",
+  "Fléau-Sommeil": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/battle-item/x-sp-def.png",
+  "Fléau-Confus": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/battle-item/dire-hit.png",
+  "Fléau-Peur": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/battle-item/x-defense.png",
+  "Fléau-Charme": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/battle-item/x-accuracy.png",
+  "Vieille Racine": "https://2img.net/i.imgur.com/qAdHduo.png",
+  "Racine Miracle": "https://2img.net/i.imgur.com/Y7pQDPS.png",
+  "Vieux Champignon": "https://2img.net/i.imgur.com/1Tv5xVC.png",
+  "Poké Ball": "https://2img.net/i.imgur.com/vkQvanG.png",
+  "Super Ball": "https://2img.net/i.imgur.com/1wX8u49.png",
+  "Hyper Ball": "https://2img.net/i.imgur.com/uNTPmTy.png",
+  "Type Ball": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/ball/strange.png",
+  "Master Ball": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/ball/master.png",
+  "Vieille Ball": "https://2img.net/i.imgur.com/lT4bLDI.png",
+  "Ball Mystique": "https://2img.net/i.imgur.com/psdcCqV.png",
+  "Poké Plumet": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/other-item/poke-toy.png",
+  "Corde Sortie": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/other-item/escape-rope.png",
+  "Équipement oublié": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/key-item/eon-flute.png",
+  "Repousse": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/other-item/repel.png",
+  "Miel": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/other-item/honey.png",
+  "Miel de Luxe": "https://2img.net/i.imgur.com/dJyJBhh.png",
+  "Fleur Nectar": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/partner-gift/small-bouquet.png",
+  "Fleur Nectar Mythique": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/partner-gift/small-bouquet.png",
+  "Encens Spé": "https://2img.net/i.imgur.com/P35DMCY.png",
+  "Vieille Urne": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/incense/rock.png",
+  "Encens Spé Ultra": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/incense/luck.png",
+  "Scanneur": "https://2img.net/i.imgur.com/UrHJOvr.png",
+  "Scanneur +": "https://2img.net/i.imgur.com/6h6eCyr.png",
+  "Objets évolutifs": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/hold-item/eviolite.png",
+  "Pierre évolutive": "https://2img.net/i.imgur.com/uL6Jkok.png",
+  "Fil de Liaison": "https://2img.net/i.imgur.com/Irn7qyq.png",
+  "Grelot Zen": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/other-item/soothe-bell.png",
+  "CT non-offensive": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/tr/water.png",
+  "CT offensive": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/tr/fighting.png",
+  "Connaissances perdues": "https://2img.net/i.imgur.com/wM8PUWd.png",
+  "Écaille Cœur": "https://2img.net/i.imgur.com/1OXBfA4.png",
+  "Bonbon Talent": "https://2img.net/i.imgur.com/h3EQvJy.png",
+  "Incubateur": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/key-item/pokemon-box-link.png",
+  "Magical Boy/Girl": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/key-item/fashion-case.png",
+  "Charme Chroma": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/shiny-charm.png",
+  "Méga-Gemme": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/mega-stone/gengarite.png",
+  "Objets de synergie": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/z-crystals/dragonium-z--held.png",
+  "Réinitialisation (Bronze)": "https://2img.net/i.imgur.com/8qyVbCt.png",
+  "Réinitialisation (Argent)": "https://2img.net/i.imgur.com/4eyyoIY.png",
+  "Réinitialisation (Or)": "https://2img.net/i.imgur.com/bZHQBBy.png",
+  "Clé Sylvestre": "https://2img.net/i.imgur.com/yzp8qDS.png",
+  "Clé Nox": "https://2img.net/i.imgur.com/lI5JXFJ.png",
+  "Clé Céleste": "https://2img.net/i.imgur.com/A3qEfpk.png",
+  "Clé Ardente": "https://2img.net/i.imgur.com/XyzZ8NZ.png",
+  "Kit de Fouille": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/key-item/explorer-kit.png",
+  "Bon Mystère": "https://raw.githubusercontent.com/msikma/pokesprite/master/items/key-item/looker-ticket.png",
+  "Pièce d’Argent": "https://2img.net/i.imgur.com/HqKqifv.png",
+  "Pièce d’Or": "https://2img.net/i.imgur.com/5faseY2.png",
+  "Fragment d’Étoile": "https://2img.net/i.imgur.com/6cK33ZZ.png",
+  "Perle miroitante": "https://2img.net/i.imgur.com/KhAFAGv.png",
+  "Artéfact ancestral": "https://2img.net/i.imgur.com/EvXsZIx.png",
+  "Orbe dorée": "https://2img.net/i.imgur.com/0jKnlAO.png"
+}
+      </script>
+      <script type="application/json" data-comp-objets>
+[
+  {
+    "n": "Potion",
+    "s": [
+      "boutique",
+      "vestiges"
+    ],
+    "c": "medecine",
+    "d": "Restaure 50 PV à un Pokémon blessé. Peut également être appliquée INRP sur une blessure humaine superficielle.",
+    "p": 20,
+    "u": "Une action en combat · usage unique",
+    "i": "potion"
+  },
+  {
+    "n": "Super Potion",
+    "s": [
+      "boutique",
+      "vestiges"
+    ],
+    "c": "medecine",
+    "d": "Restaure 100 PV à un Pokémon blessé. Peut également être appliquée INRP sur une blessure humaine superficielle.",
+    "p": 60,
+    "u": "Une action en combat · usage unique",
+    "i": "super-potion"
+  },
+  {
+    "n": "Hyper Potion",
+    "s": [
+      "boutique",
+      "vestiges"
+    ],
+    "c": "medecine",
+    "d": "Restaure 250 PV à un Pokémon blessé. Peut également être appliquée INRP sur une blessure humaine superficielle.",
+    "p": 175,
+    "u": "Une action en combat · usage unique",
+    "i": "hyper-potion"
+  },
+  {
+    "n": "Potion Max",
+    "s": [
+      "boutique",
+      "vestiges"
+    ],
+    "c": "medecine",
+    "d": "Restaure tous les PV d’un Pokémon blessé. Peut également être appliquée INRP sur une blessure humaine superficielle.",
+    "p": 300,
+    "u": "Une action en combat · usage unique",
+    "i": "max-potion"
+  },
+  {
+    "n": "Rappel",
+    "s": [
+      "vestiges"
+    ],
+    "c": "medecine",
+    "d": "Permet de réanimer un Pokémon mis K.O avec la moitié de ses PV.",
+    "p": 160,
+    "u": "Une action en combat · usage unique",
+    "i": "revive"
+  },
+  {
+    "n": "Anti-Brûle",
+    "s": [
+      "vestiges"
+    ],
+    "c": "medecine",
+    "d": "Permet de soigner l'altération “Brûlure” d’un Pokémon. Peut également être appliquée INRP sur une brûlure humaine superficielle.",
+    "p": 160,
+    "u": "Une action en combat · usage unique",
+    "i": "burn-heal"
+  },
+  {
+    "n": "Anti-Gel",
+    "s": [
+      "vestiges"
+    ],
+    "c": "medecine",
+    "d": "Permet de soigner l'altération “Gel” d’un Pokémon. Peut également être appliquée INRP sur une gelure humaine superficielle.",
+    "p": 160,
+    "u": "Une action en combat · usage unique",
+    "i": "ice-heal"
+  },
+  {
+    "n": "Anti-Para",
+    "s": [
+      "vestiges"
+    ],
+    "c": "medecine",
+    "d": "Permet de soigner l'altération “Paralysie” d’un Pokémon. Peut également être appliquée INRP sur un engourdissement humain superficiel.",
+    "p": 160,
+    "u": "Une action en combat · usage unique",
+    "i": "paralyze-heal"
+  },
+  {
+    "n": "Antidote",
+    "s": [
+      "vestiges"
+    ],
+    "c": "medecine",
+    "d": "Permet de soigner l'altération “Poison” d’un Pokémon. Peut également être appliquée INRP sur un empoisonnement humain superficiel.",
+    "p": 160,
+    "u": "Une action en combat · usage unique",
+    "i": "antidote"
+  },
+  {
+    "n": "Réveil",
+    "s": [
+      "vestiges"
+    ],
+    "c": "medecine",
+    "d": "Permet de soigner l'altération “Sommeil” d’un Pokémon. Peut également être appliquée INRP sur un endormissement humain superficiel.",
+    "p": 160,
+    "u": "Une action en combat · usage unique",
+    "i": "awakening"
+  },
+  {
+    "n": "Total Soin",
+    "s": [
+      "boutique",
+      "vestiges"
+    ],
+    "c": "medecine",
+    "d": "Permet de soigner n’importe quelle altération d’un Pokémon. Peut également être appliquée INRP sur un humain pour une altération superficielle.",
+    "p": 120,
+    "u": "Une action en combat · usage unique",
+    "i": "full-heal"
+  },
+  {
+    "n": "Fléau-Brûle",
+    "s": [
+      "vestiges"
+    ],
+    "c": "medecine",
+    "d": "Permet d’infliger l'altération “Brûlure” à un Pokémon. Peut également être appliquée INRP sur un humain pour le brûler.",
+    "p": 300,
+    "u": "Une action en combat · usage unique"
+  },
+  {
+    "n": "Fléau-Gel",
+    "s": [
+      "vestiges"
+    ],
+    "c": "medecine",
+    "d": "Permet d’infliger l'altération “Gel” à un Pokémon. Peut également être appliquée INRP sur un humain pour provoquer un début d’hypothermie.",
+    "p": 300,
+    "u": "Une action en combat · usage unique"
+  },
+  {
+    "n": "Fléau-Para",
+    "s": [
+      "vestiges"
+    ],
+    "c": "medecine",
+    "d": "Permet d’infliger l'altération “Paralysie” à un Pokémon. Peut également être appliquée INRP sur un humain pour le paralyser.",
+    "p": 300,
+    "u": "Une action en combat · usage unique"
+  },
+  {
+    "n": "Fléau-Poison",
+    "s": [
+      "vestiges"
+    ],
+    "c": "medecine",
+    "d": "Permet d’infliger l'altération “Poison” à un Pokémon. Peut également être appliquée INRP sur un humain pour l’empoisonner.",
+    "p": 300,
+    "u": "Une action en combat · usage unique"
+  },
+  {
+    "n": "Fléau-Sommeil",
+    "s": [
+      "vestiges"
+    ],
+    "c": "medecine",
+    "d": "Permet d’infliger l'altération “Sommeil” à un Pokémon. Peut également être appliquée INRP sur un humain pour l’endormir.",
+    "p": 300,
+    "u": "Une action en combat · usage unique"
+  },
+  {
+    "n": "Fléau-Confus",
+    "s": [
+      "vestiges"
+    ],
+    "c": "medecine",
+    "d": "Permet d’infliger l'altération “Confusion” à un Pokémon. Peut également être appliquée INRP sur un humain pour provoquer une perte de repère.",
+    "p": 300,
+    "u": "Une action en combat · usage unique"
+  },
+  {
+    "n": "Fléau-Peur",
+    "s": [
+      "vestiges"
+    ],
+    "c": "medecine",
+    "d": "Permet d’infliger l'altération “Peur” à un Pokémon. Peut également être appliquée INRP sur un humain pour forcer un état de terreur.",
+    "p": 300,
+    "u": "Une action en combat · usage unique"
+  },
+  {
+    "n": "Fléau-Charme",
+    "s": [
+      "vestiges"
+    ],
+    "c": "medecine",
+    "d": "Permet d’infliger l'altération “Charme” à un Pokémon. Peut également être appliquée INRP sur un humain pour brouiller sa perception et le séduire.",
+    "p": 300,
+    "u": "Une action en combat · usage unique"
+  },
+  {
+    "n": "Vieille Racine",
+    "s": [
+      "fouilles"
+    ],
+    "c": "medecine",
+    "d": "Une racine trouvable en effectuant une fouille. Elle permet de confectionner une Hyper Potion une fois réduite en poudre.",
+    "p": null,
+    "pa": "Échange : Hyper Potion",
+    "u": "Usage unique"
+  },
+  {
+    "n": "Racine Miracle",
+    "s": [
+      "fouilles"
+    ],
+    "c": "medecine",
+    "d": "Une racine trouvable en effectuant une fouille. Elle permet de confectionner une Max Potion une fois réduite en poudre.",
+    "p": null,
+    "pa": "Échange : Potion Max",
+    "u": "Usage unique"
+  },
+  {
+    "n": "Vieux Champignon",
+    "s": [
+      "fouilles"
+    ],
+    "c": "medecine",
+    "d": "Un champignon trouvable en effectuant une fouille. Elle permet de confectionner un Total Soin une fois réduite en poudre.",
+    "p": null,
+    "pa": "Échange : Total Soin",
+    "u": "Usage unique",
+    "i": "big-mushroom"
+  },
+  {
+    "n": "Poké Ball",
+    "s": [
+      "boutique",
+      "vestiges"
+    ],
+    "c": "capture",
+    "d": "Permet la capture d'un Pokémon. Son taux de réussite est de 7/20. Les tentatives de capture avec ce type de Ball se font à l’aide des dés commençant par “Pokéball 一 … “.",
+    "p": 20,
+    "u": "Usage unique",
+    "i": "poke-ball"
+  },
+  {
+    "n": "Super Ball",
+    "s": [
+      "boutique",
+      "vestiges"
+    ],
+    "c": "capture",
+    "d": "Permet la capture d'un Pokémon. Son taux de réussite est de 11/20.  Les tentatives de capture avec ce type de Ball se font à l’aide des dés commençant par “Superball 一 … “.",
+    "p": 75,
+    "u": "Usage unique",
+    "i": "great-ball"
+  },
+  {
+    "n": "Hyper Ball",
+    "s": [
+      "boutique",
+      "vestiges"
+    ],
+    "c": "capture",
+    "d": "Permet la capture d'un Pokémon. Son taux de réussite est de 17/20.  Les tentatives de capture avec ce type de Ball se font à l’aide des dés commençant par “Hyperball 一 … “.",
+    "p": 150,
+    "u": "Usage unique",
+    "i": "ultra-ball"
+  },
+  {
+    "n": "Type Ball",
+    "s": [
+      "vestiges"
+    ],
+    "c": "capture",
+    "d": "Ball confectionnée pour un type de Pokémon spécifique (à préciser lors de la création). Assure automatiquement la réussite de la capture si le Pokémon est du même type que la Ball. Inutilisable sur d’autres types.",
+    "p": 300,
+    "u": "Usage unique"
+  },
+  {
+    "n": "Master Ball",
+    "s": [
+      "vestiges"
+    ],
+    "c": "capture",
+    "d": "Ball rare et performant qui assure automatiquement la réussite de la capture d’un Pokémon de n’importe quel type. Lors de sa capture avec cette Ball, le Pokémon capturé apprend deux attaques issues de CT au choix.",
+    "p": 500,
+    "u": "Usage unique",
+    "i": "master-ball"
+  },
+  {
+    "n": "Vieille Ball",
+    "s": [
+      "fouilles"
+    ],
+    "c": "capture",
+    "d": "Une vieille ball trouvable en effectuant une fouille. Elle permet d’être recyclée et transformée en Hyper Ball.",
+    "p": null,
+    "pa": "Échange : Hyper Ball",
+    "u": "Usage unique"
+  },
+  {
+    "n": "Ball Mystique",
+    "s": [
+      "fouilles"
+    ],
+    "c": "capture",
+    "d": "Une ball mystique trouvable en effectuant une fouille. Elle permet d’être recyclée et transformée en Type Ball (à préciser lors de la demande d’échange).",
+    "p": null,
+    "pa": "Échange : Type Ball",
+    "u": "Usage unique"
+  },
+  {
+    "n": "Poké Plumet",
+    "s": [
+      "boutique"
+    ],
+    "c": "capture",
+    "d": "Permet d’augmenter le taux de réussite de fuite à 8/10 en agitant le plumet devant le museau d’un Pokémon. Possède un dès spécifique en cas d’utilisation (Fuite 一 Poké Plumet).",
+    "p": 100,
+    "u": "Usage unique",
+    "i": "pretty-feather"
+  },
+  {
+    "n": "Corde Sortie",
+    "s": [
+      "boutique"
+    ],
+    "c": "capture",
+    "d": "Une corde permettant de quitter temporairement une capture sans interrompre le sujet. Peut servir à actualiser son inventaire afin que les objets, acquis post-ouverture de la capture quittée, puissent être pris en compte.",
+    "p": 300,
+    "u": "Usage unique",
+    "i": "escape-rope"
+  },
+  {
+    "n": "Équipement oublié",
+    "s": [
+      "fouilles"
+    ],
+    "c": "capture",
+    "d": "Un vieil équipement trouvable en effectuant une fouille. Il permet d’être remis en état, afin d’obtenir une Corde Sortie.",
+    "p": null,
+    "pa": "Échange : Corde Sortie",
+    "u": "Usage unique"
+  },
+  {
+    "n": "Repousse",
+    "s": [
+      "boutique"
+    ],
+    "c": "capture",
+    "d": "Un spray à l’odeur âcre forçant les cinq dernières apparitions du lanceur à fuir. Empêche ces espèces de réapparaître au tour d’utilisation.",
+    "p": 300,
+    "u": "3 utilisations · une par tour",
+    "i": "repel"
+  },
+  {
+    "n": "Miel",
+    "s": [
+      "boutique",
+      "vestiges"
+    ],
+    "c": "capture",
+    "d": "Un miel à l’odeur sucrée, mais aux effluves faibles détectées par les plus gourmands. Permet l’apparition d’un Pokémon supplémentaire lors de son tour d’utilisation.",
+    "p": 200,
+    "u": "3 utilisations · une par tour",
+    "i": "honey"
+  },
+  {
+    "n": "Miel de Luxe",
+    "s": [
+      "luxe",
+      "vestiges"
+    ],
+    "c": "capture",
+    "d": "Un miel à l’odeur sucrée, mais aux effluves modérées détectées par les plus gourmands. Permet l’apparition de deux Pokémons supplémentaires lors de son tour d’utilisation.",
+    "p": 600,
+    "u": "3 utilisations · une par tour",
+    "i": "honey"
+  },
+  {
+    "n": "Fleur Nectar",
+    "s": [
+      "luxe",
+      "vestiges"
+    ],
+    "c": "capture",
+    "d": "Une fleur à l’odeur enivrante et aux effluves persistantes détectées par les plus gourmands. Permet l’apparition de quatres Pokémons supplémentaires lors de son tour d’utilisation.",
+    "p": 800,
+    "u": "3 utilisations · une par tour",
+    "i": "nectar"
+  },
+  {
+    "n": "Fleur Nectar Mythique",
+    "s": [
+      "vestiges"
+    ],
+    "c": "capture",
+    "d": "Une fleur inestimable et rare qui ne peut être trouvée que par les plus fins connaisseurs. Permet l’apparition de quatres Pokémons supplémentaires, mais également d’avoir l’effet du talent Bel Éclat, Unique et Encens Spé (type au choix, à préciser lors de la création) lors de son tour d’utilisation.",
+    "p": 1000,
+    "u": "Une utilisation · une fois par tour"
+  },
+  {
+    "n": "Encens Spé",
+    "s": [
+      "luxe",
+      "vestiges"
+    ],
+    "c": "capture",
+    "d": "Un dispositif dégageant l’odeur favorite d’un type de Pokémon spécifique. Permet de garantir que l’apparition soit du type choisi (à préciser lors de l'achat), si présent dans la zone de capture. Chaque utilisation n’attire qu’un Pokémon.",
+    "p": 200,
+    "u": "3 utilisations · une par tour",
+    "i": "odd-incense"
+  },
+  {
+    "n": "Vieille Urne",
+    "s": [
+      "fouilles"
+    ],
+    "c": "capture",
+    "d": "Une vieille urne trouvable en effectuant une fouille. Elle peut être rechargée afin de donner un Encens Spé (à préciser lors de la demande d’échange).",
+    "p": null,
+    "pa": "Échange : Encens Spé",
+    "u": "Usage unique"
+  },
+  {
+    "n": "Encens Spé Ultra",
+    "s": [
+      "vestiges"
+    ],
+    "c": "capture",
+    "d": "Un dispositif dégageant l’odeur favorite d’un type de Pokémon spécifique. Permet de garantir que l’apparition soit du type choisi (à préciser lors de l’âchat), même si ce type est pris au cours d’une évolution, si présent dans la zone de capture. Chaque utilisation n’attire qu’un Pokémon.",
+    "p": 500,
+    "u": "3 utilisations · une par tour",
+    "i": "odd-incense"
+  },
+  {
+    "n": "Scanneur",
+    "s": [
+      "luxe"
+    ],
+    "c": "capture",
+    "d": "Un objet permettant de détecter des Pokémons plus expérimentés. Permet de faire apparaître un Pokémon évolué au second stade.",
+    "p": 1300,
+    "u": "Usage unique"
+  },
+  {
+    "n": "Scanneur +",
+    "s": [
+      "luxe"
+    ],
+    "c": "capture",
+    "d": "Un objet permettant de détecter des Pokémons plus expérimentés. Permet de faire apparaître un Pokémon évolué au troisième stade.",
+    "p": 2000,
+    "u": "Usage unique"
+  },
+  {
+    "n": "Objets évolutifs",
+    "s": [
+      "boutique",
+      "vestiges"
+    ],
+    "c": "progression",
+    "d": "Ces objets concernent autant les Pierres d’Évolutions, que les Objets Élaborés propre à certaines espèces. Permet de faire évoluer son Pokémon (à préciser lors de l'achat), si ce dernier nécessite un Objets Évolutifs.",
+    "p": 200,
+    "u": "Usage unique",
+    "i": "fire-stone"
+  },
+  {
+    "n": "Pierre évolutive",
+    "s": [
+      "fouilles"
+    ],
+    "c": "progression",
+    "d": "Une pierre bien spéciale trouvable en effectuant une fouille. Elle peut être retaillée afin de donner une Pierre d’Évolution (à préciser lors de la demande d’échange).",
+    "p": null,
+    "pa": "Échange : pierre au choix",
+    "u": "Usage unique",
+    "i": "hard-stone"
+  },
+  {
+    "n": "Fil de Liaison",
+    "s": [
+      "boutique",
+      "vestiges"
+    ],
+    "c": "progression",
+    "d": "Un fil très particulier qui permet à certains Pokémon d’évoluer. Permet de faire évoluer un Pokémon nécessitant un échange.",
+    "p": 200,
+    "u": "Usage unique",
+    "i": "linking-cord"
+  },
+  {
+    "n": "Grelot Zen",
+    "s": [
+      "boutique",
+      "vestiges"
+    ],
+    "c": "progression",
+    "d": "Un grelot au son délicat qui permet à certains Pokémon d’évoluer. Permet de faire évoluer un Pokémon nécessitant du bonheur.",
+    "p": 200,
+    "u": "Usage unique",
+    "i": "soothe-bell"
+  },
+  {
+    "n": "CT non-offensive",
+    "s": [
+      "luxe",
+      "vestiges"
+    ],
+    "c": "progression",
+    "d": "Un disque possédant des données permettant d’apprendre à un Pokémon une attaque non-offensive de son choix (à préciser lors de l’achat). Son utilisation ne brise pas le disque, permettant ainsi une utilisation illimitée dans la limite des capacités disponibles pour le Pokémon ciblé. (Basée sur Écarlate/Violet, ou Épée/Bouclier pour les Pokémons n’apparaissant pas en 9G)",
+    "p": 230,
+    "u": "Usage illimité · invendable après emploi",
+    "i": "tm-normal"
+  },
+  {
+    "n": "CT offensive",
+    "s": [
+      "luxe",
+      "vestiges"
+    ],
+    "c": "progression",
+    "d": "Un disque possédant des données permettant d’apprendre à un Pokémon une attaque offensive de son choix (à préciser lors de l’achat). Son utilisation ne brise pas le disque, permettant ainsi une utilisation illimitée dans la limite des capacités disponibles pour le Pokémon ciblé. (Basée sur Écarlate/Violet, ou Épée/Bouclier pour les Pokémons n’apparaissant pas en 9G)",
+    "p": 280,
+    "u": "Usage illimité · invendable après emploi",
+    "i": "tm-fire"
+  },
+  {
+    "n": "Connaissances perdues",
+    "s": [
+      "fouilles"
+    ],
+    "c": "progression",
+    "d": "Un journal, parchemin ou carnet de note trouvable en effectuant une fouille. Il peut être lu afin de donner une CT. (Basée sur Écarlate/Violet)",
+    "p": null,
+    "pa": "Échange : CT aléatoire",
+    "u": "Usage unique"
+  },
+  {
+    "n": "Écaille Cœur",
+    "s": [
+      "boutique",
+      "fouilles"
+    ],
+    "c": "progression",
+    "d": "Une jolie écaille scintillante dont la contemplation par un Pokémon lui permet de se remémorer une capacité normalement inaccessible avant ou après son évolution (attaque réservée à sa pré-évolution, apprise au niveau 1 ou avant son niveau d’évolution). Elle permet également de récupérer une ancienne CT indisponible dans Écarlate/Violet pour les Pokémon absents de la 9G.",
+    "p": 75,
+    "u": "Usage unique",
+    "i": "heart-scale"
+  },
+  {
+    "n": "Bonbon Talent",
+    "s": [
+      "luxe"
+    ],
+    "c": "progression",
+    "d": "Un bonbon dont les saveurs ont un effet Madeleine de Proust et qui permet de faire connaître le talent caché au Pokémon l’ayant mangé. Le talent caché remplace le talent actuel. Les talents ne se cumulent pas.",
+    "p": 750,
+    "u": "Usage unique",
+    "i": "ability-capsule"
+  },
+  {
+    "n": "Incubateur",
+    "s": [
+      "luxe"
+    ],
+    "c": "progression",
+    "d": "Un dispositif de couvaison reproduisant les conditions idéales qui permet de réduire le temps d’éclosion d’un Oeuf Pokémon à neuf jours, au lieu de 14 jours (deux semaines). Peut être cumulé avec le talent “Couvaison”.",
+    "p": 700,
+    "u": "Usage unique"
+  },
+  {
+    "n": "Magical Boy/Girl",
+    "s": [
+      "luxe"
+    ],
+    "c": "progression",
+    "d": "Un étrange médicament extrêmement sucré qui permet de changer le sexe d’un Pokémon, permettant ainsi l’accès à certaine évolution spécifique à l’un ou l’autre genre.",
+    "p": 600,
+    "u": "Usage unique"
+  },
+  {
+    "n": "Charme Chroma",
+    "s": [
+      "vestiges"
+    ],
+    "c": "progression",
+    "d": "Un talisman à l’aspect fantomatique qui, une fois posé sur un Pokémon, change totalement la colorimétrie de celui-ci. Permet de rendre un pokémon instantanément chromatique, mais disparaît après utilisation.",
+    "p": null,
+    "pa": "Non valorisable · vente entre membres impossible",
+    "u": "Usage unique",
+    "i": "shiny-charm"
+  },
+  {
+    "n": "Méga-Gemme",
+    "s": [
+      "vestiges"
+    ],
+    "c": "progression",
+    "d": "Perle en verre et nacrée, chacune propre à une espèce de Pokémon en particulier, elle  permet de faire méga-évoluer un Pokémon, à condition de posséder les vestiges “Méga-Accessoire” et “Méga-Évolution”. Les Méga-Évolutions sont, pour le moment, limitées à celles disponibles actuellement dans les jeux officiels de la licence Pokémon.",
+    "p": null,
+    "pa": "Non valorisable · vente entre membres impossible",
+    "u": "Limité à deux utilisations par combat"
+  },
+  {
+    "n": "Objets de synergie",
+    "s": [
+      "vestiges"
+    ],
+    "c": "progression",
+    "d": "Ornement à l’apparence variable, mais qui est propre à chaque espèce de Pokémon, il  permet de révéler la force ensommeillée du Pokémon, à condition de posséder les vestiges “Synergie-Accessoire” et “Giga-Synergie-Z”. La Synergie est une mécanique propre à Etherium, qui mélange les effets des Cristaux Z de Pokémon S/M, et les Dynamax de E/B.",
+    "p": null,
+    "pa": "Non valorisable · vente entre membres impossible",
+    "u": "Limité à deux utilisations par combat"
+  },
+  {
+    "n": "Réinitialisation (Bronze)",
+    "s": [
+      "luxe"
+    ],
+    "c": "progression",
+    "d": "Un pass d’accès permettant de revenir à la configuration de son avatar. Permet de changer un Vestige de dresseur, tiers bronze uniquement.",
+    "p": 1700,
+    "u": "Usage unique"
+  },
+  {
+    "n": "Réinitialisation (Argent)",
+    "s": [
+      "luxe"
+    ],
+    "c": "progression",
+    "d": "Un pass d’accès permettant de revenir à la configuration de son avatar. Permet de changer un Vestige de dresseur, tiers argent uniquement.",
+    "p": 4700,
+    "u": "Usage unique"
+  },
+  {
+    "n": "Réinitialisation (Or)",
+    "s": [
+      "luxe"
+    ],
+    "c": "progression",
+    "d": "Un pass d’accès permettant de revenir à la configuration de son avatar. Permet de changer un Vestige de dresseur, tiers or uniquement.",
+    "p": 7700,
+    "u": "Usage unique"
+  },
+  {
+    "n": "Clé Sylvestre",
+    "s": [
+      "boutique"
+    ],
+    "c": "exploration",
+    "d": "Une clé en bois taillée qui a reçu la bénédiction du Vénérable Tengalice. Permet d’accéder au donjon “Bosquet des Échos” pour affronter le boss du donjon ou y capturer deux Pokémons.",
+    "p": 500,
+    "u": "Usage unique · une clé par mois"
+  },
+  {
+    "n": "Clé Nox",
+    "s": [
+      "boutique"
+    ],
+    "c": "exploration",
+    "d": "Une clé en métal rouillée qui a reçu la bénédiction de Al Corboss. Permet d’accéder au donjon “Secteur Noctis” pour affronter le boss du donjon ou y capturer deux Pokémons.",
+    "p": 500,
+    "u": "Usage unique · une clé par mois"
+  },
+  {
+    "n": "Clé Céleste",
+    "s": [
+      "boutique"
+    ],
+    "c": "exploration",
+    "d": "Une clé en verre, légère comme une plume, qui a reçu la bénédiction de l’Ignabysse. Permet d’accéder au donjon “Ruines Suspendues” pour affronter le boss du donjon ou y capturer deux Pokémons.",
+    "p": 500,
+    "u": "Usage unique · une clé par mois"
+  },
+  {
+    "n": "Clé Ardente",
+    "s": [
+      "boutique"
+    ],
+    "c": "exploration",
+    "d": "Une clé en pierre volcanique, encore chaude, qui a reçu la bénédiction de l’Ardenflore. Permet d’accéder au donjon “Caldéira de Vaelor” pour affronter le boss du donjon ou y capturer deux Pokémons.",
+    "p": 500,
+    "u": "Usage unique · une clé par mois"
+  },
+  {
+    "n": "Kit de Fouille",
+    "s": [
+      "boutique"
+    ],
+    "c": "exploration",
+    "d": "Un kit du parfait apprenti-archéologue comprenant tout le nécessaire pour creuser, fouiller, chiner - voir “voler”- des vieilleries échangeables contre des objets plus modernes. Permet d’accéder une fois par mois à la catégorie spéciale “Sites de Fouilles”.",
+    "p": 300,
+    "u": "4 utilisations · un kit par mois"
+  },
+  {
+    "n": "Bon Mystère",
+    "s": [
+      "boutique"
+    ],
+    "c": "argent",
+    "d": "Un ticket de loterie qui promet monnaie sonnante et trébuchante, sans assurer la garantie d’échapper à un déficit. Permet une fois par mois (sauf vestige “Jeux de Hasard”) de tirer une somme entre 10P$ et 300P$ (sauf vestige “Chance Insolente”).",
+    "p": 30,
+    "u": "Usage unique · un ticket par mois"
+  },
+  {
+    "n": "Pièce d’Argent",
+    "s": [
+      "fouilles"
+    ],
+    "c": "argent",
+    "d": "Petite pièce en argent qui peut être trouvée lors d’une fouille. Peut être revendu à un collectionneur contre une petite somme de P$.",
+    "p": null,
+    "pa": "Revente : 100 P$",
+    "u": "Usage unique",
+    "i": "silver-leaf"
+  },
+  {
+    "n": "Pièce d’Or",
+    "s": [
+      "fouilles"
+    ],
+    "c": "argent",
+    "d": "Petite pièce en or qui peut être trouvée lors d’une fouille. Peut être revendu à un collectionneur contre une somme de P$.",
+    "p": null,
+    "pa": "Revente : 200 P$",
+    "u": "Usage unique",
+    "i": "gold-leaf"
+  },
+  {
+    "n": "Fragment d’Étoile",
+    "s": [
+      "fouilles"
+    ],
+    "c": "argent",
+    "d": "Un fragment de comète, vestige d’une étoile filante ayant traversé l’atmosphère d’Etherium. Peut être revendu à un collectionneur contre une somme raisonnable de P$.",
+    "p": null,
+    "pa": "Revente : 300 P$",
+    "u": "Usage unique",
+    "i": "star-piece"
+  },
+  {
+    "n": "Perle miroitante",
+    "s": [
+      "fouilles"
+    ],
+    "c": "argent",
+    "d": "Une perle si nacrée très appréciée des joailliers qu’elle reflète le visage de celui qui la regarde comme un miroir. Peut être revendu à un collectionneur contre une somme appréciable de P$.",
+    "p": null,
+    "pa": "Revente : 400 P$",
+    "u": "Usage unique",
+    "i": "pearl"
+  },
+  {
+    "n": "Artéfact ancestral",
+    "s": [
+      "fouilles"
+    ],
+    "c": "argent",
+    "d": "Vestige d’une ancienne civilisation, on ne sait pas trop ce que ce buste représente, mais très apprécié par les férus d’histoire. Peut être revendu à un collectionneur contre une coquette somme de P$.",
+    "p": null,
+    "pa": "Revente : 500 P$",
+    "u": "Usage unique"
+  },
+  {
+    "n": "Orbe dorée",
+    "s": [
+      "fouilles"
+    ],
+    "c": "argent",
+    "d": "Une pépite d’or si volumineuse qu'elle fait la taille d’une orbe. Un véritable trésor pour les bijoutiers ou simple avare. Peut être revendu à un collectionneur contre une coquette somme de P$.",
+    "p": null,
+    "pa": "Revente : 500 P$",
+    "u": "Usage unique",
+    "i": "big-nugget"
+  }
+]
+      </script>
+    </div>
+  </div>
+</div>
+<script src="menu.js"></script>
+<script src="compendium.js"></script>
+</body>
+</html>
